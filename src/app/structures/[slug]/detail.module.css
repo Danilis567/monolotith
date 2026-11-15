@@ -1,0 +1,344 @@
+/* ==========================================================================
+   03 STRUCTURE DETAIL — Monograph Split Poster, 9-Field Ledger & Analysis
+   ========================================================================== */
+
+.breadcrumbBand {
+  border-bottom: 1px solid var(--border-hairline);
+  padding-block: 0.875rem;
+  background-color: var(--surface-canvas);
+}
+
+.breadcrumbNav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink-secondary);
+}
+
+.breadcrumbLink:hover {
+  color: var(--ink-primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Split Poster Hero */
+.heroBand {
+  padding-block: 2.5rem 4rem;
+  border-bottom: 2px solid var(--border-structural);
+}
+
+.plateStageCol {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (width >= 1024px) {
+  .plateStageCol {
+    grid-column: 1 / 7;
+    grid-template-columns: 1fr 48px;
+    gap: 0;
+  }
+}
+
+.plateFrameOuter {
+  position: relative;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-sunken);
+  padding: 1rem;
+}
+
+.plateAspect34 {
+  aspect-ratio: 3 / 4;
+  inline-size: 100%;
+  position: relative;
+}
+
+.crosshairTL {
+  position: absolute;
+  inset-block-start: -7px;
+  inset-inline-start: -7px;
+  color: var(--ink-secondary);
+  z-index: 6;
+}
+
+.crosshairBR {
+  position: absolute;
+  inset-block-end: -7px;
+  inset-inline-end: -7px;
+  color: var(--ink-secondary);
+  z-index: 6;
+}
+
+.marginaliaRail {
+  border: 1px solid var(--border-on-elevated);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  color: var(--ink-secondary);
+  background-color: var(--surface-basalt);
+}
+
+@media (width >= 1024px) {
+  .marginaliaRail {
+    border-left: 0;
+    padding: 1rem 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .marginaliaRail span {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+}
+
+.heroCopyCol {
+  grid-column: 1 / -1;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.75rem;
+}
+
+@media (width >= 1024px) {
+  .heroCopyCol {
+    grid-column: 7 / 13;
+    margin-top: 0;
+    padding-left: 1.5rem;
+  }
+}
+
+.nativeSubtitle {
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.125rem, 1.8vw, 1.5rem);
+  color: var(--ink-secondary);
+}
+
+.actionCluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-hairline);
+}
+
+/* 9-Field Colophon Ledger */
+.ledgerBand {
+  padding-block: 3.5rem;
+  border-bottom: 2px solid var(--border-structural);
+}
+
+.ledgerGrid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--border-structural);
+  border-left: 1px solid var(--border-hairline);
+}
+
+@media (width >= 600px) {
+  .ledgerGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 1024px) {
+  .ledgerGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.ledgerCell {
+  padding: 1.25rem;
+  border-right: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  display: grid;
+  gap: 0.4rem;
+}
+
+.ledgerTerm {
+  color: var(--ink-secondary);
+}
+
+.ledgerValue {
+  color: var(--ink-primary);
+  font-weight: 500;
+}
+
+/* Plaster Editorial Analysis Band */
+.analysisBand {
+  padding-block: 4.5rem;
+  border-bottom: 2px solid var(--border-structural);
+}
+
+.analysisMain {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (width >= 1024px) {
+  .analysisMain {
+    grid-column: 1 / 8;
+    padding-right: 2rem;
+  }
+}
+
+.analysisBlock {
+  display: grid;
+  gap: 0.75rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.proseColumns {
+  display: block;
+}
+
+@media (width >= 768px) {
+  .proseColumns {
+    columns: 2;
+    column-gap: 2rem;
+  }
+}
+
+.citationQuote {
+  padding-block: 1.25rem;
+  border-block: 1px solid var(--border-structural);
+  color: var(--ink-primary);
+}
+
+.analysisSidebar {
+  grid-column: 1 / -1;
+  margin-top: 2.5rem;
+  display: grid;
+  gap: 1.5rem;
+  align-content: start;
+}
+
+@media (width >= 1024px) {
+  .analysisSidebar {
+    grid-column: 8 / 13;
+    margin-top: 0;
+  }
+}
+
+.calloutMetricBox {
+  border: 1px solid var(--border-structural);
+  padding: 1.5rem;
+  background-color: var(--surface-basalt);
+  color: var(--ink-primary);
+  display: grid;
+  gap: 0.625rem;
+}
+
+.observationList {
+  border: 1px solid var(--border-hairline);
+  display: grid;
+}
+
+.observationRow {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--border-hairline);
+  display: grid;
+  gap: 0.25rem;
+}
+
+.observationRow:last-child {
+  border-bottom: 0;
+}
+
+.halftoneCrop {
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--border-structural);
+  position: relative;
+}
+
+/* Anatomy Cross-Link Band */
+.anatomyBanner {
+  padding-block: 3rem;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.anatomyCard {
+  grid-column: 1 / -1;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-basalt);
+  color: var(--ink-primary);
+  padding: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* 3-Link Adjacent Sequence Nav */
+.adjacentBand {
+  padding-block: 2rem 3.5rem;
+}
+
+.adjacentGrid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--border-structural);
+}
+
+@media (width >= 768px) {
+  .adjacentGrid {
+    grid-template-columns: 1fr auto 1fr;
+  }
+}
+
+.adjacentLink {
+  padding: 1.25rem 1.5rem;
+  min-block-size: 44px;
+  display: grid;
+  gap: 0.35rem;
+  color: var(--ink-primary);
+  border-bottom: 1px solid var(--border-hairline);
+  transition: background-color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.adjacentLink:last-child {
+  border-bottom: 0;
+}
+
+@media (width < 768px) {
+  .adjacentLink {
+    place-content: start !important;
+    text-align: left !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .adjacentLink {
+    transition: none;
+  }
+}
+
+@media (width >= 768px) {
+  .adjacentLink {
+    border-bottom: 0;
+    border-right: 1px solid var(--border-hairline);
+  }
+
+  .adjacentLink:last-child {
+    border-right: 0;
+    text-align: right;
+  }
+}
+
+.adjacentLink:hover {
+  background-color: var(--surface-basalt);
+  color: var(--ink-primary);
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="MONOLITH social avatar">
+  <rect width="512" height="512" fill="#131313"/>
+  <g aria-hidden="true" fill="none" stroke="#E9E5DF">
+    <rect x="134" y="134" width="244" height="244" stroke-opacity="0.2" stroke-width="1.5"/>
+    <path d="M 134 156 V 134 H 156 M 356 134 H 378 V 156 M 378 356 V 378 H 356 M 156 378 H 134 V 356" stroke-opacity="0.55" stroke-width="2"/>
+    <line x1="256" y1="134" x2="256" y2="152" stroke-opacity="0.35" stroke-width="1.5"/>
+    <line x1="256" y1="360" x2="256" y2="378" stroke-opacity="0.35" stroke-width="1.5"/>
+  </g>
+  <path transform="translate(128, 128) scale(4)" fill="#E9E5DF" d="M 8 6 H 17 L 32 26 L 47 6 H 56 V 58 H 44 A 30 30 0 0 0 32 34 A 30 30 0 0 0 20 58 H 8 Z"/>
+</svg>

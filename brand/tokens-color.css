@@ -1,0 +1,440 @@
+/* ==========================================================================
+   MONOLITH — Brand Color & Surface Token System
+   Architecture:
+     Tier 1: Immutable Concrete Palette & Rationed Signal Vermilion Primitives
+     Tier 2: Semantic Surface, Ink, Border, Signal & Interactive Tokens
+     Default: Dark-First Editorial Baseline (Void Concrete #131313 canvas,
+              Raw Plaster #E9E5DF ink, color-scheme: dark) for unequivocal SSR
+              rendering without light/dark mismatches.
+     Overrides: [data-theme="light" | "dark"], [data-surface="void" | "basalt" |
+                "dark" | "plaster" | "limestone" | "light"],
+                @media (prefers-contrast: more), @media (forced-colors: active)
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     TIER 1: IMMUTABLE CONCRETE PALETTE (DO NOT ALTER)
+     ------------------------------------------------------------------------ */
+  --concrete-950: #131313; /* Void Concrete   | L = 0.006512 */
+  --concrete-800: #282828; /* Basalt          | L = 0.021219 */
+  --concrete-500: #77746C; /* Weathered Grey  | L = 0.174954 */
+  --concrete-300: #B9B5AA; /* Limestone       | L = 0.462643 */
+  --concrete-100: #E9E5DF; /* Raw Plaster     | L = 0.786900 */
+
+  /* ------------------------------------------------------------------------
+     TIER 1: SIGNAL VERMILION (STRICTLY RATIONED <= 2% VIEWPORT AREA)
+     Derived from OBSIDIAN architectural vermilion & brutalist error state.
+     ------------------------------------------------------------------------ */
+  --signal-vermilion-700: #8B1912; /* Limestone-safe ink/border | L = 0.06228 (4.57:1 on #B9B5AA) */
+  --signal-vermilion-600: #A81F17; /* Light-surface AA normal   | L = 0.09367 (5.83:1 on #E9E5DF) */
+  --signal-vermilion-500: #C8281E; /* Raw atmospheric glow / large-only on #131313 (3.34:1) */
+  --signal-vermilion-400: #F45D4D; /* Dark-surface AA normal    | L = 0.27598 (5.77:1 on #131313, 4.58:1 on #282828) */
+
+  /* ------------------------------------------------------------------------
+     TIER 2: SEMANTIC TOKENS — DARK-FIRST EDITORIAL BASELINE (DEFAULT)
+     Guarantees zero light/dark SSR flash and universal browser compatibility.
+     ------------------------------------------------------------------------ */
+  color-scheme: dark;
+
+  /* Surfaces */
+  --surface-canvas: var(--concrete-950);   /* #131313 Void Concrete */
+  --surface-elevated: var(--concrete-800); /* #282828 Basalt */
+  --surface-basalt: var(--concrete-800);   /* #282828 Basalt (re-declared per [data-surface]) */
+  --surface-sunken: var(--concrete-950);   /* #131313 Void Concrete */
+  --surface-inverse: var(--concrete-100);  /* #E9E5DF Raw Plaster */
+  --surface-scrim: rgba(19, 19, 19, 0.86);
+
+  /* Ink */
+  --ink-primary: var(--concrete-100);      /* 14.81:1 on #131313 | 11.75:1 on #282828 */
+  --ink-secondary: var(--concrete-300);    /*  9.07:1 on #131313 |  7.20:1 on #282828 */
+  --ink-muted: var(--concrete-300);        /*  9.07:1 on #131313 |  7.20:1 on #282828 (AA safe normal/small) */
+  --ink-muted-large: var(--concrete-500);  /*  3.98:1 on #131313 |  3.16:1 on #282828 (>=24px / 18.66px bold ONLY) */
+  --ink-inverse: var(--concrete-950);      /* 14.81:1 on #E9E5DF */
+
+  /* Borders & Rules */
+  --border-structural: var(--concrete-100); /* Brutalist 1-2px hard frames */
+  --border-hairline: var(--concrete-500);   /* 3.98:1 on #131313 | 3.16:1 on #282828 (WCAG 1.4.11 >=3:1) */
+  --border-on-elevated: var(--concrete-300);/* 7.20:1 on #282828 */
+
+  /* Signal Accent (Active indicator, error state, surgical CTA cue) */
+  --signal-ink: var(--signal-vermilion-400);     /* 5.77:1 on #131313 | 4.58:1 on #282828 */
+  --signal-fill: var(--signal-vermilion-400);
+  --signal-on-fill: var(--concrete-950);         /* 5.77:1 on #F45D4D */
+  --signal-border: var(--signal-vermilion-400);  /* 5.77:1 on #131313 | 4.58:1 on #282828 */
+  --signal-glow: var(--signal-vermilion-500);    /* Non-essential atmospheric glow ONLY */
+
+  /* Focus & Browser Chrome */
+  --focus-ring: var(--concrete-100);
+  --focus-ring-offset: var(--concrete-950);
+  --selection-bg: var(--concrete-100);
+  --selection-ink: var(--concrete-950);
+  --scrollbar-track: var(--concrete-950);
+  --scrollbar-thumb: var(--concrete-500);
+}
+
+/* Progressive enhancement: live light-dark() resolution (kept unregistered).
+   Because :root sets color-scheme: dark, :root still resolves to dark-first
+   while subtrees setting color-scheme: only light re-resolve automatically. */
+@supports (color: light-dark(white, black)) {
+  :root {
+    --surface-canvas: light-dark(var(--concrete-100), var(--concrete-950));
+    --surface-elevated: light-dark(var(--concrete-300), var(--concrete-800));
+    --surface-basalt: light-dark(var(--concrete-300), var(--concrete-800));
+    --surface-sunken: light-dark(var(--concrete-300), var(--concrete-950));
+    --surface-inverse: light-dark(var(--concrete-950), var(--concrete-100));
+    --surface-scrim: light-dark(rgba(19, 19, 19, 0.78), rgba(19, 19, 19, 0.86));
+
+    --ink-primary: light-dark(var(--concrete-950), var(--concrete-100));
+    --ink-secondary: light-dark(var(--concrete-800), var(--concrete-300));
+    --ink-muted: light-dark(var(--concrete-800), var(--concrete-300));
+    --ink-muted-large: light-dark(var(--concrete-800), var(--concrete-500));
+    --ink-inverse: light-dark(var(--concrete-100), var(--concrete-950));
+
+    --border-structural: light-dark(var(--concrete-950), var(--concrete-100));
+    --border-hairline: var(--concrete-500);
+    --border-on-elevated: light-dark(var(--concrete-800), var(--concrete-300));
+
+    --signal-ink: light-dark(var(--signal-vermilion-700), var(--signal-vermilion-400));
+    --signal-fill: light-dark(var(--signal-vermilion-600), var(--signal-vermilion-400));
+    --signal-on-fill: light-dark(var(--concrete-100), var(--concrete-950));
+    --signal-border: light-dark(var(--signal-vermilion-700), var(--signal-vermilion-400));
+
+    --focus-ring: light-dark(var(--concrete-950), var(--concrete-100));
+    --focus-ring-offset: light-dark(var(--concrete-100), var(--concrete-950));
+    --selection-bg: light-dark(var(--concrete-950), var(--concrete-100));
+    --selection-ink: light-dark(var(--concrete-100), var(--concrete-950));
+    --scrollbar-track: light-dark(var(--concrete-100), var(--concrete-950));
+    --scrollbar-thumb: var(--concrete-500);
+  }
+}
+
+/* Base document bindings */
+:root {
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  accent-color: var(--signal-fill);
+  caret-color: var(--signal-ink);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-ink);
+}
+
+/* ==========================================================================
+   EXPLICIT DOCUMENT THEME OVERRIDES ([data-theme="dark" | "light"])
+   ========================================================================== */
+:root[data-theme="dark"] {
+  color-scheme: only dark;
+
+  --surface-canvas: var(--concrete-950);
+  --surface-elevated: var(--concrete-800);
+  --surface-basalt: var(--concrete-800);
+  --surface-sunken: var(--concrete-950);
+  --surface-inverse: var(--concrete-100);
+  --surface-scrim: rgba(19, 19, 19, 0.86);
+
+  --ink-primary: var(--concrete-100);
+  --ink-secondary: var(--concrete-300);
+  --ink-muted: var(--concrete-300);
+  --ink-muted-large: var(--concrete-500);
+  --ink-inverse: var(--concrete-950);
+
+  --border-structural: var(--concrete-100);
+  --border-hairline: var(--concrete-500);
+  --border-on-elevated: var(--concrete-300);
+
+  --signal-ink: var(--signal-vermilion-400);
+  --signal-fill: var(--signal-vermilion-400);
+  --signal-on-fill: var(--concrete-950);
+  --signal-border: var(--signal-vermilion-400);
+  --signal-glow: var(--signal-vermilion-500);
+
+  --focus-ring: var(--concrete-100);
+  --focus-ring-offset: var(--concrete-950);
+  --selection-bg: var(--concrete-100);
+  --selection-ink: var(--concrete-950);
+  --scrollbar-track: var(--concrete-950);
+  --scrollbar-thumb: var(--concrete-500);
+}
+
+:root[data-theme="light"] {
+  color-scheme: only light;
+
+  --surface-canvas: var(--concrete-100);
+  --surface-elevated: var(--concrete-300);
+  --surface-basalt: var(--concrete-300);
+  --surface-sunken: var(--concrete-300);
+  --surface-inverse: var(--concrete-950);
+  --surface-scrim: rgba(19, 19, 19, 0.78);
+
+  --ink-primary: var(--concrete-950);    /* 14.81:1 on #E9E5DF | 9.07:1 on #B9B5AA */
+  --ink-secondary: var(--concrete-800);  /* 11.75:1 on #E9E5DF | 7.20:1 on #B9B5AA */
+  --ink-muted: var(--concrete-800);      /* 11.75:1 on #E9E5DF | 7.20:1 on #B9B5AA */
+  --ink-muted-large: var(--concrete-800);/*  7.20:1 on #B9B5AA (safe on elevated/basalt) */
+  --ink-inverse: var(--concrete-100);    /* 14.81:1 on #131313 */
+
+  --border-structural: var(--concrete-950);
+  --border-hairline: var(--concrete-500);   /* 3.72:1 on #E9E5DF */
+  --border-on-elevated: var(--concrete-800);/* 7.20:1 on #B9B5AA */
+
+  /* #8B1912 passes AA normal on BOTH #E9E5DF (7.45:1) and elevated #B9B5AA (4.57:1) */
+  --signal-ink: var(--signal-vermilion-700);
+  --signal-fill: var(--signal-vermilion-600);
+  --signal-on-fill: var(--concrete-100);         /* 5.83:1 on #A81F17 */
+  --signal-border: var(--signal-vermilion-700);
+  --signal-glow: var(--signal-vermilion-500);
+
+  --focus-ring: var(--concrete-950);
+  --focus-ring-offset: var(--concrete-100);
+  --selection-bg: var(--concrete-950);
+  --selection-ink: var(--concrete-100);
+  --scrollbar-track: var(--concrete-100);
+  --scrollbar-thumb: var(--concrete-500);
+}
+
+/* ==========================================================================
+   COMPONENT SURFACE ISLANDS (Mixed Dark/Light Brutalist Blocks)
+   Every island explicitly re-declares ALL Tier 2 semantic tokens plus
+   background-color, color, accent-color, caret-color, and scrollbar-color so
+   nested opposite-polarity islands never inherit inverted tokens from :root.
+   ========================================================================== */
+[data-surface="dark"],
+[data-surface="void"] {
+  color-scheme: only dark;
+
+  --surface-canvas: var(--concrete-950);
+  --surface-elevated: var(--concrete-800);
+  --surface-basalt: var(--concrete-800);
+  --surface-sunken: var(--concrete-950);
+  --surface-inverse: var(--concrete-100);
+  --surface-scrim: rgba(19, 19, 19, 0.86);
+
+  --ink-primary: var(--concrete-100);   /* 14.81:1 on #131313 | 11.75:1 on #282828 */
+  --ink-secondary: var(--concrete-300); /*  9.07:1 on #131313 |  7.20:1 on #282828 */
+  --ink-muted: var(--concrete-300);     /*  9.07:1 on #131313 |  7.20:1 on #282828 */
+  --ink-muted-large: var(--concrete-500);
+  --ink-inverse: var(--concrete-950);
+
+  --border-structural: var(--concrete-100);
+  --border-hairline: var(--concrete-500);
+  --border-on-elevated: var(--concrete-300);
+
+  --signal-ink: var(--signal-vermilion-400); /* 5.77:1 on #131313 | 4.58:1 on #282828 */
+  --signal-fill: var(--signal-vermilion-400);
+  --signal-on-fill: var(--concrete-950);
+  --signal-border: var(--signal-vermilion-400);
+  --signal-glow: var(--signal-vermilion-500);
+
+  --focus-ring: var(--concrete-100);
+  --focus-ring-offset: var(--concrete-950);
+  --selection-bg: var(--concrete-100);
+  --selection-ink: var(--concrete-950);
+  --scrollbar-track: var(--concrete-950);
+  --scrollbar-thumb: var(--concrete-500);
+
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  accent-color: var(--signal-fill);
+  caret-color: var(--signal-ink);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+[data-surface="basalt"] {
+  color-scheme: only dark;
+
+  --surface-canvas: var(--concrete-800);
+  --surface-elevated: var(--concrete-950);
+  --surface-basalt: var(--concrete-800);
+  --surface-sunken: var(--concrete-950);
+  --surface-inverse: var(--concrete-100);
+  --surface-scrim: rgba(19, 19, 19, 0.86);
+
+  --ink-primary: var(--concrete-100);   /* 11.75:1 on #282828 */
+  --ink-secondary: var(--concrete-300); /*  7.20:1 on #282828 */
+  --ink-muted: var(--concrete-300);     /*  7.20:1 on #282828 */
+  --ink-muted-large: var(--concrete-500); /* 3.16:1 on #282828 (Large/UI ONLY) */
+  --ink-inverse: var(--concrete-950);
+
+  --border-structural: var(--concrete-100);
+  --border-hairline: var(--concrete-500); /* 3.16:1 on #282828 */
+  --border-on-elevated: var(--concrete-300);
+
+  --signal-ink: var(--signal-vermilion-400); /* 4.58:1 on #282828 (AA Normal) */
+  --signal-fill: var(--signal-vermilion-400);
+  --signal-on-fill: var(--concrete-950);
+  --signal-border: var(--signal-vermilion-400);
+  --signal-glow: var(--signal-vermilion-500);
+
+  --focus-ring: var(--concrete-100);
+  --focus-ring-offset: var(--concrete-800);
+  --selection-bg: var(--concrete-100);
+  --selection-ink: var(--concrete-950);
+  --scrollbar-track: var(--concrete-800);
+  --scrollbar-thumb: var(--concrete-500);
+
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  accent-color: var(--signal-fill);
+  caret-color: var(--signal-ink);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+[data-surface="light"],
+[data-surface="plaster"] {
+  color-scheme: only light;
+
+  --surface-canvas: var(--concrete-100);
+  --surface-elevated: var(--concrete-300);
+  --surface-basalt: var(--concrete-300);   /* #B9B5AA stepped card/toolbar surface */
+  --surface-sunken: var(--concrete-300);
+  --surface-inverse: var(--concrete-950);
+  --surface-scrim: rgba(19, 19, 19, 0.78);
+
+  --ink-primary: var(--concrete-950);    /* 14.81:1 on #E9E5DF | 9.07:1 on #B9B5AA */
+  --ink-secondary: var(--concrete-800);  /* 11.75:1 on #E9E5DF | 7.20:1 on #B9B5AA */
+  --ink-muted: var(--concrete-800);      /* 11.75:1 on #E9E5DF | 7.20:1 on #B9B5AA */
+  /* #77746C fails 3:1 on #B9B5AA (2.28:1), so keep muted-large at #282828 for card safety */
+  --ink-muted-large: var(--concrete-800);
+  --ink-inverse: var(--concrete-100);
+
+  --border-structural: var(--concrete-950);
+  --border-hairline: var(--concrete-500);
+  --border-on-elevated: var(--concrete-800); /* 7.20:1 on #B9B5AA */
+
+  /* #8B1912 satisfies >=4.5:1 AA normal on BOTH #E9E5DF (7.45:1) and --surface-basalt #B9B5AA (4.57:1) */
+  --signal-ink: var(--signal-vermilion-700);
+  --signal-fill: var(--signal-vermilion-600);
+  --signal-on-fill: var(--concrete-100);
+  --signal-border: var(--signal-vermilion-700);
+  --signal-glow: var(--signal-vermilion-500);
+
+  --focus-ring: var(--concrete-950);
+  --focus-ring-offset: var(--concrete-100);
+  --selection-bg: var(--concrete-950);
+  --selection-ink: var(--concrete-100);
+  --scrollbar-track: var(--concrete-100);
+  --scrollbar-thumb: var(--concrete-500);
+
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  accent-color: var(--signal-fill);
+  caret-color: var(--signal-ink);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+[data-surface="limestone"] {
+  color-scheme: only light;
+
+  --surface-canvas: var(--concrete-300);
+  --surface-elevated: var(--concrete-100);
+  --surface-basalt: var(--concrete-100);   /* #E9E5DF stepped card surface on limestone */
+  --surface-sunken: var(--concrete-100);
+  --surface-inverse: var(--concrete-950);
+  --surface-scrim: rgba(19, 19, 19, 0.78);
+
+  --ink-primary: var(--concrete-950);   /* 9.07:1 on #B9B5AA | 14.81:1 on #E9E5DF */
+  --ink-secondary: var(--concrete-800); /* 7.20:1 on #B9B5AA | 11.75:1 on #E9E5DF */
+  --ink-muted: var(--concrete-800);
+  /* #77746C fails 3:1 on #B9B5AA (2.28:1), so remap muted/hairline/scrollbar to #282828 */
+  --ink-muted-large: var(--concrete-800);
+  --ink-inverse: var(--concrete-100);
+
+  --border-structural: var(--concrete-950);
+  --border-hairline: var(--concrete-800); /* 7.20:1 on #B9B5AA */
+  --border-on-elevated: var(--concrete-950);
+
+  /* #A81F17 is 3.57:1 on #B9B5AA (fails 4.5:1), so promote signal ink/border to #8B1912 (4.57:1) */
+  --signal-ink: var(--signal-vermilion-700);
+  --signal-fill: var(--signal-vermilion-600); /* Fill boundary 3.57:1 on #B9B5AA, inner ink 5.83:1 */
+  --signal-on-fill: var(--concrete-100);
+  --signal-border: var(--signal-vermilion-700);
+  --signal-glow: var(--signal-vermilion-500);
+
+  --focus-ring: var(--concrete-950);
+  --focus-ring-offset: var(--concrete-300);
+  --selection-bg: var(--concrete-950);
+  --selection-ink: var(--concrete-100);
+  --scrollbar-track: var(--concrete-300);
+  --scrollbar-thumb: var(--concrete-800); /* 7.20:1 on #B9B5AA */
+
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  accent-color: var(--signal-fill);
+  caret-color: var(--signal-ink);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* ==========================================================================
+   PREFERS-CONTRAST: MORE
+   Elevates borderline 3:1 large-only/hairline tokens to full structural contrast.
+   ========================================================================== */
+@media (prefers-contrast: more) {
+  :root,
+  [data-surface] {
+    --ink-muted: var(--ink-primary);
+    --ink-muted-large: var(--ink-secondary);
+    --border-hairline: var(--border-structural);
+  }
+}
+
+/* ==========================================================================
+   FORCED COLORS MODE (Windows High Contrast / forced-colors: active)
+   Maps all semantic tokens to safe CSS system color pairs and neutralizes
+   non-essential decorative glows. Never uses forced-color-adjust: none.
+   ========================================================================== */
+@media (forced-colors: active) {
+  :root,
+  :root[data-theme="dark"],
+  :root[data-theme="light"],
+  [data-surface="dark"],
+  [data-surface="light"],
+  [data-surface="void"],
+  [data-surface="basalt"],
+  [data-surface="plaster"],
+  [data-surface="limestone"] {
+    --surface-canvas: Canvas;
+    --surface-elevated: Canvas;
+    --surface-basalt: Canvas;
+    --surface-sunken: Canvas;
+    --surface-inverse: CanvasText;
+    --surface-scrim: Canvas;
+
+    --ink-primary: CanvasText;
+    --ink-secondary: CanvasText;
+    --ink-muted: CanvasText;
+    --ink-muted-large: CanvasText;
+    --ink-inverse: Canvas;
+
+    --border-structural: CanvasText;
+    --border-hairline: CanvasText;
+    --border-on-elevated: CanvasText;
+
+    /* LinkText contrasts cleanly on Canvas; Highlight/HighlightText pair on fills */
+    --signal-ink: LinkText;
+    --signal-fill: Highlight;
+    --signal-on-fill: HighlightText;
+    --signal-border: Highlight;
+    --signal-glow: transparent;
+
+    --focus-ring: Highlight;
+    --focus-ring-offset: Canvas;
+    --selection-bg: Highlight;
+    --selection-ink: HighlightText;
+    --scrollbar-track: Canvas;
+    --scrollbar-thumb: CanvasText;
+  }
+
+  /* Preserve card/elevated surface boundaries where step-contrast disappears */
+  [data-surface="basalt"],
+  [data-surface="limestone"],
+  [data-surface="void"],
+  [data-surface="plaster"],
+  [data-surface="dark"],
+  [data-surface="light"] {
+    outline: 1px solid CanvasText;
+    outline-offset: -1px;
+  }
+}

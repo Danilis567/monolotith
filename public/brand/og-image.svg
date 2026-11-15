@@ -1,0 +1,246 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="MONOLITH Open Graph editorial poster">
+  <rect width="1200" height="630" fill="#131313"/>
+
+  <!-- Functional structural grid lines (#77746C >= 3:1) & decorative framing -->
+  <g aria-hidden="true" fill="none" stroke="#77746C" stroke-width="1">
+    <rect x="36" y="36" width="1128" height="558"/>
+    <line x1="36" y1="92" x2="1164" y2="92"/>
+    <line x1="36" y1="538" x2="1164" y2="538"/>
+    <line x1="808" y1="92" x2="808" y2="538"/>
+    <line x1="64" y1="346" x2="776" y2="346"/>
+  </g>
+  <g aria-hidden="true" fill="none" stroke="#E9E5DF" stroke-opacity="0.6" stroke-width="1.5">
+    <!-- Stepped mitered corner notches -->
+    <path d="M 28 36 H 52 M 36 28 V 52 M 1148 36 H 1172 M 1164 28 V 52 M 28 594 H 52 M 36 578 V 602 M 1148 594 H 1172 M 1164 578 V 602"/>
+  </g>
+
+  <!-- Right Panel: Rectilinear Drafting Plate & Millimeter Scale Ticks -->
+  <g aria-hidden="true" fill="none" stroke="#E9E5DF" stroke-width="1">
+    <!-- Stepped mitered drafting frame -->
+    <path d="M 842 152 V 128 H 866 M 1106 128 H 1130 V 152 M 1130 430 V 454 H 1106 M 866 454 H 842 V 430" stroke-opacity="0.5"/>
+    <path d="M 852 162 V 140 H 874 M 1098 140 H 1120 V 162 M 1120 420 V 442 H 1098 M 874 442 H 852 V 420" stroke-opacity="0.22"/>
+    <!-- Vertical plumb & datum lines -->
+    <line x1="986" y1="114" x2="986" y2="466" stroke-opacity="0.24"/>
+    <line x1="842" y1="128" x2="1130" y2="128" stroke-opacity="0.2"/>
+    <line x1="842" y1="454" x2="1130" y2="454" stroke-opacity="0.2"/>
+    <line x1="842" y1="128" x2="842" y2="138" stroke-opacity="0.45"/>
+    <line x1="842" y1="444" x2="842" y2="454" stroke-opacity="0.45"/>
+    <line x1="854" y1="128" x2="854" y2="133" stroke-opacity="0.22"/>
+    <line x1="854" y1="449" x2="854" y2="454" stroke-opacity="0.22"/>
+    <line x1="866" y1="128" x2="866" y2="133" stroke-opacity="0.22"/>
+    <line x1="866" y1="449" x2="866" y2="454" stroke-opacity="0.22"/>
+    <line x1="878" y1="128" x2="878" y2="133" stroke-opacity="0.22"/>
+    <line x1="878" y1="449" x2="878" y2="454" stroke-opacity="0.22"/>
+    <line x1="890" y1="128" x2="890" y2="138" stroke-opacity="0.45"/>
+    <line x1="890" y1="444" x2="890" y2="454" stroke-opacity="0.45"/>
+    <line x1="902" y1="128" x2="902" y2="133" stroke-opacity="0.22"/>
+    <line x1="902" y1="449" x2="902" y2="454" stroke-opacity="0.22"/>
+    <line x1="914" y1="128" x2="914" y2="133" stroke-opacity="0.22"/>
+    <line x1="914" y1="449" x2="914" y2="454" stroke-opacity="0.22"/>
+    <line x1="926" y1="128" x2="926" y2="133" stroke-opacity="0.22"/>
+    <line x1="926" y1="449" x2="926" y2="454" stroke-opacity="0.22"/>
+    <line x1="938" y1="128" x2="938" y2="138" stroke-opacity="0.45"/>
+    <line x1="938" y1="444" x2="938" y2="454" stroke-opacity="0.45"/>
+    <line x1="950" y1="128" x2="950" y2="133" stroke-opacity="0.22"/>
+    <line x1="950" y1="449" x2="950" y2="454" stroke-opacity="0.22"/>
+    <line x1="962" y1="128" x2="962" y2="133" stroke-opacity="0.22"/>
+    <line x1="962" y1="449" x2="962" y2="454" stroke-opacity="0.22"/>
+    <line x1="974" y1="128" x2="974" y2="133" stroke-opacity="0.22"/>
+    <line x1="974" y1="449" x2="974" y2="454" stroke-opacity="0.22"/>
+    <line x1="986" y1="128" x2="986" y2="138" stroke-opacity="0.45"/>
+    <line x1="986" y1="444" x2="986" y2="454" stroke-opacity="0.45"/>
+    <line x1="998" y1="128" x2="998" y2="133" stroke-opacity="0.22"/>
+    <line x1="998" y1="449" x2="998" y2="454" stroke-opacity="0.22"/>
+    <line x1="1010" y1="128" x2="1010" y2="133" stroke-opacity="0.22"/>
+    <line x1="1010" y1="449" x2="1010" y2="454" stroke-opacity="0.22"/>
+    <line x1="1022" y1="128" x2="1022" y2="133" stroke-opacity="0.22"/>
+    <line x1="1022" y1="449" x2="1022" y2="454" stroke-opacity="0.22"/>
+    <line x1="1034" y1="128" x2="1034" y2="138" stroke-opacity="0.45"/>
+    <line x1="1034" y1="444" x2="1034" y2="454" stroke-opacity="0.45"/>
+    <line x1="1046" y1="128" x2="1046" y2="133" stroke-opacity="0.22"/>
+    <line x1="1046" y1="449" x2="1046" y2="454" stroke-opacity="0.22"/>
+    <line x1="1058" y1="128" x2="1058" y2="133" stroke-opacity="0.22"/>
+    <line x1="1058" y1="449" x2="1058" y2="454" stroke-opacity="0.22"/>
+    <line x1="1070" y1="128" x2="1070" y2="133" stroke-opacity="0.22"/>
+    <line x1="1070" y1="449" x2="1070" y2="454" stroke-opacity="0.22"/>
+    <line x1="1082" y1="128" x2="1082" y2="138" stroke-opacity="0.45"/>
+    <line x1="1082" y1="444" x2="1082" y2="454" stroke-opacity="0.45"/>
+    <line x1="1094" y1="128" x2="1094" y2="133" stroke-opacity="0.22"/>
+    <line x1="1094" y1="449" x2="1094" y2="454" stroke-opacity="0.22"/>
+    <line x1="1106" y1="128" x2="1106" y2="133" stroke-opacity="0.22"/>
+    <line x1="1106" y1="449" x2="1106" y2="454" stroke-opacity="0.22"/>
+    <line x1="1118" y1="128" x2="1118" y2="133" stroke-opacity="0.22"/>
+    <line x1="1118" y1="449" x2="1118" y2="454" stroke-opacity="0.22"/>
+    <line x1="1130" y1="128" x2="1130" y2="138" stroke-opacity="0.45"/>
+    <line x1="1130" y1="444" x2="1130" y2="454" stroke-opacity="0.45"/>
+  </g>
+
+  <!-- Solid Monogram M (4.5x of 64x64 at translate(842, 152)) -->
+  <path transform="translate(842, 152) scale(4.5)" fill="#E9E5DF" d="M 8 6 H 17 L 32 26 L 47 6 H 56 V 58 H 44 A 30 30 0 0 0 32 34 A 30 30 0 0 0 20 58 H 8 Z"/>
+
+  <!-- Left Panel: Monumental MONOLITH Display Wordmark (3x at x=64, y=178) -->
+  <path transform="translate(64, 178) scale(3)" fill="#E9E5DF" fill-rule="evenodd" d="M 0 48 V 0 H 7 L 16 22 L 25 0 H 32 V 48 H 26 V 14 L 16 38 L 6 14 V 48 Z M 46 0 H 60 L 66 8 V 40 L 60 48 H 46 L 40 40 V 8 Z M 49 6 L 46 10 V 38 L 49 42 H 57 L 60 38 V 10 L 57 6 Z M 74 48 V 0 H 80 L 94 33 V 0 H 100 V 48 H 94 L 80 15 V 48 Z M 114 0 H 128 L 134 8 V 40 L 128 48 H 114 L 108 40 V 8 Z M 117 6 L 114 10 V 38 L 117 42 H 125 L 128 38 V 10 L 125 6 Z M 142 0 H 148 V 42 H 164 V 48 H 142 Z M 170 0 H 176 V 48 H 170 Z M 182 0 H 206 V 6 H 197 V 48 H 191 V 6 H 182 Z M 212 0 H 218 V 21 H 232 V 0 H 238 V 48 H 232 V 27 H 218 V 48 H 212 Z"/>
+
+  <!-- Signal Vermilion (#F45D4D) telemetry dot & '001' catalog stamp (< 2% viewport area) -->
+  <circle cx="70" cy="63" r="5" fill="#F45D4D"/>
+  <g fill="none" stroke="#F45D4D" stroke-width="2.1" stroke-linecap="square" stroke-linejoin="miter">
+    <g transform="translate(454, 53) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(472.48, 53) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(490.96, 53) scale(2.2)"><path d="M 1.5 2 L 3 0 V 10 M 1 10 H 5"/></g>
+  </g>
+
+  <!-- Primary Metadata & Enlarged (>= 22px native) Subtitles -->
+  <g fill="none" stroke="#B9B5AA" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+    <g transform="translate(88, 53) scale(2.2)"><path d="M 0 10 V 0 L 3 5 L 6 0 V 10"/></g>
+    <g transform="translate(106.48, 53) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(124.96, 53) scale(2.2)"><path d="M 0 10 V 0 L 6 10 V 0"/></g>
+    <g transform="translate(143.44, 53) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(161.92, 53) scale(2.2)"><path d="M 0 0 V 10 H 6"/></g>
+    <g transform="translate(180.4, 53) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(198.88, 53) scale(2.2)"><path d="M 0 0 H 6 M 3 0 V 10"/></g>
+    <g transform="translate(217.36, 53) scale(2.2)"><path d="M 0 0 V 10 M 6 0 V 10 M 0 5 H 6"/></g>
+    <g transform="translate(254.32, 53) scale(2.2)"><path d="M 0.5 10 L 5.5 0"/></g>
+    <g transform="translate(272.8, 53) scale(2.2)"><path d="M 0.5 10 L 5.5 0"/></g>
+    <g transform="translate(309.76, 53) scale(2.2)"><path d="M 0 10 V 3 L 3 0 L 6 3 V 10 M 0 6 H 6"/></g>
+    <g transform="translate(328.24, 53) scale(2.2)"><path d="M 0 10 V 0 H 4.5 L 6 1.5 V 3.5 L 4.5 5 H 0 M 3.5 5 L 6 10"/></g>
+    <g transform="translate(346.72, 53) scale(2.2)"><path d="M 6 1.5 L 4.5 0 H 1.5 L 0 1.5 V 8.5 L 1.5 10 H 4.5 L 6 8.5"/></g>
+    <g transform="translate(365.2, 53) scale(2.2)"><path d="M 0 0 V 10 M 6 0 V 10 M 0 5 H 6"/></g>
+    <g transform="translate(383.68, 53) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(402.16, 53) scale(2.2)"><path d="M 0 0 L 3 10 L 6 0"/></g>
+    <g transform="translate(420.64, 53) scale(2.2)"><path d="M 6 0 H 0 V 10 H 6 M 0 5 H 4.5"/></g>
+    <g transform="translate(735, 53) scale(2.2)"><path d="M 6 0 H 0 V 4.5 H 4.5 L 6 6 V 8.5 L 4.5 10 H 1.5 L 0 8.5"/></g>
+    <g transform="translate(753.48, 53) scale(2.2)"><path d="M 1.5 2 L 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(771.96, 53) scale(2.2)"><path d="M 1.5 0.5 H 3.5 V 2.5 H 1.5 Z"/></g>
+    <g transform="translate(790.44, 53) scale(2.2)"><path d="M 0 1.5 L 1.5 0 H 4.5 L 6 1.5 V 3.5 L 4.5 5 H 2 M 4.5 5 L 6 6.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5"/></g>
+    <g transform="translate(808.92, 53) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(827.4, 53) scale(2.2)"><path d="M 3 0 V 3"/></g>
+    <g transform="translate(845.88, 53) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(864.36, 53) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(882.84, 53) scale(2.2)"><path d="M 2 0 V 3 M 4.2 0 V 3"/></g>
+    <g transform="translate(901.32, 53) scale(2.2)"><path d="M 0 10 V 0 L 6 10 V 0"/></g>
+    <g transform="translate(938.28, 53) scale(2.2)"><path d="M 0.8 2.8 L 5.2 7.2 M 5.2 2.8 L 0.8 7.2"/></g>
+    <g transform="translate(975.24, 53) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(993.72, 53) scale(2.2)"><path d="M 1.5 0.5 H 3.5 V 2.5 H 1.5 Z"/></g>
+    <g transform="translate(1012.2, 53) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(1030.68, 53) scale(2.2)"><path d="M 0 0 H 6 L 2 10"/></g>
+    <g transform="translate(1049.16, 53) scale(2.2)"><path d="M 3 0 V 3"/></g>
+    <g transform="translate(1067.64, 53) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(1086.12, 53) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(1104.6, 53) scale(2.2)"><path d="M 2 0 V 3 M 4.2 0 V 3"/></g>
+    <g transform="translate(1123.08, 53) scale(2.2)"><path d="M 0 0 L 1.5 10 L 3 4 L 4.5 10 L 6 0"/></g>
+    <g transform="translate(64, 555) scale(2.2)"><path d="M 6 0 H 0 V 10 H 6 M 0 5 H 4.5"/></g>
+    <g transform="translate(82.48, 555) scale(2.2)"><path d="M 0 10 V 0 H 4 L 6 2 V 8 L 4 10 H 0"/></g>
+    <g transform="translate(100.96, 555) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(119.44, 555) scale(2.2)"><path d="M 0 0 H 6 M 3 0 V 10"/></g>
+    <g transform="translate(137.92, 555) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(156.4, 555) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(174.88, 555) scale(2.2)"><path d="M 0 10 V 0 L 6 10 V 0"/></g>
+    <g transform="translate(211.84, 555) scale(2.2)"><path d="M 0 10 V 0 L 3 5 L 6 0 V 10"/></g>
+    <g transform="translate(230.32, 555) scale(2.2)"><path d="M 0 10 V 0 L 3 5 L 6 0 V 10"/></g>
+    <g transform="translate(248.8, 555) scale(2.2)"><path d="M 0 0 L 6 10 M 6 0 L 0 10"/></g>
+    <g transform="translate(267.28, 555) scale(2.2)"><path d="M 0 0 L 6 10 M 6 0 L 0 10"/></g>
+    <g transform="translate(285.76, 555) scale(2.2)"><path d="M 0 0 L 3 10 L 6 0"/></g>
+    <g transform="translate(304.24, 555) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(341.2, 555) scale(2.2)"><path d="M 0.5 10 L 5.5 0"/></g>
+    <g transform="translate(359.68, 555) scale(2.2)"><path d="M 0.5 10 L 5.5 0"/></g>
+    <g transform="translate(396.64, 555) scale(2.2)"><path d="M 0 0 L 3 10 L 6 0"/></g>
+    <g transform="translate(415.12, 555) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(433.6, 555) scale(2.2)"><path d="M 0 0 V 10 H 6"/></g>
+    <g transform="translate(452.08, 555) scale(2.2)"><path d="M 2.5 9 H 3.5 V 10 H 2.5 Z"/></g>
+    <g transform="translate(489.04, 555) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(679, 555) scale(2.2)"><path d="M 0 10 V 0 L 3 5 L 6 0 V 10"/></g>
+    <g transform="translate(697.48, 555) scale(2.2)"><path d="M 0 10 V 3 L 3 0 L 6 3 V 10 M 0 6 H 6"/></g>
+    <g transform="translate(715.96, 555) scale(2.2)"><path d="M 6 1.5 L 4.5 0 H 1.5 L 0 1.5 V 3.5 L 1.5 5 H 4.5 L 6 6.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5"/></g>
+    <g transform="translate(734.44, 555) scale(2.2)"><path d="M 6 1.5 L 4.5 0 H 1.5 L 0 1.5 V 3.5 L 1.5 5 H 4.5 L 6 6.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5"/></g>
+    <g transform="translate(771.4, 555) scale(2.2)"><path d="M 2.5 4.5 H 3.5 V 5.5 H 2.5 Z"/></g>
+    <g transform="translate(808.36, 555) scale(2.2)"><path d="M 0 0 L 3 10 L 6 0"/></g>
+    <g transform="translate(826.84, 555) scale(2.2)"><path d="M 6 0 H 0 V 10 H 6 M 0 5 H 4.5"/></g>
+    <g transform="translate(845.32, 555) scale(2.2)"><path d="M 0 10 V 0 H 4.5 L 6 1.5 V 3.5 L 4.5 5 H 0 M 3.5 5 L 6 10"/></g>
+    <g transform="translate(863.8, 555) scale(2.2)"><path d="M 0 0 H 6 M 3 0 V 10"/></g>
+    <g transform="translate(882.28, 555) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(900.76, 555) scale(2.2)"><path d="M 6 1.5 L 4.5 0 H 1.5 L 0 1.5 V 8.5 L 1.5 10 H 4.5 L 6 8.5"/></g>
+    <g transform="translate(919.24, 555) scale(2.2)"><path d="M 0 10 V 3 L 3 0 L 6 3 V 10 M 0 6 H 6"/></g>
+    <g transform="translate(937.72, 555) scale(2.2)"><path d="M 0 0 V 10 H 6"/></g>
+    <g transform="translate(956.2, 555) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(974.68, 555) scale(2.2)"><path d="M 0 0 H 6 M 3 0 V 10"/></g>
+    <g transform="translate(993.16, 555) scale(2.2)"><path d="M 0 0 L 3 5 V 10 M 6 0 L 3 5"/></g>
+    <g transform="translate(1030.12, 555) scale(2.2)"><path d="M 2.5 4.5 H 3.5 V 5.5 H 2.5 Z"/></g>
+    <g transform="translate(1067.08, 555) scale(2.2)"><path d="M 0 0 L 3 10 L 6 0"/></g>
+    <g transform="translate(1085.56, 555) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(1104.04, 555) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(1122.52, 555) scale(2.2)"><path d="M 0 10 V 0 H 4 L 6 2 V 8 L 4 10 H 0"/></g>
+  </g>
+  <g fill="none" stroke="#E9E5DF" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter">
+    <g transform="translate(64, 376) scale(2.2)"><path d="M 0 10 V 0 H 4.5 L 6 1.5 V 3.5 L 4.5 5 H 0 M 4.5 5 L 6 6.5 V 8.5 L 4.5 10 H 0"/></g>
+    <g transform="translate(85.56, 376) scale(2.2)"><path d="M 0 10 V 0 H 4.5 L 6 1.5 V 3.5 L 4.5 5 H 0 M 3.5 5 L 6 10"/></g>
+    <g transform="translate(107.12, 376) scale(2.2)"><path d="M 0 0 V 8.5 L 1.5 10 H 4.5 L 6 8.5 V 0"/></g>
+    <g transform="translate(128.68, 376) scale(2.2)"><path d="M 0 0 H 6 M 3 0 V 10"/></g>
+    <g transform="translate(150.24, 376) scale(2.2)"><path d="M 0 10 V 3 L 3 0 L 6 3 V 10 M 0 6 H 6"/></g>
+    <g transform="translate(171.8, 376) scale(2.2)"><path d="M 0 0 V 10 H 6"/></g>
+    <g transform="translate(193.36, 376) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(214.92, 376) scale(2.2)"><path d="M 6 1.5 L 4.5 0 H 1.5 L 0 1.5 V 3.5 L 1.5 5 H 4.5 L 6 6.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5"/></g>
+    <g transform="translate(236.48, 376) scale(2.2)"><path d="M 0 0 H 6 M 3 0 V 10"/></g>
+    <g transform="translate(279.6, 376) scale(2.2)"><path d="M 2.5 4.5 H 3.5 V 5.5 H 2.5 Z"/></g>
+    <g transform="translate(322.72, 376) scale(2.2)"><path d="M 6 1.5 L 4.5 0 H 1.5 L 0 1.5 V 8.5 L 1.5 10 H 4.5 L 6 8.5 V 5.5 H 3.5"/></g>
+    <g transform="translate(344.28, 376) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(365.84, 376) scale(2.2)"><path d="M 0 0 H 6 M 3 0 V 10"/></g>
+    <g transform="translate(387.4, 376) scale(2.2)"><path d="M 0 0 V 10 M 6 0 V 10 M 0 5 H 6"/></g>
+    <g transform="translate(408.96, 376) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(430.52, 376) scale(2.2)"><path d="M 6 1.5 L 4.5 0 H 1.5 L 0 1.5 V 8.5 L 1.5 10 H 4.5 L 6 8.5"/></g>
+    <g transform="translate(473.64, 376) scale(2.2)"><path d="M 2.5 4.5 H 3.5 V 5.5 H 2.5 Z"/></g>
+    <g transform="translate(516.76, 376) scale(2.2)"><path d="M 0 10 V 0 L 3 5 L 6 0 V 10"/></g>
+    <g transform="translate(538.32, 376) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(559.88, 376) scale(2.2)"><path d="M 0 10 V 0 L 6 10 V 0"/></g>
+    <g transform="translate(581.44, 376) scale(2.2)"><path d="M 0 0 V 8.5 L 1.5 10 H 4.5 L 6 8.5 V 0"/></g>
+    <g transform="translate(603, 376) scale(2.2)"><path d="M 0 10 V 0 L 3 5 L 6 0 V 10"/></g>
+    <g transform="translate(624.56, 376) scale(2.2)"><path d="M 6 0 H 0 V 10 H 6 M 0 5 H 4.5"/></g>
+    <g transform="translate(646.12, 376) scale(2.2)"><path d="M 0 10 V 0 L 6 10 V 0"/></g>
+    <g transform="translate(667.68, 376) scale(2.2)"><path d="M 0 0 H 6 M 3 0 V 10"/></g>
+    <g transform="translate(689.24, 376) scale(2.2)"><path d="M 0 10 V 3 L 3 0 L 6 3 V 10 M 0 6 H 6"/></g>
+    <g transform="translate(710.8, 376) scale(2.2)"><path d="M 0 0 V 10 H 6"/></g>
+    <g transform="translate(64, 416) scale(2.2)"><path d="M 0 10 V 0 H 4 L 6 2 V 8 L 4 10 H 0"/></g>
+    <g transform="translate(85.56, 416) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(107.12, 416) scale(2.2)"><path d="M 6 1.5 L 4.5 0 H 1.5 L 0 1.5 V 8.5 L 1.5 10 H 4.5 L 6 8.5 V 5.5 H 3.5"/></g>
+    <g transform="translate(128.68, 416) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(150.24, 416) scale(2.2)"><path d="M 0 0 H 6 M 3 0 V 10"/></g>
+    <g transform="translate(171.8, 416) scale(2.2)"><path d="M 0 10 V 3 L 3 0 L 6 3 V 10 M 0 6 H 6"/></g>
+    <g transform="translate(193.36, 416) scale(2.2)"><path d="M 0 0 V 10 H 6"/></g>
+    <g transform="translate(236.48, 416) scale(2.2)"><path d="M 0 10 V 3 L 3 0 L 6 3 V 10 M 0 6 H 6"/></g>
+    <g transform="translate(258.04, 416) scale(2.2)"><path d="M 0 10 V 0 H 4.5 L 6 1.5 V 3.5 L 4.5 5 H 0 M 3.5 5 L 6 10"/></g>
+    <g transform="translate(279.6, 416) scale(2.2)"><path d="M 6 1.5 L 4.5 0 H 1.5 L 0 1.5 V 8.5 L 1.5 10 H 4.5 L 6 8.5"/></g>
+    <g transform="translate(301.16, 416) scale(2.2)"><path d="M 0 0 V 10 M 6 0 V 10 M 0 5 H 6"/></g>
+    <g transform="translate(322.72, 416) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(344.28, 416) scale(2.2)"><path d="M 0 0 H 6 M 3 0 V 10"/></g>
+    <g transform="translate(365.84, 416) scale(2.2)"><path d="M 6 0 H 0 V 10 H 6 M 0 5 H 4.5"/></g>
+    <g transform="translate(387.4, 416) scale(2.2)"><path d="M 6 1.5 L 4.5 0 H 1.5 L 0 1.5 V 8.5 L 1.5 10 H 4.5 L 6 8.5"/></g>
+    <g transform="translate(408.96, 416) scale(2.2)"><path d="M 0 0 H 6 M 3 0 V 10"/></g>
+    <g transform="translate(430.52, 416) scale(2.2)"><path d="M 0 0 V 8.5 L 1.5 10 H 4.5 L 6 8.5 V 0"/></g>
+    <g transform="translate(452.08, 416) scale(2.2)"><path d="M 0 10 V 0 H 4.5 L 6 1.5 V 3.5 L 4.5 5 H 0 M 3.5 5 L 6 10"/></g>
+    <g transform="translate(473.64, 416) scale(2.2)"><path d="M 0 10 V 3 L 3 0 L 6 3 V 10 M 0 6 H 6"/></g>
+    <g transform="translate(495.2, 416) scale(2.2)"><path d="M 0 0 V 10 H 6"/></g>
+    <g transform="translate(538.32, 416) scale(2.2)"><path d="M 0 10 V 3 L 3 0 L 6 3 V 10 M 0 6 H 6"/></g>
+    <g transform="translate(559.88, 416) scale(2.2)"><path d="M 0 10 V 0 H 4.5 L 6 1.5 V 3.5 L 4.5 5 H 0 M 3.5 5 L 6 10"/></g>
+    <g transform="translate(581.44, 416) scale(2.2)"><path d="M 6 1.5 L 4.5 0 H 1.5 L 0 1.5 V 8.5 L 1.5 10 H 4.5 L 6 8.5"/></g>
+    <g transform="translate(603, 416) scale(2.2)"><path d="M 0 0 V 10 M 6 0 V 10 M 0 5 H 6"/></g>
+    <g transform="translate(624.56, 416) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(646.12, 416) scale(2.2)"><path d="M 0 0 L 3 10 L 6 0"/></g>
+    <g transform="translate(667.68, 416) scale(2.2)"><path d="M 6 0 H 0 V 10 H 6 M 0 5 H 4.5"/></g>
+  </g>
+  <g fill="none" stroke="#B9B5AA" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter">
+    <g transform="translate(826, 480) scale(2.2)"><path d="M 6 0 H 0 V 10 M 0 5 H 4.5"/></g>
+    <g transform="translate(844.04, 480) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(862.08, 480) scale(2.2)"><path d="M 6 1.5 L 4.5 0 H 1.5 L 0 1.5 V 8.5 L 1.5 10 H 4.5 L 6 8.5 V 5.5 H 3.5"/></g>
+    <g transform="translate(880.12, 480) scale(2.2)"><path d="M 2.5 9 H 3.5 V 10 H 2.5 Z"/></g>
+    <g transform="translate(916.2, 480) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(934.24, 480) scale(2.2)"><path d="M 1.5 2 L 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(970.32, 480) scale(2.2)"><path d="M 0.5 10 L 5.5 0"/></g>
+    <g transform="translate(988.36, 480) scale(2.2)"><path d="M 0.5 10 L 5.5 0"/></g>
+    <g transform="translate(1024.44, 480) scale(2.2)"><path d="M 6 1.5 L 4.5 0 H 1.5 L 0 1.5 V 3.5 L 1.5 5 H 4.5 L 6 6.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5"/></g>
+    <g transform="translate(1042.48, 480) scale(2.2)"><path d="M 6 0 H 0 V 10 H 6 M 0 5 H 4.5"/></g>
+    <g transform="translate(1060.52, 480) scale(2.2)"><path d="M 6 1.5 L 4.5 0 H 1.5 L 0 1.5 V 8.5 L 1.5 10 H 4.5 L 6 8.5"/></g>
+    <g transform="translate(1078.56, 480) scale(2.2)"><path d="M 0 0 H 6 M 3 0 V 10"/></g>
+    <g transform="translate(1096.6, 480) scale(2.2)"><path d="M 1 0 H 5 M 3 0 V 10 M 1 10 H 5"/></g>
+    <g transform="translate(1114.64, 480) scale(2.2)"><path d="M 1.5 0 H 4.5 L 6 1.5 V 8.5 L 4.5 10 H 1.5 L 0 8.5 V 1.5 Z"/></g>
+    <g transform="translate(1132.68, 480) scale(2.2)"><path d="M 0 10 V 0 L 6 10 V 0"/></g>
+  </g>
+</svg>

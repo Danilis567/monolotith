@@ -1,0 +1,593 @@
+/* ==========================================================================
+   01 HOME — Editorial Poster, Manifesto Essay, Specimen Stream & Movement Ledger
+   ========================================================================== */
+
+.heroBand {
+  position: relative;
+  min-block-size: calc(100dvh - var(--header-height));
+  display: grid;
+  grid-template-rows: 1fr auto;
+  border-bottom: 2px solid var(--border-structural);
+  overflow: clip;
+}
+
+.heroStage {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--grid-gutter);
+  padding-inline: var(--grid-margin);
+  padding-block: 1.75rem 2rem;
+  inline-size: 100%;
+  max-inline-size: var(--grid-max-width);
+  margin-inline: auto;
+  align-items: center;
+}
+
+@media (width >= 768px) {
+  .heroStage {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    padding-block: 2.25rem;
+  }
+}
+
+@media (width >= 1024px) {
+  .heroStage {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    padding-block: 1.5rem 2rem;
+  }
+}
+
+/* Signal Vermilion Atmospheric Glow (#C8281E strictly behind central specimen) */
+.heroGlow {
+  position: absolute;
+  inset-block-start: 44%;
+  inset-inline-start: 56%;
+  inline-size: min(46vw, 480px);
+  block-size: min(46vw, 480px);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(200, 40, 30, 0.28) 0%,
+    rgba(200, 40, 30, 0.08) 46%,
+    transparent 72%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Colossal Hollow Echo Backdrop */
+.echoWrapper {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: 50%;
+  translate: 0 -52%;
+  max-inline-size: 100%;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  overflow: clip;
+  display: none;
+}
+
+@media (width >= 768px) {
+  .echoWrapper {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.echoWord {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(5.5rem, 15vw, 15.5rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(233, 229, 223, 0.16);
+}
+
+.heroMetaTop {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid var(--border-hairline);
+  position: relative;
+  z-index: 4;
+  color: var(--ink-secondary);
+}
+
+.heroHeadlineCol {
+  grid-column: 1 / -1;
+  position: relative;
+  z-index: 4;
+  display: grid;
+  gap: 1.25rem;
+  padding-top: 1.5rem;
+  min-inline-size: 0;
+  container-type: inline-size;
+}
+
+@media (width >= 768px) {
+  .heroHeadlineCol {
+    grid-column: 1 / 5;
+    padding-top: 0;
+    align-self: center;
+  }
+}
+
+@media (width >= 1024px) {
+  .heroHeadlineCol {
+    grid-column: 1 / 7;
+    gap: 1.5rem;
+  }
+}
+
+.heroEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ink-secondary);
+}
+
+.heroTitle {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(2.5rem, 14.8cqi, var(--type-monolith-size));
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--ink-primary);
+  min-inline-size: 0;
+  overflow-wrap: break-word;
+}
+
+.heroTitleLine {
+  display: block;
+}
+
+.heroLead {
+  color: var(--ink-secondary);
+  max-inline-size: 38ch;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  min-inline-size: 0;
+}
+
+.heroPlateCol {
+  grid-column: 1 / -1;
+  position: relative;
+  z-index: 3;
+  margin-top: 2rem;
+  min-inline-size: 0;
+}
+
+@media (width >= 768px) {
+  .heroPlateCol {
+    grid-column: 5 / -1;
+    margin-top: 0;
+    justify-self: center;
+    inline-size: 100%;
+    max-inline-size: min(100%, calc((100dvh - 18.5rem) * 0.75));
+  }
+}
+
+@media (width >= 1024px) {
+  .heroPlateCol {
+    grid-column: 7 / 12;
+    margin-top: 0;
+    justify-self: center;
+    inline-size: 100%;
+    max-inline-size: min(100%, calc((100dvh - 18.5rem) * 0.75));
+  }
+}
+
+.heroPlateLink {
+  position: relative;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-sunken);
+}
+
+.heroPlateAspect {
+  aspect-ratio: 3 / 4;
+  inline-size: 100%;
+  position: relative;
+}
+
+.heroPlateCaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+}
+
+.crosshairTL {
+  position: absolute;
+  inset-block-start: -7px;
+  inset-inline-start: -7px;
+  color: var(--ink-secondary);
+  z-index: 6;
+}
+
+.crosshairBR {
+  position: absolute;
+  inset-block-end: -7px;
+  inset-inline-end: -7px;
+  color: var(--ink-secondary);
+  z-index: 6;
+}
+
+.heroRailCol {
+  display: none;
+}
+
+@media (width >= 1024px) {
+  .heroRailCol {
+    grid-column: 12 / 13;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    block-size: 100%;
+    padding-top: 1.5rem;
+    position: relative;
+    z-index: 4;
+  }
+}
+
+.verticalMarginalia {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: var(--ink-secondary);
+  letter-spacing: 0.14em;
+}
+
+/* Hero Bottom 4-Cell Survey Strip */
+.surveyStrip {
+  border-top: 1px solid var(--border-hairline);
+  background-color: var(--surface-basalt);
+  position: relative;
+  z-index: 4;
+}
+
+.surveyStripGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  inline-size: 100%;
+  max-inline-size: var(--grid-max-width);
+  margin-inline: auto;
+  padding-inline: var(--grid-margin);
+}
+
+@media (width >= 1024px) {
+  .surveyStripGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.surveyCell {
+  padding: 0.875rem 1rem;
+  border-right: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+  display: grid;
+  gap: 0.2rem;
+}
+
+.surveyCell:nth-child(odd) {
+  padding-inline-start: 0;
+}
+
+.surveyCell:nth-child(even) {
+  border-right: 0;
+}
+
+@media (width >= 1024px) {
+  .surveyCell {
+    border-bottom: 0;
+    border-right: 1px solid var(--border-hairline);
+    padding-inline: 1.25rem;
+  }
+
+  .surveyCell:nth-child(odd) {
+    padding-inline-start: 1.25rem;
+  }
+
+  .surveyCell:first-child {
+    padding-inline-start: 0;
+  }
+
+  .surveyCell:nth-child(even) {
+    border-right: 1px solid var(--border-hairline);
+  }
+
+  .surveyCell:last-child {
+    border-right: 0;
+    padding-inline-end: 0;
+  }
+}
+
+.surveyValue {
+  color: var(--ink-primary);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   BAND B — EDITORIAL THESIS (PLASTER LIGHT ISLAND)
+   ========================================================================== */
+.thesisBand {
+  padding-block: 4.5rem;
+  border-bottom: 2px solid var(--border-structural);
+}
+
+@media (width >= 1024px) {
+  .thesisBand {
+    padding-block: 6rem;
+  }
+}
+
+.thesisLeft {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 1.5rem;
+  align-content: start;
+}
+
+@media (width >= 1024px) {
+  .thesisLeft {
+    grid-column: 1 / 7;
+    padding-right: 1.5rem;
+  }
+}
+
+.sectionCode {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--signal-ink);
+}
+
+.thesisColumns {
+  display: block;
+  color: var(--ink-secondary);
+}
+
+@media (width >= 768px) {
+  .thesisColumns {
+    columns: 2;
+    column-gap: 2rem;
+  }
+}
+
+.thesisColumns p {
+  margin-bottom: 1rem;
+  break-inside: avoid;
+}
+
+.thesisQuote {
+  padding-block: 1.25rem;
+  border-block: 1px solid var(--border-hairline);
+  color: var(--ink-primary);
+}
+
+.thesisRight {
+  grid-column: 1 / -1;
+  margin-top: 2.5rem;
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+@media (width >= 1024px) {
+  .thesisRight {
+    grid-column: 7 / 13;
+    margin-top: 0;
+  }
+}
+
+.thesisPlateWrap {
+  position: relative;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-sunken);
+}
+
+.thesisPlateAspect {
+  aspect-ratio: 16 / 10;
+  position: relative;
+}
+
+.thesisPlateMeta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-top: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+}
+
+/* ==========================================================================
+   BAND C — CONTROLLED SPECIMEN STREAM
+   ========================================================================== */
+.streamBand {
+  padding-block: 4rem 4.5rem;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.streamHeader {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.streamCard {
+  inline-size: 270px;
+  flex: 0 0 270px;
+  border-right: 1px solid var(--border-hairline);
+  display: grid;
+  background-color: var(--surface-canvas);
+}
+
+@media (width >= 768px) {
+  .streamCard {
+    inline-size: 320px;
+    flex: 0 0 320px;
+  }
+}
+
+.streamCardMedia {
+  aspect-ratio: 3 / 4;
+  padding: 1rem;
+  background-color: var(--surface-basalt);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.streamCardBody {
+  padding: 1rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.streamCardTitle {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--ink-primary);
+}
+
+/* ==========================================================================
+   BAND D — THREE-MOVEMENT LEDGER
+   ========================================================================== */
+.ledgerBand {
+  padding-block: 4.5rem 5rem;
+}
+
+.ledgerHeader {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.triptychGrid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+@media (width >= 1024px) {
+  .triptychGrid {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.movementCol {
+  padding-block: 2rem;
+  border-bottom: 1px solid var(--border-hairline);
+  display: grid;
+  gap: 1.25rem;
+  align-content: space-between;
+  min-inline-size: 0;
+  overflow-wrap: break-word;
+}
+
+.movementCol h3 {
+  line-height: 1.04;
+  overflow-wrap: break-word;
+}
+
+@media (width >= 1024px) {
+  .movementCol {
+    padding: 2rem 1.75rem;
+    border-bottom: 0;
+    border-right: 1px solid var(--border-hairline);
+  }
+
+  .movementCol:first-child {
+    padding-inline-start: 0;
+    padding-inline-end: 2.25rem;
+  }
+
+  .movementCol:last-child {
+    padding-inline-end: 0;
+    border-right: 0;
+  }
+}
+
+.movementPlateThumb {
+  aspect-ratio: 3 / 4;
+  inline-size: 100%;
+  max-inline-size: 220px;
+}
+
+@media (width >= 1024px) {
+  .movementCol:first-child .movementPlateThumb {
+    max-inline-size: 320px;
+  }
+}
+
+.movementSamples {
+  border-top: 1px solid var(--border-hairline);
+  padding-top: 0.875rem;
+  display: grid;
+  gap: 0.5rem;
+  min-inline-size: 0;
+}
+
+.movementSampleLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  min-block-size: 44px;
+  min-inline-size: 0;
+  border-bottom: 1px dashed var(--border-hairline);
+  padding-block: 0.5rem;
+}
+
+.movementSampleLink > span:last-child {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.movementSampleLink:hover {
+  color: var(--signal-ink);
+}
+
+.closingBar {
+  grid-column: 1 / -1;
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}

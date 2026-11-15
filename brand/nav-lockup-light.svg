@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 332 64" width="145" height="28" role="img" aria-label="MONOLITH navigation lockup (light ground)">
+  <path fill="#131313" d="M 8 6 H 17 L 32 26 L 47 6 H 56 V 58 H 44 A 30 30 0 0 0 32 34 A 30 30 0 0 0 20 58 H 8 Z"/>
+  <line x1="71" y1="8" x2="71" y2="56" stroke="#77746C" stroke-width="2.5"/>
+  <path transform="translate(86, 8)" fill="#131313" fill-rule="evenodd" d="M 0 48 V 0 H 7 L 16 22 L 25 0 H 32 V 48 H 26 V 14 L 16 38 L 6 14 V 48 Z M 46 0 H 60 L 66 8 V 40 L 60 48 H 46 L 40 40 V 8 Z M 49 6 L 46 10 V 38 L 49 42 H 57 L 60 38 V 10 L 57 6 Z M 74 48 V 0 H 80 L 94 33 V 0 H 100 V 48 H 94 L 80 15 V 48 Z M 114 0 H 128 L 134 8 V 40 L 128 48 H 114 L 108 40 V 8 Z M 117 6 L 114 10 V 38 L 117 42 H 125 L 128 38 V 10 L 125 6 Z M 142 0 H 148 V 42 H 164 V 48 H 142 Z M 170 0 H 176 V 48 H 170 Z M 182 0 H 206 V 6 H 197 V 48 H 191 V 6 H 182 Z M 212 0 H 218 V 21 H 232 V 0 H 238 V 48 H 232 V 27 H 218 V 48 H 212 Z"/>
+</svg>

@@ -1,0 +1,280 @@
+/* ==========================================================================
+   04 ANATOMY — Measured Orthographic Vector Plates & Layer Inspector
+   ========================================================================== */
+
+.headerBand {
+  padding-block: 3rem 2rem;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.headerInner {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+}
+
+.controlsBand {
+  border-bottom: 1px solid var(--border-structural);
+  background-color: var(--surface-basalt);
+  color: var(--ink-primary);
+}
+
+.tabBar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding-block: 0.75rem;
+  inline-size: 100%;
+  max-inline-size: var(--grid-max-width);
+  margin-inline: auto;
+  padding-inline: var(--grid-margin);
+}
+
+.tabsGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tabButton {
+  min-block-size: 44px;
+  padding: 0 1rem;
+  border: 1px solid var(--border-on-elevated);
+  background: transparent;
+  color: var(--ink-primary);
+  cursor: pointer;
+}
+
+.tabButton:hover {
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  border-color: var(--border-structural);
+}
+
+.tabButtonActive {
+  background-color: var(--surface-inverse);
+  color: var(--ink-inverse);
+  border-color: var(--border-structural);
+  font-weight: 600;
+}
+
+.workbenchBand {
+  padding-block: 2.5rem 5rem;
+}
+
+.workbenchGrid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (width >= 1024px) {
+  .workbenchGrid {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
+}
+
+.plateSelectorList {
+  display: grid;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+}
+
+.plateSelectBtn {
+  text-align: left;
+  padding: 0.875rem 1rem;
+  border: 0;
+  border-bottom: 1px solid var(--border-hairline);
+  background-color: transparent;
+  color: var(--ink-primary);
+  display: grid;
+  gap: 0.25rem;
+  cursor: pointer;
+  transition: background-color 140ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.plateSelectBtn:last-child {
+  border-bottom: 0;
+}
+
+.plateSelectBtn:hover {
+  background-color: var(--surface-basalt);
+  color: var(--ink-primary);
+}
+
+.plateSelectBtnActive {
+  background-color: var(--surface-basalt);
+  color: var(--ink-primary);
+  border-left: 3px solid var(--signal-ink);
+  border-bottom-color: var(--border-on-elevated);
+}
+
+.stagePanel {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.layerToolbar {
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-basalt);
+  color: var(--ink-primary);
+  padding: 0.875rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.layerFieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.layerButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.layerBtn {
+  min-block-size: 44px;
+  padding: 0.45rem 0.875rem;
+  border: 1px solid var(--border-on-elevated);
+  background-color: transparent;
+  color: var(--ink-primary);
+  cursor: pointer;
+}
+
+.layerBtn:hover {
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  border-color: var(--border-structural);
+}
+
+.layerBtnActive {
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  border-color: var(--border-structural);
+  font-weight: 600;
+}
+
+.svgViewport {
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.svgViewport[data-zoomed="true"] {
+  overflow: auto;
+  max-block-size: 72dvh;
+}
+
+.svgViewport[data-zoomed="true"] .svgContainer {
+  inline-size: 175%;
+  min-inline-size: 980px;
+}
+
+.svgContainer :global(svg) {
+  inline-size: 100%;
+  block-size: auto;
+  display: block;
+}
+
+/* Layer visibility controlled cleanly via ancestor data attributes */
+.svgContainer[data-show-structure="false"] :global(#layer-structure),
+.svgContainer[data-show-axis="false"] :global(#layer-axis),
+.svgContainer[data-show-dimensions="false"] :global(#layer-dimensions) {
+  opacity: 0.08;
+  transition: opacity 150ms linear;
+}
+
+.svgContainer :global(#layer-structure),
+.svgContainer :global(#layer-axis),
+.svgContainer :global(#layer-dimensions) {
+  transition: opacity 150ms linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plateSelectBtn,
+  .svgContainer[data-show-structure="false"] :global(#layer-structure),
+  .svgContainer[data-show-axis="false"] :global(#layer-axis),
+  .svgContainer[data-show-dimensions="false"] :global(#layer-dimensions),
+  .svgContainer :global(#layer-structure),
+  .svgContainer :global(#layer-axis),
+  .svgContainer :global(#layer-dimensions) {
+    transition: none;
+  }
+}
+
+.legendRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-on-elevated);
+  background-color: var(--surface-basalt);
+  color: var(--ink-primary);
+}
+
+.calloutGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--border-structural);
+  border-left: 1px solid var(--border-hairline);
+}
+
+@media (width >= 768px) {
+  .calloutGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.calloutCell {
+  padding: 1rem 1.25rem;
+  border-right: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.scheduleDetails {
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+}
+
+.scheduleSummary {
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--surface-basalt);
+  color: var(--ink-primary);
+  list-style: none;
+}
+
+.scheduleTable {
+  inline-size: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.scheduleTable th,
+.scheduleTable td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-hairline);
+}

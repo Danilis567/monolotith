@@ -1,0 +1,548 @@
+@import "../../brand/tokens-color.css";
+
+/* ==========================================================================
+   MONOLITH — Global Editorial Typography, Grid & Visual System
+   ========================================================================== */
+
+:root {
+  --header-height: 3.5rem; /* 56px mobile/tablet */
+  --grid-gutter: 1rem;
+  --grid-margin: 1rem;
+  --grid-max-width: 1680px;
+
+  /* Fluid & Fixed Editorial Type Scale */
+  --type-monolith-size: clamp(2.875rem, 6.2vw + 0.5rem, 7.5rem);
+  --type-display-size: clamp(2rem, 4.1vw + 0.5rem, 4.5rem);
+  --type-quote-size: clamp(1.375rem, 1.8vw + 0.5rem, 2.25rem);
+  --type-subhead-size: clamp(1.125rem, 1.1vw + 0.5rem, 1.5rem);
+  --type-body-lead-size: clamp(1rem, 0.35vw + 0.9rem, 1.1875rem);
+  --type-body-size: 0.9375rem;
+  --type-ui-label-size: 0.75rem;
+  --type-colophon-size: 0.75rem;
+}
+
+@media (width >= 1024px) {
+  :root {
+    --header-height: 4rem; /* 64px desktop */
+  }
+}
+
+/* Safe Targeted Base Reset (No universal * resets) */
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  min-block-size: 100dvh;
+  font-family: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--type-body-size);
+  line-height: 1.6;
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg {
+  display: block;
+  max-inline-size: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+  border-radius: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Focus Visibility */
+:where(a:any-link, button, summary, input, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Visually Hidden & Skip Link */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  inline-size: 1px !important;
+  block-size: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+.skip-link {
+  position: fixed;
+  inset-block-start: 0.75rem;
+  inset-inline-start: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--surface-inverse);
+  color: var(--ink-inverse);
+  border: 1px solid var(--border-structural);
+  font-family: var(--font-sans), sans-serif;
+  font-size: var(--type-ui-label-size);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.skip-link:not(:focus):not(:focus-visible) {
+  clip-path: inset(50%);
+  overflow: hidden;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  inset-block-start: 0.75rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   TYPOGRAPHIC ROLES
+   ========================================================================== */
+.type-monolith {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: var(--type-monolith-size);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  min-inline-size: 0;
+  overflow-wrap: break-word;
+}
+
+.type-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: var(--type-display-size);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  min-inline-size: 0;
+  overflow-wrap: break-word;
+}
+
+.type-quote {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: var(--type-quote-size);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  text-wrap: pretty;
+}
+
+.type-subhead {
+  font-family: var(--font-sans), sans-serif;
+  font-size: var(--type-subhead-size);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  min-inline-size: 0;
+  overflow-wrap: break-word;
+}
+
+.type-body-lead {
+  font-family: var(--font-sans), sans-serif;
+  font-size: var(--type-body-lead-size);
+  font-weight: 400;
+  line-height: 1.5;
+  max-inline-size: 62ch;
+  text-wrap: pretty;
+}
+
+.type-body {
+  font-family: var(--font-sans), sans-serif;
+  font-size: var(--type-body-size);
+  font-weight: 400;
+  line-height: 1.6;
+  max-inline-size: 58ch;
+  text-wrap: pretty;
+}
+
+.type-ui-label {
+  font-family: var(--font-sans), sans-serif;
+  font-size: var(--type-ui-label-size);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.type-colophon {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--type-colophon-size);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* ==========================================================================
+   EXPOSED 12-COLUMN GRID SYSTEM
+   ========================================================================== */
+.monolith-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--grid-gutter);
+  padding-inline: var(--grid-margin);
+  inline-size: 100%;
+  max-inline-size: var(--grid-max-width);
+  margin-inline: auto;
+  position: relative;
+}
+
+@media (width >= 768px) {
+  .monolith-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    --grid-gutter: 1.25rem;
+    --grid-margin: 1.5rem;
+  }
+}
+
+@media (width >= 1024px) {
+  .monolith-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    --grid-gutter: 1.5rem;
+    --grid-margin: 2rem;
+  }
+}
+
+@media (width >= 1440px) {
+  .monolith-grid {
+    --grid-margin: 3rem;
+  }
+}
+
+/* ==========================================================================
+   PHOTOGRAPHIC MONOCHROME, TEXTURE & ARCH CLIP-PATH SYSTEM (SITE_VISUAL.md)
+   ========================================================================== */
+.plate-frame {
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
+  background-color: var(--surface-sunken);
+  border-radius: 0;
+}
+
+.plate-img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.12) brightness(0.92);
+  transition: filter 180ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.plate-interactive:hover .plate-img,
+.plate-interactive:focus-within .plate-img,
+.plate-interactive-outer:hover .plate-img,
+.plate-interactive-outer:focus-visible .plate-img {
+  filter: grayscale(100%) contrast(1.22) brightness(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plate-img {
+    transition: none;
+  }
+}
+
+/* Static Tiled Film-Grain Overlay (128x128 SVG noise tile) */
+.plate-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.075;
+  mix-blend-mode: overlay;
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='128' height='128' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* 1-Bit Halftone Dot Matrix Overlay */
+.plate-halftone {
+  isolation: isolate;
+}
+
+.plate-halftone .plate-img {
+  filter: grayscale(100%) contrast(1.38) brightness(0.96);
+}
+
+.plate-halftone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  --dot-step: 4px;
+  --dot-r: 1px;
+  --dot-ink: rgba(19, 19, 19, 0.42);
+  --dot: radial-gradient(circle, var(--dot-ink) var(--dot-r), transparent calc(var(--dot-r) + 0.5px));
+  background-image: var(--dot), var(--dot);
+  background-position: 0 0, calc(var(--dot-step) / 2) calc(var(--dot-step) / 2);
+  background-size: var(--dot-step) var(--dot-step);
+  mix-blend-mode: multiply;
+}
+
+@media (forced-colors: active), (prefers-contrast: more) {
+  .plate-grain::after,
+  .plate-halftone::after {
+    display: none;
+  }
+}
+
+/* Arch Clip-Path Apertures (Locked strictly to 3:4 or 2:3) */
+.plate-arch-lancet {
+  aspect-ratio: 3 / 4;
+  clip-path: polygon(0 100%, 0 45%, 12% 24%, 30% 8%, 50% 0, 70% 8%, 88% 24%, 100% 45%, 100% 100%);
+  clip-path: url(#monolith-lancet-3x4);
+}
+
+.plate-arch-lancet--tall {
+  aspect-ratio: 2 / 3;
+  clip-path: polygon(0 100%, 0 40%, 12% 21%, 30% 7%, 50% 0, 70% 7%, 88% 21%, 100% 40%, 100% 100%);
+  clip-path: url(#monolith-lancet-2x3);
+}
+
+.plate-arch-romanesque {
+  aspect-ratio: 3 / 4;
+  clip-path: inset(0 round 50% 50% 0 0 / 37.5% 37.5% 0 0);
+  clip-path: url(#monolith-romanesque-3x4);
+}
+
+/* Unclipped outer wrapper carries focus ring */
+.plate-interactive-outer {
+  display: block;
+  border-radius: 0;
+}
+
+.plate-interactive-outer:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Safe Scrim Gradient (0%–25% >= 0.80 alpha for >= 4.5:1 AA text) */
+.plate-scrim-bottom {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: 56%;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(19, 19, 19, 0.94) 0%,
+    rgba(19, 19, 19, 0.84) 26%,
+    rgba(19, 19, 19, 0.25) 55%,
+    transparent 100%
+  );
+}
+
+/* ==========================================================================
+   CONTROLLED HORIZONTAL SPECIMEN STREAM (WCAG 2.2.2)
+   ========================================================================== */
+@keyframes monolith-stream-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.specimen-stream-viewport {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  border-block: 1px solid var(--border-hairline);
+}
+
+.specimen-stream-track {
+  display: flex;
+  inline-size: max-content;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .specimen-stream-viewport[data-streaming="true"] {
+    overflow-x: clip;
+  }
+
+  .specimen-stream-viewport[data-streaming="true"] .specimen-stream-track {
+    animation: monolith-stream-scroll 54s linear infinite;
+  }
+
+  .specimen-stream-viewport[data-streaming="true"]:hover .specimen-stream-track,
+  .specimen-stream-viewport[data-streaming="true"]:focus-within .specimen-stream-track {
+    animation-play-state: paused;
+  }
+}
+
+/* ==========================================================================
+   NATIVE <dialog> MOBILE DRAWER TRANSITION
+   ========================================================================== */
+.monolith-drawer {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  inline-size: 100dvw;
+  max-inline-size: 100dvw;
+  block-size: 100dvh;
+  max-block-size: 100dvh;
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  opacity: 0;
+  transform: translate3d(0, -12px, 0);
+}
+
+.monolith-drawer::backdrop {
+  background-color: rgba(19, 19, 19, 0.85);
+}
+
+.monolith-drawer[open] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .monolith-drawer {
+    transition:
+      opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+      display 0.28s allow-discrete,
+      overlay 0.28s allow-discrete;
+  }
+
+  @starting-style {
+    .monolith-drawer[open] {
+      opacity: 0;
+      transform: translate3d(0, -12px, 0);
+    }
+  }
+}
+
+/* ==========================================================================
+   BRUTALIST INTERACTIVE BUTTONS & CONTROLS
+   ========================================================================== */
+.btn-monolith {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-block-size: 44px;
+  padding: 0.625rem 1.125rem;
+  border: 1px solid var(--border-structural);
+  background-color: transparent;
+  color: var(--ink-primary);
+  font-family: var(--font-sans), sans-serif;
+  font-size: var(--type-ui-label-size);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 150ms cubic-bezier(0.2, 0, 0, 1),
+    color 150ms cubic-bezier(0.2, 0, 0, 1),
+    border-color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.btn-monolith:hover:not(:disabled) {
+  background-color: var(--surface-inverse);
+  color: var(--ink-inverse);
+}
+
+.btn-monolith--primary {
+  background-color: var(--surface-inverse);
+  color: var(--ink-inverse);
+}
+
+.btn-monolith--primary:hover:not(:disabled) {
+  background-color: transparent;
+  color: var(--ink-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-monolith,
+  .plate-img,
+  .monolith-drawer {
+    transition: none;
+  }
+}
+
+/* Signal Vermilion live indicator dot */
+.signal-dot {
+  display: inline-block;
+  inline-size: 6px;
+  block-size: 6px;
+  background-color: var(--signal-ink);
+  flex-shrink: 0;
+}
+
+@media (forced-colors: active) {
+  .signal-dot {
+    background-color: Highlight;
+    border: 1px solid CanvasText;
+  }
+}
