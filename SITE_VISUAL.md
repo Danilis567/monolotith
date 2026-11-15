@@ -351,11 +351,12 @@ MONOLITH enforces strict surface separation via `[data-surface]` islands defined
 ### 5.1 Dark Void (`#131313`) & Basalt (`#282828`) — Photographic Plates
 - **Primary Canvas:** `[data-surface="void"]` (`#131313`) hosts all full-bleed photographic heroes, lancet/Romanesque specimen cutouts, and chiaroscuro gallery sequences.
 - **Elevated Index Panels:** `[data-surface="basalt"]` (`#282828`) hosts secondary photographic dossiers and *must* carry a `1px solid var(--border-hairline)` or `var(--border-structural)` perimeter (because `#282828` vs. `#131313` is `1.26:1` < `3:1` WCAG 1.4.11 boundary threshold).
-- **Framing Grammar:** Photographs either bleed flush to column hairlines (`0px` padding) or sit inside `1px` `--border-hairline` frames with optional `12px` stepped mitered corner brackets (`e290eb14...` pattern, `aria-hidden="true"`).
+- **Framing Grammar & Paspartu Inset:** Within `#main-content` (which applies a `10%` horizontal inward squeeze via `--grid-margin: 10%`), primary exhibition plates (`.heroPlateLink`, `.plateFrameOuter`) sit inside a `1px solid var(--border-structural)` outer frame with `0.75rem`–`1rem` paspartu padding, top-corner mitered `<SteppedFrame />` brackets (`inset: 0.75rem` inside the image aperture), `1.5rem` horizontal / `1.35rem` bottom overlay title inset, and a bordered `.heroPlateCaption` strip (`padding: 0.875rem 1.25rem; margin-top: 0.75rem`) so text never collides with corner registration brackets.
 
-### 5.2 Raw Plaster (`#E9E5DF`) & Limestone (`#B9B5AA`) — Orthographic Anatomy Plates
+### 5.2 Raw Plaster (`#E9E5DF`) & Limestone (`#B9B5AA`) — Orthographic Anatomy Plates & Elevated Surface Tokens
 Inspired by `45e4f814...` (*Saint Petersburg*) and architectural drafting sheets:
-- **Purpose:** `[data-surface="plaster"]` (`#E9E5DF`) and `[data-surface="limestone"]` (`#B9B5AA`) islands host **orthographic Anatomy line drawings** (plans, sections, structural elevations, ribbed-vault projections), 1-bit halftone architectural details, and millimeter scale rulers.
+- **Purpose:** `[data-surface="plaster"]` (`#E9E5DF`) and `[data-surface="limestone"]` (`#B9B5AA`) islands host **orthographic Anatomy line drawings** (plans, sections, structural elevations, ribbed-vault projections), 1-bit halftone architectural details, and structural callout boxes (`.calloutMetricBox`).
+- **Explicit Surface-on-Surface Token Inheritance:** In [tokens-color.css](file:///C:/Users/Danil/.gemini/antigravity-ide/scratch/neo-brutal/brand/tokens-color.css), every `[data-surface]` island explicitly re-declares `--surface-basalt`, `--ink-primary`, `--ink-secondary`, `--ink-muted`, and `--signal-ink` (`#B9B5AA` elevated basalt surface with `#131313` [`9.07:1`], `#282828` [`7.20:1`], and `#8B1912` [`4.57:1`] ink on `plaster`/`light`; `#282828` surface with `#E9E5DF` [`11.75:1`], `#B9B5AA` [`7.20:1`], and `#F45D4D` [`4.58:1`] ink on `void`/`dark`), guaranteeing `0` WCAG AA contrast violations across both surface modes.
 - **Vector Anatomy Stroke Palette:**
 
 | Structural Layer | On Raw Plaster (`#E9E5DF`) | On Limestone (`#B9B5AA`) | Stroke & Geometry Spec |

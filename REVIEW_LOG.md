@@ -70,3 +70,25 @@ Following the passing `8.35 / 10` Round 1 verdict, the top 3 voted refinements a
    - Replaced CSS `display: block` on `<table role="table">` below `600px` (which stripped native table roles in Safari/VoiceOver) with responsive separation in `ArchiveClient.tsx` + `archive.module.css`: native accessible `<table>` (`>= 600px`) paired with semantic `<ul className="mobileSlipList">` + `<dl>` catalog slips (`< 600px`).
 3. **Vote #3 (`04 ANATOMY` Uncalibrated Footer Ruler Removal & Scale Legend Integration — 4/5 panelists):**
    - Removed the redundant decorative `00M–30M` `<ScaleRuler />` beneath the inline orthographic SVG viewport in `src/components/AnatomyClient.tsx` so each sheet's mathematically calibrated `1:200`–`1:1000` vector scale bar operates unambiguously alongside explicit `SCALE` and `DATUM` coordinates in the technical legend bar.
+
+---
+
+## Round 2 — Playwright Visual Audit, WCAG Surface-Token Hardening & `10%` Main Content Inset
+
+Following the Round 1 baseline, a comprehensive Playwright multi-viewport inspection (`375×812`, `768×1024`, `1280×800`, `1920×1080`) and visual/structural polish pass were executed and verified against the final English production build:
+
+1. **Surface-on-Surface WCAG AA Contrast Hardening (`brand/tokens-color.css`, `anatomy.module.css`, `detail.module.css`):**
+   - Removed the static `:root { --surface-basalt: var(--surface-elevated); }` declaration from `src/app/globals.css` (which locked `--surface-basalt` to `#282828` across light descendant islands) and explicitly re-declared `--surface-basalt`, `--ink-primary`, `--ink-secondary`, `--ink-muted`, and `--signal-ink` inside every `[data-surface]` selector (`dark`/`void`, `basalt`, `light`/`plaster`, `limestone`).
+   - On `plaster`/`light` islands (`/structures/[slug]` `.calloutMetricBox` `PRIMARY STRUCTURAL DATUM` and `/anatomy` `.controlsBand`, `.tabButton`, `.plateSelectBtnActive`, `.layerToolbar`, `.legendRow`, `.scheduleSummary`), `--surface-basalt` resolves to `#B9B5AA` with `#131313` (`9.07:1`), `#282828` (`7.20:1`), and `#8B1912` (`4.57:1`) ink—eliminating all 26 WCAG AA contrast violations (`0` remaining across both `plaster` and `void` modes).
+2. **Hero Layout, Plate Paspartu Inset & `10%` Main Content Squeeze (`globals.css`, `home.module.css`, `HomeClient.tsx`, `DraftingMarks.tsx`):**
+   - **Site-Wide `10%` Main Content Squeeze:** Set `#main-content { --grid-margin: 10%; }` in `src/app/globals.css` while preserving `:root` outer margins (`1rem`–`3rem`) for `<SiteHeader />` and `<SiteFooter />`, pulling all main content grids (`.monolith-grid`, `.surveyStripGrid`, `.filterShell`, and `.specimen-stream-viewport`) `10%` inward on both left and right.
+   - **Hero Plate & `<SteppedFrame />` Collision Fix:** Added `0.75rem` paspartu framing to `.heroPlateLink`, moved `<SteppedFrame />` inside `.heroPlateAspect` with `0.75rem` inset top corner L-brackets (clearing the bottom title/caption scrim), increased the hero overlay inset (`insetInline: 1.5rem`, `insetBlockEnd: 1.35rem`), and expanded `.heroPlateCaption` padding (`0.875rem 1.25rem; margin-top: 0.75rem`).
+   - **Headline & Fold Containment:** Applied `container-type: inline-size` and `min-inline-size: 0` on `.heroHeadlineCol`, `line-height: 1.04` on `.type-monolith` and `1.06` on `.type-display`, bounded `.heroPlateCol` height within `100dvh`, removed `scrollbar-gutter: stable` dark strip bleed on light islands, and hid `.skip-link:not(:focus):not(:focus-visible)` with `clip-path: inset(50%)`.
+3. **Responsive Archive, Anatomy & Anti-AI UI Refinements (`archive.module.css`, `ArchiveClient.tsx`, `AnatomyClient.tsx`, `MotionPrimitives.tsx`, `trellick-tower.svg`):**
+   - Raised the `/archive` `[ INDEX ]` table-to-slip breakpoint from `600px` to `1024px` (with a 2-column slip grid on `600px–1023px`) so the 8-column table never clips horizontally at `768px`, made `.filterBand` compact non-sticky on desktop, and added a collapsible `FILTERS [ + / − ]` drawer toggle on `< 768px`.
+   - Moved `<CornerCrosshair />` inside `.svgViewport` (`inset: 4px`, `overflow: hidden`) on `/anatomy` to eliminate `375px` horizontal overflow (`docScrollW === innerWidth`), and repositioned callout `02 BOILER HOUSE (+85 M)` in `public/images/anatomy/trellick-tower.svg` to the left margin (`x=125`) clear of the vertical mast axis (`x=251.5`).
+   - Upgraded Band D (`THREE ARCHITECTURAL DISCIPLINES`) on `/` to an asymmetric `1.4fr 1fr 1fr` editorial grid, simplified `PlateCurtain` and `HairlineDraw` to render immediately without repetitive scroll-clipping traps, and set `loading="eager"` on horizontal stream and section plates.
+4. **Final Verification:**
+   - `npx tsc --noEmit`: **PASS (`0` errors)**
+   - `npm run lint`: **PASS (`0` warnings / `0` errors)**
+   - `npm run build`: **PASS (`33/33` static and SSG routes generated cleanly)**

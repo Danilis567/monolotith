@@ -23,24 +23,40 @@ MONOLITH treats the browser viewport as an **architectural drafting sheet and mu
 
 ### 2.1 Viewport Breakpoints
 
-| Tier | Range | Grid Columns | Gutter (`column-gap`) | Outer Margin (`padding-inline`) | Primary Role |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **`mobile` (`< md`)** | `< 768px` | **4 columns** | `16px` (`1rem`) | `16px` (`1rem`) | Re-composed single-sheet poster stack & accessible catalog slips |
-| **`tablet` (`md`)** | `768px – 1023px` | **8 columns** | `20px` (`1.25rem`) | `24px` (`1.5rem`) | Dual-zone split plates & compact index ledger |
-| **`desktop` (`lg`)** | `1024px – 1439px` | **12 columns** | `24px` (`1.5rem`) | `32px` (`2rem`) | Full exhibition poster grid, vertical marginalia & 3-col prose |
-| **`exhibition` (`xl`)** | `>= 1440px` | **12 columns** | `24px` (`1.5rem`) | `48px` (`3rem`) | Full-bleed poster framing (`max-inline-size: 1680px` centered) |
+| Tier | Range | Grid Columns | Gutter (`column-gap`) | Header / Footer Outer Margin | `#main-content` Margin (`--grid-margin`) | Primary Role |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **`mobile` (`< md`)** | `< 768px` | **4 columns** | `16px` (`1rem`) | `16px` (`1rem`) | **`10%`** (both sides) | Re-composed single-sheet poster stack & accessible catalog slips |
+| **`tablet` (`md`)** | `768px – 1023px` | **8 columns** | `20px` (`1.25rem`) | `24px` (`1.5rem`) | **`10%`** (both sides) | Dual-zone split plates & 2-col index slip grid |
+| **`desktop` (`lg`)** | `1024px – 1439px` | **12 columns** | `24px` (`1.5rem`) | `32px` (`2rem`) | **`10%`** (both sides) | Full exhibition poster grid, vertical marginalia & 3-col prose |
+| **`exhibition` (`xl`)** | `>= 1440px` | **12 columns** | `24px` (`1.5rem`) | `48px` (`3rem`) | **`10%`** (both sides) | Full-bleed poster framing (`max-inline-size: 1680px` centered) |
 
-### 2.2 Exposed Grid Overlay & Structural Partition Mechanics
+### 2.2 Exposed Grid Overlay, `10%` Main Content Squeeze & Structural Partition Mechanics
 
 ```css
+/* Global outer margins apply to <SiteHeader /> and <SiteFooter /> */
+:root {
+  --grid-gutter: 1rem;
+  --grid-margin: 1rem;
+  --grid-max-width: 1680px;
+}
+
+@media (width >= 768px) { :root { --grid-margin: 1.5rem; } }
+@media (width >= 1024px) { :root { --grid-margin: 2rem; } }
+@media (width >= 1440px) { :root { --grid-margin: 3rem; } }
+
+/* Squeeze all main content 10% inward on both sides (excluding navbar & footer) */
+#main-content {
+  --grid-margin: 10%;
+}
+
 /* Shared 12-col architectural grid container */
 .monolith-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  column-gap: var(--grid-gutter, 1rem);
-  padding-inline: var(--grid-margin, 1rem);
+  column-gap: var(--grid-gutter);
+  padding-inline: var(--grid-margin);
   inline-size: 100%;
-  max-inline-size: 1680px;
+  max-inline-size: var(--grid-max-width);
   margin-inline: auto;
   position: relative;
 }
@@ -49,7 +65,6 @@ MONOLITH treats the browser viewport as an **architectural drafting sheet and mu
   .monolith-grid {
     grid-template-columns: repeat(8, minmax(0, 1fr));
     --grid-gutter: 1.25rem;
-    --grid-margin: 1.5rem;
   }
 }
 
@@ -57,20 +72,14 @@ MONOLITH treats the browser viewport as an **architectural drafting sheet and mu
   .monolith-grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
     --grid-gutter: 1.5rem;
-    --grid-margin: 2rem;
-  }
-}
-
-@media (width >= 1440px) {
-  .monolith-grid {
-    --grid-margin: 3rem;
   }
 }
 ```
 
+- **10% Main Content Inward Squeeze (`#main-content`):** While `<SiteHeader />` and `<SiteFooter />` remain anchored to the outer viewport frame (`1rem`–`3rem`), `#main-content` overrides `--grid-margin: 10%` so `.monolith-grid`, `.surveyStripGrid`, `.filterShell`, and `.specimen-stream-viewport` (`margin-inline: var(--grid-margin)`) sit with a 10% architectural margin on both left and right.
 - **Exposed Vertical Hairlines (`<GridGuides />`):** An `aria-hidden="true"` architectural overlay renders vertical `1px` `--border-hairline` tracks (`opacity: 0.28` for background column guides; full `--border-hairline` for semantic section partitions) aligned to column boundaries `1, 4, 7, 10, 13` on desktop and `1, 5` on mobile.
-- **Intersection Registration Marks (`<CornerCrosshair />`):** `13×13px` geometric `+` SVG primitives (`stroke-width: 1px`, `vector-effect: non-scaling-stroke`, `aria-hidden="true"`) placed at major band intersections (`row × col`).
-- **Stepped Corner Notches (`<SteppedFrame />`):** Nested `90°` L-brackets (`12×12px` outer, `6×6px` inner step, `1px solid var(--border-structural)`, referencing `e290eb14...jpg` *Decondor*) applied strictly to primary exhibition hero plates (`/` hero specimen, `/structures/[slug]` split plate, `/anatomy` orthographic canvas). Never placed on buttons or small UI controls.
+- **Intersection Registration Marks (`<CornerCrosshair />`):** `13×13px` geometric `+` SVG primitives (`stroke-width: 1px`, `vector-effect: non-scaling-stroke`, `aria-hidden="true"`) placed at major band intersections (`row × col`) and inset `4px` inside `.svgViewport` so mobile `375px` never spills horizontally.
+- **Stepped Corner Notches (`<SteppedFrame />`):** Top mitered `90°` L-brackets (`inset: 0.75rem` inside `.heroPlateAspect`, clearing the bottom title/caption scrim) paired with a `0.75rem` outer paspartu frame on `.heroPlateLink` and `1.5rem` horizontal / `1.35rem` bottom overlay inset so text never collides with registration marks. Never placed on buttons or small UI controls.
 - **Same-Polarity Surface Borders:** Whenever adjacent surfaces share polarity (e.g., `Void Concrete #131313` beside `Basalt #282828` [1.26:1], or `Raw Plaster #E9E5DF` beside `Limestone #B9B5AA` [1.63:1]), a `1px solid var(--border-hairline)` or `var(--border-structural)` boundary is **mandatory** for interactive clarity and WCAG 1.4.11 compliance.
 
 ---
@@ -345,9 +354,9 @@ Mobile **re-composes** the poster sheet into a vertical single-sheet stack rathe
 | **Rotated Marginalia** | `writing-mode: vertical-rl; rotate(180deg)` side rail on `/structures/[slug]` and hero edges | **Converted to horizontal ledger bar** (`flex-direction: row; flex-wrap: wrap; justify-content: space-between; border-block: 1px solid var(--border-hairline); padding-block: 0.75rem`) directly above the hero title. Zero sideways reading required. |
 | **3-Column Prose** | `column-count: 3` with `1px` vertical rules & `34ch` measure | **Collapses to 1 column** (`column-count: 1; max-inline-size: 58ch`), with the `Bodoni Moda Italic` pull-quote promoted to a full-width inset block bounded top/bottom by `1px` hairlines before paragraph 2. |
 | **Archive `PLATE` Grid** | 5-item asymmetrical 12-col cadence (`7+5`, `4+4+4`) | Alternating **Full-Bleed (`4 cols`, `16/10`)** and **Vertical (`4 cols`, `3/4`)** poster stack—never cramped tiny thumbnails. |
-| **Archive `INDEX` Table** | 8-column `<table>` + hover plate dock | `@container (width < 600px)` applies `.visually-hidden` to `<thead>` (preserving screen-reader column context!) and renders `<tr>` as stacked **Catalog Slips** (`1px solid var(--border-hairline)`) with explicit `<span className="mobile-field-label" aria-hidden="true">` inside each `<td>` (`ARCHITECT`, `LOCATION`, `YEAR`, `MOVEMENT`, `MATERIAL`, `ELEV.`). |
-| **Anatomy Workbench** | 3-col left rail + 9-col SVG canvas | Horizontal wrapped `role="tablist"` (`ALL PLATES (09)`, `01–03`) + compact plate selector dropdown/strip -> `16:10` SVG Canvas with `TAP OR SCROLL TO INSPECT PLATE` note -> 3-button Layer Toggle matrix (`44px` hit rows) + `ALL LAYERS` + `<details>` Dimension Schedule. |
-| **Footer Wordmark** | `brand/footer-lockup.svg` (`>= 880px`) | Automatically swaps to `brand/monolith-wordmark-*.svg` (`>= 120px`) + stacked HTML colophon text. |
+| **Archive `INDEX` Table** | 8-column `<table>` + hover plate dock (`>= 1024px`) | On `< 1024px` (`375px` mobile 1-col, `600px–1023px` tablet 2-col), renders semantic `<ul className="mobileSlipList">` + `<dl>` **Catalog Slips** (`1px solid var(--border-hairline)`) so 8-column tabular data is never horizontally clipped at `768px`. Filter controls collapse behind a `FILTERS [ + / − ]` toggle on `< 768px`. |
+| **Anatomy Workbench** | 3-col left rail + 9-col SVG canvas | Horizontal wrapped `role="tablist"` (`ALL PLATES (09)`, `01–03`) + plate selector list -> `16:10` SVG Canvas (with internal `4px` corner crosshairs & `overflow: hidden`) -> 3-button Layer Toggle matrix (`44px` hit rows) + `ALL LAYERS [ RESET ]` + `<details>` Dimension Schedule. |
+| **Footer Wordmark** | `brand/footer-lockup.svg` (`>= 1024px`) | Automatically swaps to `brand/monolith-wordmark-dark.svg` + stacked HTML colophon text below `1024px`. |
 
 ---
 
@@ -361,17 +370,16 @@ Mobile **re-composes** the poster sheet into a vertical single-sheet stack rathe
 // src/lib/motion.ts
 export const MONOLITH_EASE = [0.16, 1, 0.3, 1] as const;      // Decisive architectural settle
 export const SHEAR_EASE    = [0.77, 0, 0.175, 1] as const;     // Symmetric mechanical shutter cut
-export const STEPPED_EASE  = "steps(6, end)";                  // Brutalist loader/telemetry step
 
 export const DURATION = {
-  micro: 0.18,    // Hover border/ink snap
-  rule: 0.45,     // Hairline scaleX/scaleY draw-in
-  curtain: 0.65,  // Clip-path plate reveal
-  lancet: 0.72,   // Bottom-up Gothic arch aperture reveal
+  micro: 0.16,    // Hover border/ink snap
+  rule: 0.28,     // Hairline rule timing
+  curtain: 0.36,  // Plate transition timing
+  lancet: 0.42,   // Aperture timing
 } as const;
 ```
 
-**GPU Compositor Strictness:** Animate **only** `transform` (`translate3d`, `scaleX`, `scaleY`), `opacity`, and `clip-path`. Never animate `width`, `height`, `top`, `left`, `margin`, `padding`, or `box-shadow`.
+**GPU Compositor & Anti-AI Restraint:** `PlateCurtain` and `HairlineDraw` render immediately in their final visible state (preventing repetitive `whileInView` clipping traps or invisible sections during deep hash jumps), while `HeroEchoParallax` (`[0, 28]` px vertical drift), the controllable `SpecimenStream` marquee, and the `@starting-style` `<dialog>` drawer provide purposeful architectural motion.
 
 ### 6.2 Component Motion Matrix
 

@@ -259,10 +259,11 @@ Full-width 3-row architectural ledger (`1px` `--border-hairline` between rows, `
 
 | Control | Label | `aria-label` | Notes |
 | :--- | :--- | :--- | :--- |
+| **Mobile Filter Drawer Toggle (`< 768px`)** | `FILTERS [ + ]` / `FILTERS [ − ]` | `aria-expanded`, `aria-controls="archive-filter-controls"` | Collapses the 6-control filter matrix on mobile viewports so the first specimen plate remains visible above the fold. |
 | **Reset Filters Action** | `RESET FILTERS ×` | `RESET ALL ARCHIVE FILTERS AND SEARCH` | Shown when any filter or search string is active. |
 | **View Toggle Group Label** | `VIEW MODE` | `SWITCH ARCHIVE DISPLAY MODE` | `role="group"`. |
-| **Grid View Button** | `[ PLATE ]` | `PLATE — VISUAL GRID VIEW` | Active state uses `--surface-inverse` + `--signal-ink` dot `•` + `aria-pressed="true"`. |
-| **Tabular View Button** | `[ INDEX ]` | `INDEX — TABULAR CATALOG VIEW` | Active state uses `--surface-inverse` + `--signal-ink` dot `•` + `aria-pressed="true"`. |
+| **Grid View Button** | `[ PLATE ]` | `PLATE — VISUAL GRID VIEW` | Active state uses `--surface-canvas` + `aria-pressed="true"`. |
+| **Tabular View Button** | `[ INDEX ]` | `INDEX — TABULAR CATALOG VIEW` | Active state uses `--surface-canvas` + `aria-pressed="true"`. Renders 8-column `<table>` on `>= 1024px` and 1/2-column semantic catalog slips on `< 1024px`. |
 
 ### 3.4 Catalog Table Headers (`INDEX` 8-Column Tabular View)
 
