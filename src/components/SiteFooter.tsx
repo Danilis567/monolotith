@@ -38,22 +38,17 @@ export function SiteFooter() {
             <ul className={`${styles.cellList} type-colophon`}>
               <li>
                 <Link href="/" className={styles.cellLink}>
-                  01 HOME — POSTER FOLIO
+                  01 HOME — EDITORIAL COVER
                 </Link>
               </li>
               <li>
                 <Link href="/archive" className={styles.cellLink}>
-                  02 ARCHIVE — 27 STRUCTURES
-                </Link>
-              </li>
-              <li>
-                <Link href="/structures/trellick-tower" className={styles.cellLink}>
-                  03 DETAIL — SPECIMEN VIEW
+                  02 ARCHIVE — CATALOG MATRIX
                 </Link>
               </li>
               <li>
                 <Link href="/anatomy" className={styles.cellLink}>
-                  04 ANATOMY — 09 PLATES
+                  03 ANATOMY — SECTION WORKBENCH
                 </Link>
               </li>
             </ul>

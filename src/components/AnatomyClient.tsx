@@ -23,9 +23,9 @@ type MovementTab = 'ALL' | Movement;
 
 const TABS: { id: MovementTab; label: string }[] = [
   { id: 'ALL', label: 'ALL PLATES (09)' },
-  { id: 'Brutalist', label: '01 / BRUTALIST' },
-  { id: 'Gothic', label: '02 / GOTHIC' },
-  { id: 'Monumental', label: '03 / MONUMENTAL' },
+  { id: 'Brutalist', label: '01 / BRUTALIST (03)' },
+  { id: 'Gothic', label: '02 / GOTHIC (03)' },
+  { id: 'Monumental', label: '03 / MONUMENTAL (03)' },
 ];
 
 export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
@@ -113,7 +113,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
   };
 
   return (
-    <div data-surface={surfaceMode} style={{ backgroundColor: 'var(--surface-canvas)', color: 'var(--ink-primary)' }}>
+    <div className={styles.anatomyPage} data-surface={surfaceMode}>
       <UrlParamSync paramKey="plate" onRead={syncPlateFromUrl} />
       {/* Header */}
       <section className={styles.headerBand}>
@@ -130,7 +130,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
                 }}
               >
                 <span className="signal-dot" aria-hidden="true" />
-                <span>SECTION 04 — MEASURED DRAFTING ROOM</span>
+                <span>SECTION 03 — STRUCTURAL ANATOMY</span>
               </p>
               <h1 className="type-display">STRUCTURAL ANATOMY</h1>
             </div>
@@ -156,7 +156,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
 
       {/* Movement Filter Tabs */}
       <div className={styles.controlsBand}>
-        <div className={styles.tabBar}>
+        <div className={`${styles.tabBar} ${styles.controlsInner}`}>
           <div
             role="tablist"
             aria-label="Filter anatomical drawings by architectural movement"
@@ -189,7 +189,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
           </div>
 
           <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-            ORTHOGRAPHIC PROJECTION · SCALE 1:200 TO 1:1000
+            03 / ANATOMY · ORTHOGRAPHIC PROJECTION · SCALE 1:200 TO 1:1000
           </span>
         </div>
       </div>
@@ -204,7 +204,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
         >
           <div className={styles.workbenchGrid}>
             {/* Left Plate Selector List */}
-            <aside aria-label="Registered anatomy plates">
+            <aside className={styles.plateSelectorCol} aria-label="Registered anatomy plates">
               <div className={styles.plateSelectorList}>
                 {visiblePlates.map((plate) => {
                   const isActive = plate.id === activePlate.id;
@@ -219,12 +219,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
                       }`}
                     >
                       <span
-                        className="type-colophon"
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          color: isActive ? 'var(--signal-ink)' : 'var(--ink-secondary)',
-                        }}
+                        className={`${styles.plateSelectOverline} type-colophon`}
                       >
                         <span>
                           {plate.plateNumber} · {plate.catalogNumber}
@@ -250,11 +245,11 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
                   justifyContent: 'space-between',
                   alignItems: 'flex-end',
                   gap: '1rem',
-                  borderBottom: '1px solid var(--border-hairline)',
+                  borderBottom: '1px solid var(--border-structural)',
                   paddingBottom: '1rem',
                 }}
               >
-                <div style={{ display: 'grid', gap: '0.35rem' }}>
+                <div style={{ display: 'grid', gap: '0.35rem', minInlineSize: 0 }}>
                   <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
                     {activePlate.plateNumber} · {activePlate.catalogNumber} ·{' '}
                     {activePlate.drawingType.toUpperCase()}
@@ -268,7 +263,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
                 </div>
 
                 <Link href={`/structures/${activePlate.slug}`} className="btn-monolith">
-                  <span>OPEN 03 MONOGRAPH</span>
+                  <span>OPEN STRUCTURE MONOGRAPH</span>
                   <span aria-hidden="true">→</span>
                 </Link>
               </div>
@@ -333,7 +328,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
               </span>
 
               {/* Inline Orthographic SVG Plate */}
-              <div className={styles.svgViewport} style={{ overflow: 'hidden', maxInlineSize: '100%' }}>
+              <div className={styles.svgViewport}>
                 <CornerCrosshair
                   style={{
                     position: 'absolute',
@@ -369,7 +364,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
                 <span style={{ color: 'var(--signal-ink)' }}>
                   VERMILION AXIS: THRUST LINE &amp; SYMMETRY
                 </span>
-                <span>SCALE: {activePlate.scale} · DATUM {activePlate.datumElevation}</span>
+                <span>{activePlate.scale} · DATUM {activePlate.datumElevation}</span>
               </div>
 
               <p className="type-body-lead">{activePlate.description}</p>
@@ -377,17 +372,10 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
               {/* Callout Annotations */}
               <div className={styles.calloutGrid}>
                 {activePlate.callouts.map((callout) => (
-                  <div key={callout.code} className={styles.calloutCell}>
-                    <div
-                      className="type-colophon"
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        color: 'var(--signal-ink)',
-                      }}
-                    >
-                      <span>{callout.code}</span>
-                      <span>{callout.value}</span>
+                  <div key={callout.code} className={`${styles.calloutCell} ${styles.calloutCard}`}>
+                    <div className={`${styles.calloutHeader} type-colophon`}>
+                      <span className={styles.calloutBadge}>REF {callout.code}</span>
+                      <span style={{ color: 'var(--signal-ink)' }}>{callout.value}</span>
                     </div>
                     <h3 className="type-ui-label">{callout.label}</h3>
                     <p className="type-body" style={{ color: 'var(--ink-secondary)' }}>
@@ -404,28 +392,30 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
                   <span aria-hidden="true">[ ± ]</span>
                 </summary>
 
-                <table className={styles.scheduleTable}>
-                  <thead>
-                    <tr className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                      <th scope="col">PARAMETER</th>
-                      <th scope="col">METRIC VALUE</th>
-                      <th scope="col">STRUCTURAL ROLE</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {activePlate.dimensionsSchedule.map((row) => (
-                      <tr key={row.parameter}>
-                        <td className="type-colophon">{row.parameter}</td>
-                        <td className="type-colophon tabular-nums" style={{ color: 'var(--signal-ink)' }}>
-                          {row.metricValue}
-                        </td>
-                        <td className="type-body" style={{ color: 'var(--ink-secondary)' }}>
-                          {row.structuralRole}
-                        </td>
+                <div className={styles.scheduleTableWrap}>
+                  <table className={styles.scheduleTable}>
+                    <thead>
+                      <tr className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
+                        <th scope="col">PARAMETER</th>
+                        <th scope="col">METRIC VALUE</th>
+                        <th scope="col">STRUCTURAL ROLE</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {activePlate.dimensionsSchedule.map((row) => (
+                        <tr key={row.parameter}>
+                          <td className="type-colophon">{row.parameter}</td>
+                          <td className="type-colophon tabular-nums" style={{ color: 'var(--signal-ink)' }}>
+                            {row.metricValue}
+                          </td>
+                          <td className="type-body" style={{ color: 'var(--ink-secondary)' }}>
+                            {row.structuralRole}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </details>
             </div>
           </div>

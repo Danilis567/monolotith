@@ -133,6 +133,7 @@
 .ledgerBand {
   padding-block: 3.5rem;
   border-bottom: 2px solid var(--border-structural);
+  scroll-margin-block-start: calc(var(--header-height, 64px) + 1.5rem);
 }
 
 .ledgerGrid {
@@ -145,13 +146,36 @@
 
 @media (width >= 600px) {
   .ledgerGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1.25fr 0.95fr;
+  }
+
+  .ledgerCell:nth-child(9) {
+    grid-column: 1 / -1;
   }
 }
 
 @media (width >= 1024px) {
   .ledgerGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  /* Asymmetric monograph specification schedule (rows sum to 12 columns: 3+4+5, 5+4+3, 3+5+4) */
+  .ledgerCell:nth-child(1),
+  .ledgerCell:nth-child(6),
+  .ledgerCell:nth-child(7) {
+    grid-column: span 3;
+  }
+
+  .ledgerCell:nth-child(2),
+  .ledgerCell:nth-child(5),
+  .ledgerCell:nth-child(9) {
+    grid-column: span 4;
+  }
+
+  .ledgerCell:nth-child(3),
+  .ledgerCell:nth-child(4),
+  .ledgerCell:nth-child(8) {
+    grid-column: span 5;
   }
 }
 
@@ -177,6 +201,7 @@
 .analysisBand {
   padding-block: 4.5rem;
   border-bottom: 2px solid var(--border-structural);
+  scroll-margin-block-start: calc(var(--header-height, 64px) + 1.5rem);
 }
 
 .analysisMain {
@@ -232,12 +257,29 @@
 }
 
 .calloutMetricBox {
-  border: 1px solid var(--border-structural);
+  border: 2px solid #131313;
   padding: 1.5rem;
-  background-color: var(--surface-basalt);
-  color: var(--ink-primary);
+  background-color: #131313;
+  color: #E9E5DF;
   display: grid;
   gap: 0.625rem;
+  scroll-margin-block-start: calc(var(--header-height, 64px) + 1.5rem);
+}
+
+.calloutOverline {
+  color: #F45D4D;
+}
+
+.calloutPrimaryValue {
+  color: #E9E5DF;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.calloutSecondarySpan {
+  color: #B9B5AA;
 }
 
 .observationList {
@@ -263,9 +305,11 @@
 }
 
 /* Anatomy Cross-Link Band */
-.anatomyBanner {
+.anatomyBanner,
+.anatomyBand {
   padding-block: 3rem;
   border-bottom: 1px solid var(--border-hairline);
+  scroll-margin-block-start: calc(var(--header-height, 64px) + 1.5rem);
 }
 
 .anatomyCard {

@@ -12,7 +12,7 @@
 1. **Typographic Token Mapping:**
    - `--type-monolith` (`Bodoni Moda 900`, `-0.045em` tracking): Monumental hero headlines and echoed background index titles.
    - `--type-display` (`Bodoni Moda 600`, `-0.03em` tracking): Page titles, section headers, and specimen headings.
-   - `--type-quote` (`Bodoni Moda 400 Italic`, `-0.015em` tracking): Single authoritative recognition or monograph pull-quotes.
+   - `--type-quote` (`Bodoni Moda 400 Italic`, `-0.015em` tracking): Unquoted, unattributed editorial structural observation callouts (zero quotation marks, zero fabricated citation bylines).
    - `--type-subhead` (`Inter 600`, `-0.02em` tracking): Brutalist thesis statements and taxonomy subheads.
    - `--type-body-lead` (`Inter 400`): Exhibition abstracts (`max-width: 62ch`).
    - `--type-body` (`Inter 400`): Monograph commentary and multi-column catalog prose (`max-width: 58ch` single column; `34ch` in 3-column print grids).
@@ -52,35 +52,33 @@ Derived from `preview (1).webp` (*Obsidian*), `preview (2).webp` (*Takumi*), and
 | Slot | Copy | Token | Accessibility / Spec |
 | :--- | :--- | :--- | :--- |
 | **Brand Lockup** | `brand/nav-lockup.svg` *(or `nav-lockup-light.svg`)* | Custom SVG `<path>` | Link `aria-label`: `MONOLITH — RETURN TO 01 HOME`. |
-| **Header Telemetry Stamp** | `VOL. IV · SURVEY 126–1982` | `--type-colophon` | Desktop secondary datum next to masthead divider. |
+| **Header Telemetry Stamp** | `FOLIO IV / MONUMENTAL MONOGRAPH ARCHIVE` · `VOL. IV · SURVEY 126–1982` | `--type-colophon` | Desktop secondary datum next to masthead divider. |
 | **Live Index Indicator** | `• INDEXED: 27 PLATES` | `--type-colophon` | Signal dot (`--signal-ink`) paired with explicit text label (WCAG 1.4.1). |
 | **Drawer Trigger (Closed)** | `• MENU` | `--type-ui-label` | `aria-label="OPEN NAVIGATION INDEX"`, `aria-expanded="false"`. |
 | **Drawer Trigger (Open)** | `CLOSE ×` | `--type-ui-label` | `aria-label="CLOSE NAVIGATION INDEX"`, `aria-expanded="true"`. |
 
-### 1.3 Primary Navigation (`01`–`04`)
+### 1.3 Primary Navigation (`01`–`03`)
 
-Every primary route carries a two-digit tabular index prefix (`01`–`04`). Active route renders in `--ink-primary` with `--signal-ink` telemetry dot `•` and `aria-current="page"`.
+Every primary route in the Header, Mobile Drawer, and Footer carries a two-digit tabular index prefix (`01`–`03`). Active route renders in `--ink-primary` with `--signal-ink` telemetry dot `•` and `aria-current="page"`.
 
 | Route | Visible Label | Compact Mobile Label | `aria-label` |
 | :--- | :--- | :--- | :--- |
 | `/` | `01 HOME` | `01 HOME` | `01 HOME — EXHIBITION OVERVIEW` |
 | `/archive` | `02 ARCHIVE` | `02 ARCHIVE` | `02 ARCHIVE — COMPLETE 27-STRUCTURE INDEX` |
-| `/structures/[slug]` | `03 STRUCTURE DETAIL` | `03 DETAIL` | `03 STRUCTURE DETAIL — SPECIMEN DOSSIER` |
-| `/anatomy` | `04 ANATOMY` | `04 ANATOMY` | `04 ANATOMY — ORTHOGRAPHIC SECTION PLATES` |
+| `/anatomy` | `03 ANATOMY` | `03 ANATOMY` | `03 ANATOMY — ORTHOGRAPHIC SECTION PLATES` |
 
-> **Routing Note on `03 STRUCTURE DETAIL`:** When no specimen slug is currently active, `03 STRUCTURE DETAIL` links to the anchor specimen (`/structures/trellick-tower`, `CAT. 001`) or reflects the active dossier (`03 STRUCTURE DETAIL · CAT. 001`) in drawer navigation.
+> **Routing Note on Specimen Dossiers (`/structures/[slug]`):** Individual structure dossiers are not listed as a top-level navigation item in the Header, Mobile Drawer, or Footer; they are accessed directly from specimen cards, tabular index rows, Home featured callouts, and Anatomy cross-links, and retain their internal hierarchical breadcrumb (`01 HOME / 02 ARCHIVE / {MOVEMENT} / {CAT} · {NAME}`).
 
 ### 1.4 Mobile / Full-Screen Index Drawer Copy
 
 | Slot | Copy | Token | Notes |
 | :--- | :--- | :--- | :--- |
-| **Drawer Header Overline** | `FOLIO DIRECTORY · 27 STRUCTURES` | `--type-colophon` | Bounded by `1px` `--border-hairline`. |
+| **Drawer Header Overline** | `FOLIO DIRECTORY · EDITION IV · 27 STRUCTURES` | `--type-colophon` | Bounded by `1px` `--border-hairline`. |
 | **Drawer Route Descriptions** | | | |
 | — `01 HOME` | `Exhibition thesis, specimen stream, and 3-movement ledger.` | `--type-body` | |
 | — `02 ARCHIVE` | `Filterable 27-structure ledger and asymmetric plate grid.` | `--type-body` | |
-| — `03 STRUCTURE DETAIL` | `Technical colophon, structural observations, and coordinates.` | `--type-body` | |
-| — `04 ANATOMY` | `Nine orthographic section plates and load-path diagrams.` | `--type-body` | |
-| **Drawer Footer Stamp** | `DATUM 51°31'25"N × 0°12'20"W · METRIC SI` | `--type-colophon` | |
+| — `03 ANATOMY` | `Nine orthographic section plates and load-path diagrams.` | `--type-body` | |
+| **Drawer Footer Stamp** | `DATUM 51°31'25"N × 0°12'20"W · METRIC SI · VOL. IV` | `--type-colophon` | |
 
 ### 1.5 Footer Colophon & Index Statement
 
@@ -94,7 +92,8 @@ Derived from `45e4f8147b81c3e0bb8a8549802e6ace.jpg` (*Saint Petersburg* millimet
 | — Cell 01 (`CLASSIFICATION`) | `CLASSIFICATION: ARCHIVAL MONOGRAPH (27 PLATES)` | `--type-colophon` | |
 | — Cell 02 (`DATUM`) | `DATUM: WGS84 · METRIC SI` | `--type-colophon` | |
 | — Cell 03 (`TYPOGRAPHY`) | `SET IN: BODONI MODA / INTER / IBM PLEX MONO` | `--type-colophon` | |
-| — Cell 04 (`EDITION`) | `© 2026 MONOLITH · EDITION: VOL. IV · 15 / 11 / 2026` | `--type-colophon` | |
+| — Cell 04 (`EDITION`) | `© 2026 MONOLITH · EDITION: VOL. IV · 15 / 11 / 2026` | `--type-colophon` | `ARCHIVE VOLUME IV — INDEX & MEASURED SECTIONS`. |
+| **Footer Route Index (3 Routes)** | `01 HOME` (`/`) · `02 ARCHIVE` (`/archive`) · `03 ANATOMY` (`/anatomy`) | `--type-ui-label` | Strictly 3 top-level routes (individual `/structures/[slug]` dossiers omitted from footer nav). |
 | **Scale Ruler Track** | `00` · `10` · `20` · `30` · `40` · `50` · `60` · `70` · `80` · `90` · `100` · `110` · `120` | `--type-colophon` | `aria-hidden="true"` decorative millimeter ticks. |
 | **Footer Utility Link** | `TOP OF FOLIO ↑` | `--type-ui-label` | `aria-label="RETURN TO TOP OF PAGE"`. |
 
@@ -122,7 +121,7 @@ Inspired by `preview (1).webp` (*Obsidian*), `preview (3).webp` (*Residential Br
 | Slot | Copy | Token | Notes |
 | :--- | :--- | :--- | :--- |
 | **Poster Edge Strip (Vertical)** | `RAW, CONCRETE, MONOLITHIC. BOARD-FORMED, LOAD-BEARING, PERMANENT.` | `--type-colophon` | `aria-hidden="true"` flanking strip per `7ed9e87...jpg`. |
-| **Hero Overline** | `ARCHITECTURAL MONOGRAPH · FOLIO 01` | `--type-colophon` | `--signal-ink` telemetry cue paired with `•`. |
+| **Hero Overline** | `ARCHITECTURAL MONOGRAPH · FOLIO IV` | `--type-colophon` | `--signal-ink` telemetry cue paired with `•`. |
 | **Echo Backdrop Word** | `MONOLITH` | `--type-monolith` | Hollow `-webkit-text-stroke: 1px var(--border-hairline)`, `aria-hidden="true"`, layered behind hero structure plate. |
 | **Hero Display Headline** | `MASS` / `CAST` / `UNDER` / `GRAVITY` | `--type-monolith` | Four-line tight vertical stack (`line-height: 0.86`, `-0.045em`). |
 | **Hero Chronology Stamp** | `126–1982` | `--type-colophon` | Anchored flush to headline right edge. |
@@ -165,9 +164,8 @@ Derived from `preview (2).webp` (*Takumi*), `c5eb814ab3b11a46ee4eb2146116b999.jp
 | **Column 02 Prose** | `Gothic master masons and post-war brutalist engineers solved identical gravitational problems. Ribbed stone vaults channel lateral thrust downward; detached concrete cores anchor suspended slabs.` | `--type-body` (`max-width: 34ch`) |
 | **Column 03 Heading** | `III. ARCHIVAL RECORD` | `--type-ui-label` |
 | **Column 03 Prose** | `Twenty-seven plates are compiled as verifiable physical documents. Each entry fixes geographic coordinates, metric elevation, primary aggregate, and completion year against orthographic section drawings.` | `--type-body` (`max-width: 34ch`) |
-| **Recognition / Thesis Overline** | `MONOGRAPH NOTE` | `--type-colophon` |
-| **Pull-Quote** | `“Stone and cast concrete carry no memory of fashion; they answer only to compression, tension, and weather.”` | `--type-quote` (`Bodoni Moda 400 Italic`) |
-| **Pull-Quote Attribution** | `— MONOLITH SURVEY FOLIO I, SECTION 04` | `--type-colophon` |
+| **Structural Thesis Overline** | `MONOGRAPH NOTE` | `--type-colophon` |
+| **Structural Thesis Callout (Unquoted & Unattributed)** | `Stone and cast concrete carry no memory of fashion; they answer only to compression, tension, and weather.` | `--type-quote` (`Bodoni Moda 400 Italic`; zero quotation marks, zero fabricated citation bylines) |
 | **Band B Right Plate Caption (Cols 7–12, `16/10`)** | `CAT. 003 · UNITÉ D'HABITATION` | `--type-colophon` |
 
 ### 2.5 Band C — Horizontal Specimen Stream (WCAG 2.2.2)
@@ -215,7 +213,7 @@ Full-width 3-row architectural ledger (`1px` `--border-hairline` between rows, `
 | **Headline** | `ACCESS THE 27-STRUCTURE INDEX` | `--type-display` |
 | **Summary** | `Twenty-seven surveyed structures across Europe, Asia, the Americas, and the Middle East. Filter by movement, continent, material, or century, or open the nine orthographic Anatomy plates.` | `--type-body-lead` |
 | **Primary Action** | `OPEN 02 ARCHIVE ↗` | `--type-ui-label` |
-| **Secondary Action** | `INSPECT 04 ANATOMY ↗` | `--type-ui-label` |
+| **Secondary Action** | `INSPECT 03 ANATOMY ↗` | `--type-ui-label` |
 
 ---
 
@@ -305,7 +303,7 @@ Rendered inside a `1px` `--border-structural` block when active filters yield `0
 
 ---
 
-## 4. Route `03 STRUCTURE DETAIL` (`/structures/[slug]`)
+## 4. Specimen Dossier Route (`/structures/[slug]`)
 
 ### 4.1 Document Metadata Templates
 
@@ -316,8 +314,8 @@ Rendered inside a `1px` `--border-structural` block when active filters yield `0
 
 | Slot | Copy | Token | Accessibility |
 | :--- | :--- | :--- | :--- |
-| **Breadcrumb Nav** | `01 HOME` `/` `02 ARCHIVE` `/` `{CAT. NNN} {STRUCTURE}` | `--type-colophon` | `aria-label="SPECIMEN BREADCRUMB"`; current item carries `aria-current="page"`. |
-| **Plate Overline** | `SPECIMEN DOSSIER · {CAT. NNN} · {MOVEMENT}` | `--type-colophon` | |
+| **Breadcrumb Nav** | `01 HOME` `/` `02 ARCHIVE` `/` `{MOVEMENT}` `/` `{CAT} · {NAME}` | `--type-colophon` | `aria-label="SPECIMEN BREADCRUMB"`; current item carries `aria-current="page"`. |
+| **Plate Overline** | `SPECIMEN DOSSIER · {CAT. NNN} · {MOVEMENT} · VOL. IV` | `--type-colophon` | |
 | **Structure Display Title** | `{STRUCTURE}` *(e.g. `TRELLICK TOWER`)* | `--type-display` | |
 | **Subtitle / Datum Line** | `{ARCHITECT} · {CITY, COUNTRY} · {CHRONOLOGY}` | `--type-body-lead` | |
 | **Hero Plate Crop Stamps** | `RECTILINEAR SURVEY` *(Brutalist & concrete works)* / `LANCET ARCH PLATE` *(Gothic structures)* / `ROMANESQUE ARCH PLATE` *(Classical & Byzantine masonry)* | `--type-colophon` | Paired with `PLATE {NN}` prefix (e.g., `PLATE 01 · RECTILINEAR SURVEY`). |
@@ -345,8 +343,8 @@ Set in `IBM Plex Mono` (`--type-colophon`) with `1px` `--border-hairline` cell p
 | Section Slot | Heading / Label | Sample Copy (`CAT. 001 — TRELLICK TOWER`) |
 | :--- | :--- | :--- |
 | **Primary Essay Heading** | `ARCHITECTURAL ANALYSIS` | `Commissioned by the Greater London Council for the Cheltenham Estate and opened in June 1972, Trellick Tower isolates vertical circulation and mechanical plant inside an autonomous concrete service shaft. By separating elevators, refuse chutes, and the rooftop boiler room from the thirty-one-storey residential slab, Ernő Goldfinger removed mechanical vibration from the 217 apartments. Aerial access bridges span to every third floor, feeding split-level maisonettes above and below each internal street.` |
-| **Pull-Quote Overline** | `MONOGRAPH CITATION` | |
-| **Pull-Quote Body** | `“The detached service tower is not an ornament attached to housing; it is the vertical spine that liberates every floor plate from mechanical intrusion.”` | `--type-quote` |
+| **Structural Observation Callout Overline** | `STRUCTURAL OBSERVATION` | Replaces fabricated citation labels; no quotation marks or fabricated source attributions are permitted. |
+| **Structural Observation Callout Body (Unquoted & Unattributed)** | `Detached circulation cores isolate mechanical plant and elevator shafts from the residential slab, eliminating structure-borne vibration across all thirty-one storeys.` | `--type-quote` — Measured, unquoted, unattributed structural observation distinct from the lead summary (`summary`) and historical essay. |
 | **Observations Heading** | `STRUCTURAL OBSERVATIONS` | |
 | **Observation 01** | `OBS. 01 — DETACHED CORE` | `Lifts, stairs, and vertical risers occupy an independent concrete tower joined to the main slab by sliding-bearing bridges at every third storey.` |
 | **Observation 02** | `OBS. 02 — CANTILEVERED PLANT` | `The upper boiler room projects outward from the service shaft on deep concrete brackets, concentrating mechanical dead load over the vertical pier.` |
@@ -358,27 +356,27 @@ Set in `IBM Plex Mono` (`--type-colophon`) with `1px` `--border-hairline` cell p
 | Element | Copy | `aria-label` |
 | :--- | :--- | :--- |
 | **Anatomy Cross-Link Overline** | `STRUCTURAL CROSS-REFERENCE` | |
-| **Anatomy Cross-Link Title (When `hasAnatomyPlate === true`)** | `INSPECT {STRUCTURE} IN 04 ANATOMY` *(e.g. `INSPECT TRELLICK TOWER IN 04 ANATOMY`)* | |
-| **Anatomy Cross-Link Title (Fallback when `false`)** | `INSPECT {MOVEMENT} SYSTEM IN 04 ANATOMY` | |
-| **Anatomy Cross-Link CTA** | `OPEN 04 ANATOMY ↗` | `OPEN 04 ANATOMY ORTHOGRAPHIC PLATE FOR {STRUCTURE}` |
+| **Anatomy Cross-Link Title (When `hasAnatomyPlate === true`)** | `INSPECT {STRUCTURE} IN 03 ANATOMY` *(e.g. `INSPECT TRELLICK TOWER IN 03 ANATOMY`)* | |
+| **Anatomy Cross-Link Title (Fallback when `false`)** | `INSPECT {MOVEMENT} SYSTEM IN 03 ANATOMY` | |
+| **Anatomy Cross-Link CTA** | `OPEN 03 ANATOMY ↗` | `OPEN 03 ANATOMY ORTHOGRAPHIC PLATE FOR {STRUCTURE}` |
 | **Footer Link 01** | `← PREVIOUS PLATE` + `{CAT. NNN} {STRUCTURE}` | `NAVIGATE TO PREVIOUS PLATE: {CAT. NNN} {STRUCTURE}` |
 | **Footer Link 02** | `ALL PLATES` | `RETURN TO 02 ARCHIVE (27 STRUCTURES)` |
 | **Footer Link 03** | `NEXT PLATE →` + `{CAT. NNN} {STRUCTURE}` | `NAVIGATE TO NEXT PLATE: {CAT. NNN} {STRUCTURE}` |
 
 ---
 
-## 5. Route `04 ANATOMY` (`/anatomy`)
+## 5. Route `03 ANATOMY` (`/anatomy`)
 
 ### 5.1 Document Metadata
 
-- **`<title>`:** `04 ANATOMY — MONOLITH Orthographic Section Plates (09 Drawings)`
+- **`<title>`:** `03 ANATOMY — MONOLITH Orthographic Section Plates (09 Drawings)`
 - **`<meta name="description">`:** `Interactive orthographic section plates, load vectors, and metric dimension schedules for nine Brutalist, Gothic, and Monumental structures.`
 
 ### 5.2 Page Header & Surface Polarity Switcher
 
 | Slot | Copy | Token |
 | :--- | :--- | :--- |
-| **Route Overline** | `04 / ANATOMY · ORTHOGRAPHIC SECTION PLATES` | `--type-colophon` |
+| **Route Overline** | `03 / ANATOMY · ORTHOGRAPHIC SECTION PLATES · SECTION 03` | `--type-colophon` |
 | **Page Title** | `STRUCTURAL ANATOMY` | `--type-display` |
 | **Header Abstract** | `Nine orthographic section plates isolating load paths, structural axes, and material assemblies across Brutalist, Gothic, and Monumental systems.` | `--type-body-lead` |
 | **Surface Polarity Toggle** | `[ SURFACE: PLASTER / VOID ]` | `--type-ui-label` (`aria-pressed={surface === 'void'}`) |

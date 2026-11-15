@@ -52,6 +52,7 @@ export interface BuildingRecord {
   materialCode: string;
   status: StructureStatus;
   summary: string;
+  structuralAxiom: string;
   structuralNotes: string;
   historicalContext: string;
   imagePath: string;
@@ -112,6 +113,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Thirty-one-storey residential slab linked to a detached vertical service and circulation shaft by elevated concrete bridges.',
+    structuralAxiom:
+      'Vertical circulation and mechanical plant stand 4.5 meters clear of the 98-meter shear-wall housing slab, linked solely at nine third-storey bridge horizons.',
     structuralNotes:
       'Separating lifts, refuse chutes, and the cantilevered boiler room into an independent tower isolates acoustic vibration from the 217 apartments. Access bridges connect the shaft to the residential block at every third floor, serving split-level maisonettes above and below each corridor.',
     historicalContext:
@@ -157,6 +160,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'High-density residential and civic complex organized around an elevated pedestrian podium and three 123-meter residential towers.',
+    structuralAxiom:
+      'Three 42-storey towers rise 123 meters from deep piling beneath a continuous six-level reinforced concrete podium that segregates pedestrian courts from subterranean infrastructure.',
     structuralNotes:
       'Pedestrian decks sit entirely above vehicular roads, parking garages, and service yards. Cromwell, Shakespeare, and Lauderdale towers employ deeply recessed balconies and bush-hammered concrete finishes achieved manually after formwork removal.',
     historicalContext:
@@ -204,6 +209,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Eighteen-storey vertical housing slab raised on sculptural concrete pilotis and organized around internal double-height streets.',
+    structuralAxiom:
+      'Seventeen pairs of tapered reinforced concrete pilotis carry an artificial ground transfer beam supporting 337 dual-aspect maisonettes across eighteen storeys.',
     structuralNotes:
       'An independent reinforced concrete frame acts like a bottle rack receiving 337 interlocking, duplex apartment units proportioned to Le Corbusier’s Modulor system. Deep brise-soleil balconies regulate solar gain while the roof terrace houses a gymnasium, track, and sculptural ventilation stacks.',
     historicalContext:
@@ -249,6 +256,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Twelve-storey housing assembly stacked from 354 identical precast concrete boxes on a St. Lawrence River peninsula.',
+    structuralAxiom:
+      'Post-tensioned steel tendons and welded shear plates lock 354 precast concrete boxes into a self-buttressing stepped lattice without an independent structural frame.',
     structuralNotes:
       'Each 85-ton rectangular module was cast in an on-site factory, hoisted by crane, and post-tensioned with high-strength steel rods, bolts, and welds to transfer loads diagonally down to ground piers. Stepped offsets turn each apartment roof into an open terrace for the unit above.',
     historicalContext:
@@ -294,6 +303,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Cantilevered stepped-pyramid university library suspended above a two-storey subterranean reading forum on sixteen diagonal concrete piers.',
+    structuralAxiom:
+      'Sixteen biaxial post-tensioned concrete bents incline at 45 degrees from a 33.5-meter central core to hold five cantilevered stack decks in balanced tension and compression.',
     structuralNotes:
       'Sixteen angled, post-tensioned concrete bents spring outward at 45 degrees from a central concrete core to support five progressively widening and narrowing upper stack levels. Curtain-wall glazing is recessed beneath deep concrete floor slabs to limit direct solar heat.',
     historicalContext:
@@ -340,6 +351,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Symmetrical twin laboratory wings framing an unplanted travertine court bisected by a narrow linear water channel aimed toward the Pacific horizon.',
+    structuralAxiom:
+      'Story-deep prestressed Vierendeel trusses span 18.9 meters clear between exterior concrete shafts, freeing laboratory floors of interior columns.',
     structuralNotes:
       'Prestressed concrete Vierendeel trusses span 18.9 meters across the laboratory blocks, creating full-height interstitial mechanical floors between every research level so utilities can be reconfigured without columns. Formwork tie holes remain exposed and plugged with lead.',
     historicalContext:
@@ -385,6 +398,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Demolished',
     summary:
       'Twin concrete elevator shafts anchoring 140 detachable prefabricated living and office capsules bolted via four high-tension joints.',
+    structuralAxiom:
+      'One hundred forty welded steel modules cantilever independently from two slip-formed concrete cores, each unit anchored by four high-strength tension bolts.',
     structuralNotes:
       'Each 2.5 × 4.0 × 2.5 meter welded steel-frame capsule was factory-fitted with appliances and circular porthole glazing, then cantilevered independently from two rigid concrete cores. The structural system permitted individual unit replacement without disturbing neighboring capsules.',
     historicalContext:
@@ -430,6 +445,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Paired 30- and 26-storey concrete towers linked at the upper levels by a two-storey skybridge and crowned by a cylindrical revolving restaurant.',
+    structuralAxiom:
+      'Two slip-formed concrete shafts of 26 and 30 storeys achieve lateral continuity through a two-level post-tensioned skybridge at the 100-meter datum.',
     structuralNotes:
       'Two asymmetric shafts—one originally housing state-enterprise offices and the other private apartments—are anchored by exterior cylindrical stair-and-lift cores. A heavy post-tensioned bridge spans the highway axis at the 26th floor, supporting the circular crown above.',
     historicalContext:
@@ -477,6 +494,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Five interlocking two-storey horizontal concrete bars suspended perpendicularly across three vertical service cores above a forested hillside.',
+    structuralAxiom:
+      'Three vertical concrete cores restrict foundation contact to 450 square meters while suspending five two-storey steel-trussed bridge volumes up to 28 meters over the hillside.',
     structuralNotes:
       'Engineered by Temur Tkhilava and Alexander Kimberg, three unequal vertical towers (51.8 m, 39.6 m, and 21.3 m) carry steel-trussed concrete horizontal volumes cantilevering up to 28 meters over a 33-meter slope. Ground contact is restricted to roughly 450 square meters.',
     historicalContext:
@@ -528,6 +547,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'High Gothic limestone basilica introducing three-storey nave elevations, quadripartite rib vaults, and full-height external flying buttresses.',
+    structuralAxiom:
+      'Double-tiered external flyers with spoked arcades counter the lateral thrust of 37-meter quadripartite vaults across a 16.4-meter clear limestone nave.',
     structuralNotes:
       'Eliminating the traditional tribune gallery allowed clerestory lancets and rose oculi to match the height of the ground arcade. External double-tiered flying buttresses joined by radiating colonnettes transfer lateral thrust from the 16.4-meter-wide, 37-meter-high quadripartite nave vaults.',
     historicalContext:
@@ -576,6 +597,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Double-aisled cathedral built on the Île de la Cité, pioneering long-span single-leap flying buttresses around a five-aisled choir and nave.',
+    structuralAxiom:
+      'Single-span limestone flying buttresses leap 15 meters over double side aisles to stabilize thin clerestory walls beneath 33-meter sexpartite vaults.',
     structuralNotes:
       'Sexpartite rib vaults spring above cylindrical piers at 33 meters elevation, braced laterally by thin exterior flyers added in the 1180s and rebuilt in the 13th century to span both ambulatory aisles in single sweeping arches.',
     historicalContext:
@@ -623,6 +646,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Five-aisled cruciform cathedral holding the tallest twin-spire facade in Europe and a 43.35-meter interior central vault.',
+    structuralAxiom:
+      'Bundled trachyte and sandstone piers channel loads from 43.35-meter vaults and 157.2-meter openwork spires down to deep Roman-era foundation strata.',
     structuralNotes:
       'Continuous bundled shafts rise unbroken from the nave floor to the 43.35-meter quadripartite vaults, producing a vertical height-to-width ratio exceeding 3.6:1. Twin open-tracery stone spires scale 157.22 meters atop massive west towers.',
     historicalContext:
@@ -670,6 +695,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Five-aisled marble-clad basilica crowned by 135 stone pinnacles, flying buttresses, and a 108.5-meter central crossing spire.',
+    structuralAxiom:
+      'Fifty-two clustered brick-and-marble piers tied with wrought-iron tension rods carry five stepped aisles culminating in a 45.55-meter central vault and 108.5-meter crossing spire.',
     structuralNotes:
       'Built around a brick structural core faced in pink-grey Candoglia marble, the wide low-pitched nave deploys 52 clustered piers topped by sculpted figurative capitals. Wrought-iron tension tie rods supplement external flying buttresses across the 45.55-meter nave vault.',
     historicalContext:
@@ -717,6 +744,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Two-tiered royal palatine reliquary chapel whose upper nave eliminates masonry wall planes in favor of fifteen-meter lancet glass bays.',
+    structuralAxiom:
+      'Deep exterior pier buttresses and iron masonry chains embedded through 15-meter stained-glass mullions absorb upper vault thrust without flying buttresses.',
     structuralNotes:
       'The low-vaulted stone lower chapel acts as a heavy plinth supporting the slender upper vessel without flying buttresses. Deep exterior pier buttresses combined with concealed wrought-iron tie chains embedded in the stone masonry resist lateral vault thrust across the glazed bays.',
     historicalContext:
@@ -765,6 +794,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Uniform Early English double-transept cathedral grounded in Chilmark limestone and crowned by the tallest masonry spire in Britain.',
+    structuralAxiom:
+      'Four slender Chilmark limestone crossing piers carry 6,500 metric tons of tower and 123-meter spire masonry stabilized by internal iron ties and strainer arches.',
     structuralNotes:
       'Unlike continental French verticality, the three-storey elevation emphasizes horizontal Purbeck marble stringcourses and slender detached pier shafts. Added in the 14th century, the 6,500-ton tower and 123-meter spire required internal iron bracing and strainer arches to stabilize four slender crossing piers.',
     historicalContext:
@@ -811,6 +842,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Unbroken rectangular Perpendicular vessel spanned by the world’s largest limestone fan vault above twelve bays of traceried glass.',
+    structuralAxiom:
+      'Twelve external buttresses with weighted pinnacles balance 100-millimeter-thin oolitic limestone fan vaults spanning 12.2 meters across an aisleless hall.',
     structuralNotes:
       'Twelve deep external buttresses absorb the outward thrust of John Wastell’s 12.2-meter-wide fan vault, leaving the interior free of aisles. Semi-conical masonry shells interlock along transverse four-centered ribs, achieving shell thicknesses as thin as 100 millimeters near the crown.',
     historicalContext:
@@ -858,6 +891,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Non-transept High Gothic cathedral employing stepped double side aisles and steep twin-tiered flying buttresses.',
+    structuralAxiom:
+      'Stepped five-aisle vaults rising from 9.3 to 21.3 to 37.15 meters distribute lateral loads outward through steeply inclined, thin-profile flying buttresses.',
     structuralNotes:
       'Eliminating the projecting transept allowed an unbroken longitudinal pyramid section: outer aisles rise to 9.3 meters, inner aisles to 21.3 meters with their own triforium and clerestory, and the central sexpartite nave reaches 37.15 meters. Steeply pitched flying buttresses brace the thin clerestory walls.',
     historicalContext:
@@ -905,6 +940,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Doulting limestone cathedral renowned for its sculptural screen west front, star-ribbed octagonal chapter house, and structural scissor arches.',
+    structuralAxiom:
+      'Openwork masonry scissor arches inserted in 1338–1348 cross-brace all four faces of the central tower piers against differential foundation settlement.',
     structuralNotes:
       'When the newly heightened 55-meter central tower settled and cracked the crossing piers in 1338, master mason William Joy inserted massive inverted-arch strainer trusses across three crossing bays. Earlier, the 1306 chapter house deployed thirty-two tierceron ribs radiating from a single central pier.',
     historicalContext:
@@ -957,6 +994,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Imperial Byzantine basilica suspending a 31.8-meter ribbed brick dome on four spherical pendentives between colossal eastern and western half-domes.',
+    structuralAxiom:
+      'Four spherical brick pendentives transition a 31.8-meter square bay into a forty-ribbed dome crown 55.6 meters above the Proconnesian marble floor.',
     structuralNotes:
       'Four massive ashlar piers carry four giant arches and triangular spherical pendentives that transition a square central bay into a circular drum pierced by forty arched windows. Longitudinal thrust discharges through paired half-domes, while lateral thrust meets deep north-south stone buttress piers.',
     historicalContext:
@@ -1005,6 +1044,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Cascading Ottoman dome complex perched above the Golden Horn, balancing a 26.5-meter central dome on four monumental piers and paired half-domes.',
+    structuralAxiom:
+      'Four Küfeki limestone elephant piers and axial half-domes channel the outward thrust of the 26.5-meter main dome into stepped lateral buttress walls.',
     structuralNotes:
       'Sinan embedded the primary buttressing piers into the side walls and stepped the exterior silhouette downward from the 53-meter central dome through axial half-domes and corner cupolas. Hollow clay resonators inserted in the dome masonry tune interior acoustics.',
     historicalContext:
@@ -1052,6 +1093,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Unified single-dome prayer hall resting on an octagonal drum supported by eight piers and framed by four 70.9-meter fluted minarets.',
+    structuralAxiom:
+      'Eight polygonal piers arranged in an inscribed octagon support a single 31.3-meter dome drum braced by corner squinches and external flying arches.',
     structuralNotes:
       'Replacing the bidirectional half-domes of earlier Ottoman mosques, Sinan placed eight polygonal stone piers in an octagon tied into the outer walls via flying arches and corner squinches. This concentrates the 31.3-meter dome into an unobstructed single spatial volume.',
     historicalContext:
@@ -1099,6 +1142,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Hilltop civic acropolis comprising the 262-meter Road of Lions, a colonnaded Ceremonial Plaza, and a rectilinear travertine-clad Hall of Honour.',
+    structuralAxiom:
+      'A reinforced concrete peristyle clad in Kayseri travertine carries 14.4-meter square piers and a coffered slab spanning the 57.35-by-41.65-meter Hall of Honour.',
     structuralNotes:
       'A heavy reinforced concrete core supports the peristyle colonnade of 14.4-meter square-fluted piers around the 57.35 × 41.65 meter mausoleum block. The Hall of Honour encloses a single 40-ton monolithic Osmaniye marble cenotaph beneath a flat geometric coffered ceiling.',
     historicalContext:
@@ -1146,6 +1191,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Unreinforced concrete rotunda whose 43.3-meter hemispherical dome encloses a geometric sphere and opens to the sky through an 8.2-meter oculus.',
+    structuralAxiom:
+      'Six-point-four-meter brick-faced concrete walls and graded volcanic aggregates support a 43.3-meter unreinforced dome crowned by an 8.2-meter compression oculus.',
     structuralNotes:
       'Concrete aggregate density grades systematically from heavy travertine and tufa in the 6.4-meter-thick drum foundations to lightweight volcanic pumice around the compression-ring oculus. Five stepped exterior rings and 140 recessed interior coffers reduce dead weight while controlling radial hoop tension.',
     historicalContext:
@@ -1192,6 +1239,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Octagonal cast-concrete parliamentary citadel encircled by an artificial lake and pierced by colossal circular, triangular, and rectangular apertures.',
+    structuralAxiom:
+      'Eight concentric concrete perimeter blocks with inlaid marble pour-joint bands wrap a 47.2-meter octagonal chamber roofed by a parabolic shell umbrella.',
     structuralNotes:
       'Eight peripheral office and circulation towers buffer the central octagonal parliamentary chamber from tropical monsoon heat and glare. Regular horizontal white marble bands set into the concrete lifts serve simultaneously as formwork joints, drip grooves, and geometric datum lines.',
     historicalContext:
@@ -1238,6 +1287,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Hypostyle legislative hall anchored by a monumental upturned portico and pierced by a 38-meter hyperbolic paraboloid assembly chimney.',
+    structuralAxiom:
+      'A 150-millimeter thin-shell hyperbolic paraboloid concrete drum rises 38 meters through an orthogonal hypostyle column grid behind an upturned brise-soleil trough.',
     structuralNotes:
       'A square concrete grid column hall surrounds two autonomous chambers rising through the roof plane: a circular assembly crowned by a 15-centimeter-thick hyperbolic cooling-tower shell truncated obliquely toward the sun, and a pyramidal council chamber.',
     historicalContext:
@@ -1285,6 +1336,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Under Completion',
     summary:
       'Monumental expiatory basilica whose branching double-twisted columns and ruled hyperboloid vaults transfer loads strictly along catenary compression lines.',
+    structuralAxiom:
+      'Inclined double-twisted stone columns branched along inverted catenary curves resolve vault forces internally in compression up to the 172.5-meter central tower.',
     structuralNotes:
       'Inclined polygonal piers divide into angled branches calculated from hanging-chain static models so stone columns carry vertical and lateral vault loads in pure compression without exterior flying buttresses. Pre-tensioned stone panels form the upper central towers currently under completion.',
     historicalContext:
@@ -1330,6 +1383,8 @@ export const BUILDINGS: BuildingRecord[] = [
     status: 'Standing',
     summary:
       'Ninety-one-meter stepped pyramidal concrete and porphyry cenotaph housing a domed interior Hall of Fame ringed by colossal carved figures.',
+    structuralAxiom:
+      'Sixty-five driven concrete piles bear 300,000 metric tons of cyclopean granite-porphyry and mass concrete rising 91 meters over a double-domed crypt and hall.',
     structuralNotes:
       'Estimated at 300,000 metric tons, the hollow tapered tower rests on sixty-five concrete foundation piers supporting a domed crypt and a 68-meter upper Hall of Fame. At the time of completion, it ranked among the largest mass-concrete structures in Europe.',
     historicalContext:

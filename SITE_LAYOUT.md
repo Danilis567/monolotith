@@ -25,12 +25,12 @@ MONOLITH treats the browser viewport as an **architectural drafting sheet and mu
 
 | Tier | Range | Grid Columns | Gutter (`column-gap`) | Header / Footer Outer Margin | `#main-content` Margin (`--grid-margin`) | Primary Role |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **`mobile` (`< md`)** | `< 768px` | **4 columns** | `16px` (`1rem`) | `16px` (`1rem`) | **`10%`** (both sides) | Re-composed single-sheet poster stack & accessible catalog slips |
-| **`tablet` (`md`)** | `768px – 1023px` | **8 columns** | `20px` (`1.25rem`) | `24px` (`1.5rem`) | **`10%`** (both sides) | Dual-zone split plates & 2-col index slip grid |
-| **`desktop` (`lg`)** | `1024px – 1439px` | **12 columns** | `24px` (`1.5rem`) | `32px` (`2rem`) | **`10%`** (both sides) | Full exhibition poster grid, vertical marginalia & 3-col prose |
-| **`exhibition` (`xl`)** | `>= 1440px` | **12 columns** | `24px` (`1.5rem`) | `48px` (`3rem`) | **`10%`** (both sides) | Full-bleed poster framing (`max-inline-size: 1680px` centered) |
+| **`mobile` (`< md`)** | `< 768px` | **4 columns** | `16px` (`1rem`) | `16px` (`1rem`) | **`1rem` (`16px`)** | Re-composed single-sheet poster stack & accessible catalog slips |
+| **`tablet` (`md`)** | `768px – 1023px` | **8 columns** | `20px` (`1.25rem`) | `24px` (`1.5rem`) | **`1.5rem` (`24px`)** | Dual-zone split plates & 2-col index slip grid |
+| **`desktop` (`lg`)** | `1024px – 1439px` | **12 columns** | `24px` (`1.5rem`) | `32px` (`2rem`) | **`10%`** (`--grid-max-width: 100%`) | Full exhibition poster grid, vertical marginalia & 3-col prose |
+| **`exhibition` (`xl`)** | `>= 1440px` | **12 columns** | `24px` (`1.5rem`) | `48px` (`3rem`) | **`10%`** (`--grid-max-width: 100%`) | Full-bleed poster framing (`10%` side margins across full viewport) |
 
-### 2.2 Exposed Grid Overlay, `10%` Main Content Squeeze & Structural Partition Mechanics
+### 2.2 Exposed Grid Overlay, Responsive `#main-content` Margins & Container-Query Typography (`cqi`)
 
 ```css
 /* Global outer margins apply to <SiteHeader /> and <SiteFooter /> */
@@ -44,11 +44,33 @@ MONOLITH treats the browser viewport as an **architectural drafting sheet and mu
 @media (width >= 1024px) { :root { --grid-margin: 2rem; } }
 @media (width >= 1440px) { :root { --grid-margin: 3rem; } }
 
-/* Squeeze all main content 10% inward on both sides (excluding navbar & footer) */
+/* Responsive #main-content margins: full-width readability on mobile/tablet, 10% squeeze on desktop */
 #main-content {
-  --grid-margin: 10%;
+  --grid-margin: 1rem;
 }
 
+@media (width >= 768px) {
+  #main-content {
+    --grid-margin: 1.5rem;
+  }
+}
+
+@media (width >= 1024px) {
+  #main-content {
+    --grid-margin: 10%;
+    --grid-max-width: 100%;
+  }
+}
+
+/* Container-query inline sizing on multi-column display cells prevents character clipping */
+.heroHeadlineCol,
+.thesisLeft {
+  container-type: inline-size;
+  min-inline-size: 0;
+}
+```
+
+```css
 /* Shared 12-col architectural grid container */
 .monolith-grid {
   display: grid;
@@ -76,7 +98,7 @@ MONOLITH treats the browser viewport as an **architectural drafting sheet and mu
 }
 ```
 
-- **10% Main Content Inward Squeeze (`#main-content`):** While `<SiteHeader />` and `<SiteFooter />` remain anchored to the outer viewport frame (`1rem`–`3rem`), `#main-content` overrides `--grid-margin: 10%` so `.monolith-grid`, `.surveyStripGrid`, `.filterShell`, and `.specimen-stream-viewport` (`margin-inline: var(--grid-margin)`) sit with a 10% architectural margin on both left and right.
+- **Responsive `#main-content` Margin & Container-Query Typography (`cqi`):** On `< 768px`, `#main-content` uses `--grid-margin: 1rem` (`16px`); on `768px–1023px`, `--grid-margin: 1.5rem` (`24px`); and on `>= 1024px`, `--grid-margin: 10%` with `--grid-max-width: 100%` so `.monolith-grid`, `.surveyStripGrid`, `.filterShell`, and `.specimen-stream-viewport` sit with a `10%` architectural margin on both left and right without double-constraining inner tracks. Furthermore, `.heroHeadlineCol` and `.thesisLeft` establish `container-type: inline-size` and size display headlines with `cqi` units (`clamp(..., Xcqi, ...)`) so monumental words (`GRAVITY`, `ARCHITECTURE`) never clip or overflow their column tracks.
 - **Exposed Vertical Hairlines (`<GridGuides />`):** An `aria-hidden="true"` architectural overlay renders vertical `1px` `--border-hairline` tracks (`opacity: 0.28` for background column guides; full `--border-hairline` for semantic section partitions) aligned to column boundaries `1, 4, 7, 10, 13` on desktop and `1, 5` on mobile.
 - **Intersection Registration Marks (`<CornerCrosshair />`):** `13×13px` geometric `+` SVG primitives (`stroke-width: 1px`, `vector-effect: non-scaling-stroke`, `aria-hidden="true"`) placed at major band intersections (`row × col`) and inset `4px` inside `.svgViewport` so mobile `375px` never spills horizontally.
 - **Stepped Corner Notches (`<SteppedFrame />`):** Top mitered `90°` L-brackets (`inset: 0.75rem` inside `.heroPlateAspect`, clearing the bottom title/caption scrim) paired with a `0.75rem` outer paspartu frame on `.heroPlateLink` and `1.5rem` horizontal / `1.35rem` bottom overlay inset so text never collides with registration marks. Never placed on buttons or small UI controls.
@@ -97,9 +119,9 @@ src/app/
 │   └── page.tsx               # 02 ARCHIVE (/archive) — PLATE & INDEX views (27 structures)
 ├── structures/
 │   └── [slug]/
-│       └── page.tsx           # 03 STRUCTURE DETAIL (/structures/[slug]) — CAT. 001–027 / ARC-001–027 dossiers
+│       └── page.tsx           # SPECIMEN DOSSIER (/structures/[slug]) — CAT. 001–027 / ARC-001–027 dossiers
 └── anatomy/
-    └── page.tsx               # 04 ANATOMY (/anatomy) — 9 orthographic plates (Plaster / Void switcher)
+    └── page.tsx               # 03 ANATOMY (/anatomy) — 9 orthographic plates (Plaster / Void switcher)
 ```
 
 ### 3.2 Masthead & Navigation Architecture (`<SiteHeader />`)
@@ -113,8 +135,8 @@ Single `<header aria-label="PRIMARY ARCHIVE HEADER">` containing one `<nav aria-
   - **Cols 4–9 (Center Rail):** Inline horizontal route links (`display: flex; gap: 2rem`), set in `--type-ui-label` (`12px` Inter `500`, `UPPERCASE`, `+0.14em` tracking):
     - `01 HOME` (`/`)
     - `02 ARCHIVE` (`/archive`)
-    - `04 ANATOMY` (`/anatomy`)
-    - *(Note: `03 STRUCTURE DETAIL` is accessed from any specimen card/row, Home `CAT. 001` callout, or the `• MENU` drawer directory (`03 STRUCTURE DETAIL · CAT. 001`), and surfaces explicitly in `/structures/[slug]` breadcrumbs.)*
+    - `03 ANATOMY` (`/anatomy`)
+    - *(Note: `/structures/[slug]` is accessed via specimen cards, tabular index rows, Home `CAT. 001` callout, and Anatomy cross-links, and retains its internal hierarchical breadcrumb `01 HOME / 02 ARCHIVE / {MOVEMENT} / {CAT} · {NAME}`. It is omitted from the Header, Drawer, and Footer navigation lists.)*
     - **Active Indicator (`aria-current="page"`):** Paired **Signal Vermilion `5px` dot (`•`)** + **`1px solid var(--signal-border)` bottom rule** + **`font-weight: 700`** (never color alone, per WCAG 1.4.1).
   - **Cols 10–12 (Right Telemetry & Drawer Trigger):** Live catalog telemetry (`• INDEXED: 27 PLATES` in `IBM Plex Mono` `tabular-nums`, `--ink-secondary`) + `• MENU` / `CLOSE ×` drawer toggle (`min-block-size: 44px; min-inline-size: 44px`).
 - **Mobile & Tablet Layout (`< 1024px`, 4/8 columns):**
@@ -124,8 +146,8 @@ Single `<header aria-label="PRIMARY ARCHIVE HEADER">` containing one `<nav aria-
     - Native `<dialog>` provides automatic focus trapping, `inert` background, and `Esc` dismissal without custom focus-trap libraries.
     - Full-bleed `100dvw × 100dvh`, `Void Concrete` (`#131313`) ground, exposed 4-column hairline tracks.
     - Top bar (`56px`): `FOLIO DIRECTORY · EDITION IV` + close button (`CLOSE ×`, `44×44px`).
-    - Body: Vertical stacked monolithic links (`01 HOME`, `02 ARCHIVE`, `03 STRUCTURE DETAIL`, `04 ANATOMY` — where `03 STRUCTURE DETAIL` links to the featured/active specimen dossier `/structures/trellick-tower` with `CAT. 001` / `ARC-001` telemetry) set in `Bodoni Moda 600` (`clamp(2.25rem, 8vw, 3.5rem)`), each row bounded by `1px solid var(--border-hairline)` with laconic description and `↗` arrow.
-    - Footer strip inside drawer: `DATUM 51°30'00"N × 0°07'00"W · METRIC SI · 126–PRESENT`.
+    - Body: Vertical stacked monolithic links strictly for the 3 primary routes (`01 HOME`, `02 ARCHIVE`, `03 ANATOMY`) set in `Bodoni Moda 600` (`clamp(2.25rem, 8vw, 3.5rem)`), each row bounded by `1px solid var(--border-hairline)` with laconic description and `↗` arrow.
+    - Footer strip inside drawer: `DATUM 51°30'00"N × 0°07'00"W · METRIC SI · VOL. IV · 126–PRESENT`.
 
 ### 3.3 Global Footer (`<SiteFooter aria-label="ARCHIVE COLOPHON AND INDEX STATEMENT">`)
 
@@ -133,7 +155,7 @@ Single `<header aria-label="PRIMARY ARCHIVE HEADER">` containing one `<nav aria-
 - **Upper Band (12 cols):**
   - `>= 1024px`: Renders `brand/footer-lockup.svg` (or `footer-lockup-light.svg`) spanning full container width (`>= 880px` minimum width per `LOGO_GUIDELINES.md` §3).
   - `< 1024px`: Automatically swaps to `brand/monolith-wordmark-dark.svg` (or `-light.svg`) + stacked `IBM Plex Mono` colophon lines so `13.5`-unit SVG micro-text never drops below legible thresholds.
-- **Middle Band:** 4-cell colophon ledger (`CLASSIFICATION: ARCHIVAL MONOGRAPH`, `DATUM: WGS84 · METRIC SI`, `SET IN: BODONI MODA / INTER / IBM PLEX MONO`, `© 2026 MONOLITH · EDITION: VOL. IV · 15 / 11 / 2026`) + 4-route / 3-movement quick index separated by `1px` vertical hairlines on desktop, stacked with horizontal `1px` rules on `< 768px`.
+- **Middle Band:** 4-cell colophon ledger (`CLASSIFICATION: ARCHIVAL MONOGRAPH`, `DATUM: WGS84 · METRIC SI`, `SET IN: BODONI MODA / INTER / IBM PLEX MONO`, `© 2026 MONOLITH · EDITION: VOL. IV · 15 / 11 / 2026`) + 3-route (`01 HOME`, `02 ARCHIVE`, `03 ANATOMY`) / 3-movement quick index separated by `1px` vertical hairlines on desktop, stacked with horizontal `1px` rules on `< 768px`.
 - **Bottom Ruler Rail (`aria-hidden="true"`):** `1px` baseline with repeating `4px` minor / `8px` major graduation ticks and `tabular-nums` metric markers (`00  10  20  30  40  50  60 ... 120`, referencing `45e4f814...jpg`), paired with `TOP OF FOLIO ↑` (`aria-label="RETURN TO TOP OF PAGE"`).
 
 ---
@@ -146,7 +168,7 @@ Designed as a continuous 4-band vertical exhibition poster on `Void Concrete` (`
 
 ```text
 +=============================================================================+
-| [NAV] MONOLITH | 01 HOME •   02 ARCHIVE   04 ANATOMY | • INDEXED: 27 PLATES |
+| [NAV] MONOLITH | 01 HOME •   02 ARCHIVE   03 ANATOMY | • INDEXED: 27 PLATES |
 +=============================================================================+
 | BAND A: FULL-BLEED HERO POSTER (min-block-size: calc(100dvh - 64px))        |
 |                                                                             |
@@ -154,7 +176,7 @@ Designed as a continuous 4-band vertical exhibition poster on `Void Concrete` (`
 |  MASS / CAST / UNDER / GRAVITY   126–1982                                   |
 |                                  +-------------------------+                |
 |  ARCHITECTURAL MONOGRAPH         |   [Z2: HERO PLATE]      | CAT. 001       |
-|  · FOLIO 01 (Signal Vermilion)   |   Trellick Tower        | TRELLICK TOWER |
+|  · FOLIO IV (Signal Vermilion)   |   Trellick Tower        | TRELLICK TOWER |
 |                                  |   silhouette + core     | Ernő Goldfinger|
 |  Raw aggregate, load-bearing     |   #C8281E glow          | 98.0 M ·       |
 |  geometry, and archival record.  |   [aspect-ratio: 3/4]   | BÉTON BRUT     |
@@ -167,8 +189,8 @@ Designed as a continuous 4-band vertical exhibition poster on `Void Concrete` (`
 |  +---------------+------------------+------------------------------------+  |
 |  | COL 1-3       | COL 4-6          | COL 7-12                           |  |
 |  | I-III 3-Col   | MONOGRAPH NOTE   | Monumental Architectural Plate     |  |
-|  | Prose (34ch)  | "Bodoni Italic   | [aspect-ratio: 16/10]              |  |
-|  |               |  pull-quote"     | CAT. 003 · UNITÉ D'HABITATION      |  |
+|  | Prose (34ch)  | Unquoted thesis  | [aspect-ratio: 16/10]              |  |
+|  |               | observation      | CAT. 003 · UNITÉ D'HABITATION      |  |
 +=============================================================================+
 | BAND C: 01.2 — SPECIMEN STREAM / SURVEYED PLATES     [ PAUSE STREAM ] (WCAG) |
 |  [ PLATE 3:4 ] | [ LANCET ARCH 3:4 ] | [ PLATE 16:10 ] | [ PLATE 3:4 ] ...  |
@@ -183,10 +205,10 @@ Designed as a continuous 4-band vertical exhibition poster on `Void Concrete` (`
 
 - **Band A — Full-Bleed Poster Hero (`min-block-size: calc(100dvh - 64px)`):**
   - **Vertical Flanking Edge Strip (`aria-hidden="true"`, Desktop Col 1 outer rail):** `RAW, CONCRETE, MONOLITHIC. BOARD-FORMED, LOAD-BEARING, PERMANENT.` (`7ed9e87d...jpg`).
-  - **Z-1 (Cols 1–12, Backdrop):** Hollow outline echo word `MONOLITH` (`-webkit-text-stroke: 1px var(--border-hairline); color: transparent`, `aria-hidden="true"`) layered behind the upper-middle hero structure plate, paired with stacked display `<h1>` `MASS` / `CAST` / `UNDER` / `GRAVITY` (`Bodoni Moda 900`, `--type-monolith`, `line-height: 0.86`, `-0.045em`) + chronology stamp `126–1982` anchored flush to the headline right edge.
+  - **Z-1 (Cols 1–12, Backdrop):** Hollow outline echo word `MONOLITH` (`-webkit-text-stroke: 1px var(--border-hairline); color: transparent`, `aria-hidden="true"`) layered behind the upper-middle hero structure plate, paired with stacked display `<h1>` `MASS` / `CAST` / `UNDER` / `GRAVITY` (`Bodoni Moda 900`, `--type-monolith`, `line-height: 0.86`, `-0.045em`, container-query `cqi` sizing inside `.heroHeadlineCol`) + chronology stamp `126–1982` anchored flush to the headline right edge.
   - **Z-2 (Cols 5–9, Center-Right Mass):** Primary hero architectural plate (`CAT. 001` Trellick Tower, `aspect-ratio: 3 / 4`, `fetchpriority="high"`, **NO `loading="lazy"`**), bounded by `<SteppedFrame />` corner notches and optional interior `--signal-glow` (`#C8281E`) behind the concrete silhouette (`preview (1).webp`).
   - **Z-3 (Cols 1–4 Lower Left & Cols 10–12 Mid-Right):**
-    - Left: `• ARCHITECTURAL MONOGRAPH · FOLIO 01` (`--type-colophon`, `--signal-ink`), lead abstract (`Raw aggregate, load-bearing geometry, and archival record. Surveying brutalist, gothic, and monumental masonry structures erected across nine centuries.`, `<= 44ch`), and dual CTAs: `↗ ENTER ARCHIVE` (`1px solid var(--border-structural)`, `min-block-size: 44px`) + `VIEW MANIFESTO ↓`.
+    - Left: `• ARCHITECTURAL MONOGRAPH · FOLIO IV` (`--type-colophon`, `--signal-ink`), lead abstract (`Raw aggregate, load-bearing geometry, and archival record. Surveying brutalist, gothic, and monumental masonry structures erected across nine centuries.`, `<= 44ch`), and dual CTAs: `↗ ENTER ARCHIVE` (`1px solid var(--border-structural)`, `min-block-size: 44px`) + `VIEW MANIFESTO ↓`.
     - Right: Featured Monolith Specimen Callout (`CAT. 001` in `--signal-ink` `#F45D4D`, `TRELLICK TOWER`, `Ernő Goldfinger, 1972`, `London, United Kingdom`, `98.0 M · BÉTON BRUT`, `+ INSPECT DOSSIER ↗` linking to `/structures/trellick-tower`).
   - **Hero Bottom Survey Strip (4 equal cells across 12 cols, `1px solid var(--border-hairline)` top rule):**
     - Cell 01: `• CURRENT SURVEY` — `Load-Bearing Concrete & Pointed Ribbed Masonry`
@@ -194,9 +216,9 @@ Designed as a continuous 4-band vertical exhibition poster on `Void Concrete` (`
     - Cell 03: `SPAN RECORDED` — `126 — 1982` (`tabular-nums`)
     - Cell 04: `PRIMARY DATUM` — `WGS84 · METRIC SI ↙`
 - **Band B — Curatorial Premise & Asymmetrical Manifesto (`Takumi` `preview (2).webp` + `Martha Lives` `c5eb814a...jpg`):**
-  - Overline: `01.1 — CURATORIAL PREMISE` | Headline: `ARCHITECTURE AS PERMANENT MASS` (`--type-display`, `UPPERCASE`, `line-height: 0.94`).
+  - Overline: `01.1 — CURATORIAL PREMISE` | Headline: `ARCHITECTURE AS PERMANENT MASS` (`--type-display`, `UPPERCASE`, `line-height: 0.94`, container-query `cqi` sizing inside `.thesisLeft`).
   - Lower Split (`1px solid var(--border-hairline)` top rule):
-    - Cols 1–6: **3-column print prose** (`I. MATERIAL HONESTY`, `II. STRUCTURAL LINEAGE`, `III. ARCHIVAL RECORD`, `max-inline-size: 34ch` per column) + inlaid `MONOGRAPH NOTE` (`Bodoni Moda 400 Italic` pull-quote `--type-quote` + `— MONOLITH SURVEY FOLIO I, SECTION 04`).
+    - Cols 1–6: **3-column print prose** (`I. MATERIAL HONESTY`, `II. STRUCTURAL LINEAGE`, `III. ARCHIVAL RECORD`, `max-inline-size: 34ch` per column) + inlaid `MONOGRAPH NOTE` (`Bodoni Moda 400 Italic` unquoted, unattributed structural thesis observation `--type-quote`).
     - Cols 7–12 (`1px` left rule): Monumental `16 / 10` specimen plate (`CAT. 003` Unité d'Habitation, `loading="lazy"`).
 - **Band C — Selected Specimen Plates / Horizontal Specimen Stream:**
   - Header rail (Cols 1–12): `01.2 — SPECIMEN STREAM` / `SURVEYED PLATES` (`SHOWING 09 FEATURED OF 27`) on left; visible **WCAG 2.2.2 Pause/Play control** (`<button type="button">` toggling label between `PAUSE STREAM` and `PLAY STREAM`, **no `aria-pressed`**) on right.
@@ -206,7 +228,7 @@ Designed as a continuous 4-band vertical exhibition poster on `Void Concrete` (`
     - `01 BRUTALIST` | `1947–1980` | `09 PLATES` | `BÉTON BRUT, PRECAST & STEEL` | `FILTER BRUTALIST ↗`
     - `02 GOTHIC` | `1163–1965` | `09 PLATES` | `LIMESTONE, MARBLE & SANDSTONE` | `FILTER GOTHIC ↗`
     - `03 MONUMENTAL` | `126–PRESENT` | `09 PLATES` | `CONCRETE, LIMESTONE & GRANITE` | `FILTER MONUMENTAL ↗`
-  - **Bottom Ledger Prompt (`01.3 — COMPLETE LEDGER`):** `ACCESS THE 27-STRUCTURE INDEX` (`Twenty-seven surveyed structures across four continents...`) + `OPEN 02 ARCHIVE ↗` and `INSPECT 04 ANATOMY ↗`.
+  - **Bottom Ledger Prompt (`01.3 — COMPLETE LEDGER`):** `ACCESS THE 27-STRUCTURE INDEX` (`Twenty-seven surveyed structures across four continents...`) + `OPEN 02 ARCHIVE ↗` and `INSPECT 03 ANATOMY ↗`.
 
 ---
 
@@ -267,22 +289,22 @@ Items render sequentially in DOM order (preserving keyboard tab order!) into a *
 
 ---
 
-### 4.3 `03 STRUCTURE DETAIL` (`/structures/[slug]`)
+### 4.3 Specimen Dossier Route (`/structures/[slug]`)
 
 Monograph dossier route for any of the **27** structures (`CAT. 001`–`CAT. 027` / `ARC-001`–`ARC-027`).
 
-- **Breadcrumb Nav:** `<nav aria-label="SPECIMEN BREADCRUMB">` displaying `01 HOME / 02 ARCHIVE / {CAT. NO.} {STRUCTURE}` (`aria-current="page"` on final item).
+- **Breadcrumb Nav:** `<nav aria-label="SPECIMEN BREADCRUMB">` displaying `01 HOME / 02 ARCHIVE / {MOVEMENT} / {CAT} · {NAME}` (`aria-current="page"` on final item).
 - **Part 1 — Split Poster Header (`min-block-size: calc(100dvh - 64px)`):**
   - **Cols 1–6 (Hero Plate):** `aspect-ratio: 3 / 4`, `fetchpriority="high"`, NO `loading="lazy"`. Bounded by `<SteppedFrame />` corner notches (`12px`/`6px`).
     - *Gothic Structures (`movement === 'Gothic'`):* Clipped via SVG `#monolith-lancet-3x4` (`11–60–61` Pythagorean tangent lancet arch in `SITE_VISUAL.md` §3.2) with `0px` flat base and optional `✦` alignment stars (`aria-hidden="true"`).
     - *Brutalist & Monumental Structures:* Clipped via **Rectilinear Shear Crop** (`0px` corners).
   - **Col 7 (Vertical Marginalia Rail, Desktop `>= 1024px`):** Narrow `48px` track bounded by `1px solid var(--border-hairline)` left/right rules; vertical rotated stamp (`writing-mode: vertical-rl; transform: rotate(180deg)`): `{CAT. NO.} // {COORD. DMS} // {PLATE STAMP}` (`IBM Plex Mono`, `--ink-secondary`).
   - **Cols 8–12 (Editorial Masthead):**
-    - Overline (`--signal-ink` `#F45D4D`): `SPECIMEN DOSSIER · {CAT. NO.} · {MOVEMENT}`
+    - Overline (`--signal-ink` `#F45D4D`): `SPECIMEN DOSSIER · {CAT. NO.} · {MOVEMENT} · VOL. IV`
     - `<h1>` (`--type-monolith` / `--type-display`, `Bodoni Moda 900`): `{STRUCTURE}`
     - Subtitle (`--type-subhead`): `{ARCHITECT} · {CITY, COUNTRY} · {COMPLETION}`
     - Exhibition Abstract (`--type-body-lead`, `<= 62ch`): `summary`
-    - Action links: `ARCHITECTURAL ANALYSIS ↓` and (when `hasAnatomyPlate === true`) `OPEN 04 ANATOMY ↗` (`/anatomy?plate={anatomyPlateId}`).
+    - Action links: `ARCHITECTURAL ANALYSIS ↓` and (when `hasAnatomyPlate === true`) `OPEN 03 ANATOMY ↗` (`/anatomy?plate={anatomyPlateId}`).
 - **Part 2 — Full Technical Colophon Ledger (`<dl>` 12-Col Matrix):**
   - 9 standardized fields bounded by `1px solid var(--border-hairline)` (`3 cols × 3` on desktop, `2 cols` on tablet, `1 col` on mobile):
     1. `CAT. NO.` (`CAT. 001` / `ARC-001`)
@@ -296,7 +318,7 @@ Monograph dossier route for any of the **27** structures (`CAT. 001`–`CAT. 027
     9. `STATUS` (`Standing` / `Demolished` / `Under Completion`)
 - **Part 3 — Multi-Column Architectural Analysis & Observations:**
   - **Cols 1–9 (Desktop):** `ARCHITECTURAL ANALYSIS` (`structuralNotes` + `historicalContext`) set in **3-column print-grid layout** (`column-count: 3; column-gap: 2rem; column-rule: 1px solid var(--border-hairline);`, `max-inline-size: 34ch` per column per `BRAND.md` §3.3 & `c5eb814a...jpg`).
-  - **Cols 10–12 (Desktop):** Metric callout datum (`heightMeters` `98.0 M` in `tabular-nums`, `45e4f814...jpg` scale) + `MONOGRAPH CITATION` (`Bodoni Moda 400 Italic` pull-quote `--type-quote`).
+  - **Cols 10–12 (Desktop):** Metric callout datum (`heightMeters` `98.0 M` in `tabular-nums`, `45e4f814...jpg` scale) + `STRUCTURAL OBSERVATION` (`Bodoni Moda 400 Italic` unquoted, unattributed structural observation `--type-quote` distinct from the lead summary).
   - **Structural Observations Grid (`OBS. 01`–`OBS. 04`):** 4 equal cells (`3 cols` each on desktop, `2×2` on tablet, stacked on mobile) separated by `1px solid var(--border-hairline)` rules (`OBS. 01` through `OBS. 04`, matching `SITE_COPY.md` §4.4).
   - **Optional Structural Plates Gallery:** Secondary detail/elevation plates (`16/10` + `3/4` + `1/1`, `loading="lazy"`) when supplementary archival imagery is attached.
 - **Part 4 — 3-Link Adjacent Plate Footer (`border-block-start: 1px solid var(--border-structural)`):**
@@ -307,14 +329,14 @@ Monograph dossier route for any of the **27** structures (`CAT. 001`–`CAT. 027
 
 ---
 
-### 4.4 `04 ANATOMY` (`/anatomy`)
+### 4.4 `03 ANATOMY` (`/anatomy`)
 
 Interactive orthographic drafting workbench displaying **9** architectural plates (3 Brutalist, 3 Gothic, 3 Monumental) mapped to `hasAnatomyPlate === true` records in `src/data/buildings.ts`. Defaults to **Raw Plaster light-paper (`[data-surface="plaster"]`, `#E9E5DF` ground, `#131313` ink)** with an interactive **Drafting-Table Polarity Switcher** (`PLASTER` vs `VOID` `#131313`).
 
 - **Workbench Surface Isolation:**
   - The route `<main>` (or section wrapper) carries `data-surface={surface}` (`"plaster"` default or `"void"`), re-declaring all 23 Tier 2 semantic tokens from [tokens-color.css](file:///C:/Users/Danil/.gemini/antigravity-ide/scratch/neo-brutal/brand/tokens-color.css) (`#A81F17` Signal Crimson on plaster; `#F45D4D` Molten Vermilion on void).
 - **Top Header & Polarity Switcher (`1px solid var(--border-structural)` bottom):**
-  - Overline: `04 / ANATOMY · ORTHOGRAPHIC SECTION PLATES` | `<h1>`: `STRUCTURAL ANATOMY`
+  - Overline: `03 / ANATOMY · ORTHOGRAPHIC SECTION PLATES · SECTION 03` | `<h1>`: `STRUCTURAL ANATOMY`
   - Polarity Switcher: `[ SURFACE: PLASTER / VOID ]` `<button type="button">` (`aria-pressed={surface === 'void'}` with explicit visible text `ACTIVE: PLASTER` / `ACTIVE: VOID`).
 - **Movement Filter Tabs (`role="tablist"`, Full 12-Col Bar):**
   - 4 horizontal tabs (`0px` rectangular frames, `1px solid var(--border-structural)` active border, `•` dot + `aria-selected="true"`):
@@ -348,11 +370,11 @@ Mobile **re-composes** the poster sheet into a vertical single-sheet stack rathe
 
 | Element | Desktop (`>= 1024px`) | Mobile Re-Composition (`< 768px`) |
 | :--- | :--- | :--- |
-| **Grid & Gutters** | 12-col, `24px` gutter, `32–48px` margin | 4-col, `16px` gutter, `16px` margin; background vertical guides reduced to outer rails + center axis (cols `1, 3, 5`). |
-| **Navigation** | Inline 3-link horizontal bar (`01 HOME`, `02 ARCHIVE`, `04 ANATOMY`) + `• INDEXED: 27 PLATES` | `56px` bar (`nav-lockup` + `• MENU` trigger) opening native `<dialog>` full-bleed `100dvh` drawer (`FOLIO DIRECTORY · EDITION IV`, `01`–`04` directory, `CLOSE ×`). |
-| **Home Hero** | Overlapping Z1 colossal type + Z2 right-center tower + Z3 left thesis & right `CAT. 001` telemetry | Sequential poster stack inside `min-block-size: 100dvh`: (1) Top `ARCHITECTURAL MONOGRAPH · FOLIO 01` + `CAT. 001` bar; (2) `MASS / CAST / UNDER / GRAVITY` layered over/behind `3:4` hero plate; (3) Lead abstract + full-width `↗ ENTER ARCHIVE` & `VIEW MANIFESTO ↓`; (4) 2×2 Survey Strip (`27 / 27`, `126 — 1982`). |
+| **Grid & Gutters** | 12-col, `24px` gutter, `10%` `#main-content` margin (`--grid-max-width: 100%`) | 4-col, `16px` gutter, `16px` (`1rem`) `#main-content` margin (`24px` / `1.5rem` on `768px–1023px`); background vertical guides reduced to outer rails + center axis (cols `1, 3, 5`). |
+| **Navigation** | Inline 3-link horizontal bar (`01 HOME`, `02 ARCHIVE`, `03 ANATOMY`) + `• INDEXED: 27 PLATES` | `56px` bar (`nav-lockup` + `• MENU` trigger) opening native `<dialog>` full-bleed `100dvh` drawer (`FOLIO DIRECTORY · EDITION IV`, `01 HOME`, `02 ARCHIVE`, `03 ANATOMY` directory, `CLOSE ×`). |
+| **Home Hero** | Overlapping Z1 colossal type (`cqi` container-sized) + Z2 right-center tower + Z3 left thesis & right `CAT. 001` telemetry | Sequential poster stack inside `min-block-size: 100dvh`: (1) Top `ARCHITECTURAL MONOGRAPH · FOLIO IV` + `CAT. 001` bar; (2) `MASS / CAST / UNDER / GRAVITY` layered over/behind `3:4` hero plate; (3) Lead abstract + full-width `↗ ENTER ARCHIVE` & `VIEW MANIFESTO ↓`; (4) 2×2 Survey Strip (`27 / 27`, `126 — 1982`). |
 | **Rotated Marginalia** | `writing-mode: vertical-rl; rotate(180deg)` side rail on `/structures/[slug]` and hero edges | **Converted to horizontal ledger bar** (`flex-direction: row; flex-wrap: wrap; justify-content: space-between; border-block: 1px solid var(--border-hairline); padding-block: 0.75rem`) directly above the hero title. Zero sideways reading required. |
-| **3-Column Prose** | `column-count: 3` with `1px` vertical rules & `34ch` measure | **Collapses to 1 column** (`column-count: 1; max-inline-size: 58ch`), with the `Bodoni Moda Italic` pull-quote promoted to a full-width inset block bounded top/bottom by `1px` hairlines before paragraph 2. |
+| **3-Column Prose** | `column-count: 3` with `1px` vertical rules & `34ch` measure | **Collapses to 1 column** (`column-count: 1; max-inline-size: 58ch`), with the `Bodoni Moda Italic` unquoted structural observation block promoted to a full-width inset block bounded top/bottom by `1px` hairlines before paragraph 2. |
 | **Archive `PLATE` Grid** | 5-item asymmetrical 12-col cadence (`7+5`, `4+4+4`) | Alternating **Full-Bleed (`4 cols`, `16/10`)** and **Vertical (`4 cols`, `3/4`)** poster stack—never cramped tiny thumbnails. |
 | **Archive `INDEX` Table** | 8-column `<table>` + hover plate dock (`>= 1024px`) | On `< 1024px` (`375px` mobile 1-col, `600px–1023px` tablet 2-col), renders semantic `<ul className="mobileSlipList">` + `<dl>` **Catalog Slips** (`1px solid var(--border-hairline)`) so 8-column tabular data is never horizontally clipped at `768px`. Filter controls collapse behind a `FILTERS [ + / − ]` toggle on `< 768px`. |
 | **Anatomy Workbench** | 3-col left rail + 9-col SVG canvas | Horizontal wrapped `role="tablist"` (`ALL PLATES (09)`, `01–03`) + plate selector list -> `16:10` SVG Canvas (with internal `4px` corner crosshairs & `overflow: hidden`) -> 3-button Layer Toggle matrix (`44px` hit rows) + `ALL LAYERS [ RESET ]` + `<details>` Dimension Schedule. |

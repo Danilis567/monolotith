@@ -6,9 +6,9 @@ import { useEffect, useRef } from 'react';
 import styles from './SiteHeader.module.css';
 
 const PRIMARY_NAV = [
-  { href: '/', label: '01 HOME', folio: '01', desc: 'Poster Exhibition' },
-  { href: '/archive', label: '02 ARCHIVE', folio: '02', desc: '27 Cataloged Structures' },
-  { href: '/anatomy', label: '04 ANATOMY', folio: '04', desc: '09 Measured Sections' },
+  { index: '01', href: '/', label: '01 HOME', folio: '01', desc: 'Poster Exhibition' },
+  { index: '02', href: '/archive', label: '02 ARCHIVE', folio: '02', desc: '27 Cataloged Structures' },
+  { index: '03', href: '/anatomy', label: '03 ANATOMY', folio: '03', desc: '09 Measured Sections' },
 ] as const;
 
 export function SiteHeader({ plateCount }: { plateCount: number }) {
@@ -17,10 +17,15 @@ export function SiteHeader({ plateCount }: { plateCount: number }) {
 
   const isRouteActive = (href: string) => {
     if (href === '/') return pathname === '/';
+    if (href === '/archive') {
+      return (
+        pathname === '/archive' ||
+        pathname.startsWith('/archive/') ||
+        pathname.startsWith('/structures/')
+      );
+    }
     return pathname === href || pathname.startsWith(`${href}/`);
   };
-
-  const isDetailRoute = pathname.startsWith('/structures/');
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -39,7 +44,7 @@ export function SiteHeader({ plateCount }: { plateCount: number }) {
 
   return (
     <>
-      <header className={styles.header}>
+      <header className={styles.header} data-surface="dark">
         <div className={styles.inner}>
           <Link
             href="/"
@@ -104,6 +109,7 @@ export function SiteHeader({ plateCount }: { plateCount: number }) {
         ref={dialogRef}
         aria-label="Archival Folio Navigation"
         className="monolith-drawer"
+        data-surface="dark"
         onClick={(e) => {
           if (e.target === dialogRef.current) {
             closeDrawer();
@@ -147,7 +153,7 @@ export function SiteHeader({ plateCount }: { plateCount: number }) {
                 <Link
                   href="/archive"
                   onClick={closeDrawer}
-                  aria-current={pathname === '/archive' ? 'page' : undefined}
+                  aria-current={isRouteActive('/archive') ? 'page' : undefined}
                   className={styles.drawerLink}
                 >
                   <div>
@@ -164,31 +170,14 @@ export function SiteHeader({ plateCount }: { plateCount: number }) {
 
               <li className={styles.drawerRow}>
                 <Link
-                  href="/structures/trellick-tower"
+                  href="/anatomy"
                   onClick={closeDrawer}
-                  aria-current={isDetailRoute ? 'page' : undefined}
+                  aria-current={isRouteActive('/anatomy') ? 'page' : undefined}
                   className={styles.drawerLink}
                 >
                   <div>
                     <span className="type-colophon" style={{ display: 'block', marginBottom: '0.25rem' }}>
                       SECTION 03
-                    </span>
-                    <span className={styles.drawerTitle}>SPECIMEN FOLIO</span>
-                  </div>
-                  <span className={`${styles.drawerMeta} type-colophon`}>TRELLICK TOWER · CAT. 001</span>
-                </Link>
-              </li>
-
-              <li className={styles.drawerRow}>
-                <Link
-                  href="/anatomy"
-                  onClick={closeDrawer}
-                  aria-current={pathname === '/anatomy' ? 'page' : undefined}
-                  className={styles.drawerLink}
-                >
-                  <div>
-                    <span className="type-colophon" style={{ display: 'block', marginBottom: '0.25rem' }}>
-                      SECTION 04
                     </span>
                     <span className={styles.drawerTitle}>ANATOMY</span>
                   </div>

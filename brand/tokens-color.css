@@ -25,7 +25,7 @@
      TIER 1: SIGNAL VERMILION (STRICTLY RATIONED <= 2% VIEWPORT AREA)
      Derived from OBSIDIAN architectural vermilion & brutalist error state.
      ------------------------------------------------------------------------ */
-  --signal-vermilion-700: #8B1912; /* Limestone-safe ink/border | L = 0.06228 (4.57:1 on #B9B5AA) */
+  --signal-vermilion-700: #7D150F; /* Limestone & Plaster AA safe ink/border | 5.12:1 on #B9B5AA, 8.08:1 on #E9E5DF */
   --signal-vermilion-600: #A81F17; /* Light-surface AA normal   | L = 0.09367 (5.83:1 on #E9E5DF) */
   --signal-vermilion-500: #C8281E; /* Raw atmospheric glow / large-only on #131313 (3.34:1) */
   --signal-vermilion-400: #F45D4D; /* Dark-surface AA normal    | L = 0.27598 (5.77:1 on #131313, 4.58:1 on #282828) */
@@ -53,7 +53,8 @@
 
   /* Borders & Rules */
   --border-structural: var(--concrete-100); /* Brutalist 1-2px hard frames */
-  --border-hairline: var(--concrete-500);   /* 3.98:1 on #131313 | 3.16:1 on #282828 (WCAG 1.4.11 >=3:1) */
+  --border-hairline: var(--concrete-500);   /* 3.98:1 on #131313 (WCAG 1.4.11 >=3:1) */
+  --border-subtle: var(--concrete-500);     /* 3.98:1 on #131313 */
   --border-on-elevated: var(--concrete-300);/* 7.20:1 on #282828 */
 
   /* Signal Accent (Active indicator, error state, surgical CTA cue) */
@@ -91,7 +92,8 @@
     --ink-inverse: light-dark(var(--concrete-100), var(--concrete-950));
 
     --border-structural: light-dark(var(--concrete-950), var(--concrete-100));
-    --border-hairline: var(--concrete-500);
+    --border-hairline: light-dark(var(--concrete-800), var(--concrete-500));
+    --border-subtle: light-dark(var(--concrete-800), var(--concrete-500));
     --border-on-elevated: light-dark(var(--concrete-800), var(--concrete-300));
 
     --signal-ink: light-dark(var(--signal-vermilion-700), var(--signal-vermilion-400));
@@ -104,7 +106,7 @@
     --selection-bg: light-dark(var(--concrete-950), var(--concrete-100));
     --selection-ink: light-dark(var(--concrete-100), var(--concrete-950));
     --scrollbar-track: light-dark(var(--concrete-100), var(--concrete-950));
-    --scrollbar-thumb: var(--concrete-500);
+    --scrollbar-thumb: light-dark(var(--concrete-800), var(--concrete-500));
   }
 }
 
@@ -144,6 +146,7 @@
 
   --border-structural: var(--concrete-100);
   --border-hairline: var(--concrete-500);
+  --border-subtle: var(--concrete-500);
   --border-on-elevated: var(--concrete-300);
 
   --signal-ink: var(--signal-vermilion-400);
@@ -177,10 +180,11 @@
   --ink-inverse: var(--concrete-100);    /* 14.81:1 on #131313 */
 
   --border-structural: var(--concrete-950);
-  --border-hairline: var(--concrete-500);   /* 3.72:1 on #E9E5DF */
+  --border-hairline: var(--concrete-800);   /* 11.75:1 on #E9E5DF | 7.20:1 on #B9B5AA (WCAG 1.4.11 >=3:1) */
+  --border-subtle: var(--concrete-800);
   --border-on-elevated: var(--concrete-800);/* 7.20:1 on #B9B5AA */
 
-  /* #8B1912 passes AA normal on BOTH #E9E5DF (7.45:1) and elevated #B9B5AA (4.57:1) */
+  /* #7D150F passes AA normal on BOTH #E9E5DF (8.08:1) and elevated #B9B5AA (5.12:1) */
   --signal-ink: var(--signal-vermilion-700);
   --signal-fill: var(--signal-vermilion-600);
   --signal-on-fill: var(--concrete-100);         /* 5.83:1 on #A81F17 */
@@ -192,7 +196,7 @@
   --selection-bg: var(--concrete-950);
   --selection-ink: var(--concrete-100);
   --scrollbar-track: var(--concrete-100);
-  --scrollbar-thumb: var(--concrete-500);
+  --scrollbar-thumb: var(--concrete-800);
 }
 
 /* ==========================================================================
@@ -219,7 +223,8 @@
   --ink-inverse: var(--concrete-950);
 
   --border-structural: var(--concrete-100);
-  --border-hairline: var(--concrete-500);
+  --border-hairline: var(--concrete-500); /* 3.98:1 on #131313 */
+  --border-subtle: var(--concrete-500);
   --border-on-elevated: var(--concrete-300);
 
   --signal-ink: var(--signal-vermilion-400); /* 5.77:1 on #131313 | 4.58:1 on #282828 */
@@ -258,8 +263,9 @@
   --ink-muted-large: var(--concrete-500); /* 3.16:1 on #282828 (Large/UI ONLY) */
   --ink-inverse: var(--concrete-950);
 
-  --border-structural: var(--concrete-100);
-  --border-hairline: var(--concrete-500); /* 3.16:1 on #282828 */
+  --border-structural: var(--concrete-100); /* 11.75:1 on #282828 */
+  --border-hairline: var(--concrete-300);   /* 7.20:1 on #282828 */
+  --border-subtle: var(--concrete-300);     /* 7.20:1 on #282828 */
   --border-on-elevated: var(--concrete-300);
 
   --signal-ink: var(--signal-vermilion-400); /* 4.58:1 on #282828 (AA Normal) */
@@ -273,7 +279,7 @@
   --selection-bg: var(--concrete-100);
   --selection-ink: var(--concrete-950);
   --scrollbar-track: var(--concrete-800);
-  --scrollbar-thumb: var(--concrete-500);
+  --scrollbar-thumb: var(--concrete-300);
 
   background-color: var(--surface-canvas);
   color: var(--ink-primary);
@@ -300,11 +306,12 @@
   --ink-muted-large: var(--concrete-800);
   --ink-inverse: var(--concrete-100);
 
-  --border-structural: var(--concrete-950);
-  --border-hairline: var(--concrete-500);
+  --border-structural: var(--concrete-950);  /* 14.81:1 on #E9E5DF | 9.07:1 on #B9B5AA */
+  --border-hairline: var(--concrete-800);    /* 11.75:1 on #E9E5DF | 7.20:1 on #B9B5AA (WCAG 1.4.11 >=3:1) */
+  --border-subtle: var(--concrete-800);      /* 11.75:1 on #E9E5DF | 7.20:1 on #B9B5AA */
   --border-on-elevated: var(--concrete-800); /* 7.20:1 on #B9B5AA */
 
-  /* #8B1912 satisfies >=4.5:1 AA normal on BOTH #E9E5DF (7.45:1) and --surface-basalt #B9B5AA (4.57:1) */
+  /* #7D150F satisfies >=4.5:1 AA normal on BOTH #E9E5DF (8.08:1) and --surface-basalt #B9B5AA (5.12:1) */
   --signal-ink: var(--signal-vermilion-700);
   --signal-fill: var(--signal-vermilion-600);
   --signal-on-fill: var(--concrete-100);
@@ -316,7 +323,7 @@
   --selection-bg: var(--concrete-950);
   --selection-ink: var(--concrete-100);
   --scrollbar-track: var(--concrete-100);
-  --scrollbar-thumb: var(--concrete-500);
+  --scrollbar-thumb: var(--concrete-800);
 
   background-color: var(--surface-canvas);
   color: var(--ink-primary);
@@ -343,10 +350,11 @@
   --ink-inverse: var(--concrete-100);
 
   --border-structural: var(--concrete-950);
-  --border-hairline: var(--concrete-800); /* 7.20:1 on #B9B5AA */
+  --border-hairline: var(--concrete-800); /* 7.20:1 on #B9B5AA | 11.75:1 on #E9E5DF */
+  --border-subtle: var(--concrete-800);   /* 7.20:1 on #B9B5AA | 11.75:1 on #E9E5DF */
   --border-on-elevated: var(--concrete-950);
 
-  /* #A81F17 is 3.57:1 on #B9B5AA (fails 4.5:1), so promote signal ink/border to #8B1912 (4.57:1) */
+  /* #7D150F is 5.12:1 on #B9B5AA and 8.08:1 on #E9E5DF */
   --signal-ink: var(--signal-vermilion-700);
   --signal-fill: var(--signal-vermilion-600); /* Fill boundary 3.57:1 on #B9B5AA, inner ink 5.83:1 */
   --signal-on-fill: var(--concrete-100);
@@ -377,6 +385,7 @@
     --ink-muted: var(--ink-primary);
     --ink-muted-large: var(--ink-secondary);
     --border-hairline: var(--border-structural);
+    --border-subtle: var(--border-structural);
   }
 }
 
@@ -410,6 +419,7 @@
 
     --border-structural: CanvasText;
     --border-hairline: CanvasText;
+    --border-subtle: CanvasText;
     --border-on-elevated: CanvasText;
 
     /* LinkText contrasts cleanly on Canvas; Highlight/HighlightText pair on fills */

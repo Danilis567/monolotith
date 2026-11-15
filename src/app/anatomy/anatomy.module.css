@@ -1,10 +1,18 @@
 /* ==========================================================================
-   04 ANATOMY — Measured Orthographic Vector Plates & Layer Inspector
+   03 ANATOMY — Measured Orthographic Vector Plates & Layer Inspector
    ========================================================================== */
+
+.anatomyPage {
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  overflow-x: clip;
+}
 
 .headerBand {
   padding-block: 3rem 2rem;
-  border-bottom: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-structural);
 }
 
 .headerInner {
@@ -14,15 +22,17 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 1.5rem;
+  min-inline-size: 0;
 }
 
 .controlsBand {
   border-bottom: 1px solid var(--border-structural);
-  background-color: var(--surface-basalt);
+  background-color: var(--surface-canvas);
   color: var(--ink-primary);
 }
 
-.tabBar {
+.tabBar,
+.controlsInner {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -30,6 +40,7 @@
   gap: 0.75rem;
   padding-block: 0.75rem;
   inline-size: 100%;
+  min-inline-size: 0;
   max-inline-size: var(--grid-max-width);
   margin-inline: auto;
   padding-inline: var(--grid-margin);
@@ -39,27 +50,30 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  min-inline-size: 0;
+  max-inline-size: 100%;
 }
 
 .tabButton {
   min-block-size: 44px;
   padding: 0 1rem;
-  border: 1px solid var(--border-on-elevated);
-  background: transparent;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
   color: var(--ink-primary);
   cursor: pointer;
 }
 
 .tabButton:hover {
-  background-color: var(--surface-canvas);
+  background-color: var(--surface-elevated);
   color: var(--ink-primary);
   border-color: var(--border-structural);
 }
 
-.tabButtonActive {
-  background-color: var(--surface-inverse);
-  color: var(--ink-inverse);
-  border-color: var(--border-structural);
+.tabButtonActive,
+.tabButtonActive:hover {
+  background-color: var(--ink-primary);
+  color: var(--surface-canvas);
+  border: 1px solid var(--ink-primary);
   font-weight: 600;
 }
 
@@ -70,33 +84,44 @@
 .workbenchGrid {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 2rem;
   align-items: start;
+  min-inline-size: 0;
+  max-inline-size: 100%;
 }
 
 @media (width >= 1024px) {
   .workbenchGrid {
-    grid-template-columns: 320px minmax(0, 1fr);
+    grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
   }
+}
+
+.plateSelectorCol {
+  min-inline-size: 0;
+  max-inline-size: 100%;
 }
 
 .plateSelectorList {
   display: grid;
   border: 1px solid var(--border-structural);
   background-color: var(--surface-canvas);
+  min-inline-size: 0;
+  max-inline-size: 100%;
 }
 
 .plateSelectBtn {
   text-align: left;
   padding: 0.875rem 1rem;
   border: 0;
-  border-bottom: 1px solid var(--border-hairline);
-  background-color: transparent;
+  border-bottom: 1px solid var(--ink-secondary);
+  background-color: var(--surface-canvas);
   color: var(--ink-primary);
   display: grid;
   gap: 0.25rem;
   cursor: pointer;
+  min-inline-size: 0;
+  max-inline-size: 100%;
   transition: background-color 140ms cubic-bezier(0.2, 0, 0, 1);
 }
 
@@ -105,25 +130,58 @@
 }
 
 .plateSelectBtn:hover {
-  background-color: var(--surface-basalt);
+  background-color: var(--surface-elevated);
   color: var(--ink-primary);
+  border-bottom-color: var(--ink-secondary);
 }
 
-.plateSelectBtnActive {
-  background-color: var(--surface-basalt);
-  color: var(--ink-primary);
-  border-left: 3px solid var(--signal-ink);
-  border-bottom-color: var(--border-on-elevated);
+.plateSelectOverline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--ink-secondary);
+}
+
+.plateSelectBtnActive,
+.plateSelectBtnActive:hover {
+  background-color: var(--surface-elevated);
+  color: #131313;
+  border-left: 3px solid #7D150F;
+  border-bottom: 1px solid #282828;
+}
+
+.plateSelectBtnActive:last-child,
+.plateSelectBtnActive:last-child:hover {
+  border-bottom: 0;
+}
+
+.plateSelectBtnActive .plateSelectOverline {
+  color: #7D150F;
+}
+
+:global([data-surface="void"]) .plateSelectBtnActive,
+:global([data-surface="void"]) .plateSelectBtnActive:hover {
+  background-color: var(--surface-elevated);
+  color: #E9E5DF;
+  border-left: 3px solid #F45D4D;
+  border-bottom-color: #B9B5AA;
+}
+
+:global([data-surface="void"]) .plateSelectBtnActive .plateSelectOverline {
+  color: #F45D4D;
 }
 
 .stagePanel {
   display: grid;
   gap: 1.5rem;
+  min-inline-size: 0;
+  max-inline-size: 100%;
 }
 
 .layerToolbar {
   border: 1px solid var(--border-structural);
-  background-color: var(--surface-basalt);
+  background-color: var(--surface-canvas);
   color: var(--ink-primary);
   padding: 0.875rem 1rem;
   display: flex;
@@ -131,12 +189,16 @@
   justify-content: space-between;
   align-items: center;
   gap: 0.75rem;
+  min-inline-size: 0;
+  max-inline-size: 100%;
 }
 
 .layerFieldset {
   border: 0;
   padding: 0;
   margin: 0;
+  min-inline-size: 0;
+  max-inline-size: 100%;
 }
 
 .layerButtons {
@@ -148,31 +210,40 @@
 .layerBtn {
   min-block-size: 44px;
   padding: 0.45rem 0.875rem;
-  border: 1px solid var(--border-on-elevated);
-  background-color: transparent;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
   color: var(--ink-primary);
   cursor: pointer;
 }
 
 .layerBtn:hover {
-  background-color: var(--surface-canvas);
+  background-color: var(--surface-elevated);
   color: var(--ink-primary);
   border-color: var(--border-structural);
 }
 
-.layerBtnActive {
-  background-color: var(--surface-canvas);
-  color: var(--ink-primary);
-  border-color: var(--border-structural);
+.layerBtnActive,
+.layerBtnActive:hover {
+  background-color: var(--ink-primary);
+  color: var(--surface-canvas);
+  border-color: var(--ink-primary);
   font-weight: 600;
 }
 
 .svgViewport {
   border: 1px solid var(--border-structural);
   background-color: var(--surface-canvas);
-  padding: 1rem;
+  padding: 0.75rem;
   position: relative;
   overflow: hidden;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+@media (width >= 768px) {
+  .svgViewport {
+    padding: 1rem;
+  }
 }
 
 .svgViewport[data-zoomed="true"] {
@@ -221,60 +292,111 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem 1rem;
   padding: 0.75rem 1rem;
-  border: 1px solid var(--border-on-elevated);
-  background-color: var(--surface-basalt);
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
   color: var(--ink-primary);
+  min-inline-size: 0;
+  max-inline-size: 100%;
 }
 
 .calloutGrid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   border-top: 1px solid var(--border-structural);
-  border-left: 1px solid var(--border-hairline);
+  border-left: 1px solid var(--border-structural);
+  min-inline-size: 0;
+  max-inline-size: 100%;
 }
 
 @media (width >= 768px) {
   .calloutGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1.35fr 0.85fr;
+  }
+
+  .calloutCell:nth-child(3) {
+    grid-column: 1 / -1;
   }
 }
 
-.calloutCell {
+.calloutCell,
+.calloutCard {
   padding: 1rem 1.25rem;
-  border-right: 1px solid var(--border-hairline);
-  border-bottom: 1px solid var(--border-hairline);
+  border-right: 1px solid var(--border-structural);
+  border-bottom: 1px solid var(--border-structural);
   background-color: var(--surface-canvas);
   display: grid;
-  gap: 0.35rem;
+  gap: 0.45rem;
+  min-inline-size: 0;
+}
+
+.calloutHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.calloutBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.45rem;
+  background-color: var(--ink-primary);
+  color: var(--surface-canvas);
+  font-weight: 600;
 }
 
 .scheduleDetails {
   border: 1px solid var(--border-structural);
   background-color: var(--surface-canvas);
+  min-inline-size: 0;
+  max-inline-size: 100%;
 }
 
 .scheduleSummary {
-  padding: 1rem 1.25rem;
+  padding: 0.875rem 1rem;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--surface-basalt);
+  gap: 0.75rem;
+  background-color: var(--surface-canvas);
   color: var(--ink-primary);
   list-style: none;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+@media (width >= 768px) {
+  .scheduleSummary {
+    padding: 1rem 1.25rem;
+  }
+}
+
+.scheduleTableWrap {
+  overflow-x: auto;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  border-top: 1px solid var(--border-structural);
 }
 
 .scheduleTable {
   inline-size: 100%;
   border-collapse: collapse;
-  border-top: 1px solid var(--border-hairline);
 }
 
 .scheduleTable th,
 .scheduleTable td {
   text-align: left;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border-hairline);
+  padding: 0.5rem 0.625rem;
+  border-bottom: 1px solid var(--ink-secondary);
+}
+
+@media (width >= 768px) {
+  .scheduleTable th,
+  .scheduleTable td {
+    padding: 0.75rem 1rem;
+  }
 }

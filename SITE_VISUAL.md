@@ -77,13 +77,13 @@ All MONOLITH photography behaves as **high-contrast archival silver-gelatin or l
 - **Never** apply `blur()`, `drop-shadow()`, `sepia()`, or `hue-rotate()` CSS filters to photographic plates.
 - **Exception for Architectural Signal Glow (`preview (1).webp`):** The sole permitted non-monochrome highlight is a curated Signal Vermilion core glow (`--signal-glow: #C8281E`) baked into hero photography or placed strictly as an atmospheric `radial-gradient` *behind* a masked foreground specimen (`<= 2%` viewport area, zero dependency for text contrast).
 
-### 2.2 Zero-Cost Film Grain & Halftone Overlays
+### 2.2 Zero-Cost Architectural Micro-Grid & Halftone Overlays
 
-To reproduce the lithographic and silver-halide tooth of `135d5a8d...`, `45e4f814...`, and `5fc0fcec...` **without** heavy runtime `<canvas>` loops or live full-viewport `<feTurbulence>` filter rasterization:
+To reproduce the lithographic and drafting-sheet tooth of `135d5a8d...`, `45e4f814...`, and `5fc0fcec...` **without** heavy runtime `<canvas>` loops or `<feTurbulence>` SVG filter rasterization:
 
-1. **Static Tiled Film-Grain Overlay (`.plate-grain::after`):**
-   - Pre-encode a single `128 × 128` SVG `<feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="2" stitchTiles="stitch"/>` as a static CSS `data:image/svg+xml` `background-image` (cached once as a small raster tile by the compositor, avoiding live SVG filter re-evaluation during scroll).
-   - Apply inside an `isolation: isolate` `.plate-frame` using `pointer-events: none` and `aria-hidden="true"` semantics (pseudo-element is omitted from accessibility tree).
+1. **GPU-Safe Architectural Micro-Grid Overlay (`.plate-grain::after`):**
+   - Instead of `<feTurbulence>`, `.plate-grain::after` uses a lightweight, GPU-safe orthogonal CSS `linear-gradient` architectural micro-grid overlay (`4px × 4px` tile, zero SVG filter evaluation during scroll).
+   - Applied inside an `isolation: isolate` `.plate-frame` using `pointer-events: none` and `aria-hidden="true"` semantics (pseudo-element is omitted from accessibility tree).
 
 ```css
 .plate-grain::after {
@@ -95,8 +95,10 @@ To reproduce the lithographic and silver-halide tooth of `135d5a8d...`, `45e4f81
   opacity: 0.075;
   mix-blend-mode: overlay;
   background-repeat: repeat;
-  background-size: 128px 128px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='128' height='128' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 4px 4px;
+  background-image:
+    linear-gradient(to right, rgba(233, 229, 223, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(233, 229, 223, 0.35) 1px, transparent 1px);
 }
 ```
 
@@ -346,17 +348,17 @@ Derived from `c5eb814a...` (*this is serious, I mean it*), `7ed9e87d...` (*RAW, 
 
 ## 5. Dark vs. Light Surface Plate Polarity Rules
 
-MONOLITH enforces strict surface separation via `[data-surface]` islands defined in [tokens-color.css](file:///C:/Users/Danil/.gemini/antigravity-ide/scratch/neo-brutal/brand/tokens-color.css):
+MONOLITH enforces strict surface separation via `[data-surface]` islands defined in [tokens-color.css](file:///C:/Users/Danil/.gemini/antigravity-ide/scratch/neo-brutal/brand/tokens-color.css). Every surface island (`[data-surface="void"]`, `[data-surface="basalt"]`, `[data-surface="plaster"]`, `[data-surface="limestone"]`) carries **self-contained surface, ink, border (`>= 3.0:1`), and signal (`>= 4.5:1`) tokens**, preventing parent-theme token bleed when islands are nested inside opposite-polarity containers:
 
 ### 5.1 Dark Void (`#131313`) & Basalt (`#282828`) — Photographic Plates
-- **Primary Canvas:** `[data-surface="void"]` (`#131313`) hosts all full-bleed photographic heroes, lancet/Romanesque specimen cutouts, and chiaroscuro gallery sequences.
-- **Elevated Index Panels:** `[data-surface="basalt"]` (`#282828`) hosts secondary photographic dossiers and *must* carry a `1px solid var(--border-hairline)` or `var(--border-structural)` perimeter (because `#282828` vs. `#131313` is `1.26:1` < `3:1` WCAG 1.4.11 boundary threshold).
-- **Framing Grammar & Paspartu Inset:** Within `#main-content` (which applies a `10%` horizontal inward squeeze via `--grid-margin: 10%`), primary exhibition plates (`.heroPlateLink`, `.plateFrameOuter`) sit inside a `1px solid var(--border-structural)` outer frame with `0.75rem`–`1rem` paspartu padding, top-corner mitered `<SteppedFrame />` brackets (`inset: 0.75rem` inside the image aperture), `1.5rem` horizontal / `1.35rem` bottom overlay title inset, and a bordered `.heroPlateCaption` strip (`padding: 0.875rem 1.25rem; margin-top: 0.75rem`) so text never collides with corner registration brackets.
+- **Primary Canvas:** `[data-surface="void"]` (`#131313`) hosts all full-bleed photographic heroes, lancet/Romanesque specimen cutouts, and chiaroscuro gallery sequences, declaring self-contained `--ink-primary: #E9E5DF` (`14.81:1`), `--ink-secondary: #B9B5AA` (`8.94:1`), `--border-hairline: #77746C` (`3.98:1` >= `3.0:1`), `--border-structural: #E9E5DF`, and `--signal-ink: #F45D4D` (`5.77:1` >= `4.5:1`).
+- **Elevated Index Panels:** `[data-surface="basalt"]` (`#282828`) hosts secondary photographic dossiers with self-contained `--ink-primary: #E9E5DF` (`11.75:1`), `--ink-secondary: #B9B5AA` (`7.20:1`), `--border-hairline: #77746C` (`3.16:1` >= `3.0:1`), `--border-structural: #E9E5DF`, and `--signal-ink: #F45D4D` (`4.58:1` >= `4.5:1`), and *must* carry a `1px solid var(--border-hairline)` or `var(--border-structural)` perimeter (because `#282828` vs. `#131313` is `1.26:1` < `3:1` WCAG 1.4.11 boundary threshold).
+- **Framing Grammar & Paspartu Inset:** Within `#main-content` (which uses `--grid-margin: 1rem` on `< 768px`, `--grid-margin: 1.5rem` on `768px–1023px`, and `--grid-margin: 10%` with `--grid-max-width: 100%` on `>= 1024px`), primary exhibition plates (`.heroPlateLink`, `.plateFrameOuter`) sit inside a `1px solid var(--border-structural)` outer frame with `0.75rem`–`1rem` paspartu padding, top-corner mitered `<SteppedFrame />` brackets (`inset: 0.75rem` inside the image aperture), `1.5rem` horizontal / `1.35rem` bottom overlay title inset, and a bordered `.heroPlateCaption` strip (`padding: 0.875rem 1.25rem; margin-top: 0.75rem`) so text never collides with corner registration brackets.
 
-### 5.2 Raw Plaster (`#E9E5DF`) & Limestone (`#B9B5AA`) — Orthographic Anatomy Plates & Elevated Surface Tokens
+### 5.2 Raw Plaster (`#E9E5DF`) & Limestone (`#B9B5AA`) — Orthographic `03 ANATOMY` Plates & Elevated Surface Tokens
 Inspired by `45e4f814...` (*Saint Petersburg*) and architectural drafting sheets:
-- **Purpose:** `[data-surface="plaster"]` (`#E9E5DF`) and `[data-surface="limestone"]` (`#B9B5AA`) islands host **orthographic Anatomy line drawings** (plans, sections, structural elevations, ribbed-vault projections), 1-bit halftone architectural details, and structural callout boxes (`.calloutMetricBox`).
-- **Explicit Surface-on-Surface Token Inheritance:** In [tokens-color.css](file:///C:/Users/Danil/.gemini/antigravity-ide/scratch/neo-brutal/brand/tokens-color.css), every `[data-surface]` island explicitly re-declares `--surface-basalt`, `--ink-primary`, `--ink-secondary`, `--ink-muted`, and `--signal-ink` (`#B9B5AA` elevated basalt surface with `#131313` [`9.07:1`], `#282828` [`7.20:1`], and `#8B1912` [`4.57:1`] ink on `plaster`/`light`; `#282828` surface with `#E9E5DF` [`11.75:1`], `#B9B5AA` [`7.20:1`], and `#F45D4D` [`4.58:1`] ink on `void`/`dark`), guaranteeing `0` WCAG AA contrast violations across both surface modes.
+- **Purpose:** `[data-surface="plaster"]` (`#E9E5DF`) and `[data-surface="limestone"]` (`#B9B5AA`) islands host **orthographic `03 ANATOMY` line drawings** (plans, sections, structural elevations, ribbed-vault projections), 1-bit halftone architectural details, and structural callout boxes (`.calloutMetricBox`).
+- **Self-Contained Surface Island Token Contract:** In [tokens-color.css](file:///C:/Users/Danil/.gemini/antigravity-ide/scratch/neo-brutal/brand/tokens-color.css), every `[data-surface="void"]`, `[data-surface="basalt"]`, `[data-surface="plaster"]`, and `[data-surface="limestone"]` island explicitly re-declares its complete set of surface (`--surface-canvas`, `--surface-elevated`, `--surface-sunken`, `--surface-basalt`), ink (`--ink-primary`, `--ink-secondary`, `--ink-muted`), border (`--border-hairline` `>= 3.0:1`, `--border-structural`), and signal (`--signal-ink` `>= 4.5:1`, `--signal-border`) tokens (`#E9E5DF` plaster with `#131313` [`14.81:1`] ink, `#77746C` [`3.72:1` >= `3.0:1`] hairline, and `#A81F17` [`5.83:1` >= `4.5:1`] signal; `#B9B5AA` limestone with `#131313` [`9.07:1`] primary ink, `#282828` [`7.20:1` >= `3.0:1`] ink/hairline, and `#8B1912` [`4.57:1` >= `4.5:1`] signal), guaranteeing `0` WCAG AA contrast violations across all nested or standalone surface islands.
 - **Vector Anatomy Stroke Palette:**
 
 | Structural Layer | On Raw Plaster (`#E9E5DF`) | On Limestone (`#B9B5AA`) | Stroke & Geometry Spec |

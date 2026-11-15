@@ -6,7 +6,7 @@ import { ANATOMY_PLATES } from '@/data/anatomyPlates';
 import { BUILDINGS, type AnatomyPlateId } from '@/data/buildings';
 
 export const metadata: Metadata = {
-  title: '04 Anatomy — Measured Orthographic Plates',
+  title: '03 Anatomy — Measured Orthographic Plates',
   description:
     'Nine interactive vector cross-sections, plans, and elevations across Brutalist, Gothic, and Monumental works with layer inspection.',
 };

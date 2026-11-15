@@ -374,8 +374,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                       <div className={styles.mediaStage}>
                         <Link
                           href={`/structures/${building.slug}`}
-                          className="plate-interactive-outer"
-                          style={{ inlineSize: '100%', display: 'grid', placeItems: 'center' }}
+                          className={`plate-interactive-outer ${styles.mediaLink}`}
                           aria-label={`Open monograph ${building.catalogNumber}: ${building.name}`}
                         >
                           <div
@@ -387,9 +386,9 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                               src={building.imagePath}
                               alt={building.imageAlt}
                               fill
-                              priority={index < 2}
-                              fetchPriority={index === 0 ? 'high' : undefined}
-                              loading={index < 2 ? undefined : 'lazy'}
+                              priority={index < 9}
+                              fetchPriority={index < 2 ? 'high' : undefined}
+                              loading="eager"
                               sizes={
                                 cadence === 'lead'
                                   ? '(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 35vw'
@@ -467,7 +466,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                                   paddingInline: '0.25rem',
                                 }}
                               >
-                                04 ANATOMY ↗
+                                03 ANATOMY ↗
                               </Link>
                             )}
                           </div>
@@ -486,7 +485,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                 tabIndex={0}
                 className={styles.tableRegion}
               >
-                <table className={styles.ledgerTable}>
+                <table className={`${styles.ledgerTable} ${styles.indexTable}`}>
                   <caption className="visually-hidden">
                     MONOLITH Archive Volume IV index of surveyed structures
                   </caption>
@@ -520,7 +519,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                       </th>
                       <th
                         scope="col"
-                        className={styles.ledgerTh}
+                        className={`${styles.ledgerTh} ${styles.ledgerThYear}`}
                         aria-sort={
                           sort === 'YEAR_ASC'
                             ? 'ascending'
@@ -547,7 +546,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                       </th>
                       <th
                         scope="col"
-                        className={styles.ledgerTh}
+                        className={`${styles.ledgerTh} ${styles.ledgerThElev}`}
                         aria-sort={
                           sort === 'ELEV_DESC'
                             ? 'descending'
@@ -586,7 +585,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                             <span aria-hidden="true" className={styles.mobileFieldLabel}>
                               CAT. NO.
                             </span>
-                            <span style={{ color: 'var(--signal-ink)', fontWeight: 500 }}>
+                            <span style={{ color: 'var(--signal-ink)', fontWeight: 500, whiteSpace: 'nowrap' }}>
                               {building.catalogNumber}
                             </span>
                           </th>
@@ -599,13 +598,9 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                             </span>
                             <Link
                               href={`/structures/${building.slug}`}
+                              className={styles.structureLink}
                               style={{
-                                fontFamily: 'var(--font-display), Georgia, serif',
-                                fontSize: '1.125rem',
-                                fontWeight: 600,
-                                textTransform: 'uppercase',
                                 textDecoration: isActive ? 'underline' : 'none',
-                                textUnderlineOffset: '4px',
                               }}
                             >
                               {building.name}
@@ -633,7 +628,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                               {building.city}, {building.country}
                             </span>
                           </td>
-                          <td className={`${styles.ledgerTd} type-colophon tabular-nums`}>
+                          <td className={`${styles.ledgerTd} ${styles.ledgerTdNowrap} type-colophon tabular-nums`}>
                             <span aria-hidden="true" className={styles.mobileFieldLabel}>
                               YEAR
                             </span>
@@ -647,7 +642,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                               {building.materialCode}
                             </span>
                           </td>
-                          <td className={`${styles.ledgerTd} type-colophon tabular-nums`}>
+                          <td className={`${styles.ledgerTd} ${styles.ledgerTdNowrap} type-colophon tabular-nums`}>
                             <span aria-hidden="true" className={styles.mobileFieldLabel}>
                               ELEV.
                             </span>
@@ -737,8 +732,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                       src={previewBuilding.imagePath}
                       alt={previewBuilding.imageAlt}
                       fill
-                      loading="lazy"
-                      fetchPriority="low"
+                      loading="eager"
                       sizes="288px"
                       className="plate-img"
                     />
