@@ -48,7 +48,7 @@ export function AlignmentStar({ className }: { className?: string }) {
   );
 }
 
-/** Four mitered L-shaped drafting bracket marks at the specimen perimeter */
+/** Top mitered L-shaped drafting bracket marks inset cleanly from the specimen perimeter */
 export function SteppedFrame({
   className,
   style,
@@ -65,18 +65,16 @@ export function SteppedFrame({
       className={className}
       style={{
         position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
+        inset: '0.75rem',
+        width: 'calc(100% - 1.5rem)',
+        height: 'calc(100% - 1.5rem)',
         pointerEvents: 'none',
         ...style,
       }}
     >
       <g fill="none" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke">
-        <path d="M 1 9 V 1 H 9" />
-        <path d="M 91 1 H 99 V 9" />
-        <path d="M 1 91 V 99 H 9" />
-        <path d="M 91 99 H 99 V 91" />
+        <path d="M 0 6 V 0 H 6" />
+        <path d="M 94 0 H 100 V 6" />
       </g>
     </svg>
   );

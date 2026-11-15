@@ -132,9 +132,9 @@ export function HomeClient({
             >
               <CornerCrosshair className={styles.crosshairTL} />
               <CornerCrosshair className={styles.crosshairBR} />
-              <SteppedFrame style={{ color: 'var(--ink-secondary)', zIndex: 5 }} />
 
               <div className={`plate-frame plate-grain ${styles.heroPlateAspect}`}>
+                <SteppedFrame style={{ color: 'var(--ink-secondary)', zIndex: 5 }} />
                 <Image
                   src={heroBuilding.imagePath}
                   alt={heroBuilding.imageAlt}
@@ -148,13 +148,13 @@ export function HomeClient({
                 <div
                   style={{
                     position: 'absolute',
-                    insetInline: '1rem',
-                    insetBlockEnd: '1rem',
+                    insetInline: '1.5rem',
+                    insetBlockEnd: '1.35rem',
                     zIndex: 4,
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'flex-end',
-                    gap: '0.75rem',
+                    gap: '1rem',
                   }}
                 >
                   <div>

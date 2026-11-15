@@ -196,12 +196,14 @@
   position: relative;
   border: 1px solid var(--border-structural);
   background-color: var(--surface-sunken);
+  padding: 0.75rem;
 }
 
 .heroPlateAspect {
   aspect-ratio: 3 / 4;
   inline-size: 100%;
   position: relative;
+  border: 1px solid var(--border-hairline);
 }
 
 .heroPlateCaption {
@@ -209,9 +211,10 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  gap: 0.35rem 0.75rem;
-  padding: 0.75rem 1rem;
-  border-top: 1px solid var(--border-structural);
+  gap: 0.5rem 1rem;
+  margin-top: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  border: 1px solid var(--border-hairline);
   background-color: var(--surface-canvas);
   color: var(--ink-primary);
 }

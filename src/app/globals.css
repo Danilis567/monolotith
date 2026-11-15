@@ -21,10 +21,28 @@
   --type-colophon-size: 0.75rem;
 }
 
+@media (width >= 768px) {
+  :root {
+    --grid-margin: 1.5rem;
+  }
+}
+
 @media (width >= 1024px) {
   :root {
     --header-height: 4rem; /* 64px desktop */
+    --grid-margin: 2rem;
   }
+}
+
+@media (width >= 1440px) {
+  :root {
+    --grid-margin: 3rem;
+  }
+}
+
+/* Squeeze all main content 10% inward on both sides (excluding navbar & footer) */
+#main-content {
+  --grid-margin: 10%;
 }
 
 /* Safe Targeted Base Reset (No universal * resets) */
@@ -258,7 +276,6 @@ ol {
   .monolith-grid {
     grid-template-columns: repeat(8, minmax(0, 1fr));
     --grid-gutter: 1.25rem;
-    --grid-margin: 1.5rem;
   }
 }
 
@@ -266,13 +283,6 @@ ol {
   .monolith-grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
     --grid-gutter: 1.5rem;
-    --grid-margin: 2rem;
-  }
-}
-
-@media (width >= 1440px) {
-  .monolith-grid {
-    --grid-margin: 3rem;
   }
 }
 
@@ -417,7 +427,8 @@ ol {
 .specimen-stream-viewport {
   overflow-x: auto;
   scrollbar-width: thin;
-  border-block: 1px solid var(--border-hairline);
+  margin-inline: var(--grid-margin);
+  border: 1px solid var(--border-hairline);
 }
 
 .specimen-stream-track {
