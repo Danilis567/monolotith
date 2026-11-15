@@ -66,19 +66,19 @@ export default async function StructureDetailPage({
 
   const observations = [
     {
-      code: 'OBS. 01 — PRIMARY MATERIAL',
+      code: 'PRIMARY MATERIAL',
       detail: building.materials[0] ?? building.materialCode,
     },
     {
-      code: 'OBS. 02 — SECONDARY FABRIC',
+      code: 'SECONDARY FABRIC',
       detail: building.materials[1] ?? building.subStyle,
     },
     {
-      code: 'OBS. 03 — MEASURED DATUM',
+      code: 'MEASURED DATUM',
       detail: building.dimensions.primaryMetric,
     },
     {
-      code: 'OBS. 04 — GEOGRAPHIC COORDINATE',
+      code: 'GEOGRAPHIC COORDINATE',
       detail: `${building.coordinates.dmsLat} / ${building.coordinates.dmsLng}`,
     },
   ];
@@ -90,11 +90,11 @@ export default async function StructureDetailPage({
         <div className="monolith-grid">
           <nav aria-label="Breadcrumb" className={`${styles.breadcrumbNav} type-colophon`} style={{ gridColumn: '1 / -1' }}>
             <Link href="/" className={styles.breadcrumbLink}>
-              01 HOME
+              HOME
             </Link>
             <span aria-hidden="true">/</span>
             <Link href="/archive" className={styles.breadcrumbLink}>
-              02 ARCHIVE
+              ARCHIVE
             </Link>
             <span aria-hidden="true">/</span>
             <Link
@@ -201,7 +201,7 @@ export default async function StructureDetailPage({
                 </a>
                 {linkedPlate && (
                   <Link href={`/anatomy?plate=${linkedPlate.id}`} className="btn-monolith">
-                    <span>VIEW 03 ANATOMY ({linkedPlate.plateNumber})</span>
+                    <span>VIEW ANATOMY ({linkedPlate.plateNumber})</span>
                     <span aria-hidden="true">↗</span>
                   </Link>
                 )}
@@ -231,7 +231,7 @@ export default async function StructureDetailPage({
             }}
           >
             <h2 id="ledger-spec-heading" className="type-subhead">
-              SPECIMEN 01 — COLOPHON &amp; MEASURED SPECIFICATION
+              COLOPHON &amp; MEASURED SPECIFICATION
             </h2>
             <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
               9-FIELD VERIFIED DATUM RECORD
@@ -259,7 +259,7 @@ export default async function StructureDetailPage({
           <div className={styles.analysisMain}>
             <div style={{ display: 'grid', gap: '0.625rem' }}>
               <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                SPECIMEN 02 — ARCHITECTURAL ANALYSIS
+                ARCHITECTURAL ANALYSIS
               </span>
               <h2 id="analysis-heading" className="type-display">
                 LOAD PATH &amp; HISTORICAL RECORD
@@ -287,7 +287,7 @@ export default async function StructureDetailPage({
                 FABRIC &amp; MATERIAL ASSEMBLY
               </h3>
               <ul style={{ display: 'grid', gap: '0.5rem' }}>
-                {building.materials.map((mat, i) => (
+                {building.materials.map((mat) => (
                   <li
                     key={mat}
                     className="type-body"
@@ -298,8 +298,8 @@ export default async function StructureDetailPage({
                       borderBottom: '1px solid var(--border-hairline)',
                     }}
                   >
-                    <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                      0{i + 1}
+                    <span className="type-colophon" style={{ color: 'var(--signal-ink)' }} aria-hidden="true">
+                      ▪
                     </span>
                     <span>{mat}</span>
                   </li>
@@ -346,14 +346,14 @@ export default async function StructureDetailPage({
         </div>
       </section>
 
-      {/* Linked 03 ANATOMY Plate Banner */}
+      {/* Linked ANATOMY Plate Banner */}
       {linkedPlate && (
         <section data-surface="dark" className={`${styles.anatomyBanner} ${styles.anatomyBand}`}>
           <div className="monolith-grid">
             <div className={styles.anatomyCard}>
               <div style={{ display: 'grid', gap: '0.45rem' }}>
                 <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                  SECTION 03 — STRUCTURAL ANATOMY
+                  STRUCTURAL ANATOMY
                 </span>
                 <h2 className="type-subhead">
                   {linkedPlate.plateNumber}: {linkedPlate.title}
@@ -368,7 +368,7 @@ export default async function StructureDetailPage({
                 href={`/anatomy?plate=${linkedPlate.id}`}
                 className="btn-monolith btn-monolith--primary"
               >
-                <span>INSPECT 03 ANATOMY</span>
+                <span>INSPECT ANATOMY</span>
                 <span aria-hidden="true">→</span>
               </Link>
             </div>
@@ -397,7 +397,7 @@ export default async function StructureDetailPage({
               style={{ placeContent: 'center', textAlign: 'center' }}
             >
               <span className="type-colophon">ALL {BUILDINGS.length} PLATES</span>
-              <span className="type-ui-label">02 ARCHIVE</span>
+              <span className="type-ui-label">ARCHIVE</span>
             </Link>
 
             <Link href={`/structures/${next.slug}`} className={styles.adjacentLink}>

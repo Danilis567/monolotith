@@ -47,7 +47,7 @@ export function HomeClient({
 
   const movements = [
     {
-      code: '01 / BRUTALIST',
+      code: 'RAW CONCRETE',
       movement: 'Brutalist' as const,
       chronology: '1947–1980',
       structuralSystem: 'MONOLITHIC BÉTON BRUT · DETACHED SERVICE CORES',
@@ -57,7 +57,7 @@ export function HomeClient({
       samples: brutalistSample.slice(0, 3),
     },
     {
-      code: '02 / GOTHIC',
+      code: 'CUT LIMESTONE',
       movement: 'Gothic' as const,
       chronology: '1163–1965',
       structuralSystem: 'POINTED RIB VAULTS · EXTERIOR FLYING BUTTRESSES',
@@ -67,7 +67,7 @@ export function HomeClient({
       samples: gothicSample.slice(0, 3),
     },
     {
-      code: '03 / MONUMENTAL',
+      code: 'LOAD-BEARING MASONRY',
       movement: 'Monumental' as const,
       chronology: '126 CE–PRESENT',
       structuralSystem: 'COFFERED MASONRY DOMES · LOAD-BEARING SHELLS',
@@ -117,11 +117,11 @@ export function HomeClient({
 
             <div className={styles.heroActions}>
               <Link href="/archive" className="btn-monolith btn-monolith--primary">
-                <span>ENTER 02 ARCHIVE</span>
+                <span>ENTER ARCHIVE</span>
                 <span aria-hidden="true">→</span>
               </Link>
               <Link href="/anatomy" className="btn-monolith">
-                <span>03 ANATOMY SECTIONS</span>
+                <span>ANATOMY SECTIONS</span>
                 <span aria-hidden="true">↗</span>
               </Link>
             </div>
@@ -151,8 +151,8 @@ export function HomeClient({
                 <div
                   style={{
                     position: 'absolute',
-                    insetInline: '1.5rem',
-                    insetBlockEnd: '1.35rem',
+                    insetInline: '2.25rem',
+                    insetBlockEnd: '1.85rem',
                     zIndex: 4,
                     display: 'flex',
                     justifyContent: 'space-between',
@@ -170,7 +170,7 @@ export function HomeClient({
                     <span
                       style={{
                         fontFamily: 'var(--font-display), Georgia, serif',
-                        fontSize: '1.5rem',
+                        fontSize: '1.45rem',
                         fontWeight: 600,
                         lineHeight: 1.05,
                         textTransform: 'uppercase',
@@ -196,7 +196,7 @@ export function HomeClient({
 
           <div className={styles.heroRailCol} aria-hidden="true">
             <span className={`${styles.verticalMarginalia} type-colophon`}>
-              PLATE 001 / LONDON / BÉTON BRUT
+              LONDON / BÉTON BRUT
             </span>
             <span className={`${styles.verticalMarginalia} type-colophon`}>
               51°31′25″N × 0°12′20″W
@@ -208,15 +208,15 @@ export function HomeClient({
           <div className={styles.surveyStripGrid}>
             <div className={styles.surveyCell}>
               <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                [01.A] STRUCTURAL MOVEMENTS
+                STRUCTURAL MOVEMENTS
               </span>
               <span className={`${styles.surveyValue} ${styles.surveyValuePrimary} type-colophon tabular-nums`}>
-                03 DISCIPLINES — BRUTALIST · GOTHIC · MONUMENTAL
+                THREE DISCIPLINES — BRUTALIST · GOTHIC · MONUMENTAL
               </span>
             </div>
             <div className={styles.surveyCell}>
               <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                [01.B] ARCHIVE SCOPE
+                ARCHIVE SCOPE
               </span>
               <span className={`${styles.surveyValue} type-colophon tabular-nums`}>
                 {String(totalCount).padStart(2, '0')} VERIFIED PLATES
@@ -224,7 +224,7 @@ export function HomeClient({
             </div>
             <div className={styles.surveyCell}>
               <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                [01.C] CHRONOLOGICAL SPAN
+                CHRONOLOGICAL SPAN
               </span>
               <span className={`${styles.surveyValue} type-colophon tabular-nums`}>
                 126 CE–PRESENT (19 CENTURIES)
@@ -232,10 +232,10 @@ export function HomeClient({
             </div>
             <div className={styles.surveyCell}>
               <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                [01.D] SECTION WORKBENCH
+                SECTION WORKBENCH
               </span>
               <span className={`${styles.surveyValue} type-colophon tabular-nums`}>
-                09 ORTHOGRAPHIC PLATES
+                NINE ORTHOGRAPHIC PLATES
               </span>
             </div>
           </div>
@@ -250,7 +250,7 @@ export function HomeClient({
           <div className={styles.thesisLeft}>
             <p className={`${styles.sectionCode} type-colophon`}>
               <AlignmentStar />
-              <span>01.1 — EDITORIAL THESIS</span>
+              <span>EDITORIAL THESIS</span>
             </p>
 
             <h2 id="thesis-heading" className={`type-display ${styles.thesisHeading}`}>
@@ -316,7 +316,7 @@ export function HomeClient({
             </PlateCurtain>
 
             <p className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-              CROSS-SECTION AVAILABLE IN 03 ANATOMY — PLATE II · {thesisBuilding.dimensions.primaryMetric}
+              CROSS-SECTION AVAILABLE IN ANATOMY — PLATE II · {thesisBuilding.dimensions.primaryMetric}
             </p>
           </div>
         </div>
@@ -330,7 +330,7 @@ export function HomeClient({
           <div className={styles.streamHeader}>
             <div style={{ display: 'grid', gap: '0.5rem' }}>
               <p className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                01.2 — SPECIMEN STREAM
+                SPECIMEN STREAM
               </p>
               <h2 id="stream-heading" className="type-display">
                 SURVEYED PLATES
@@ -432,7 +432,7 @@ export function HomeClient({
           <div className={styles.ledgerHeader}>
             <div style={{ display: 'grid', gap: '0.5rem' }}>
               <p className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                01.3 — COMPLETE LEDGER
+                COMPLETE LEDGER
               </p>
               <h2 id="ledger-heading" className="type-display">
                 THREE ARCHITECTURAL DISCIPLINES
@@ -476,10 +476,7 @@ export function HomeClient({
                     <h3
                       style={{
                         fontFamily: 'var(--font-display), Georgia, serif',
-                        fontSize:
-                          groupIdx === 0
-                            ? 'clamp(2rem, 3.2vw, 2.85rem)'
-                            : 'clamp(1.65rem, 2.4vw, 2.2rem)',
+                        fontSize: 'clamp(1.65rem, 2.2vw, 2.25rem)',
                         fontWeight: 600,
                         lineHeight: 0.96,
                         textTransform: 'uppercase',
@@ -492,25 +489,27 @@ export function HomeClient({
                       {group.structuralSystem}
                     </div>
 
-                    <PlateCurtain>
-                      <Link
-                        href={`/structures/${group.leadPlate.slug}`}
-                        className="plate-interactive-outer"
-                      >
-                        <div
-                          className={`plate-frame plate-grain ${styles.movementPlateThumb} ${apertureClass}`}
+                    <div className={styles.movementMediaWrap}>
+                      <PlateCurtain>
+                        <Link
+                          href={`/structures/${group.leadPlate.slug}`}
+                          className={`plate-interactive-outer ${styles.movementPlateLink}`}
                         >
-                          <Image
-                            src={group.leadPlate.imagePath}
-                            alt={group.leadPlate.imageAlt}
-                            fill
-                            loading="eager"
-                            sizes="(max-width: 1023px) 88vw, 380px"
-                            className="plate-img"
-                          />
-                        </div>
-                      </Link>
-                    </PlateCurtain>
+                          <div
+                            className={`plate-frame plate-grain ${styles.movementPlateThumb} ${apertureClass}`}
+                          >
+                            <Image
+                              src={group.leadPlate.imagePath}
+                              alt={group.leadPlate.imageAlt}
+                              fill
+                              loading="eager"
+                              sizes="(max-width: 1023px) 88vw, 320px"
+                              className="plate-img"
+                            />
+                          </div>
+                        </Link>
+                      </PlateCurtain>
+                    </div>
 
                     <p className="type-body" style={{ color: 'var(--ink-secondary)' }}>
                       {group.summary}
@@ -537,7 +536,7 @@ export function HomeClient({
                       href={`/archive?movement=${group.movement}`}
                       className="btn-monolith"
                     >
-                      <span>FILTER {group.movement.toUpperCase()} (09)</span>
+                      <span>FILTER {group.movement.toUpperCase()}</span>
                       <span aria-hidden="true">→</span>
                     </Link>
                   </div>
@@ -552,17 +551,17 @@ export function HomeClient({
                 ARCHIVE VOLUME IV — INDEX &amp; MEASURED SECTIONS
               </span>
               <p className="type-subhead">
-                EXPLORE {totalCount} STRUCTURAL MONOGRAPHS OR INSPECT 09 VECTOR PLATES.
+                EXPLORE {totalCount} STRUCTURAL MONOGRAPHS OR INSPECT NINE VECTOR PLATES.
               </p>
             </div>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
               <Link href="/archive" className="btn-monolith btn-monolith--primary">
-                <span>OPEN 02 ARCHIVE</span>
+                <span>OPEN ARCHIVE</span>
                 <span aria-hidden="true">→</span>
               </Link>
               <Link href="/anatomy" className="btn-monolith">
-                <span>OPEN 03 ANATOMY</span>
+                <span>OPEN ANATOMY</span>
                 <span aria-hidden="true">↗</span>
               </Link>
             </div>

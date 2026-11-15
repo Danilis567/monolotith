@@ -3,7 +3,7 @@ import { ArchiveClient } from '@/components/ArchiveClient';
 import { BUILDINGS } from '@/data/buildings';
 
 export const metadata: Metadata = {
-  title: '02 Archive — Structure Index',
+  title: 'Archive — Structure Index',
   description:
     'Search, filter, and inspect 27 cataloged Brutalist, Gothic, and Monumental works by material, era, continent, and metric elevation.',
 };

@@ -34,11 +34,11 @@ export default function NotFound() {
         </p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', paddingTop: '0.5rem' }}>
           <Link href="/archive" className="btn-monolith btn-monolith--primary">
-            <span>RETURN TO 02 ARCHIVE</span>
+            <span>RETURN TO ARCHIVE</span>
             <span aria-hidden="true">→</span>
           </Link>
           <Link href="/" className="btn-monolith">
-            <span>01 HOME</span>
+            <span>HOME</span>
           </Link>
         </div>
       </div>

@@ -44,7 +44,7 @@ export default function ErrorPage({
             <span aria-hidden="true">↻</span>
           </button>
           <Link href="/" className="btn-monolith">
-            <span>RETURN TO 01 HOME</span>
+            <span>RETURN HOME</span>
           </Link>
         </div>
       </div>

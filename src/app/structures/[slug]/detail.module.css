@@ -39,6 +39,7 @@
     grid-column: 1 / 7;
     grid-template-columns: 1fr 48px;
     gap: 0;
+    align-self: center;
   }
 }
 
@@ -46,7 +47,7 @@
   position: relative;
   border: 1px solid var(--border-structural);
   background-color: var(--surface-sunken);
-  padding: 1rem;
+  padding: 1.25rem;
 }
 
 .plateAspect34 {

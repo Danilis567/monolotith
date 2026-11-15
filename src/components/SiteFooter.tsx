@@ -33,43 +33,43 @@ export function SiteFooter() {
           <div className={styles.cell}>
             <h2 className={`${styles.cellHeading} type-colophon`}>
               <span className="signal-dot" aria-hidden="true" />
-              <span>01 / COLLECTION</span>
+              <span>COLLECTION</span>
             </h2>
             <ul className={`${styles.cellList} type-colophon`}>
               <li>
                 <Link href="/" className={styles.cellLink}>
-                  01 HOME — EDITORIAL COVER
+                  HOME — EDITORIAL COVER
                 </Link>
               </li>
               <li>
                 <Link href="/archive" className={styles.cellLink}>
-                  02 ARCHIVE — CATALOG MATRIX
+                  ARCHIVE — CATALOG MATRIX
                 </Link>
               </li>
               <li>
                 <Link href="/anatomy" className={styles.cellLink}>
-                  03 ANATOMY — SECTION WORKBENCH
+                  ANATOMY — SECTION WORKBENCH
                 </Link>
               </li>
             </ul>
           </div>
 
           <div className={styles.cell}>
-            <h2 className={`${styles.cellHeading} type-colophon`}>02 / TAXONOMY</h2>
+            <h2 className={`${styles.cellHeading} type-colophon`}>TAXONOMY</h2>
             <ul className={`${styles.cellList} type-colophon`}>
               <li>
                 <Link href="/archive?movement=Brutalist" className={styles.cellLink}>
-                  BRUTALIST · 09 STRUCTURES (1947–1980)
+                  BRUTALIST · STRUCTURES (1947–1980)
                 </Link>
               </li>
               <li>
                 <Link href="/archive?movement=Gothic" className={styles.cellLink}>
-                  GOTHIC · 09 STRUCTURES (1163–1965)
+                  GOTHIC · STRUCTURES (1163–1965)
                 </Link>
               </li>
               <li>
                 <Link href="/archive?movement=Monumental" className={styles.cellLink}>
-                  MONUMENTAL · 09 STRUCTURES (126–PRESENT)
+                  MONUMENTAL · STRUCTURES (126–PRESENT)
                 </Link>
               </li>
             </ul>
@@ -77,7 +77,7 @@ export function SiteFooter() {
 
           <div className={styles.cell}>
             <h2 className={`${styles.cellHeading} type-colophon`}>
-              03 / CREDITS &amp; METHODOLOGY
+              CREDITS &amp; METHODOLOGY
             </h2>
             <div className={`${styles.cellList} type-colophon`}>
               <p>ALL COORDINATES SURVEYED VIA WGS84.</p>
@@ -88,7 +88,7 @@ export function SiteFooter() {
 
           <div className={styles.cell}>
             <h2 className={`${styles.cellHeading} type-colophon`}>
-              04 / DOCUMENTS &amp; SCOPE
+              DOCUMENTS &amp; SCOPE
             </h2>
             <div className={`${styles.cellList} type-colophon`}>
               <p>ARCHIVE VOL. IV · 27 CATALOGED SPECIMENS.</p>

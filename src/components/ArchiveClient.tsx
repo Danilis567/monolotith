@@ -126,7 +126,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                 style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--signal-ink)' }}
               >
                 <span className="signal-dot" aria-hidden="true" />
-                <span>SECTION 02 — ARCHIVE VOLUME IV</span>
+                <span>ARCHIVE VOLUME IV</span>
               </p>
               <h1 className="type-display">STRUCTURE INDEX</h1>
             </div>
@@ -466,7 +466,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                                   paddingInline: '0.25rem',
                                 }}
                               >
-                                03 ANATOMY ↗
+                                ANATOMY ↗
                               </Link>
                             )}
                           </div>

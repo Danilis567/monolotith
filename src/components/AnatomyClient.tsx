@@ -22,10 +22,10 @@ interface AnatomyClientProps {
 type MovementTab = 'ALL' | Movement;
 
 const TABS: { id: MovementTab; label: string }[] = [
-  { id: 'ALL', label: 'ALL PLATES (09)' },
-  { id: 'Brutalist', label: '01 / BRUTALIST (03)' },
-  { id: 'Gothic', label: '02 / GOTHIC (03)' },
-  { id: 'Monumental', label: '03 / MONUMENTAL (03)' },
+  { id: 'ALL', label: 'ALL PLATES' },
+  { id: 'Brutalist', label: 'BRUTALIST' },
+  { id: 'Gothic', label: 'GOTHIC' },
+  { id: 'Monumental', label: 'MONUMENTAL' },
 ];
 
 export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
@@ -130,7 +130,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
                 }}
               >
                 <span className="signal-dot" aria-hidden="true" />
-                <span>SECTION 03 — STRUCTURAL ANATOMY</span>
+                <span>STRUCTURAL ANATOMY</span>
               </p>
               <h1 className="type-display">STRUCTURAL ANATOMY</h1>
             </div>
@@ -189,7 +189,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
           </div>
 
           <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-            03 / ANATOMY · ORTHOGRAPHIC PROJECTION · SCALE 1:200 TO 1:1000
+            ANATOMY · ORTHOGRAPHIC PROJECTION · SCALE 1:200 TO 1:1000
           </span>
         </div>
       </div>
@@ -374,7 +374,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
                 {activePlate.callouts.map((callout) => (
                   <div key={callout.code} className={`${styles.calloutCell} ${styles.calloutCard}`}>
                     <div className={`${styles.calloutHeader} type-colophon`}>
-                      <span className={styles.calloutBadge}>REF {callout.code}</span>
+                      <span className={styles.calloutBadge}>STRUCTURAL CALLOUT</span>
                       <span style={{ color: 'var(--signal-ink)' }}>{callout.value}</span>
                     </div>
                     <h3 className="type-ui-label">{callout.label}</h3>

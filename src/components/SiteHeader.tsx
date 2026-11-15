@@ -6,9 +6,9 @@ import { useEffect, useRef } from 'react';
 import styles from './SiteHeader.module.css';
 
 const PRIMARY_NAV = [
-  { index: '01', href: '/', label: '01 HOME', folio: '01', desc: 'Poster Exhibition' },
-  { index: '02', href: '/archive', label: '02 ARCHIVE', folio: '02', desc: '27 Cataloged Structures' },
-  { index: '03', href: '/anatomy', label: '03 ANATOMY', folio: '03', desc: '09 Measured Sections' },
+  { href: '/', label: 'HOME', desc: 'Poster Exhibition' },
+  { href: '/archive', label: 'ARCHIVE', desc: '27 Cataloged Structures' },
+  { href: '/anatomy', label: 'ANATOMY', desc: 'Measured Sections' },
 ] as const;
 
 export function SiteHeader({ plateCount }: { plateCount: number }) {
@@ -140,9 +140,6 @@ export function SiteHeader({ plateCount }: { plateCount: number }) {
                   className={styles.drawerLink}
                 >
                   <div>
-                    <span className="type-colophon" style={{ display: 'block', marginBottom: '0.25rem' }}>
-                      SECTION 01
-                    </span>
                     <span className={styles.drawerTitle}>HOME</span>
                   </div>
                   <span className={`${styles.drawerMeta} type-colophon`}>POSTER EXHIBITION</span>
@@ -157,9 +154,6 @@ export function SiteHeader({ plateCount }: { plateCount: number }) {
                   className={styles.drawerLink}
                 >
                   <div>
-                    <span className="type-colophon" style={{ display: 'block', marginBottom: '0.25rem' }}>
-                      SECTION 02
-                    </span>
                     <span className={styles.drawerTitle}>ARCHIVE</span>
                   </div>
                   <span className={`${styles.drawerMeta} type-colophon`}>
@@ -176,12 +170,9 @@ export function SiteHeader({ plateCount }: { plateCount: number }) {
                   className={styles.drawerLink}
                 >
                   <div>
-                    <span className="type-colophon" style={{ display: 'block', marginBottom: '0.25rem' }}>
-                      SECTION 03
-                    </span>
                     <span className={styles.drawerTitle}>ANATOMY</span>
                   </div>
-                  <span className={`${styles.drawerMeta} type-colophon`}>09 ORTHOGRAPHIC PLATES</span>
+                  <span className={`${styles.drawerMeta} type-colophon`}>ORTHOGRAPHIC PLATES</span>
                 </Link>
               </li>
             </ul>
