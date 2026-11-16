@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CornerCrosshair, SteppedFrame } from '@/components/DraftingMarks';
+import { Gloss } from '@/components/Gloss';
 import { HairlineDraw } from '@/components/MotionPrimitives';
 import { getAnatomyPlateById } from '@/data/anatomyPlates';
 import { BUILDINGS, getBuildingBySlug } from '@/data/buildings';
@@ -50,35 +51,40 @@ export default async function StructureDetailPage({
     : undefined;
 
   const colophonFields = [
-    { term: 'CATALOG / RECORD ID', value: `${building.catalogNumber} · ${building.id}` },
-    { term: 'MOVEMENT / CLASSIFICATION', value: `${building.movement.toUpperCase()} — ${building.subStyle}` },
-    { term: 'ARCHITECT / MASTER BUILDER', value: building.architect },
-    { term: 'LOCATION', value: `${building.city}, ${building.country} (${building.continent})` },
-    { term: 'COORDINATES (WGS84)', value: building.coordinates.dmsFormatted },
-    { term: 'CHRONOLOGY', value: building.chronologyLabel },
-    { term: 'HEIGHT DATUM', value: building.dimensions.heightLabel },
+    { id: 'catalog-id', term: 'CATALOG / RECORD ID', value: `${building.catalogNumber} · ${building.id}` },
+    { id: 'movement', term: 'MOVEMENT / CLASSIFICATION', value: `${building.movement.toUpperCase()} — ${building.subStyle}` },
+    { id: 'architect', term: 'ARCHITECT / MASTER BUILDER', value: building.architect },
+    { id: 'location', term: 'LOCATION', value: `${building.city}, ${building.country} (${building.continent})` },
+    { id: 'coordinates', term: <>GPS POSITION (<Gloss term="WGS84">WGS84</Gloss>)</>, value: building.coordinates.dmsFormatted },
+    { id: 'chronology', term: 'CHRONOLOGY', value: building.chronologyLabel },
+    { id: 'height-datum', term: <Gloss term="ELEV./HEIGHT">HEIGHT DATUM</Gloss>, value: building.dimensions.heightLabel },
     {
+      id: 'footprint',
       term: 'STRUCTURAL FOOTPRINT / METRIC',
       value: building.dimensions.spanOrLengthLabel ?? building.dimensions.primaryMetric,
     },
-    { term: 'PRIMARY MATERIAL / STATUS', value: `${building.materialCode} · ${building.status.toUpperCase()}` },
+    { id: 'material-status', term: 'PRIMARY MATERIAL / STATUS', value: `${building.materialCode} · ${building.status.toUpperCase()}` },
   ];
 
   const observations = [
     {
+      id: 'primary-material',
       code: 'PRIMARY MATERIAL',
       detail: building.materials[0] ?? building.materialCode,
     },
     {
+      id: 'secondary-fabric',
       code: 'SECONDARY FABRIC',
       detail: building.materials[1] ?? building.subStyle,
     },
     {
-      code: 'MEASURED DATUM',
+      id: 'height-datum',
+      code: <Gloss term="ELEV./HEIGHT">HEIGHT DATUM</Gloss>,
       detail: building.dimensions.primaryMetric,
     },
     {
-      code: 'GEOGRAPHIC COORDINATE',
+      id: 'gps-position',
+      code: <>GPS POSITION (<Gloss term="WGS84">WGS84</Gloss>)</>,
       detail: `${building.coordinates.dmsLat} / ${building.coordinates.dmsLng}`,
     },
   ];
@@ -234,13 +240,13 @@ export default async function StructureDetailPage({
               COLOPHON &amp; MEASURED SPECIFICATION
             </h2>
             <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-              9-FIELD VERIFIED DATUM RECORD
+              MEASURED BUILDING RECORD
             </span>
           </div>
 
           <dl className={styles.ledgerGrid}>
             {colophonFields.map((field) => (
-              <div key={field.term} className={styles.ledgerCell}>
+              <div key={field.id} className={styles.ledgerCell}>
                 <dt className={`${styles.ledgerTerm} type-colophon`}>{field.term}</dt>
                 <dd className={`${styles.ledgerValue} type-body`}>{field.value}</dd>
               </div>
@@ -268,7 +274,7 @@ export default async function StructureDetailPage({
 
             <div className={styles.analysisBlock}>
               <h3 className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                STRUCTURAL GRAMMAR &amp; HISTORICAL COMMISSION
+                STRUCTURAL GRAMMAR &amp; HISTORICAL COMMISSION · <Gloss term="LOAD PATH">LOAD PATH</Gloss>
               </h3>
               <div className={`${styles.proseColumns} type-body`}>
                 <p style={{ marginBottom: '1rem', breakInside: 'avoid' }}>
@@ -311,7 +317,7 @@ export default async function StructureDetailPage({
           <aside className={styles.analysisSidebar} aria-label="Technical Observations and Plate Detail">
             <div className={styles.calloutMetricBox} data-surface="void">
               <span className={`${styles.calloutOverline} type-colophon`}>
-                PRIMARY STRUCTURAL DATUM
+                MEASURED HEIGHT · <Gloss term="DATUM">DATUM</Gloss>
               </span>
               <p className={styles.calloutPrimaryValue}>
                 {building.dimensions.heightLabel}
@@ -323,7 +329,7 @@ export default async function StructureDetailPage({
 
             <div className={styles.observationList}>
               {observations.map((obs) => (
-                <div key={obs.code} className={styles.observationRow}>
+                <div key={obs.id} className={styles.observationRow}>
                   <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
                     {obs.code}
                   </span>

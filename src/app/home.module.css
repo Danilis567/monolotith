@@ -6,7 +6,7 @@
   position: relative;
   min-block-size: calc(100dvh - var(--header-height));
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: 1fr auto auto;
   border-bottom: 2px solid var(--border-structural);
   overflow: clip;
 }
@@ -99,7 +99,7 @@
   padding-bottom: 0.875rem;
   border-bottom: 1px solid var(--border-hairline);
   position: relative;
-  z-index: 4;
+  z-index: 30;
   color: var(--ink-secondary);
 }
 
@@ -347,6 +347,21 @@
   color: var(--signal-ink);
 }
 
+.readingGuideBar {
+  border-top: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  position: relative;
+  z-index: 4;
+}
+
+.readingGuideInner {
+  inline-size: 100%;
+  max-inline-size: var(--grid-max-width);
+  margin-inline: auto;
+  padding-inline: var(--grid-margin);
+  padding-block: 0.75rem;
+}
+
 /* ==========================================================================
    BAND B — EDITORIAL THESIS (PLASTER LIGHT ISLAND)
    ========================================================================== */
@@ -465,62 +480,6 @@
   padding: 0.875rem 1.25rem;
   border: 1px solid var(--border-hairline);
   background-color: var(--surface-canvas);
-}
-
-/* ==========================================================================
-   BAND C — CONTROLLED SPECIMEN STREAM
-   ========================================================================== */
-.streamBand {
-  padding-block: 4rem 4.5rem;
-  border-bottom: 1px solid var(--border-hairline);
-  overflow-x: clip;
-}
-
-.streamHeader {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 1.25rem;
-  margin-bottom: 2rem;
-}
-
-.streamCard {
-  inline-size: 270px;
-  flex: 0 0 270px;
-  border-right: 1px solid var(--border-hairline);
-  display: grid;
-  background-color: var(--surface-canvas);
-}
-
-@media (width >= 768px) {
-  .streamCard {
-    inline-size: 320px;
-    flex: 0 0 320px;
-  }
-}
-
-.streamCardMedia {
-  aspect-ratio: 3 / 4;
-  padding: 1rem;
-  background-color: var(--surface-basalt);
-  border-bottom: 1px solid var(--border-hairline);
-}
-
-.streamCardBody {
-  padding: 1rem;
-  display: grid;
-  gap: 0.35rem;
-}
-
-.streamCardTitle {
-  font-family: var(--font-display), Georgia, serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.1;
-  text-transform: uppercase;
-  color: var(--ink-primary);
 }
 
 /* ==========================================================================

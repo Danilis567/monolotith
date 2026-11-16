@@ -125,3 +125,41 @@ All three auditors inspected the rendered `audit-screenshots/before/*.png` and `
 | **Visual Auditor Alpha (`visual-auditor-alpha`)** | `4aca9919` | Typography (`Bodoni Moda` / `Inter` / `IBM Plex Mono`), `cqi` container-query scaling (`"GRAVITY"` & `"ARCHITECTURE"` across 43 steps), surface-island contrast (`14.81:1`), and label precision | **9.80 / 10** | **PASS** |
 | **Visual Auditor Beta (`visual-auditor-beta`)** | `85262583` | Grid architecture (`16px` / `24px` / `10%` margins, `0px` overflow at `375px`), monumental plate proportions, Skia compositor stability, and Anti-AI museum-monograph asymmetry vs. `ref/` | **9.50 / 10** | **PASS** |
 | **COMPOSITE PANEL MEAN** | — | **All 16 Before/After Screenshot Sets & 43-Step Sweep Verified** | **9.65 / 10** | **UNCONDITIONAL PASS** |
+
+---
+
+## Round 4 — Jüri Geri Bildirimi Revizesi (Progressive Disclosure & Plain-First Layer)
+
+Following the 4-person studio critique ([STUDIO_CRITIQUE.md](file:///c:/Users/Danil/.gemini/antigravity-ide/scratch/neo-brutal/STUDIO_CRITIQUE.md)), 5 producer agents (`Ajan 1`–`Ajan 5`) and 1 coordinator (`Ajan 10`) implemented the progressive disclosure layer without deleting technical terminology or breaking the brutalist-gothic museum catalog identity. Full before/after visual comparisons are archived in [BEFORE_AFTER.md](file:///c:/Users/Danil/.gemini/antigravity-ide/scratch/neo-brutal/BEFORE_AFTER.md) and [GLOSSARY.md](file:///c:/Users/Danil/.gemini/antigravity-ide/scratch/neo-brutal/GLOSSARY.md).
+
+### 1. Measurable Gate Checks (Faz 3)
+- **`axe-core` (`wcag2a`, `wcag2aa`, `wcag21aa`):** `0` violations on `/`, `/archive`, and `/anatomy`.
+- **Horizontal Overflow (`scrollWidth === innerWidth`):** `PASS` across all 12 combinations (`375`, `768`, `1280`, `1920 px` × `/`, `/archive`, `/anatomy`).
+- **Interactive Controls:**
+  - `<Gloss>` (`[ ? ]`): opens on click (`aria-expanded: true`), closes on `Escape` and returns focus to trigger (`focusReturnedToGloss: true`), `z-index: 60` opaque `#131313` surface with zero overlap against right-rail marginalia.
+  - `<ReadingGuide />`: closed by default (`READING GUIDE [ + ]`), opens 3-line guide cleanly.
+  - `<SpecimenStream />`: slowed to `88s linear infinite`, `PAUSE STREAM [ || ]` (`183×44 px` target), `"HOVER A PLATE TO HOLD"` / `"TAP A PLATE TO HOLD"`, pauses on `:hover`, `:focus-within`, and touch.
+  - `/anatomy`: permanent `data-surface="void"`, `"TOGGLE LAYERS TO READ THE LOAD PATH"`, plain sub-labels on all 3 layer buttons, and `"WHAT YOU ARE LOOKING AT"` plain-English subtitles across all 9 plates.
+
+### 2. Unassisted Jury Tasks (`G1`–`G6`) — `6/6 PASS` (J1 & J2)
+- **G1** (*"What is this site about?" in 5s*): **PASS** (`J1`, `J2`)
+- **G2** (*Find Hagia Sophia's height*): **PASS** (`J1`, `J2` — `55.6 M` on vertical plate rail)
+- **G3** (*Understand `WGS84` and `BÉTON BRUT`*): **PASS** (`J1`, `J2` — `WGS84 [ ? ]` popover + `RAW CONCRETE (BÉTON BRUT)`)
+- **G4** (*Pause SpecimenStream and focus a building*): **PASS** (`J1`, `J2`)
+- **G5** (*Toggle a layer on `/anatomy` and explain it*): **PASS** (`J1`, `J2`)
+- **G6** (*Explain Footer coordinates / drawings / scale*): **PASS** (`J1`, `J2`)
+
+### 3. Independent 4-Jury Visual Screenshot Scoring (`0–10`)
+
+| Criterion | J1 (Sıradan Ziyaretçi) | J2 (Pratik Ziyaretçi) | J3 (UI/UX Uzmanı) | J4 (Savunucu) | Criterion Mean |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| 1. İlk kez gelen için anlaşılırlık | 8.5 | 9.0 | 8.5 | 9.0 | **8.75** |
+| 2. Kimliğin korunması (jargon silinmeden sadeleşme) | 9.0 | 9.5 | 9.5 | 9.5 | **9.38** |
+| 3. Tipografi ve hiyerarşi | 8.0 | 8.5 | 9.0 | 9.5 | **8.75** |
+| 4. Hareket ve etkileşim netliği | 9.0 | 9.0 | 9.5 | 8.5 | **9.00** |
+| 5. Erişilebilirlik (klavye, dokunmatik, AA) | 8.5 | 9.0 | 9.0 | 9.0 | **8.88** |
+| 6. Tasarım sistemi uyumu (sıfır radius/gölge) | 9.5 | 9.5 | 9.5 | 10.0 | **9.63** |
+| 7. Tutarlılık | 8.5 | 9.0 | 8.5 | 9.0 | **8.75** |
+| **Jüri Ortalaması** | **8.71** | **9.07** | **9.07** | **9.21** | **9.02 / 10** |
+
+**Round 4 Verdict:** **UNCONDITIONAL PASS** (`9.02 / 10 >= 7.0`, minimum criterion mean `8.75 >= 6.0`).

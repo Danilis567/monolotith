@@ -2,8 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
-import { useReducedMotion } from 'motion/react';
 import type { BuildingRecord } from '@/data/buildings';
 import { getApertureClassName, getPlateAperture } from '@/lib/plateGeometry';
 import {
@@ -11,11 +9,14 @@ import {
   CornerCrosshair,
   SteppedFrame,
 } from './DraftingMarks';
+import { Gloss } from './Gloss';
 import {
   HairlineDraw,
   HeroEchoParallax,
   PlateCurtain,
 } from './MotionPrimitives';
+import { ReadingGuide } from './ReadingGuide';
+import { SpecimenStream } from './SpecimenStream';
 import styles from '@/app/home.module.css';
 
 interface HomeClientProps {
@@ -37,20 +38,16 @@ export function HomeClient({
   monumentalSample,
   totalCount,
 }: HomeClientProps) {
-  const prefersReduced = useReducedMotion();
-  const [isStreaming, setIsStreaming] = useState(true);
-
-  const activeStreaming = isStreaming && !prefersReduced;
-  const repeatedStream = activeStreaming
-    ? [...streamBuildings, ...streamBuildings]
-    : streamBuildings;
-
   const movements = [
     {
       code: 'RAW CONCRETE',
       movement: 'Brutalist' as const,
       chronology: '1947–1980',
-      structuralSystem: 'MONOLITHIC BÉTON BRUT · DETACHED SERVICE CORES',
+      structuralSystem: (
+        <>
+          MONOLITHIC <Gloss term="BÉTON BRUT">BÉTON BRUT</Gloss> · DETACHED SERVICE CORES
+        </>
+      ),
       summary:
         'Board-formed concrete frames, exteriorized mechanical cores, and bush-hammered civic megastructures.',
       leadPlate: brutalistSample[0],
@@ -92,15 +89,17 @@ export function HomeClient({
 
         <div className={styles.heroStage}>
           <div className={`${styles.heroMetaTop} type-colophon`}>
-            <span>FOLIO IV / MONUMENTAL MONOGRAPH ARCHIVE</span>
-            <span>SURVEY SCOPE: 27 PLATES · 4 CONTINENTS</span>
-            <span>DATUM: WGS84 / METRIC</span>
+            <span>ARCHIVE VOLUME IV</span>
+            <span>{totalCount} BUILDINGS · 4 CONTINENTS</span>
+            <span>
+              COORDINATES: GPS (<Gloss term="WGS84">WGS84</Gloss>) · UNITS: METRES
+            </span>
           </div>
 
           <div className={styles.heroHeadlineCol}>
             <p className={`${styles.heroEyebrow} type-colophon`}>
               <span className="signal-dot" aria-hidden="true" />
-              <span>SPECIMEN {heroBuilding.catalogNumber} — FEATURED PLATE</span>
+              <span>CATALOG {heroBuilding.catalogNumber} — FEATURED BUILDING</span>
             </p>
 
             <h1 className={styles.heroTitle}>
@@ -196,7 +195,7 @@ export function HomeClient({
 
           <div className={styles.heroRailCol} aria-hidden="true">
             <span className={`${styles.verticalMarginalia} type-colophon`}>
-              LONDON / BÉTON BRUT
+              LONDON / RAW CONCRETE (BÉTON BRUT)
             </span>
             <span className={`${styles.verticalMarginalia} type-colophon`}>
               51°31′25″N × 0°12′20″W
@@ -219,7 +218,7 @@ export function HomeClient({
                 ARCHIVE SCOPE
               </span>
               <span className={`${styles.surveyValue} type-colophon tabular-nums`}>
-                {String(totalCount).padStart(2, '0')} VERIFIED PLATES
+                {String(totalCount).padStart(2, '0')} BUILDINGS · {String(totalCount).padStart(2, '0')} PLATES
               </span>
             </div>
             <div className={styles.surveyCell}>
@@ -232,12 +231,18 @@ export function HomeClient({
             </div>
             <div className={styles.surveyCell}>
               <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                SECTION WORKBENCH
+                CROSS-SECTION DRAWINGS
               </span>
               <span className={`${styles.surveyValue} type-colophon tabular-nums`}>
-                NINE ORTHOGRAPHIC PLATES
+                NINE MEASURED PLATES
               </span>
             </div>
+          </div>
+        </div>
+
+        <div className={styles.readingGuideBar}>
+          <div className={styles.readingGuideInner}>
+            <ReadingGuide />
           </div>
         </div>
       </section>
@@ -325,104 +330,7 @@ export function HomeClient({
       {/* =====================================================================
           BAND C — HORIZONTAL SPECIMEN STREAM (WCAG 2.2.2)
          ===================================================================== */}
-      <section data-surface="dark" className={styles.streamBand} aria-labelledby="stream-heading">
-        <div className="monolith-grid">
-          <div className={styles.streamHeader}>
-            <div style={{ display: 'grid', gap: '0.5rem' }}>
-              <p className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                SPECIMEN STREAM
-              </p>
-              <h2 id="stream-heading" className="type-display">
-                SURVEYED PLATES
-              </h2>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setIsStreaming((prev) => !prev)}
-              disabled={Boolean(prefersReduced)}
-              className="btn-monolith"
-            >
-              <span>
-                {prefersReduced
-                  ? 'REDUCED MOTION ACTIVE'
-                  : activeStreaming
-                    ? 'PAUSE STREAM'
-                    : 'PLAY STREAM'}
-              </span>
-              <span aria-hidden="true">{activeStreaming ? '[ || ]' : '[ > ]'}</span>
-            </button>
-          </div>
-        </div>
-
-        <div
-          className="specimen-stream-viewport"
-          data-streaming={activeStreaming ? 'true' : 'false'}
-          aria-label="Scrolling strip of surveyed architectural specimens"
-        >
-          <div className="specimen-stream-track">
-            {repeatedStream.map((building, idx) => {
-              const isClone = idx >= streamBuildings.length;
-              const aperture = getPlateAperture(building);
-              const apertureClass = getApertureClassName(aperture);
-
-              return (
-                <article
-                  key={`${building.id}-${idx}`}
-                  className={styles.streamCard}
-                  aria-hidden={isClone ? 'true' : undefined}
-                >
-                  <div className={styles.streamCardMedia}>
-                    <Link
-                      href={`/structures/${building.slug}`}
-                      tabIndex={-1}
-                      aria-hidden="true"
-                      className="plate-interactive-outer"
-                      style={{ blockSize: '100%' }}
-                    >
-                      <div
-                        className={`plate-frame plate-grain ${apertureClass}`}
-                        style={{ inlineSize: '100%', blockSize: '100%' }}
-                      >
-                        <Image
-                          src={building.imagePath}
-                          alt={isClone ? '' : building.imageAlt}
-                          fill
-                          loading="eager"
-                          sizes="320px"
-                          className="plate-img"
-                        />
-                      </div>
-                    </Link>
-                  </div>
-
-                  <div className={styles.streamCardBody}>
-                    <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                      {building.catalogNumber} · {building.movement.toUpperCase()}
-                    </span>
-                    <Link
-                      href={`/structures/${building.slug}`}
-                      tabIndex={isClone ? -1 : undefined}
-                      aria-hidden={isClone ? 'true' : undefined}
-                      aria-label={
-                        isClone
-                          ? undefined
-                          : `${building.catalogNumber} ${building.name} — ${building.city}, ${building.chronologyLabel}`
-                      }
-                      className={styles.streamCardTitle}
-                    >
-                      {building.name}
-                    </Link>
-                    <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                      {building.city.toUpperCase()} · {building.chronologyLabel}
-                    </span>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <SpecimenStream buildings={streamBuildings} />
 
       {/* =====================================================================
           BAND D — THREE-MOVEMENT LEDGER & COMPLETE INDEX CTA

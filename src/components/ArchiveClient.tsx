@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCallback, useMemo, useState } from 'react';
+import { ReadingGuide } from '@/components/ReadingGuide';
 import { UrlParamSync } from './UrlParamSync';
 import {
   CONTINENTS,
@@ -126,7 +127,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                 style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--signal-ink)' }}
               >
                 <span className="signal-dot" aria-hidden="true" />
-                <span>ARCHIVE VOLUME IV</span>
+                <span>CATALOG VOLUME IV · 27 BUILDINGS</span>
               </p>
               <h1 className="type-display">STRUCTURE INDEX</h1>
             </div>
@@ -139,7 +140,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                 style={{ color: 'var(--ink-primary)' }}
               >
                 SHOWING {String(filteredBuildings.length).padStart(2, '0')} OF{' '}
-                {String(totalCount).padStart(2, '0')} STRUCTURES
+                {String(totalCount).padStart(2, '0')} BUILDINGS
               </span>
               <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
                 TAXONOMY: BRUTALIST · GOTHIC · MONUMENTAL
@@ -156,6 +157,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
         aria-label="Filter and sort archival plates"
       >
         <div className={styles.filterShell}>
+          <ReadingGuide />
           <div id="archive-filter-controls" className={styles.controlsRow} data-open={filtersOpen ? 'true' : 'false'}>
             <div className={styles.fieldGroup}>
               <label htmlFor="archive-search" className={`${styles.fieldLabel} type-colophon`}>
@@ -167,7 +169,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                   type="search"
                   value={queryText}
                   onChange={(e) => setQueryText(e.target.value)}
-                  placeholder="NAME, ARCHITECT, CITY, CAT..."
+                  placeholder="NAME, ARCHITECT, CITY, CATALOG NO..."
                   className={styles.input}
                   style={{ paddingInlineEnd: queryText ? '4.5rem' : '0.75rem' }}
                 />
@@ -299,7 +301,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                 </button>
               ) : (
                 <span className={`type-colophon ${styles.filterSummaryText}`} style={{ color: 'var(--ink-secondary)' }}>
-                  DEFAULT ORDER · CAT. 001 TO CAT. {String(totalCount).padStart(3, '0')}
+                  DEFAULT ORDER · CATALOG 001 TO {String(totalCount).padStart(3, '0')}
                 </span>
               )}
             </div>
@@ -435,7 +437,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                               </span>
                             </div>
                             <div className={styles.cardMetaRow}>
-                              <span>YEAR / DATUM</span>
+                              <span>YEAR / HEIGHT</span>
                               <span style={{ textAlign: 'right', color: 'var(--ink-primary)' }}>
                                 {building.chronologyLabel} · {building.dimensions.heightMeters} M
                               </span>
@@ -501,7 +503,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                           onClick={() => setSort('CAT_ASC')}
                           className={`${styles.sortButton} type-colophon`}
                         >
-                          <span>CAT. NO.</span>
+                          <span>CATALOG NO.</span>
                           <span aria-hidden="true">{sort === 'CAT_ASC' ? '↑' : ''}</span>
                         </button>
                       </th>
@@ -562,7 +564,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                           }
                           className={`${styles.sortButton} type-colophon`}
                         >
-                          <span>ELEV.</span>
+                          <span>HEIGHT (M)</span>
                           <span aria-hidden="true">
                             {sort === 'ELEV_DESC' ? '↓' : sort === 'ELEV_ASC' ? '↑' : '⇅'}
                           </span>
@@ -583,7 +585,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                         >
                           <th scope="row" className={`${styles.ledgerTd} type-colophon tabular-nums`}>
                             <span aria-hidden="true" className={styles.mobileFieldLabel}>
-                              CAT. NO.
+                              CATALOG NO.
                             </span>
                             <span style={{ color: 'var(--signal-ink)', fontWeight: 500, whiteSpace: 'nowrap' }}>
                               {building.catalogNumber}
@@ -644,7 +646,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                           </td>
                           <td className={`${styles.ledgerTd} ${styles.ledgerTdNowrap} type-colophon tabular-nums`}>
                             <span aria-hidden="true" className={styles.mobileFieldLabel}>
-                              ELEV.
+                              HEIGHT (M)
                             </span>
                             <span>{building.dimensions.heightMeters} M</span>
                           </td>
@@ -696,7 +698,7 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                         </dd>
                       </div>
                       <div className={styles.mobileSlipRow}>
-                        <dt style={{ color: 'var(--ink-secondary)' }}>YEAR / ELEV.</dt>
+                        <dt style={{ color: 'var(--ink-secondary)' }}>YEAR / HEIGHT</dt>
                         <dd className="tabular-nums" style={{ textAlign: 'right' }}>
                           {building.chronologyLabel} · {building.dimensions.heightMeters} M
                         </dd>

@@ -13,7 +13,7 @@ MONOLITH treats the browser viewport as an **architectural drafting sheet and mu
 
 1. **Zero Softness Law:** `border-radius: 0px`, `box-shadow: none`, and `backdrop-filter: none` across every route, control, dialog, and plate.
 2. **Exposed Grid Discipline:** Structural `1px` hairlines (`--border-hairline`) and `1–2px` brutalist frames (`--border-structural`) remain visible as load-bearing partitions, anchored by `9×9px` / `13×13px` `+` crosshairs and stepped `6px`/`12px` mitered corner notches (`aria-hidden="true"`).
-3. **Dark-First Baseline + Polarity Islands:** `:root` renders in Dark-First Void Concrete (`#131313`) with Raw Plaster (`#E9E5DF`) ink. Light drafting sheets (`/anatomy` default) and inverted active controls opt in via `[data-surface="plaster"]` (`#E9E5DF`), `[data-surface="limestone"]` (`#B9B5AA`), or `[data-surface="void"]` (`#131313`) per [tokens-color.css](file:///C:/Users/Danil/.gemini/antigravity-ide/scratch/neo-brutal/brand/tokens-color.css).
+3. **Dark-First Baseline + Polarity Islands:** `:root` renders in Dark-First Void Concrete (`#131313`) with Raw Plaster (`#E9E5DF`) ink, scaled globally via `html { font-size: 85%; }` for 15% zoomed-out editorial proportion. `/anatomy` renders permanently in `data-surface="void"` (`#131313`), while `/structures/[slug]` analysis sections and active controls opt into `[data-surface="plaster"]` (`#E9E5DF`) or `[data-surface="basalt"]` (`#282828`) per [tokens-color.css](file:///C:/Users/Danil/.gemini/antigravity-ide/scratch/neo-brutal/brand/tokens-color.css).
 4. **Rationed Signal Vermilion (`<= 2%` Viewport Area):** Adaptive Signal Vermilion (`#F45D4D` on dark, `#A81F17` on plaster, `#8B1912` on limestone, `#C8281E` atmospheric glow only) is restricted to active route markers, live telemetry indices (`CAT. 001`), active structural axis vectors, and validation/empty error states—always paired with a non-color glyph or text cue (WCAG 1.4.1).
 5. **Logical Sizing & Zero Horizontal Spill:** All spatial layouts use CSS logical properties (`inline-size`, `block-size`, `margin-inline`, `padding-block`, `inset-inline-start`), dynamic viewport units (`100dvh`, `100%` / `100dvw`—never `100vw`), `min-inline-size: 0` on flex/grid children, and `overflow: clip` (never `overflow: hidden` when only clipping).
 
@@ -25,41 +25,36 @@ MONOLITH treats the browser viewport as an **architectural drafting sheet and mu
 
 | Tier | Range | Grid Columns | Gutter (`column-gap`) | Header / Footer Outer Margin | `#main-content` Margin (`--grid-margin`) | Primary Role |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **`mobile` (`< md`)** | `< 768px` | **4 columns** | `16px` (`1rem`) | `16px` (`1rem`) | **`1rem` (`16px`)** | Re-composed single-sheet poster stack & accessible catalog slips |
-| **`tablet` (`md`)** | `768px – 1023px` | **8 columns** | `20px` (`1.25rem`) | `24px` (`1.5rem`) | **`1.5rem` (`24px`)** | Dual-zone split plates & 2-col index slip grid |
-| **`desktop` (`lg`)** | `1024px – 1439px` | **12 columns** | `24px` (`1.5rem`) | `32px` (`2rem`) | **`10%`** (`--grid-max-width: 100%`) | Full exhibition poster grid, vertical marginalia & 3-col prose |
-| **`exhibition` (`xl`)** | `>= 1440px` | **12 columns** | `24px` (`1.5rem`) | `48px` (`3rem`) | **`10%`** (`--grid-max-width: 100%`) | Full-bleed poster framing (`10%` side margins across full viewport) |
+| **`mobile` (`< md`)** | `< 768px` | **4 columns** | `16px` (`1rem`) | `1.25rem` | **`1.25rem`** | Re-composed single-sheet poster stack & accessible catalog slips |
+| **`tablet` (`md`)** | `768px – 1023px` | **8 columns** | `20px` (`1.25rem`) | `2rem` | **`6%`** | Dual-zone split plates & 2-col index slip grid |
+| **`desktop` (`lg`)** | `1024px – 1439px` | **12 columns** | `24px` (`1.5rem`) | `4%` | **`12.5%`** (`--grid-max-width: 100%`) | Full exhibition poster grid, vertical marginalia & 3-col prose |
+| **`exhibition` (`xl`)** | `>= 1440px` | **12 columns** | `24px` (`1.5rem`) | `5%` | **`12.5%`** (`--grid-max-width: 100%`) | Full-bleed poster framing (`12.5%` side margins across full viewport) |
 
 ### 2.2 Exposed Grid Overlay, Responsive `#main-content` Margins & Container-Query Typography (`cqi`)
 
 ```css
-/* Global outer margins apply to <SiteHeader /> and <SiteFooter /> */
+/* Global outer margins apply to <SiteHeader /> and <SiteFooter /> (scaled at html { font-size: 85% }) */
 :root {
   --grid-gutter: 1rem;
-  --grid-margin: 1rem;
-  --grid-max-width: 1680px;
-}
-
-@media (width >= 768px) { :root { --grid-margin: 1.5rem; } }
-@media (width >= 1024px) { :root { --grid-margin: 2rem; } }
-@media (width >= 1440px) { :root { --grid-margin: 3rem; } }
-
-/* Responsive #main-content margins: full-width readability on mobile/tablet, 10% squeeze on desktop */
-#main-content {
-  --grid-margin: 1rem;
+  --grid-margin: 1.25rem;
+  --grid-max-width: 1560px;
 }
 
 @media (width >= 768px) {
-  #main-content {
-    --grid-margin: 1.5rem;
-  }
+  :root { --grid-margin: 2rem; }
+  #main-content { --grid-margin: 6%; }
 }
 
 @media (width >= 1024px) {
+  :root { --grid-margin: 4%; }
   #main-content {
-    --grid-margin: 10%;
+    --grid-margin: 12.5%;
     --grid-max-width: 100%;
   }
+}
+
+@media (width >= 1440px) {
+  :root { --grid-margin: 5%; }
 }
 
 /* Container-query inline sizing on multi-column display cells prevents character clipping */
@@ -98,7 +93,7 @@ MONOLITH treats the browser viewport as an **architectural drafting sheet and mu
 }
 ```
 
-- **Responsive `#main-content` Margin & Container-Query Typography (`cqi`):** On `< 768px`, `#main-content` uses `--grid-margin: 1rem` (`16px`); on `768px–1023px`, `--grid-margin: 1.5rem` (`24px`); and on `>= 1024px`, `--grid-margin: 10%` with `--grid-max-width: 100%` so `.monolith-grid`, `.surveyStripGrid`, `.filterShell`, and `.specimen-stream-viewport` sit with a `10%` architectural margin on both left and right without double-constraining inner tracks. Furthermore, `.heroHeadlineCol` and `.thesisLeft` establish `container-type: inline-size` and size display headlines with `cqi` units (`clamp(..., Xcqi, ...)`) so monumental words (`GRAVITY`, `ARCHITECTURE`) never clip or overflow their column tracks.
+- **Responsive `#main-content` Margin & Container-Query Typography (`cqi`):** On `< 768px`, `#main-content` uses `--grid-margin: 1.25rem`; on `768px–1023px`, `--grid-margin: 6%`; and on `>= 1024px`, `--grid-margin: 12.5%` with `--grid-max-width: 100%` so `.monolith-grid`, `.surveyStripGrid`, `.filterShell`, and `.specimen-stream-viewport` sit with a `12.5%` architectural margin on both left and right without double-constraining inner tracks (while `SpecimenStream` breaks out full-bleed with `border-inline: 0; margin-inline: 0;`). Furthermore, `.heroHeadlineCol` and `.thesisLeft` establish `container-type: inline-size` and size display headlines with `cqi` units (`clamp(..., Xcqi, ...)`) so monumental words (`GRAVITY`, `ARCHITECTURE`) never clip or overflow their column tracks.
 - **Exposed Vertical Hairlines (`<GridGuides />`):** An `aria-hidden="true"` architectural overlay renders vertical `1px` `--border-hairline` tracks (`opacity: 0.28` for background column guides; full `--border-hairline` for semantic section partitions) aligned to column boundaries `1, 4, 7, 10, 13` on desktop and `1, 5` on mobile.
 - **Intersection Registration Marks (`<CornerCrosshair />`):** `13×13px` geometric `+` SVG primitives (`stroke-width: 1px`, `vector-effect: non-scaling-stroke`, `aria-hidden="true"`) placed at major band intersections (`row × col`) and inset `4px` inside `.svgViewport` so mobile `375px` never spills horizontally.
 - **Stepped Corner Notches (`<SteppedFrame />`):** Top mitered `90°` L-brackets (`inset: 0.75rem` inside `.heroPlateAspect`, clearing the bottom title/caption scrim) paired with a `0.75rem` outer paspartu frame on `.heroPlateLink` and `1.5rem` horizontal / `1.35rem` bottom overlay inset so text never collides with registration marks. Never placed on buttons or small UI controls.
@@ -114,14 +109,14 @@ MONOLITH treats the browser viewport as an **architectural drafting sheet and mu
 src/app/
 ├── layout.tsx                 # Global shell, <MotionConfig reducedMotion="user">, fonts, skip link, SVG <clipPath> defs
 ├── globals.css                # @import tokens-color.css, type scale, .visually-hidden, reduced-motion rules
-├── page.tsx                   # 01 HOME (/)
+├── page.tsx                   # HOME (/)
 ├── archive/
-│   └── page.tsx               # 02 ARCHIVE (/archive) — PLATE & INDEX views (27 structures)
+│   └── page.tsx               # ARCHIVE (/archive) — PLATE & INDEX views (27 buildings)
 ├── structures/
 │   └── [slug]/
 │       └── page.tsx           # SPECIMEN DOSSIER (/structures/[slug]) — CAT. 001–027 / ARC-001–027 dossiers
 └── anatomy/
-    └── page.tsx               # 03 ANATOMY (/anatomy) — 9 orthographic plates (Plaster / Void switcher)
+    └── page.tsx               # ANATOMY (/anatomy) — 9 orthographic plates (permanent data-surface="void")
 ```
 
 ### 3.2 Masthead & Navigation Architecture (`<SiteHeader />`)
@@ -132,37 +127,42 @@ Single `<header aria-label="PRIMARY ARCHIVE HEADER">` containing one `<nav aria-
 - **Position:** `position: sticky; inset-block-start: 0; z-index: 40; border-block-end: 1px solid var(--border-hairline); background-color: var(--surface-canvas);`
 - **Desktop Layout (`>= 1024px`, 12 columns):**
   - **Cols 1–3 (Left):** Brand Link (`/`), `aria-label="MONOLITH — RETURN TO 01 HOME"`, rendering `brand/nav-lockup.svg` (or `nav-lockup-light.svg` on `[data-surface="plaster"]`) at **`26px` height** (compliant with `24–28px` spec and `0.5H` horizontal clearspace in [LOGO_GUIDELINES.md](file:///C:/Users/Danil/.gemini/antigravity-ide/scratch/neo-brutal/brand/LOGO_GUIDELINES.md)).
-  - **Cols 4–9 (Center Rail):** Inline horizontal route links (`display: flex; gap: 2rem`), set in `--type-ui-label` (`12px` Inter `500`, `UPPERCASE`, `+0.14em` tracking):
-    - `01 HOME` (`/`)
-    - `02 ARCHIVE` (`/archive`)
-    - `03 ANATOMY` (`/anatomy`)
-    - *(Note: `/structures/[slug]` is accessed via specimen cards, tabular index rows, Home `CAT. 001` callout, and Anatomy cross-links, and retains its internal hierarchical breadcrumb `01 HOME / 02 ARCHIVE / {MOVEMENT} / {CAT} · {NAME}`. It is omitted from the Header, Drawer, and Footer navigation lists.)*
+  - **Cols 4–9 (Center Rail):** Inline horizontal route links (`display: flex; gap: 2rem`), set in `--type-ui-label` (`12px` Inter `500`, `UPPERCASE`, `+0.14em` tracking) without numeric `01`/`02`/`03` prefixes:
+    - `HOME` (`/`)
+    - `ARCHIVE` (`/archive`)
+    - `ANATOMY` (`/anatomy`)
+    - *(Note: `/structures/[slug]` is accessed via specimen cards, tabular index rows, Home `CAT. 001` callout, and Anatomy cross-links, and retains its internal hierarchical breadcrumb `HOME / ARCHIVE / {MOVEMENT} / {CAT} · {NAME}`. It is omitted from the Header, Drawer, and Footer navigation lists.)*
     - **Active Indicator (`aria-current="page"`):** Paired **Signal Vermilion `5px` dot (`•`)** + **`1px solid var(--signal-border)` bottom rule** + **`font-weight: 700`** (never color alone, per WCAG 1.4.1).
-  - **Cols 10–12 (Right Telemetry & Drawer Trigger):** Live catalog telemetry (`• INDEXED: 27 PLATES` in `IBM Plex Mono` `tabular-nums`, `--ink-secondary`) + `• MENU` / `CLOSE ×` drawer toggle (`min-block-size: 44px; min-inline-size: 44px`).
+  - **Cols 10–12 (Right Telemetry & Drawer Trigger):** Live catalog telemetry (`• INDEXED: 27 PLATES` in `IBM Plex Mono` `tabular-nums`, `--ink-secondary`) + `INDEX` / `CLOSE ×` drawer toggle (`min-block-size: 44px; min-inline-size: 44px`).
 - **Mobile & Tablet Layout (`< 1024px`, 4/8 columns):**
   - Left: `brand/nav-lockup.svg` (`24px` height).
-  - Right: `• MENU` (`aria-label="OPEN NAVIGATION INDEX"`, `aria-expanded={open}`, `aria-controls="monolith-drawer"`, `44×44px` minimum touch target) toggling to `CLOSE ×` when open.
-  - **Mobile / Full-Screen Index Drawer (`<dialog id="monolith-drawer" ref={dialogRef}>` via `.showModal()`):**
+  - Right: `INDEX` (`aria-label="Open archival navigation menu"`, `aria-haspopup="dialog"`, `aria-controls="monolith-nav-drawer"`, `44×44px` minimum touch target) toggling to `CLOSE ×` when open.
+  - **Mobile / Full-Screen Index Drawer (`<dialog id="monolith-nav-drawer" ref={dialogRef}>` via `.showModal()`):**
     - Native `<dialog>` provides automatic focus trapping, `inert` background, and `Esc` dismissal without custom focus-trap libraries.
     - Full-bleed `100dvw × 100dvh`, `Void Concrete` (`#131313`) ground, exposed 4-column hairline tracks.
     - Top bar (`56px`): `FOLIO DIRECTORY · EDITION IV` + close button (`CLOSE ×`, `44×44px`).
-    - Body: Vertical stacked monolithic links strictly for the 3 primary routes (`01 HOME`, `02 ARCHIVE`, `03 ANATOMY`) set in `Bodoni Moda 600` (`clamp(2.25rem, 8vw, 3.5rem)`), each row bounded by `1px solid var(--border-hairline)` with laconic description and `↗` arrow.
+    - Body: Vertical stacked monolithic links strictly for the 3 primary routes (`HOME`, `ARCHIVE`, `ANATOMY`) set in `Bodoni Moda 600` (`clamp(2.25rem, 8vw, 3.5rem)`), each row bounded by `1px solid var(--border-hairline)` with laconic description (`Poster Exhibition`, `27 Cataloged Structures`, `Measured Sections`) and `↗` arrow.
     - Footer strip inside drawer: `DATUM 51°30'00"N × 0°07'00"W · METRIC SI · VOL. IV · 126–PRESENT`.
 
-### 3.3 Global Footer (`<SiteFooter aria-label="ARCHIVE COLOPHON AND INDEX STATEMENT">`)
+### 3.3 Global Footer (`<SiteFooter />`)
 
-- Full-bleed `1px solid var(--border-structural)` top rule.
-- **Upper Band (12 cols):**
-  - `>= 1024px`: Renders `brand/footer-lockup.svg` (or `footer-lockup-light.svg`) spanning full container width (`>= 880px` minimum width per `LOGO_GUIDELINES.md` §3).
-  - `< 1024px`: Automatically swaps to `brand/monolith-wordmark-dark.svg` (or `-light.svg`) + stacked `IBM Plex Mono` colophon lines so `13.5`-unit SVG micro-text never drops below legible thresholds.
-- **Middle Band:** 4-cell colophon ledger (`CLASSIFICATION: ARCHIVAL MONOGRAPH`, `DATUM: WGS84 · METRIC SI`, `SET IN: BODONI MODA / INTER / IBM PLEX MONO`, `© 2026 MONOLITH · EDITION: VOL. IV · 15 / 11 / 2026`) + 3-route (`01 HOME`, `02 ARCHIVE`, `03 ANATOMY`) / 3-movement quick index separated by `1px` vertical hairlines on desktop, stacked with horizontal `1px` rules on `< 768px`.
-- **Bottom Ruler Rail (`aria-hidden="true"`):** `1px` baseline with repeating `4px` minor / `8px` major graduation ticks and `tabular-nums` metric markers (`00  10  20  30  40  50  60 ... 120`, referencing `45e4f814...jpg`), paired with `TOP OF FOLIO ↑` (`aria-label="RETURN TO TOP OF PAGE"`).
+2-zone asymmetric footer (`data-surface="dark"`, `border-top: 2px solid var(--border-structural)`):
+- **Zone 1 — `upperBand` (`1.25fr / 0.75fr` on `>= 1024px`):**
+  - Left (`manifestoCol`): `brand/monolith-wordmark-dark.svg` (`220×53`), overline `ARCHITECTURAL ARCHIVE · VOLUME IV` (with `.signal-dot`), and statement `ARCHIVE OF LOAD-BEARING STONE & RAW CONCRETE · 126 CE–PRESENT`.
+  - Right (`colophonCard` on `--surface-basalt`): 2×2 `dl.colophonGrid` displaying plain-first specifications:
+    - `COORDINATES`: `GPS (WGS84) · METRES`
+    - `COLLECTION`: `27 CATALOGED BUILDINGS`
+    - `PHOTOGRAPHS`: `WIKIMEDIA COMMONS (OPEN LICENSE)`
+    - `DRAWINGS`: `ORIGINAL, DRAWN FOR THIS ARCHIVE`
+- **Zone 2 — `directoryGrid` (`1fr / 1.2fr / 0.8fr` on `>= 1024px`) & `baselineBand`:**
+  - `directoryGrid`: 3 columns (`SECTIONS`: `HOME`, `ARCHIVE`, `ANATOMY`; `DISCIPLINES`: `BRUTALIST · 1947–1980`, `GOTHIC · 1163–1965`, `MONUMENTAL · 126 CE–PRESENT`; `SCOPE & ACTION`: `EUROPE · ASIA · AMERICAS · MIDDLE EAST` + `BACK TO TOP ↑` button).
+  - `baselineBand`: `<ScaleRuler unitLabel="HEIGHT SCALE · 00 TO 120 METRES" />` + `MONOLITH — ARCHIVE VOLUME IV · 2026`.
 
 ---
 
 ## 4. Section-by-Section Layout & Wireframe Specifications
 
-### 4.1 `01 HOME` (`/`)
+### 4.1 `HOME` (`/`)
 
 Designed as a continuous 4-band vertical exhibition poster on `Void Concrete` (`#131313`).
 
@@ -220,28 +220,28 @@ Designed as a continuous 4-band vertical exhibition poster on `Void Concrete` (`
   - Lower Split (`1px solid var(--border-hairline)` top rule):
     - Cols 1–6: **3-column print prose** (`I. MATERIAL HONESTY`, `II. STRUCTURAL LINEAGE`, `III. ARCHIVAL RECORD`, `max-inline-size: 34ch` per column) + inlaid `MONOGRAPH NOTE` (`Bodoni Moda 400 Italic` unquoted, unattributed structural thesis observation `--type-quote`).
     - Cols 7–12 (`1px` left rule): Monumental `16 / 10` specimen plate (`CAT. 003` Unité d'Habitation, `loading="lazy"`).
-- **Band C — Selected Specimen Plates / Horizontal Specimen Stream:**
-  - Header rail (Cols 1–12): `01.2 — SPECIMEN STREAM` / `SURVEYED PLATES` (`SHOWING 09 FEATURED OF 27`) on left; visible **WCAG 2.2.2 Pause/Play control** (`<button type="button">` toggling label between `PAUSE STREAM` and `PLAY STREAM`, **no `aria-pressed`**) on right.
-  - Scrollable/auto-scrolling horizontal track of featured specimens across all 3 movements with varied poster proportions (`3/4` Rectilinear, `3/4` Pointed Lancet Arch `#monolith-lancet-3x4` for Gothic specimens, `16/10` Panorama), bounded by `1px solid var(--border-hairline)` vertical partitions and `CAT. 001`–`CAT. 027` stamps. Hover or keyboard `:focus-within` pauses stream motion.
+- **Band C — Selected Specimen Plates / Full-Bleed Horizontal Specimen Stream:**
+  - Header rail (Cols 1–12): `SPECIMEN STREAM` / `SURVEYED PLATES` on left; pointer/touch hold hint (`HOVER A PLATE TO HOLD` / `TAP A PLATE TO HOLD`) and visible **WCAG 2.2.2 Pause/Play control** (`<button type="button" aria-pressed={activeStreaming}>` toggling label between `PAUSE STREAM [ || ]` and `PLAY STREAM [ ▶ ]`) on right.
+  - Full-bleed horizontal filmstrip (`border-inline: 0; margin-inline: 0;`, `88s linear infinite` CSS marquee) of featured specimens across all 3 movements with varied poster proportions (`3/4` Rectilinear, `3/4` Pointed Lancet Arch `#monolith-lancet-3x4` for Gothic specimens, `16/10` Panorama), bounded by `1px solid var(--border-hairline)` vertical partitions and `CAT. 001`–`CAT. 027` stamps. Hover or keyboard `:focus-within` pauses stream motion; touch `onTouchStart` holds stream.
 - **Band D — 3-Movement Taxonomy Ledger + Complete Ledger Prompt:**
   - 3 full-width rows (`1px solid var(--border-hairline)` dividers, `1px solid var(--border-structural)` outer bounds):
     - `01 BRUTALIST` | `1947–1980` | `09 PLATES` | `BÉTON BRUT, PRECAST & STEEL` | `FILTER BRUTALIST ↗`
     - `02 GOTHIC` | `1163–1965` | `09 PLATES` | `LIMESTONE, MARBLE & SANDSTONE` | `FILTER GOTHIC ↗`
     - `03 MONUMENTAL` | `126–PRESENT` | `09 PLATES` | `CONCRETE, LIMESTONE & GRANITE` | `FILTER MONUMENTAL ↗`
-  - **Bottom Ledger Prompt (`01.3 — COMPLETE LEDGER`):** `ACCESS THE 27-STRUCTURE INDEX` (`Twenty-seven surveyed structures across four continents...`) + `OPEN 02 ARCHIVE ↗` and `INSPECT 03 ANATOMY ↗`.
+  - **Bottom Ledger Prompt (`COMPLETE LEDGER · 27 BUILDINGS · 4 CONTINENTS`):** `ACCESS THE 27-STRUCTURE INDEX` + primary `.btn-monolith--primary` (`OPEN ARCHIVE ↗`) and secondary `.btn-monolith` (`INSPECT ANATOMY ↗`) CTA hierarchy.
 
 ---
 
-### 4.2 `02 ARCHIVE` (`/archive`)
+### 4.2 `ARCHIVE` (`/archive`)
 
 Dual-mode taxonomic archive for all **27** structures (`CAT. 001`–`CAT. 027`), rejecting uniform SaaS card grids.
 
 - **Archive Masthead (Cols 1–12):**
-  - Overline: `02 / ARCHIVE · COMPLETE CATALOG LEDGER`
+  - Overline: `CATALOG VOLUME IV · 27 BUILDINGS`
   - `<h1>` (`--type-display`): `STRUCTURE INDEX`
-  - Abstract: `Surveyed structures indexed by movement, century, primary load-bearing material, and metric elevation.`
-  - Live telemetry (`aria-live="polite"` debounced): `DISPLAYING {N} OF 27 STRUCTURES` (`IBM Plex Mono` `tabular-nums`).
-- **Sticky Search, Filter & View Toggle Bar:**
+  - Live telemetry (`aria-live="polite"`): `SHOWING {N} OF 27 BUILDINGS` (`IBM Plex Mono` `tabular-nums`).
+- **Filter, `<ReadingGuide />` & View Toggle Bar:**
+  - `<ReadingGuide />` disclosure (`HOW TO READ THIS CATALOG` explaining `CAT. NO.`, `ELEV. / HEIGHT`, and `COORDINATES`) sits directly above `#archive-filter-controls`.
   - `position: sticky; inset-block-start: var(--header-height); z-index: 30; background-color: var(--surface-canvas); border-block: 1px solid var(--border-structural);`
   - **Search Input:** Visible `<label htmlFor="archive-search">SEARCH CATALOG</label>`, `<input id="archive-search" type="search" placeholder="STRUCTURE, ARCHITECT, CITY, OR CAT. NO." />`, and conditional `CLEAR ×` button (`aria-label="CLEAR SEARCH QUERY"`).
   - **5 Filter Selectors** (native `<select>` with explicit `<label>`, `min-block-size: 44px`, `0px` radius, `1px solid var(--border-hairline)`):
@@ -274,14 +274,14 @@ Items render sequentially in DOM order (preserving keyboard tab order!) into a *
 
 - Wrapped in `<div tabIndex={0} role="region" aria-labelledby="archive-index-caption" className="table-wrapper">` (`container-type: inline-size; overflow: auto;`).
 - **Locked 8 Columns (`<th scope="col">` sortable header buttons):**
-  1. `CAT. NO.` (`<th scope="row">` per row, `IBM Plex Mono`, e.g., `CAT. 001`)
+  1. `CATALOG NO.` (`<th scope="row">` per row, `IBM Plex Mono`, e.g., `CAT. 001`)
   2. `STRUCTURE` (`Bodoni Moda 600` `<Link href="/structures/[slug]">`)
-  3. `ARCHITECT` (`Inter 400`)
-  4. `LOCATION` (`City, Country`)
-  5. `YEAR` (`tabular-nums`, e.g., `1972`)
-  6. `MOVEMENT` (`--type-ui-label`, `BRUTALIST` / `GOTHIC` / `MONUMENTAL`)
+  3. `MOVEMENT` (`--type-colophon`, `Brutalist` / `Gothic` / `Monumental`)
+  4. `ARCHITECT` (`IBM Plex Mono`)
+  5. `LOCATION` (`City, Country`)
+  6. `YEAR` (`tabular-nums`, e.g., `1972`)
   7. `MATERIAL` (`IBM Plex Mono`, e.g., `BÉTON BRUT`)
-  8. `ELEV.` (`tabular-nums`, right-aligned, e.g., `98.0 M`)
+  8. `HEIGHT (M)` (`tabular-nums`, right-aligned, e.g., `98.0 M`)
 - **Desktop Hover / Focus Plate Preview (`@media (hover: hover) and (pointer: fine)`):** Hovering or keyboard-focusing a row updates a dedicated non-occluding `240px × 320px` (`aspect-ratio: 3/4`) margin preview plate (`fetchpriority="low"`, `1px solid var(--border-structural)`, `+` corner crosshairs).
 - **Accessible Narrow-Container Transformation (`@container (width < 600px)`):**
   - **CRITICAL ACCESSIBILITY RULE:** **Never** set `thead { display: none; }` (which strips header semantics from screen readers in table navigation mode). Instead, hide `<thead>` visually via `.visually-hidden` (`position: absolute; inline-size: 1px; block-size: 1px; clip-path: inset(50%); overflow: hidden; white-space: nowrap;`) so screen readers retain full column-header context, while converting `<tbody>`, `<tr>`, `<th scope="row">`, and `<td>` into stacked **Catalog Slips** (`border: 1px solid var(--border-hairline); margin-block-end: 1rem`).
@@ -329,38 +329,21 @@ Monograph dossier route for any of the **27** structures (`CAT. 001`–`CAT. 027
 
 ---
 
-### 4.4 `03 ANATOMY` (`/anatomy`)
+### 4.4 `ANATOMY` (`/anatomy`)
 
-Interactive orthographic drafting workbench displaying **9** architectural plates (3 Brutalist, 3 Gothic, 3 Monumental) mapped to `hasAnatomyPlate === true` records in `src/data/buildings.ts`. Defaults to **Raw Plaster light-paper (`[data-surface="plaster"]`, `#E9E5DF` ground, `#131313` ink)** with an interactive **Drafting-Table Polarity Switcher** (`PLASTER` vs `VOID` `#131313`).
+Interactive orthographic drafting workbench displaying **9** architectural plates (3 Brutalist, 3 Gothic, 3 Monumental) mapped to `hasAnatomyPlate === true` records in `src/data/buildings.ts`. Renders permanently in **Void Concrete (`data-surface="void"`, `#131313` ground, `#E9E5DF` ink)** with `<ReadingGuide />` and `<Gloss />` `[ ? ]` progressive disclosure.
 
-- **Workbench Surface Isolation:**
-  - The route `<main>` (or section wrapper) carries `data-surface={surface}` (`"plaster"` default or `"void"`), re-declaring all 23 Tier 2 semantic tokens from [tokens-color.css](file:///C:/Users/Danil/.gemini/antigravity-ide/scratch/neo-brutal/brand/tokens-color.css) (`#A81F17` Signal Crimson on plaster; `#F45D4D` Molten Vermilion on void).
-- **Top Header & Polarity Switcher (`1px solid var(--border-structural)` bottom):**
-  - Overline: `03 / ANATOMY · ORTHOGRAPHIC SECTION PLATES · SECTION 03` | `<h1>`: `STRUCTURAL ANATOMY`
-  - Polarity Switcher: `[ SURFACE: PLASTER / VOID ]` `<button type="button">` (`aria-pressed={surface === 'void'}` with explicit visible text `ACTIVE: PLASTER` / `ACTIVE: VOID`).
+- **Top Header (`1px solid var(--border-structural)` bottom):**
+  - Overline: `ORTHOGRAPHIC SECTION PLATES · MEASURED DRAWINGS` | `<h1>`: `STRUCTURAL ANATOMY`
+  - Includes `<ReadingGuide />` (`HOW TO READ THIS CATALOG`).
 - **Movement Filter Tabs (`role="tablist"`, Full 12-Col Bar):**
-  - 4 horizontal tabs (`0px` rectangular frames, `1px solid var(--border-structural)` active border, `•` dot + `aria-selected="true"`):
-    1. `ALL PLATES (09)`
-    2. `01 / BRUTALIST` (`trellick-tower`, `unite-dhabitation`, `habitat-67`)
-    3. `02 / GOTHIC` (`chartres-cathedral`, `sainte-chapelle`, `wells-cathedral`)
-    4. `03 / MONUMENTAL` (`hagia-sophia`, `pantheon-rome`, `national-assembly-dhaka`)
-  - Implements WAI-ARIA `tablist` keyboard pattern: `ArrowLeft` / `ArrowRight` / `Home` / `End` move focus and activate tabs seamlessly.
+  - 4 horizontal tabs (`0px` rectangular frames, `1px solid var(--border-structural)` active border, `•` dot + `aria-selected="true"`): `ALL PLATES`, `BRUTALIST`, `GOTHIC`, `MONUMENTAL`.
+  - Implements WAI-ARIA `tablist` keyboard pattern: `ArrowLeft` / `ArrowRight` / `Home` / `End`.
 - **12-Column Drafting Layout:**
-  - **Cols 1–3 (Left Control Rail):**
-    - **Plate Selector List (9 Plates filtered by active tab):** Lists each plate (`CAT. 001 TRELLICK TOWER`, etc.) with `aria-current={isActive ? 'true' : undefined}`.
-    - **3 Layer Toggles (`<fieldset><legend>DRAFTING LAYERS</legend>`):**
-      1. `STRUCTURE` (`<button type="button" aria-pressed={layers.structure}>`) — primary masonry/concrete mass
-      2. `AXIS & LOAD` (`<button type="button" aria-pressed={layers.axisLoad}>`) — plumb centerlines & `--signal-ink` thrust/compression vectors
-      3. `DIMENSIONS` (`<button type="button" aria-pressed={layers.dimensions}>`) — metric span & elevation datums
-      - Plus `ALL LAYERS` utility button + polite live region (`<p aria-live="polite">ACTIVE LAYERS: STRUCTURE, AXIS & LOAD, DIMENSIONS</p>`).
-  - **Cols 4–12 (Main Orthographic SVG Canvas):**
-    - Locked `aspect-ratio: 16 / 10` (`min-block-size: 420px` on desktop) bounded by `1px solid var(--border-structural)` and 4 corner `✦` / `+` alignment marks (`aria-hidden="true"`).
-    - Mobile helper caption (`< 768px` only): `TAP OR SCROLL TO INSPECT PLATE` (`--type-colophon`).
-    - Inline `<svg role="img" aria-labelledby="anatomy-plate-title anatomy-plate-desc" viewBox="0 0 1200 750">` with crisp `1px` (`vector-effect="non-scaling-stroke"`), `stroke-linecap="square"`, `stroke-linejoin="miter"`, and toggleable `<g id="layer-structure">`, `<g id="layer-axis-load">`, `<g id="layer-dimensions">`.
-    - **Bottom Metric Scale Bar:** `SCALE 1:250 · METRIC SI` with `0   5   10   20   30 M` graduation ticks (`4px` minor / `8px` major) in `IBM Plex Mono` `tabular-nums`.
-    - **Accessible Dimension Table Alternative (`<details>`):** `<details><summary>VIEW STRUCTURAL DIMENSION SCHEDULE</summary>...</details>` housing a semantic `<table>` of all spans, heights, load paths, and coordinates for the active plate (WCAG 1.1.1).
-- **Bottom Referenced Specimens Cross-Link Strip (Cols 1–12):**
-  - Links directly from the active orthographic plate (or system) to its corresponding `/structures/[slug]` dossier (`CAT. 001 TRELLICK TOWER ↗`, etc.).
+  - **Cols 1–3 (Left Plate Rail):** Lists each plate (`PLATE 01 · CAT. 001` / `TRELLICK TOWER`) with `aria-current={isActive ? 'true' : undefined}`.
+  - **Cols 4–12 (Right Interactive Drafting Stage):**
+    - **Layer Toggle Toolbar:** Prompt `TOGGLE LAYERS TO READ THE <Gloss term="LOAD PATH" />` + 3 layer toggle buttons with plain-first sub-labels (`STRUCTURAL MASS` — `the building's solid mass`; `AXIS & LOAD` — `lines showing how weight travels`; `DIMENSIONS` — `measured heights and spans`) + `ALL LAYERS [ RESET ]`.
+    - **Orthographic SVG Canvas + Plate Subtitle:** Inline `<svg>` with toggleable layers, legend row, and `"WHAT YOU ARE LOOKING AT"` plain-language plate subtitle (`role="note" aria-label="What you are looking at"`, rendering `activePlate.whatYouSee`), followed by callout cards and `<details>` Structural Dimension Schedule.
 
 ---
 
@@ -370,8 +353,8 @@ Mobile **re-composes** the poster sheet into a vertical single-sheet stack rathe
 
 | Element | Desktop (`>= 1024px`) | Mobile Re-Composition (`< 768px`) |
 | :--- | :--- | :--- |
-| **Grid & Gutters** | 12-col, `24px` gutter, `10%` `#main-content` margin (`--grid-max-width: 100%`) | 4-col, `16px` gutter, `16px` (`1rem`) `#main-content` margin (`24px` / `1.5rem` on `768px–1023px`); background vertical guides reduced to outer rails + center axis (cols `1, 3, 5`). |
-| **Navigation** | Inline 3-link horizontal bar (`01 HOME`, `02 ARCHIVE`, `03 ANATOMY`) + `• INDEXED: 27 PLATES` | `56px` bar (`nav-lockup` + `• MENU` trigger) opening native `<dialog>` full-bleed `100dvh` drawer (`FOLIO DIRECTORY · EDITION IV`, `01 HOME`, `02 ARCHIVE`, `03 ANATOMY` directory, `CLOSE ×`). |
+| **Grid & Gutters** | 12-col, `24px` gutter, `12.5%` `#main-content` margin (`--grid-max-width: 100%`) | 4-col, `16px` gutter, `1.25rem` `#main-content` margin (`6%` on `768px–1023px`); background vertical guides reduced to outer rails + center axis (cols `1, 3, 5`). |
+| **Navigation** | Inline 3-link horizontal bar (`HOME`, `ARCHIVE`, `ANATOMY`) + `• INDEXED: 27 PLATES` | `56px` bar (`nav-lockup` + `INDEX` trigger) opening native `<dialog>` full-bleed `100dvh` drawer (`FOLIO DIRECTORY · EDITION IV`, `HOME`, `ARCHIVE`, `ANATOMY` directory, `CLOSE ×`). |
 | **Home Hero** | Overlapping Z1 colossal type (`cqi` container-sized) + Z2 right-center tower + Z3 left thesis & right `CAT. 001` telemetry | Sequential poster stack inside `min-block-size: 100dvh`: (1) Top `ARCHITECTURAL MONOGRAPH · FOLIO IV` + `CAT. 001` bar; (2) `MASS / CAST / UNDER / GRAVITY` layered over/behind `3:4` hero plate; (3) Lead abstract + full-width `↗ ENTER ARCHIVE` & `VIEW MANIFESTO ↓`; (4) 2×2 Survey Strip (`27 / 27`, `126 — 1982`). |
 | **Rotated Marginalia** | `writing-mode: vertical-rl; rotate(180deg)` side rail on `/structures/[slug]` and hero edges | **Converted to horizontal ledger bar** (`flex-direction: row; flex-wrap: wrap; justify-content: space-between; border-block: 1px solid var(--border-hairline); padding-block: 0.75rem`) directly above the hero title. Zero sideways reading required. |
 | **3-Column Prose** | `column-count: 3` with `1px` vertical rules & `34ch` measure | **Collapses to 1 column** (`column-count: 1; max-inline-size: 58ch`), with the `Bodoni Moda Italic` unquoted structural observation block promoted to a full-width inset block bounded top/bottom by `1px` hairlines before paragraph 2. |
@@ -411,7 +394,7 @@ export const DURATION = {
 | **2. Gothic Lancet Arch Reveal** | Mount (Hero) or `whileInView` | `motion.div` + SVG `#monolith-lancet-3x4` (`11–60–61` `3:4` or `2:3` clip) | Bottom-up aperture reveal from ground plane (`inset(100% 0% 0% 0%)` → `inset(0% 0% 0% 0%)`, `0.72s`, `MONOLITH_EASE`) inside the static pointed-arch silhouette. **Focus ring lives on unclipped parent wrapper**. | Final open arch state visible immediately. |
 | **3. Exposed Hairline Rule Draw-In** | `whileInView` (`once: true`) | `motion.span` (`aria-hidden="true"`) | Horizontal rules: `scaleX: 0 → 1`, `transformOrigin: "0% 50%"` (`0.45s`, `MONOLITH_EASE`, `0.04s` stagger). Vertical rules: `scaleY: 0 → 1`, `transformOrigin: "50% 0%"`. | Final `scaleX: 1` / `scaleY: 1` immediately. |
 | **4. Scroll-Linked Colossal Parallax** | Scroll progress (`0 → 1` over Hero) | Dual: CSS `animation-timeline: scroll()` inside `@supports ((animation-timeline: view()) and (animation-range: entry))` + `motion/react` `useScroll` + `useTransform` fallback | Background `MONOLITH` echo layer translates `translate3d(0, 0, 0) → translate3d(0, 18%, 0)` while foreground silhouette translates `0 → -6%`, creating physical architectural depth (`preview (3).webp`). | Static `translate3d(0, 0, 0)` (parallax disabled). |
-| **5. Horizontal Specimen Stream** | Auto-run (paused via button / hover / focus) | CSS `@keyframes` (`transform: translate3d(0,0,0) → translate3d(-50%,0,0)`, `48s linear infinite`) | Smooth continuous horizontal stream (`animation-play-state: paused` on hover, `:focus-within`, or button click). Visible `<button>` (`PAUSE STREAM` / `PLAY STREAM`, **no `aria-pressed`**) fulfills **WCAG 2.2.2**. | Disabled by default inside `@media (prefers-reduced-motion: no-preference)`; renders as static horizontally scrollable track (`overflow-x: auto`). |
+| **5. Horizontal Specimen Stream** | Auto-run (paused via button / hover / focus / touch) | CSS `@keyframes` (`transform: translate3d(0,0,0) → translate3d(-50%,0,0)`, `88s linear infinite`) | Smooth continuous full-bleed stream (`border-inline: 0; margin-inline: 0;`, `animation-play-state: paused` on hover, `:focus-within`, or button click; touch `onTouchStart` holds). Visible `<button>` (`PAUSE STREAM [ || ]` / `PLAY STREAM [ ▶ ]`) fulfills **WCAG 2.2.2**. | Disabled by default inside `@media (prefers-reduced-motion: no-preference)`; renders as static horizontally scrollable track (`overflow-x: auto`). |
 | **6. Brand Loader Mark (`loader-mark.svg`)** | Initial route/splash gate (optional `< 900ms` or manual replay) | Targeted SVG groups (`#frame-outer`, `#axis-plumb`, `#lancet-arch`, `#monolith-mass`) | Sequential mechanical cuts (`0ms` outer frame → `140ms` plumb axis `scaleY` → `280ms` lancet arch → `440ms` monolith slab `opacity`). | Instant final mark (`opacity: 1`). |
 | **7. Anatomy Layer Draw-In** | Layer button toggle | `motion.g` (`opacity` + `pathLength` via `stroke-dashoffset`) | Axis/load vectors draw cleanly over `0.35s` `MONOLITH_EASE` without shifting SVG bounding box. | Immediate toggle (`opacity: 1` / `0`). |
 | **8. Mobile `<dialog>` Drawer** | `showModal()` / `close()` | CSS `@starting-style` + `transition: opacity, transform, display, overlay` + `transition-behavior: allow-discrete` | Slides/shears vertically `translateY(-12px) → 0` + `opacity: 0 → 1` (`0.28s`, `MONOLITH_EASE`). | Instant open/close (`opacity: 1`, `transform: none`). |

@@ -433,47 +433,6 @@ ol {
 }
 
 /* ==========================================================================
-   CONTROLLED HORIZONTAL SPECIMEN STREAM (WCAG 2.2.2)
-   ========================================================================== */
-@keyframes monolith-stream-scroll {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-.specimen-stream-viewport {
-  overflow-x: auto;
-  scrollbar-width: thin;
-  inline-size: 100%;
-  margin-inline: 0;
-  border-block: 1px solid var(--border-hairline);
-  border-inline: 0;
-}
-
-.specimen-stream-track {
-  display: flex;
-  inline-size: max-content;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .specimen-stream-viewport[data-streaming="true"] {
-    overflow-x: clip;
-  }
-
-  .specimen-stream-viewport[data-streaming="true"] .specimen-stream-track {
-    animation: monolith-stream-scroll 54s linear infinite;
-  }
-
-  .specimen-stream-viewport[data-streaming="true"]:hover .specimen-stream-track,
-  .specimen-stream-viewport[data-streaming="true"]:focus-within .specimen-stream-track {
-    animation-play-state: paused;
-  }
-}
-
-/* ==========================================================================
    NATIVE <dialog> MOBILE DRAWER TRANSITION
    ========================================================================== */
 .monolith-drawer {
@@ -526,7 +485,7 @@ ol {
   gap: 0.75rem;
   min-block-size: 44px;
   padding: 0.625rem 1.125rem;
-  border: 1px solid var(--border-structural);
+  border: 1px solid var(--border-hairline);
   background-color: transparent;
   color: var(--ink-primary);
   font-family: var(--font-sans), sans-serif;
@@ -541,19 +500,25 @@ ol {
     border-color 150ms cubic-bezier(0.2, 0, 0, 1);
 }
 
-.btn-monolith:hover:not(:disabled) {
-  background-color: var(--surface-inverse);
-  color: var(--ink-inverse);
+.btn-monolith:hover:not(:disabled),
+.btn-monolith:focus-visible:not(:disabled) {
+  border-color: var(--ink-primary);
 }
 
 .btn-monolith--primary {
-  background-color: var(--surface-inverse);
-  color: var(--ink-inverse);
+  background-color: var(--ink-primary);
+  color: var(--surface-canvas);
+  border: 2px solid var(--ink-primary);
+  border-inline-start: 3px solid var(--signal-ink);
+  font-weight: 600;
 }
 
-.btn-monolith--primary:hover:not(:disabled) {
-  background-color: transparent;
+.btn-monolith--primary:hover:not(:disabled),
+.btn-monolith--primary:focus-visible:not(:disabled) {
+  background-color: var(--surface-elevated);
   color: var(--ink-primary);
+  border-color: var(--ink-primary);
+  border-inline-start-color: var(--signal-ink);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -51,23 +51,23 @@ Derived from `preview (1).webp` (*Obsidian*), `preview (2).webp` (*Takumi*), and
 
 | Slot | Copy | Token | Accessibility / Spec |
 | :--- | :--- | :--- | :--- |
-| **Brand Lockup** | `brand/nav-lockup.svg` *(or `nav-lockup-light.svg`)* | Custom SVG `<path>` | Link `aria-label`: `MONOLITH — RETURN TO 01 HOME`. |
+| **Brand Lockup** | `brand/nav-lockup.svg` *(or `nav-lockup-light.svg`)* | Custom SVG `<path>` | Link `aria-label`: `MONOLITH — Monumental Archive Home`. |
 | **Header Telemetry Stamp** | `FOLIO IV / MONUMENTAL MONOGRAPH ARCHIVE` · `VOL. IV · SURVEY 126–1982` | `--type-colophon` | Desktop secondary datum next to masthead divider. |
 | **Live Index Indicator** | `• INDEXED: 27 PLATES` | `--type-colophon` | Signal dot (`--signal-ink`) paired with explicit text label (WCAG 1.4.1). |
-| **Drawer Trigger (Closed)** | `• MENU` | `--type-ui-label` | `aria-label="OPEN NAVIGATION INDEX"`, `aria-expanded="false"`. |
-| **Drawer Trigger (Open)** | `CLOSE ×` | `--type-ui-label` | `aria-label="CLOSE NAVIGATION INDEX"`, `aria-expanded="true"`. |
+| **Drawer Trigger (Closed)** | `INDEX` | `--type-ui-label` | `aria-label="Open archival navigation menu"`, `aria-haspopup="dialog"`, `aria-controls="monolith-nav-drawer"`. |
+| **Drawer Trigger (Open)** | `CLOSE ×` | `--type-ui-label` | `aria-label="CLOSE NAVIGATION INDEX"`. |
 
-### 1.3 Primary Navigation (`01`–`03`)
+### 1.3 Primary Navigation (`HOME` · `ARCHIVE` · `ANATOMY`)
 
-Every primary route in the Header, Mobile Drawer, and Footer carries a two-digit tabular index prefix (`01`–`03`). Active route renders in `--ink-primary` with `--signal-ink` telemetry dot `•` and `aria-current="page"`.
+Every primary route in the Header, Mobile Drawer, and Footer uses plain section labels without numeric `01`/`02`/`03` prefixes. Active route renders in `--ink-primary` with `--signal-ink` telemetry dot `•` and `aria-current="page"`.
 
 | Route | Visible Label | Compact Mobile Label | `aria-label` |
 | :--- | :--- | :--- | :--- |
-| `/` | `01 HOME` | `01 HOME` | `01 HOME — EXHIBITION OVERVIEW` |
-| `/archive` | `02 ARCHIVE` | `02 ARCHIVE` | `02 ARCHIVE — COMPLETE 27-STRUCTURE INDEX` |
-| `/anatomy` | `03 ANATOMY` | `03 ANATOMY` | `03 ANATOMY — ORTHOGRAPHIC SECTION PLATES` |
+| `/` | `HOME` | `HOME` | `HOME — EXHIBITION OVERVIEW` |
+| `/archive` | `ARCHIVE` | `ARCHIVE` | `ARCHIVE — COMPLETE 27-BUILDING INDEX` |
+| `/anatomy` | `ANATOMY` | `ANATOMY` | `ANATOMY — ORTHOGRAPHIC SECTION PLATES` |
 
-> **Routing Note on Specimen Dossiers (`/structures/[slug]`):** Individual structure dossiers are not listed as a top-level navigation item in the Header, Mobile Drawer, or Footer; they are accessed directly from specimen cards, tabular index rows, Home featured callouts, and Anatomy cross-links, and retain their internal hierarchical breadcrumb (`01 HOME / 02 ARCHIVE / {MOVEMENT} / {CAT} · {NAME}`).
+> **Routing Note on Specimen Dossiers (`/structures/[slug]`):** Individual structure dossiers are not listed as a top-level navigation item in the Header, Mobile Drawer, or Footer; they are accessed directly from specimen cards, tabular index rows, Home featured callouts, and Anatomy cross-links, and retain their internal hierarchical breadcrumb (`HOME / ARCHIVE / {MOVEMENT} / {CAT} · {NAME}`).
 
 ### 1.4 Mobile / Full-Screen Index Drawer Copy
 
@@ -75,39 +75,41 @@ Every primary route in the Header, Mobile Drawer, and Footer carries a two-digit
 | :--- | :--- | :--- | :--- |
 | **Drawer Header Overline** | `FOLIO DIRECTORY · EDITION IV · 27 STRUCTURES` | `--type-colophon` | Bounded by `1px` `--border-hairline`. |
 | **Drawer Route Descriptions** | | | |
-| — `01 HOME` | `Exhibition thesis, specimen stream, and 3-movement ledger.` | `--type-body` | |
-| — `02 ARCHIVE` | `Filterable 27-structure ledger and asymmetric plate grid.` | `--type-body` | |
-| — `03 ANATOMY` | `Nine orthographic section plates and load-path diagrams.` | `--type-body` | |
+| — `HOME` | `Poster Exhibition` | `--type-body` | |
+| — `ARCHIVE` | `27 Cataloged Structures` | `--type-body` | |
+| — `ANATOMY` | `Measured Sections` | `--type-body` | |
 | **Drawer Footer Stamp** | `DATUM 51°31'25"N × 0°12'20"W · METRIC SI · VOL. IV` | `--type-colophon` | |
 
 ### 1.5 Footer Colophon & Index Statement
 
-Derived from `45e4f8147b81c3e0bb8a8549802e6ace.jpg` (*Saint Petersburg* millimeter ruler & colophon) and `brand/footer-lockup.svg`:
+Derived from `45e4f8147b81c3e0bb8a8549802e6ace.jpg` (*Saint Petersburg* millimeter ruler & colophon) and `SiteFooter.tsx` (plain-first colophon):
 
 | Block | Copy | Token | Notes |
 | :--- | :--- | :--- | :--- |
-| **Footer Wordmark** | `brand/footer-lockup.svg` *(>= 880px)* / `brand/monolith-wordmark-dark.svg` *(< 880px on dark)* / `brand/monolith-wordmark-light.svg` *(< 880px inside `[data-surface="plaster"]`)* | Custom SVG | Home anchor (`aria-label="MONOLITH — RETURN TO TOP OF ARCHIVE"`). |
-| **Index Statement** | `MONOLITH IS AN ARCHITECTURAL MONOGRAPH ARCHIVE CATALOGING 27 BRUTALIST, GOTHIC, AND MONUMENTAL STRUCTURES ACROSS FOUR CONTINENTS (126–1982). ALL COORDINATES, ELEVATIONS, AND MATERIAL SPECIFICATIONS ARE RECORDED IN METRIC SI UNITS.` | `--type-colophon` | `max-width: 58ch`. |
-| **Colophon Ledger (4 Cells)** | | | |
-| — Cell 01 (`CLASSIFICATION`) | `CLASSIFICATION: ARCHIVAL MONOGRAPH (27 PLATES)` | `--type-colophon` | |
-| — Cell 02 (`DATUM`) | `DATUM: WGS84 · METRIC SI` | `--type-colophon` | |
-| — Cell 03 (`TYPOGRAPHY`) | `SET IN: BODONI MODA / INTER / IBM PLEX MONO` | `--type-colophon` | |
-| — Cell 04 (`EDITION`) | `© 2026 MONOLITH · EDITION: VOL. IV · 15 / 11 / 2026` | `--type-colophon` | `ARCHIVE VOLUME IV — INDEX & MEASURED SECTIONS`. |
-| **Footer Route Index (3 Routes)** | `01 HOME` (`/`) · `02 ARCHIVE` (`/archive`) · `03 ANATOMY` (`/anatomy`) | `--type-ui-label` | Strictly 3 top-level routes (individual `/structures/[slug]` dossiers omitted from footer nav). |
-| **Scale Ruler Track** | `00` · `10` · `20` · `30` · `40` · `50` · `60` · `70` · `80` · `90` · `100` · `110` · `120` | `--type-colophon` | `aria-hidden="true"` decorative millimeter ticks. |
-| **Footer Utility Link** | `TOP OF FOLIO ↑` | `--type-ui-label` | `aria-label="RETURN TO TOP OF PAGE"`. |
+| **Footer Overline** | `ARCHITECTURAL ARCHIVE · VOLUME IV` | `--type-colophon` | Paired with `.signal-dot`. |
+| **Footer Wordmark** | `brand/monolith-wordmark-dark.svg` | Custom SVG | `220×53`. |
+| **Index Statement** | `ARCHIVE OF LOAD-BEARING STONE & RAW CONCRETE · 126 CE–PRESENT` | `--font-display` | `max-inline-size: 32ch`. |
+| **Colophon Card (4 Cells)** | | | |
+| — Cell 01 (`COORDINATES`) | `GPS (WGS84) · METRES` | `--type-colophon` | Plain-first label & value. |
+| — Cell 02 (`COLLECTION`) | `27 CATALOGED BUILDINGS` | `--type-colophon` | |
+| — Cell 03 (`PHOTOGRAPHS`) | `WIKIMEDIA COMMONS (OPEN LICENSE)` | `--type-colophon` | |
+| — Cell 04 (`DRAWINGS`) | `ORIGINAL, DRAWN FOR THIS ARCHIVE` | `--type-colophon` | |
+| **Footer Route Index (3 Routes)** | `HOME` (`/`) · `ARCHIVE` (`/archive`) · `ANATOMY` (`/anatomy`) | `--type-colophon` | Strictly 3 top-level routes (individual `/structures/[slug]` dossiers omitted from footer nav). |
+| **Scale Ruler Track** | `HEIGHT SCALE · 00 TO 120 METRES` (`00` · `10` · … · `120`) | `--type-colophon` | `aria-hidden="true"` decorative millimeter ticks. |
+| **Legal Line** | `MONOLITH — ARCHIVE VOLUME IV · 2026` | `--type-colophon` | |
+| **Footer Utility Button** | `BACK TO TOP ↑` | `--type-ui-label` | Scroll-to-top action. |
 
 ### 1.6 Global Error & System States
 
 | State | Code & Headline | Body Copy | Action Label |
 | :--- | :--- | :--- | :--- |
-| **404 — Unindexed Route** | `ERR 404 — RECORD UNINDEXED` | `The requested plate or coordinate does not exist in the 27-structure folio.` | `RETURN TO 01 HOME ↗` / `OPEN 02 ARCHIVE ↗` |
+| **404 — Unindexed Route** | `ERR 404 — RECORD UNINDEXED` | `The requested plate or coordinate does not exist in the 27-structure folio.` | `RETURN TO HOME ↗` / `OPEN ARCHIVE ↗` |
 | **500 — Index Unavailable** | `ERR 500 — ARCHIVAL INDEX UNAVAILABLE` | `The catalog ledger failed to compile. Reload the document or return to the primary index.` | `RELOAD FOLIO ↗` |
 | **Plate Media Fallback** | `PLATE UNRENDERED — MEDIA MISSING` | `Photographic emulsion unavailable for this specimen.` | `VIEW TECHNICAL COLOPHON ↓` |
 
 ---
 
-## 2. Route `01 HOME` (`/`)
+## 2. Route `HOME` (`/`)
 
 ### 2.1 Document Metadata
 
@@ -126,8 +128,8 @@ Inspired by `preview (1).webp` (*Obsidian*), `preview (3).webp` (*Residential Br
 | **Hero Display Headline** | `MASS` / `CAST` / `UNDER` / `GRAVITY` | `--type-monolith` | Four-line tight vertical stack (`line-height: 0.86`, `-0.045em`). |
 | **Hero Chronology Stamp** | `126–1982` | `--type-colophon` | Anchored flush to headline right edge. |
 | **Hero Lead Abstract** | `Raw aggregate, load-bearing geometry, and archival record. Surveying 27 brutalist, gothic, and monumental structures erected between 126 and 1982.` | `--type-body-lead` | `max-width: 44ch`. |
-| **Primary Hero CTA** | `↗ ENTER ARCHIVE` | `--type-ui-label` | `1px` `--border-structural` frame, `0px` radius. |
-| **Secondary Hero CTA** | `VIEW MANIFESTO ↓` | `--type-ui-label` | Scrolls to Curatorial Premise section. |
+| **Primary Hero CTA** | `↗ ENTER ARCHIVE` | `--type-ui-label` | `.btn-monolith--primary` (filled primary action). |
+| **Secondary Hero CTA** | `ANATOMY` / `VIEW MANIFESTO ↓` | `--type-ui-label` | `.btn-monolith` (bordered secondary action). |
 
 #### Hero Bottom 4-Cell Survey Strip (Per `preview (1).webp` Lower Grid)
 
@@ -177,9 +179,9 @@ Continuous horizontal architectural plate track bounded by `1px` `--border-hairl
 | **Band Header Overline** | `01.2 — SPECIMEN STREAM` | `--type-colophon` |
 | **Band Headline** | `SURVEYED PLATES` | `--type-display` |
 | **Band Count Stamp** | `SHOWING 09 FEATURED OF 27` | `--type-colophon` |
-| **Motion Control (Playing)** | `PAUSE STREAM` | `--type-ui-label` (`<button type="button">`, **no `aria-pressed`** when label toggles) |
-| **Motion Control (Paused)** | `PLAY STREAM` | `--type-ui-label` (`<button type="button">`, `aria-label="RESUME HORIZONTAL SPECIMEN STREAM"`) |
-| **Stream Accessibility Hint** | `Hover or focus any plate to hold stream position.` | `--type-colophon` |
+| **Motion Control (Playing)** | `PAUSE STREAM [ || ]` | `--type-ui-label` (`<button type="button">`, `aria-pressed="true"`) |
+| **Motion Control (Paused)** | `PLAY STREAM [ ▶ ]` | `--type-ui-label` (`<button type="button">`, `aria-pressed="false"`) |
+| **Stream Accessibility Hint** | `HOVER A PLATE TO HOLD` *(pointer)* / `TAP A PLATE TO HOLD` *(touch)* | `--type-colophon` |
 
 #### Stream Sample Specimen Slips (Aligned to `src/data/buildings.ts`)
 
@@ -203,35 +205,35 @@ Full-width 3-row architectural ledger (`1px` `--border-hairline` between rows, `
 | **Primary Material** | `BÉTON BRUT, PRECAST & STEEL` | `LIMESTONE, MARBLE & SANDSTONE` | `CONCRETE, LIMESTONE & GRANITE` |
 | **Structural Mechanic** | `Cantilevered slabs, detached service shafts, post-tensioned modules, and exposed board-formed concrete.` | `Pointed lancet arches, quadripartite and fan rib vaults, flying buttresses, and inverted scissor arches.` | `Pendentive brick domes, coffered concrete hemispheres, travertine colonnades, and cyclopean plinths.` |
 | **Row CTA** | `FILTER BRUTALIST ↗` | `FILTER GOTHIC ↗` | `FILTER MONUMENTAL ↗` |
-| **CTA `aria-label`** | `FILTER 02 ARCHIVE BY BRUTALIST (09 STRUCTURES)` | `FILTER 02 ARCHIVE BY GOTHIC (09 STRUCTURES)` | `FILTER 02 ARCHIVE BY MONUMENTAL (09 STRUCTURES)` |
+| **CTA `aria-label`** | `FILTER ARCHIVE BY BRUTALIST (09 STRUCTURES)` | `FILTER ARCHIVE BY GOTHIC (09 STRUCTURES)` | `FILTER ARCHIVE BY MONUMENTAL (09 STRUCTURES)` |
 
-#### Complete Ledger Entry Block (`01.3 — COMPLETE LEDGER`)
+#### Complete Ledger Entry Block (`COMPLETE LEDGER`)
 
 | Slot | Copy | Token |
 | :--- | :--- | :--- |
-| **Overline** | `01.3 — COMPLETE LEDGER` | `--type-colophon` |
+| **Overline** | `COMPLETE LEDGER · 27 BUILDINGS · 4 CONTINENTS` | `--type-colophon` |
 | **Headline** | `ACCESS THE 27-STRUCTURE INDEX` | `--type-display` |
 | **Summary** | `Twenty-seven surveyed structures across Europe, Asia, the Americas, and the Middle East. Filter by movement, continent, material, or century, or open the nine orthographic Anatomy plates.` | `--type-body-lead` |
-| **Primary Action** | `OPEN 02 ARCHIVE ↗` | `--type-ui-label` |
-| **Secondary Action** | `INSPECT 03 ANATOMY ↗` | `--type-ui-label` |
+| **Primary Action** | `OPEN ARCHIVE ↗` | `--type-ui-label` (`.btn-monolith--primary`) |
+| **Secondary Action** | `INSPECT ANATOMY ↗` | `--type-ui-label` (`.btn-monolith`) |
 
 ---
 
-## 3. Route `02 ARCHIVE` (`/archive`)
+## 3. Route `ARCHIVE` (`/archive`)
 
 ### 3.1 Document Metadata
 
-- **`<title>`:** `02 ARCHIVE — MONOLITH Structure Index (27 Plates)`
+- **`<title>`:** `ARCHIVE — MONOLITH Structure Index (27 Plates)`
 - **`<meta name="description">`:** `Searchable ledger and asymmetric photographic plate grid of 27 Brutalist, Gothic, and Monumental structures from 126 to 1982.`
 
 ### 3.2 Page Header
 
 | Slot | Copy | Token |
 | :--- | :--- | :--- |
-| **Route Overline** | `02 / ARCHIVE · COMPLETE CATALOG LEDGER` | `--type-colophon` |
+| **Route Overline** | `CATALOG VOLUME IV · 27 BUILDINGS` | `--type-colophon` |
 | **Page Title** | `STRUCTURE INDEX` | `--type-display` |
-| **Header Abstract** | `Twenty-seven surveyed structures indexed by movement, continent, primary load-bearing material, era, and metric elevation.` | `--type-body-lead` |
-| **Live Count Telemetry** | `DISPLAYING {N} OF 27 STRUCTURES` *(default: `DISPLAYING 27 OF 27 STRUCTURES`)* | `--type-colophon` (`aria-live="polite"`) |
+| **Live Count Telemetry** | `SHOWING {N} OF 27 BUILDINGS` *(default: `SHOWING 27 OF 27 BUILDINGS`)* | `--type-colophon` (`aria-live="polite"`) |
+| **Reading Guide Disclosure** | `<ReadingGuide />` — `HOW TO READ THIS CATALOG` (`CAT. NO.`, `ELEV. / HEIGHT`, `COORDINATES`) | `--type-colophon` |
 
 ### 3.3 Search, Filter Controls & View Toggle
 
@@ -239,8 +241,8 @@ Full-width 3-row architectural ledger (`1px` `--border-hairline` between rows, `
 
 | Element | Copy | Accessibility / Notes |
 | :--- | :--- | :--- |
-| **Input Label** | `SEARCH CATALOG` | Visible `<label>` above input (`--type-ui-label`). |
-| **Placeholder** | `STRUCTURE, ARCHITECT, CITY, OR CAT. NO.` | |
+| **Input Label** | `SEARCH QUERY` | Visible `<label>` above input (`--type-colophon`). |
+| **Placeholder** | `NAME, ARCHITECT, CITY, CATALOG NO...` | |
 | **Clear Search Button** | `CLEAR ×` | `aria-label="CLEAR SEARCH QUERY"`. |
 
 #### 5 Filter Selectors & Option Lists (Aligned to `src/data/buildings.ts`)
@@ -269,14 +271,14 @@ Strict `1px` `--border-hairline` rows, `IBM Plex Mono` numeric columns with `tab
 
 | Column Key | Header Label | Sortable `aria-label` | Sample Cell Formatting (`CAT. 001`) |
 | :--- | :--- | :--- | :--- |
-| **1** | `CAT. NO.` | `SORT BY CATALOG NUMBER` | `CAT. 001` |
+| **1** | `CATALOG NO.` | `SORT BY CATALOG NUMBER` | `CAT. 001` |
 | **2** | `STRUCTURE` | `SORT BY STRUCTURE NAME` | `Trellick Tower` |
-| **3** | `ARCHITECT` | `SORT BY ARCHITECT` | `Ernő Goldfinger` |
-| **4** | `LOCATION` | `SORT BY LOCATION` | `London, United Kingdom` |
-| **5** | `YEAR` | `SORT BY COMPLETION YEAR` | `1972` |
-| **6** | `MOVEMENT` | `SORT BY ARCHITECTURAL MOVEMENT` | `BRUTALIST` |
+| **3** | `MOVEMENT` | `SORT BY ARCHITECTURAL MOVEMENT` | `BRUTALIST` |
+| **4** | `ARCHITECT` | `SORT BY ARCHITECT` | `Ernő Goldfinger` |
+| **5** | `LOCATION` | `SORT BY LOCATION` | `London, United Kingdom` |
+| **6** | `YEAR` | `SORT BY COMPLETION YEAR` | `1972` |
 | **7** | `MATERIAL` | `SORT BY PRIMARY MATERIAL` | `BÉTON BRUT` |
-| **8** | `ELEV.` | `SORT BY METRIC ELEVATION` | `98.0 M` |
+| **8** | `HEIGHT (M)` | `SORT BY METRIC HEIGHT` | `98.0 M` |
 
 *(Row action arrow `↗` sits inside the `STRUCTURE` link or compact trailing action cell with `aria-label="INSPECT CAT. 001 TRELLICK TOWER"`.)*
 
@@ -314,7 +316,7 @@ Rendered inside a `1px` `--border-structural` block when active filters yield `0
 
 | Slot | Copy | Token | Accessibility |
 | :--- | :--- | :--- | :--- |
-| **Breadcrumb Nav** | `01 HOME` `/` `02 ARCHIVE` `/` `{MOVEMENT}` `/` `{CAT} · {NAME}` | `--type-colophon` | `aria-label="SPECIMEN BREADCRUMB"`; current item carries `aria-current="page"`. |
+| **Breadcrumb Nav** | `HOME` `/` `ARCHIVE` `/` `{MOVEMENT}` `/` `{CAT} · {NAME}` | `--type-colophon` | `aria-label="Breadcrumb"`; current item carries `aria-current="page"`. |
 | **Plate Overline** | `SPECIMEN DOSSIER · {CAT. NNN} · {MOVEMENT} · VOL. IV` | `--type-colophon` | |
 | **Structure Display Title** | `{STRUCTURE}` *(e.g. `TRELLICK TOWER`)* | `--type-display` | |
 | **Subtitle / Datum Line** | `{ARCHITECT} · {CITY, COUNTRY} · {CHRONOLOGY}` | `--type-body-lead` | |
@@ -322,19 +324,19 @@ Rendered inside a `1px` `--border-structural` block when active filters yield `0
 
 ### 4.3 Technical Colophon Table Labels
 
-Set in `IBM Plex Mono` (`--type-colophon`) with `1px` `--border-hairline` cell partitions:
+Set in `IBM Plex Mono` (`--type-colophon`) with `1px` `--border-hairline` cell partitions (`MEASURED BUILDING RECORD`), with inline `<Gloss>` `[ ? ]` progressive disclosure on `WGS84` and `HEIGHT DATUM`:
 
 | Label | Sample (`CAT. 001` Brutalist) | Sample (`CAT. 010` Gothic) | Sample (`CAT. 023` Monumental) |
 | :--- | :--- | :--- | :--- |
-| **`CAT. NO.`** | `CAT. 001` | `CAT. 010` | `CAT. 023` |
-| **`ARCHITECT`** | `Ernő Goldfinger` | `Anonymous Master Masons` | `Apollodorus of Damascus (attr.)` |
-| **`COMPLETION`** | `1972` | `1194–1260` | `c. 126 CE` |
-| **`COORD.`** | `51°31'25"N × 0°12'20"W` | `48°26'52"N × 1°29'16"E` | `41°53'55"N × 12°28'36"E` |
-| **`ELEVATION / HEIGHT`** | `98.0 M (120 M WITH MAST)` | `113.0 M NORTH SPIRE / 37.0 M VAULT` | `43.3 M OCULUS HEIGHT` |
-| **`SPAN / FOOTPRINT`** | `31 STOREYS / 217 FLATS` | `130.2 M LENGTH / 16.4 M NAVE SPAN` | `43.3 M DOME DIAMETER` |
-| **`PRIMARY MATERIAL`** | `BÉTON BRUT` | `BERCHÈRES LIMESTONE` | `ROMAN CONCRETE` |
-| **`MOVEMENT`** | `BRUTALIST` | `GOTHIC` | `MONUMENTAL` |
-| **`STATUS`** | `STANDING` | `STANDING` | `STANDING` |
+| **`CATALOG / RECORD ID`** | `CAT. 001 · ARC-001` | `CAT. 010 · ARC-010` | `CAT. 023 · ARC-023` |
+| **`MOVEMENT / CLASSIFICATION`** | `BRUTALIST — High-Rise Housing` | `GOTHIC — High Gothic` | `MONUMENTAL — Classical Rotunda` |
+| **`ARCHITECT / MASTER BUILDER`** | `Ernő Goldfinger` | `Anonymous Master Masons` | `Apollodorus of Damascus (attr.)` |
+| **`LOCATION`** | `London, United Kingdom (Europe)` | `Chartres, France (Europe)` | `Rome, Italy (Europe)` |
+| **`GPS POSITION (WGS84)`** *(with `<Gloss term="WGS84">`)* | `51°31'25"N × 0°12'20"W` | `48°26'52"N × 1°29'16"E` | `41°53'55"N × 12°28'36"E` |
+| **`CHRONOLOGY`** | `1972` | `1194–1260` | `c. 126 CE` |
+| **`HEIGHT DATUM`** *(with `<Gloss term="ELEV./HEIGHT">`)* | `98.0 M (120 M WITH MAST)` | `113.0 M NORTH SPIRE / 37.0 M VAULT` | `43.3 M OCULUS HEIGHT` |
+| **`STRUCTURAL FOOTPRINT / METRIC`** | `31 STOREYS / 217 FLATS` | `130.2 M LENGTH / 16.4 M NAVE SPAN` | `43.3 M DOME DIAMETER` |
+| **`PRIMARY MATERIAL / STATUS`** | `BÉTON BRUT · STANDING` | `BERCHÈRES LIMESTONE · STANDING` | `ROMAN CONCRETE · STANDING` |
 
 *(Permitted `STATUS` values matching `StructureStatus`: `STANDING`, `DEMOLISHED`, `UNDER COMPLETION`.)*
 
@@ -342,7 +344,9 @@ Set in `IBM Plex Mono` (`--type-colophon`) with `1px` `--border-hairline` cell p
 
 | Section Slot | Heading / Label | Sample Copy (`CAT. 001 — TRELLICK TOWER`) |
 | :--- | :--- | :--- |
-| **Primary Essay Heading** | `ARCHITECTURAL ANALYSIS` | `Commissioned by the Greater London Council for the Cheltenham Estate and opened in June 1972, Trellick Tower isolates vertical circulation and mechanical plant inside an autonomous concrete service shaft. By separating elevators, refuse chutes, and the rooftop boiler room from the thirty-one-storey residential slab, Ernő Goldfinger removed mechanical vibration from the 217 apartments. Aerial access bridges span to every third floor, feeding split-level maisonettes above and below each internal street.` |
+| **Primary Essay Heading** | `ARCHITECTURAL ANALYSIS` / `LOAD PATH & HISTORICAL RECORD` | `STRUCTURAL GRAMMAR & HISTORICAL COMMISSION · LOAD PATH` (`<Gloss term="LOAD PATH">` `[ ? ]` inline). |
+| **Callout Metric Box** | `MEASURED HEIGHT · DATUM` (`<Gloss term="DATUM">`) | Displays `heightLabel` and `primaryMetric`. |
+| **Observation Sidebar** | `PRIMARY MATERIAL`, `SECONDARY FABRIC`, `HEIGHT DATUM` (`<Gloss term="ELEV./HEIGHT">`), `GPS POSITION (WGS84)` (`<Gloss term="WGS84">`) | Plain-first observation labels paired with `[ ? ]` glossary triggers. |
 | **Structural Observation Callout Overline** | `STRUCTURAL OBSERVATION` | Replaces fabricated citation labels; no quotation marks or fabricated source attributions are permitted. |
 | **Structural Observation Callout Body (Unquoted & Unattributed)** | `Detached circulation cores isolate mechanical plant and elevator shafts from the residential slab, eliminating structure-borne vibration across all thirty-one storeys.` | `--type-quote` — Measured, unquoted, unattributed structural observation distinct from the lead summary (`summary`) and historical essay. |
 | **Observations Heading** | `STRUCTURAL OBSERVATIONS` | |
@@ -356,42 +360,40 @@ Set in `IBM Plex Mono` (`--type-colophon`) with `1px` `--border-hairline` cell p
 | Element | Copy | `aria-label` |
 | :--- | :--- | :--- |
 | **Anatomy Cross-Link Overline** | `STRUCTURAL CROSS-REFERENCE` | |
-| **Anatomy Cross-Link Title (When `hasAnatomyPlate === true`)** | `INSPECT {STRUCTURE} IN 03 ANATOMY` *(e.g. `INSPECT TRELLICK TOWER IN 03 ANATOMY`)* | |
-| **Anatomy Cross-Link Title (Fallback when `false`)** | `INSPECT {MOVEMENT} SYSTEM IN 03 ANATOMY` | |
-| **Anatomy Cross-Link CTA** | `OPEN 03 ANATOMY ↗` | `OPEN 03 ANATOMY ORTHOGRAPHIC PLATE FOR {STRUCTURE}` |
-| **Footer Link 01** | `← PREVIOUS PLATE` + `{CAT. NNN} {STRUCTURE}` | `NAVIGATE TO PREVIOUS PLATE: {CAT. NNN} {STRUCTURE}` |
-| **Footer Link 02** | `ALL PLATES` | `RETURN TO 02 ARCHIVE (27 STRUCTURES)` |
-| **Footer Link 03** | `NEXT PLATE →` + `{CAT. NNN} {STRUCTURE}` | `NAVIGATE TO NEXT PLATE: {CAT. NNN} {STRUCTURE}` |
+| **Anatomy Cross-Link Title (When `hasAnatomyPlate === true`)** | `{PLATE}: {TITLE}` | |
+| **Anatomy Cross-Link CTA** | `INSPECT ANATOMY →` (`.btn-monolith--primary`) | `OPEN ANATOMY ORTHOGRAPHIC PLATE FOR {STRUCTURE}` |
+| **Footer Link 01** | `← PREVIOUS PLATE · {CAT. NNN}` + `{STRUCTURE}` | `NAVIGATE TO PREVIOUS PLATE: {CAT. NNN} {STRUCTURE}` |
+| **Footer Link 02** | `ALL 27 PLATES` / `ARCHIVE` | `RETURN TO ARCHIVE (27 STRUCTURES)` |
+| **Footer Link 03** | `NEXT PLATE · {CAT. NNN} →` + `{STRUCTURE}` | `NAVIGATE TO NEXT PLATE: {CAT. NNN} {STRUCTURE}` |
 
 ---
 
-## 5. Route `03 ANATOMY` (`/anatomy`)
+## 5. Route `ANATOMY` (`/anatomy`)
 
 ### 5.1 Document Metadata
 
-- **`<title>`:** `03 ANATOMY — MONOLITH Orthographic Section Plates (09 Drawings)`
-- **`<meta name="description">`:** `Interactive orthographic section plates, load vectors, and metric dimension schedules for nine Brutalist, Gothic, and Monumental structures.`
+- **`<title>`:** `Anatomy — Measured Orthographic Plates`
+- **`<meta name="description">`:** `Nine interactive vector cross-sections, plans, and elevations across Brutalist, Gothic, and Monumental works with layer inspection.`
 
-### 5.2 Page Header & Surface Polarity Switcher
+### 5.2 Page Header (Permanent `data-surface="void"`)
 
 | Slot | Copy | Token |
 | :--- | :--- | :--- |
-| **Route Overline** | `03 / ANATOMY · ORTHOGRAPHIC SECTION PLATES · SECTION 03` | `--type-colophon` |
+| **Route Overline** | `ORTHOGRAPHIC SECTION PLATES · MEASURED DRAWINGS` | `--type-colophon` |
 | **Page Title** | `STRUCTURAL ANATOMY` | `--type-display` |
 | **Header Abstract** | `Nine orthographic section plates isolating load paths, structural axes, and material assemblies across Brutalist, Gothic, and Monumental systems.` | `--type-body-lead` |
-| **Surface Polarity Toggle** | `[ SURFACE: PLASTER / VOID ]` | `--type-ui-label` (`aria-pressed={surface === 'void'}`) |
-| **Active Polarity Readout** | `ACTIVE: PLASTER` *(default `#E9E5DF`)* / `ACTIVE: VOID` *(`#131313`)* | `--type-colophon` |
+| **Reading Guide** | `<ReadingGuide />` — `HOW TO READ THIS CATALOG` | `--type-colophon` |
 
-### 5.3 Movement / System Filter Tabs (`ALL PLATES (09)` + 3 Movement Systems)
+### 5.3 Movement / System Filter Tabs (`ALL PLATES` + 3 Movement Systems)
 
 Rendered as `0px` rectangular tabs with `1px` `--border-structural` frame. Active tab carries `--signal-ink` dot `•` and `aria-selected="true"`.
 
 | Tab ID | Visible Tab Label | Scope | System Abstract |
 | :--- | :--- | :--- | :--- |
-| **Tab 00** | `ALL PLATES (09)` | All 9 `ANATOMY_PLATE_BUILDINGS` | `Complete orthographic dossier across Brutalist concrete frames, Gothic masonry vaults, and Monumental domes.` |
-| **Tab 01** | `01 / BRUTALIST` | 3 Brutalist Plates | `Cantilevered floor plates, tapered pilotis, detached concrete cores, and post-tensioned modular boxes.` |
-| **Tab 02** | `02 / GOTHIC` | 3 Gothic Plates | `Quadripartite limestone rib vaults, external flying buttresses, iron tie chains, and inverted crossing scissor arches.` |
-| **Tab 03** | `03 / MONUMENTAL` | 3 Monumental Plates | `Spherical brick pendentives, graded-aggregate concrete hemispheres, compression oculi, and hollow concrete piers.` |
+| **Tab 00** | `ALL PLATES` | All 9 `ANATOMY_PLATES` | `Complete orthographic dossier across Brutalist concrete frames, Gothic masonry vaults, and Monumental domes.` |
+| **Tab 01** | `BRUTALIST` | 3 Brutalist Plates | `Cantilevered floor plates, tapered pilotis, detached concrete cores, and post-tensioned modular boxes.` |
+| **Tab 02** | `GOTHIC` | 3 Gothic Plates | `Quadripartite limestone rib vaults, external flying buttresses, iron tie chains, and inverted crossing scissor arches.` |
+| **Tab 03** | `MONUMENTAL` | 3 Monumental Plates | `Spherical brick pendentives, graded-aggregate concrete hemispheres, compression oculi, and hollow concrete piers.` |
 
 ### 5.4 Nine Canonical Orthographic Plate Index Labels (`src/data/buildings.ts`)
 
@@ -407,17 +409,17 @@ Rendered as `0px` rectangular tabs with `1px` `--border-structural` frame. Activ
 | **PLATE 08** | `CAT. 023` | `PANTHEON` | `03 / MONUMENTAL` | `DWG. AN-08 — COFFERED HEMISPHERE & STEPPED COMPRESSION RING` |
 | **PLATE 09** | `CAT. 024` | `NATIONAL ASSEMBLY BUILDING OF BANGLADESH` | `03 / MONUMENTAL` | `DWG. AN-09 — OCTAGONAL CONCRETE CITADEL & GEOMETRIC APERTURES` |
 
-### 5.5 Interactive Layer Toggle Labels
+### 5.5 Interactive Layer Toggle Labels & Plate Explanation
 
-Implemented as accessible toggle buttons (`aria-pressed="true" | "false"`) inside `<fieldset>` (`<legend>DRAFTING LAYERS</legend>`):
+Implemented as accessible toggle buttons (`aria-pressed="true" | "false"`) inside `<fieldset>` (`<legend>DRAFTING LAYERS</legend>`), introduced by `TOGGLE LAYERS TO READ THE LOAD PATH` (`<Gloss term="LOAD PATH" />`):
 
-| Layer Key | Visible Toggle Label | `aria-label` | Layer Function Note |
+| Layer Key | Visible Toggle Label | Plain-First Sub-Label | Layer Function Note |
 | :--- | :--- | :--- | :--- |
-| **Layer 01** | `STRUCTURE` | `TOGGLE STRUCTURE MASS LAYER` | Primary masonry walls, concrete slabs, piers, and ribbed envelopes. |
-| **Layer 02** | `AXIS & LOAD` | `TOGGLE AXIS AND LOAD VECTOR LAYER` | Vertical plumb axes, lateral thrust vectors, and compression rings (`--signal-ink`). |
-| **Layer 03** | `DIMENSIONS` | `TOGGLE METRIC DIMENSIONS LAYER` | Bay widths, clear vault heights, slab thicknesses, and datum elevations. |
-| **Utility Action** | `ALL LAYERS` | `ENABLE ALL THREE ORTHOGRAPHIC LAYERS` | Restores `STRUCTURE`, `AXIS & LOAD`, and `DIMENSIONS` simultaneously. |
-| **Live Region Status** | `ACTIVE LAYERS: {LIST}` | `aria-live="polite"` | Announces layer state changes to screen readers. |
+| **Layer 01** | `STRUCTURAL MASS` | `the building's solid mass` | Primary masonry walls, concrete slabs, piers, and ribbed envelopes. |
+| **Layer 02** | `AXIS & LOAD` | `lines showing how weight travels` | Vertical plumb axes, lateral thrust vectors, and compression rings (`--signal-ink`). |
+| **Layer 03** | `DIMENSIONS` | `measured heights and spans` | Bay widths, clear vault heights, slab thicknesses, and datum elevations. |
+| **Utility Action** | `ALL LAYERS [ RESET ]` | `Restores all three orthographic layers` | |
+| **Plate Explanation** | `WHAT YOU ARE LOOKING AT` | Plain-language plate subtitle (`activePlate.whatYouSee`) | `role="note" aria-label="What you are looking at"`. |
 
 ### 5.6 Scale Bar, Mobile Zoom Note, Datum Legend & Dimension Schedule
 

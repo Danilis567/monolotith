@@ -112,7 +112,8 @@
 
 .specValue {
   color: var(--ink-primary);
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  line-height: 1.45;
 }
 
 /* Zone 2: Middle Asymmetric Navigation & Discipline Bar */

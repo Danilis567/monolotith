@@ -32,6 +32,7 @@ export interface AnatomyPlateRecord {
   scale: string;
   datumElevation: string;
   svgPath: string;
+  whatYouSee: string;
   description: string;
   callouts: AnatomyCallout[];
   dimensionsSchedule: AnatomyDimensionRow[];
@@ -50,6 +51,8 @@ export const ANATOMY_PLATES: AnatomyPlateRecord[] = [
     scale: 'SCALE 1:500',
     datumElevation: '0.0 M GRADE — +120.0 M MAST APEX',
     svgPath: '/images/anatomy/trellick-tower.svg',
+    whatYouSee:
+      'A side cut through the 98.0 m apartment block showing how its detached 120.0 m elevator and boiler tower links to split-level flats via aerial bridges every third floor.',
     description:
       'Orthographic elevation and cross-section of Trellick Tower detailing the 98.0 m residential concrete slab, detached 120.0 m service shaft, cantilevered boiler house, and 3-storey access bridge rhythm.',
     callouts: [
@@ -91,6 +94,8 @@ export const ANATOMY_PLATES: AnatomyPlateRecord[] = [
     scale: 'SCALE 1:250',
     datumElevation: '0.0 M GRADE — +56.0 M ROOF CHIMNEY',
     svgPath: '/images/anatomy/unite-dhabitation.svg',
+    whatYouSee:
+      'A cross-section of the 18-storey concrete housing block lifted on 7.0 m tapered piers, showing five internal street corridors feeding interlocking two-level apartments.',
     description:
       'Transverse section and seven-bay elevation fragment of Unité d’Habitation showing tapered concrete pilotis, artificial ground transfer slab, interlocking L-section duplex apartments, and roof terrace.',
     callouts: [
@@ -132,6 +137,8 @@ export const ANATOMY_PLATES: AnatomyPlateRecord[] = [
     scale: 'SCALE 1:250',
     datumElevation: '0.0 M PENINSULA — +36.0 M APEX',
     svgPath: '/images/anatomy/habitat-67.svg',
+    whatYouSee:
+      'A stepped cut through 354 stacked precast concrete boxes up to 36.0 m high, where staggered upper units create private roof terraces and elevated walkways.',
     description:
       'Stepped sectional elevation of Habitat 67 illustrating 354 stacked precast concrete box modules, post-tensioned diagonal load paths, elevated pedestrian streets, and vertical elevator cores.',
     callouts: [
@@ -173,6 +180,8 @@ export const ANATOMY_PLATES: AnatomyPlateRecord[] = [
     scale: 'SCALE 1:250',
     datumElevation: '0.0 M NAVE FLOOR — +49.0 M TIMBER RIDGE',
     svgPath: '/images/anatomy/chartres-cathedral.svg',
+    whatYouSee:
+      'A half-section across the 37.0 m stone nave vault showing how double-tiered exterior flying buttresses brace the high walls against outward roof and wind thrust.',
     description:
       'Half-section and interior bay elevation of Chartres Cathedral showing the 37.0 m quadripartite nave vault, three-storey wall elevation, and double-tiered radiating flying buttresses.',
     callouts: [
@@ -214,6 +223,8 @@ export const ANATOMY_PLATES: AnatomyPlateRecord[] = [
     scale: 'SCALE 1:200',
     datumElevation: '0.0 M LOWER CHAPEL — +42.5 M GABLE RIDGE',
     svgPath: '/images/anatomy/sainte-chapelle.svg',
+    whatYouSee:
+      'A cross-section contrasting the low, heavy vaulted lower chapel against the tall 15.0 m stained-glass upper chapel held together by deep outer piers and hidden iron tie chains.',
     description:
       'Transverse section and two-bay elevation of Sainte-Chapelle contrasting the heavy vaulted lower chapel plinth against the 15.0 m stained-glass upper chapel braced by deep pier buttresses and iron tie chains.',
     callouts: [
@@ -255,6 +266,8 @@ export const ANATOMY_PLATES: AnatomyPlateRecord[] = [
     scale: 'SCALE 1:250',
     datumElevation: '0.0 M CROSSING FLOOR — +55.0 M TOWER PARAPET',
     svgPath: '/images/anatomy/wells-cathedral.svg',
+    whatYouSee:
+      'A combined cut through the 55.0 m crossing tower showing the 1338–1348 inverted scissor arches wedged between piers, paired with the octagonal Chapter House star vault.',
     description:
       'Cross-section through Wells Cathedral central crossing showing William Joy’s 1338 inverted-arch strainer trusses alongside the reflected tierceron star-rib plan of the octagonal Chapter House.',
     callouts: [
@@ -296,6 +309,8 @@ export const ANATOMY_PLATES: AnatomyPlateRecord[] = [
     scale: 'SCALE 1:250',
     datumElevation: '0.0 M PAVEMENT — +43.3 M OCULUS RIM',
     svgPath: '/images/anatomy/pantheon-rome.svg',
+    whatYouSee:
+      'A lengthwise slice through the 43.3 m unreinforced concrete rotunda showing a dome that forms an exact sphere with the floor, lit from an 8.2 m open oculus ring.',
     description:
       'Longitudinal orthographic section through the Pantheon portico, intermediate block, and 43.3 m unreinforced concrete rotunda inscribed with the 43.3 m sphere geometry and graded aggregate zones.',
     callouts: [
@@ -337,6 +352,8 @@ export const ANATOMY_PLATES: AnatomyPlateRecord[] = [
     scale: 'SCALE 1:500',
     datumElevation: '0.0 M NAVE FLOOR — +55.6 M DOME CROWN',
     svgPath: '/images/anatomy/hagia-sophia.svg',
+    whatYouSee:
+      'An east-west cut through the 55.6 m central dome showing how four curved pendentives and two massive half-domes carry the dome’s weight across a 77.0 m span.',
     description:
       'East-west longitudinal section and schematic square-to-circle key plan of Hagia Sophia detailing the 31.8 m 40-ribbed dome on spherical pendentives braced by colossal eastern and western half-domes.',
     callouts: [
@@ -378,6 +395,8 @@ export const ANATOMY_PLATES: AnatomyPlateRecord[] = [
     scale: 'SCALE 1:1000 / 1:500',
     datumElevation: '0.0 M LAKE WATERLINE — +47.2 M ASSEMBLY CROWN',
     svgPath: '/images/anatomy/national-assembly-dhaka.svg',
+    whatYouSee:
+      'A combined plan and lakefront view of the 47.2 m octagonal parliament hall ringed by eight geometric concrete buffer towers with white marble pour-lift bands.',
     description:
       'Dual orthographic plan and waterfront elevation of Jatiya Sangsad Bhaban showing the eight-sided central assembly hall, eight peripheral buffer towers, geometric light cutouts, and inlaid marble lift bands.',
     callouts: [

@@ -1,0 +1,207 @@
+/* ==========================================================================
+   SPECIMEN STREAM — FULL-BLEED FILMSTRIP & INTERACTION
+   ========================================================================== */
+
+@keyframes monolithStreamScroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.streamBand {
+  padding-block: 4rem 4.5rem;
+  border-bottom: 1px solid var(--border-hairline);
+  overflow-x: clip;
+}
+
+.streamHeader {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.streamHeadingGroup {
+  display: grid;
+  gap: 0.5rem;
+  min-inline-size: 0;
+}
+
+.streamEyebrow {
+  color: var(--signal-ink);
+}
+
+.streamControls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.875rem 1.25rem;
+}
+
+.holdHint {
+  color: var(--ink-secondary);
+}
+
+.holdHintTouch {
+  display: none;
+}
+
+@media (hover: none) {
+  .holdHintPointer {
+    display: none;
+  }
+
+  .holdHintTouch {
+    display: inline;
+  }
+}
+
+.streamToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  padding: 0.625rem 1.125rem;
+  border: 1px solid var(--border-structural);
+  background-color: transparent;
+  color: var(--ink-primary);
+  font-family: var(--font-sans), sans-serif;
+  font-size: var(--type-ui-label-size);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 150ms cubic-bezier(0.2, 0, 0, 1),
+    color 150ms cubic-bezier(0.2, 0, 0, 1),
+    border-color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.streamToggle:hover:not(:disabled) {
+  background-color: var(--surface-inverse);
+  color: var(--ink-inverse);
+}
+
+.streamToggle:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.streamToggle:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
+.viewport {
+  inline-size: 100%;
+  margin-inline: 0;
+  border-block: 1px solid var(--border-hairline);
+  border-inline: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.track {
+  display: flex;
+  inline-size: max-content;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .viewport[data-streaming="true"] {
+    overflow-x: clip;
+  }
+
+  .viewport[data-streaming="true"] .track {
+    animation: monolithStreamScroll 88s linear infinite;
+  }
+
+  .viewport[data-streaming="true"]:hover .track,
+  .viewport[data-streaming="true"]:focus-within .track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .streamToggle {
+    transition: none;
+  }
+
+  .viewport {
+    overflow-x: auto;
+  }
+
+  .track {
+    animation: none;
+  }
+}
+
+.streamCard {
+  inline-size: 270px;
+  flex: 0 0 270px;
+  border-right: 1px solid var(--border-hairline);
+  display: grid;
+  background-color: var(--surface-canvas);
+}
+
+@media (width >= 768px) {
+  .streamCard {
+    inline-size: 320px;
+    flex: 0 0 320px;
+  }
+}
+
+.streamCardMedia {
+  aspect-ratio: 3 / 4;
+  padding: 1rem;
+  background-color: var(--surface-basalt);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.streamCardLink {
+  block-size: 100%;
+}
+
+.streamCardFrame {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.streamCardBody {
+  padding: 1rem;
+  display: grid;
+  gap: 0.35rem;
+  min-inline-size: 0;
+}
+
+.streamCardCatalog {
+  color: var(--signal-ink);
+}
+
+.streamCardTitle {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--ink-primary);
+  overflow-wrap: break-word;
+}
+
+.streamCardTitle:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.streamCardMeta {
+  color: var(--ink-secondary);
+}

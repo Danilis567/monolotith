@@ -6,6 +6,8 @@ import { useCallback, useRef, useState, type KeyboardEvent } from 'react';
 import type { AnatomyPlateRecord } from '@/data/anatomyPlates';
 import type { AnatomyPlateId, Movement } from '@/data/buildings';
 import { CornerCrosshair } from './DraftingMarks';
+import { Gloss } from './Gloss';
+import { ReadingGuide } from './ReadingGuide';
 import { UrlParamSync } from './UrlParamSync';
 import styles from '@/app/anatomy/anatomy.module.css';
 
@@ -96,7 +98,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
     } else if (layer === 'axis') {
       const next = !showAxis;
       setShowAxis(next);
-      setAnnouncement(`Layer Load & Axis ${next ? 'visible' : 'dimmed'}`);
+      setAnnouncement(`Layer Axis and Load ${next ? 'visible' : 'dimmed'}`);
     } else {
       const next = !showDimensions;
       setShowDimensions(next);
@@ -118,7 +120,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
       <section className={styles.headerBand}>
         <div className="monolith-grid">
           <div className={styles.headerInner}>
-            <div style={{ display: 'grid', gap: '0.625rem' }}>
+            <div style={{ display: 'grid', gap: '0.625rem', minInlineSize: 0 }}>
               <p
                 className="type-colophon"
                 style={{
@@ -133,6 +135,8 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
               </p>
               <h1 className="type-display">STRUCTURAL ANATOMY</h1>
             </div>
+
+            <ReadingGuide className={styles.headerGuide} />
           </div>
         </div>
       </section>
@@ -140,35 +144,45 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
       {/* Movement Filter Tabs */}
       <div className={styles.controlsBand}>
         <div className={`${styles.tabBar} ${styles.controlsInner}`}>
-          <div
-            role="tablist"
-            aria-label="Filter anatomical drawings by architectural movement"
-            className={styles.tabsGroup}
-          >
-            {TABS.map((tab, idx) => {
-              const isSelected = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  id={`tab-${tab.id}`}
-                  ref={(el) => {
-                    tabRefs.current[idx] = el;
-                  }}
-                  type="button"
-                  role="tab"
-                  aria-selected={isSelected}
-                  aria-controls="anatomy-plate-panel"
-                  tabIndex={isSelected ? 0 : -1}
-                  onClick={() => handleTabChange(tab.id)}
-                  onKeyDown={(e) => handleTabKeyDown(e, idx)}
-                  className={`${styles.tabButton} type-ui-label ${
-                    isSelected ? styles.tabButtonActive : ''
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              );
-            })}
+          <div className={styles.filterRow}>
+            <span className={`${styles.filterPrefix} type-colophon`}>
+              FILTER BY MOVEMENT:
+            </span>
+            <div
+              role="tablist"
+              aria-label="Filter anatomical drawings by architectural movement"
+              className={styles.tabsGroup}
+            >
+              {TABS.map((tab, idx) => {
+                const isSelected = activeTab === tab.id;
+                const count =
+                  tab.id === 'ALL'
+                    ? plates.length
+                    : plates.filter((p) => p.movement === tab.id).length;
+                const formattedCount = String(count).padStart(2, '0');
+                return (
+                  <button
+                    key={tab.id}
+                    id={`tab-${tab.id}`}
+                    ref={(el) => {
+                      tabRefs.current[idx] = el;
+                    }}
+                    type="button"
+                    role="tab"
+                    aria-selected={isSelected}
+                    aria-controls="anatomy-plate-panel"
+                    tabIndex={isSelected ? 0 : -1}
+                    onClick={() => handleTabChange(tab.id)}
+                    onKeyDown={(e) => handleTabKeyDown(e, idx)}
+                    className={`${styles.tabButton} type-ui-label ${
+                      isSelected ? styles.tabButtonActive : ''
+                    }`}
+                  >
+                    {tab.label} ({formattedCount})
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
@@ -253,57 +267,64 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
 
               {/* Layer Toggle Toolbar */}
               <div className={styles.layerToolbar}>
-                <fieldset className={styles.layerFieldset}>
-                  <legend className="visually-hidden">DRAFTING LAYERS</legend>
-                  <div className={styles.layerButtons}>
-                    <button
-                      type="button"
-                      aria-pressed={showStructure}
-                      onClick={() => toggleLayer('structure')}
-                      className={`${styles.layerBtn} type-colophon ${
-                        showStructure ? styles.layerBtnActive : ''
-                      }`}
-                    >
-                      STRUCTURAL MASS
-                    </button>
-                    <button
-                      type="button"
-                      aria-pressed={showAxis}
-                      onClick={() => toggleLayer('axis')}
-                      className={`${styles.layerBtn} type-colophon ${
-                        showAxis ? styles.layerBtnActive : ''
-                      }`}
-                    >
-                      LOAD &amp; AXIS
-                    </button>
-                    <button
-                      type="button"
-                      aria-pressed={showDimensions}
-                      onClick={() => toggleLayer('dimensions')}
-                      className={`${styles.layerBtn} type-colophon ${
-                        showDimensions ? styles.layerBtnActive : ''
-                      }`}
-                    >
-                      DIMENSIONS
-                    </button>
-                  </div>
-                </fieldset>
+                <p className={`${styles.layerInstruction} type-colophon`}>
+                  TOGGLE LAYERS TO READ THE <Gloss term="LOAD PATH" />
+                </p>
 
-                <button
-                  type="button"
-                  onClick={resetLayers}
-                  className="type-colophon"
-                  style={{
-                    minBlockSize: '44px',
-                    background: 'transparent',
-                    border: 0,
-                    cursor: 'pointer',
-                    padding: '0.5rem',
-                    color: 'var(--signal-ink)',
-                  }}
-                >
-                  ALL LAYERS [ RESET ]
-                </button>
+                <div className={styles.layerControlsRow}>
+                  <fieldset className={styles.layerFieldset}>
+                    <legend className="visually-hidden">DRAFTING LAYERS</legend>
+                    <div className={styles.layerButtons}>
+                      <button
+                        type="button"
+                        aria-pressed={showStructure}
+                        onClick={() => toggleLayer('structure')}
+                        className={`${styles.layerBtn} type-colophon ${
+                          showStructure ? styles.layerBtnActive : ''
+                        }`}
+                      >
+                        <span className={styles.layerBtnTitle}>STRUCTURAL MASS</span>
+                        <span className={styles.layerBtnSub}>
+                          the building&apos;s solid mass
+                        </span>
+                      </button>
+                      <button
+                        type="button"
+                        aria-pressed={showAxis}
+                        onClick={() => toggleLayer('axis')}
+                        className={`${styles.layerBtn} type-colophon ${
+                          showAxis ? styles.layerBtnActive : ''
+                        }`}
+                      >
+                        <span className={styles.layerBtnTitle}>AXIS &amp; LOAD</span>
+                        <span className={styles.layerBtnSub}>
+                          lines showing how weight travels
+                        </span>
+                      </button>
+                      <button
+                        type="button"
+                        aria-pressed={showDimensions}
+                        onClick={() => toggleLayer('dimensions')}
+                        className={`${styles.layerBtn} type-colophon ${
+                          showDimensions ? styles.layerBtnActive : ''
+                        }`}
+                      >
+                        <span className={styles.layerBtnTitle}>DIMENSIONS</span>
+                        <span className={styles.layerBtnSub}>
+                          measured heights and spans
+                        </span>
+                      </button>
+                    </div>
+                  </fieldset>
+
+                  <button
+                    type="button"
+                    onClick={resetLayers}
+                    className={`${styles.layerResetBtn} type-colophon`}
+                  >
+                    ALL LAYERS [ RESET ]
+                  </button>
+                </div>
               </div>
 
               <span className="visually-hidden" aria-live="polite">
@@ -348,6 +369,19 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
                   VERMILION AXIS: THRUST LINE &amp; SYMMETRY
                 </span>
                 <span>{activePlate.scale} · DATUM {activePlate.datumElevation}</span>
+              </div>
+
+              <div
+                className={styles.whatYouSeeBlock}
+                role="note"
+                aria-label="What you are looking at"
+              >
+                <span className={`${styles.whatYouSeeLabel} type-colophon`}>
+                  WHAT YOU ARE LOOKING AT
+                </span>
+                <p className={`${styles.whatYouSeeText} type-body`}>
+                  {activePlate.whatYouSee}
+                </p>
               </div>
 
               <p className="type-body-lead">{activePlate.description}</p>

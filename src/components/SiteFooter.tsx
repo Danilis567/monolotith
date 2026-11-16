@@ -5,10 +5,10 @@ import { ScaleRuler } from './DraftingMarks';
 import styles from './SiteFooter.module.css';
 
 const COLOPHON_SPECS = [
-  { label: 'DATUM', value: 'WGS84 / METRIC' },
-  { label: 'COLLECTION', value: '27 CATALOGED WORKS' },
-  { label: 'PLATES', value: 'WIKIMEDIA CC0 / CC-BY-SA' },
-  { label: 'SECTIONS', value: 'ORIGINAL VECTOR (REV. IV)' },
+  { label: 'COORDINATES', value: 'GPS (WGS84) · METRES' },
+  { label: 'COLLECTION', value: '27 CATALOGED BUILDINGS' },
+  { label: 'PHOTOGRAPHS', value: 'WIKIMEDIA COMMONS (OPEN LICENSE)' },
+  { label: 'DRAWINGS', value: 'ORIGINAL, DRAWN FOR THIS ARCHIVE' },
 ] as const;
 
 const SECTION_LINKS = [
@@ -43,7 +43,7 @@ export function SiteFooter() {
               />
               <p className={`${styles.overline} type-colophon`}>
                 <span className="signal-dot" aria-hidden="true" />
-                <span>ARCHITECTURAL MONOGRAPH · VOL. IV</span>
+                <span>ARCHITECTURAL ARCHIVE · VOLUME IV</span>
               </p>
             </div>
             <p className={styles.statement}>
@@ -101,7 +101,7 @@ export function SiteFooter() {
                 onClick={scrollToTop}
                 className={`${styles.topButton} type-ui-label`}
               >
-                <span>TOP OF FOLIO</span>
+                <span>BACK TO TOP</span>
                 <span aria-hidden="true">↑</span>
               </button>
             </div>
@@ -109,9 +109,9 @@ export function SiteFooter() {
         </nav>
 
         <div className={styles.baselineBand}>
-          <ScaleRuler unitLabel="SURVEY METRIC DATUM · 00 TO 120 METERS" />
+          <ScaleRuler unitLabel="HEIGHT SCALE · 00 TO 120 METRES" />
           <p className={`${styles.legalLine} type-colophon`}>
-            MONOLITH — ARCHIVE VOL. IV · MMXXVI
+            MONOLITH — ARCHIVE VOLUME IV · 2026
           </p>
         </div>
       </div>
