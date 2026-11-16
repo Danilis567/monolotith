@@ -42,26 +42,26 @@ const FONT_FAMILIES = [
     name: 'Bodoni Moda',
     cssVar: 'var(--font-display)',
     token: '--font-display',
-    role: 'Anıtsal başlıklar, manşetler ve epigraflar',
+    role: 'Büyük sayfa başlıkları ve alıntılar.',
     specimen: 'MONOLİT IV',
   },
   {
     name: 'Inter',
     cssVar: 'var(--font-sans)',
     token: '--font-sans',
-    role: 'Editoryal metinler, alt başlıklar ve arayüz etiketleri',
-    specimen: 'Ölçülü Beton',
+    role: 'Paragraflar, alt başlıklar ve düğme ile etiket yazıları.',
+    specimen: 'Gövde yazısı',
   },
   {
     name: 'IBM Plex Mono',
     cssVar: 'var(--font-mono)',
     token: '--font-mono',
-    role: 'Künye bilgileri, koordinatlar, dizinler ve referans verileri',
+    role: 'Tarihler, koordinatlar, katalog numaraları ve tablo verileri.',
     specimen: '001 // 98.0 M',
   },
 ] as const;
 
-const ALLOWED_GLYPHS = ['+', '×', '→', '←', '↗', '↙', '•', '✦'] as const;
+const ALLOWED_GLYPHS = ['+', '×', '→', '←', '↗', '↙', '•', '✦', '▪'] as const;
 
 const TABULAR_SAMPLES = [
   { index: '001', title: 'PANTHEON', height: '43.3 M' },
@@ -71,16 +71,16 @@ const TABULAR_SAMPLES = [
 ] as const;
 
 const LINE_LENGTH_RULES = [
-  { label: 'GİRİŞ METNİ (.type-body-lead)', measure: '62ch', sample: '27 brütalist ve gotik anıt üzerinde ölçümlenmiş monokrom taş işçiliği.' },
-  { label: 'MAKALE GÖVDESİ (.type-body)', measure: '58ch', sample: 'Yapısal beton, yapay yükseklik veya sentetik bulanıklık olmadan kendi gölgesini taşır.' },
-  { label: 'LEVHA ALTYAZISI', measure: '34ch', sample: 'ŞEK. 01 — CHARTRES BATI CEPHESİ' },
+  { label: 'GİRİŞ PARAGRAFI (.type-body-lead)', measure: '62ch', sample: '27 yapının fotoğrafı ve teknik bilgisi tek bir arşivde toplanır.' },
+  { label: 'GÖVDE METNİ (.type-body)', measure: '58ch', sample: 'Uzun paragraflar okumayı kolaylaştırmak için en fazla 58 karakter genişliğindedir.' },
+  { label: 'FOTOĞRAF ALTI YAZISI', measure: '34ch', sample: 'ŞEK. 01 — CHARTRES BATI CEPHESİ' },
 ] as const;
 
 const BREAKPOINT_SPECS = [
-  { range: '< 768px', cols: '4 SÜTUN', gutter: '1rem', note: 'Mobil tek sütunlu editoryal akış' },
-  { range: '>= 768px', cols: '8 SÜTUN', gutter: '1.25rem', note: 'Tablet asimetrik bölünmüş çerçeveler' },
-  { range: '>= 1024px', cols: '12 SÜTUN', gutter: '1.5rem', note: 'Masaüstü 12 sütunlu açık ızgara' },
-  { range: '>= 1440px', cols: '12 SÜTUN', gutter: '1.5rem', note: '%5 dış kenar boşluklu geniş arşiv tuvali' },
+  { range: '< 768px', cols: '4 SÜTUN', gutter: '1rem', note: 'Mobil tek sütun' },
+  { range: '>= 768px', cols: '8 SÜTUN', gutter: '1.25rem', note: 'Tablet bölünmüş düzen' },
+  { range: '>= 1024px', cols: '12 SÜTUN', gutter: '1.5rem', note: 'Masaüstü 12 sütun' },
+  { range: '>= 1440px', cols: '12 SÜTUN', gutter: '1.5rem', note: 'Geniş ekran (%5 kenar boşluğu)' },
 ] as const;
 
 const ASPECT_RATIOS = [
@@ -96,14 +96,14 @@ const MOTION_CURVES = [
     name: 'MONOLITH_EASE',
     tuple: '[0.2, 0, 0, 1]',
     durations: '150ms – 280ms',
-    usage: 'Yüzey geçişleri, ince çizgi taramaları, etkileşim durumları',
+    usage: 'Düğme, bağlantı ve çizgi geçişleri',
     svgPath: 'M 10 90 C 30 90, 10 10, 110 10',
   },
   {
     name: 'SHEAR_EASE',
     tuple: '[0.16, 1, 0.3, 1]',
     durations: '280ms – 420ms',
-    usage: 'Levha perde açılışları, çekmece kayması, sivri kemer girişi',
+    usage: 'Fotoğraf açılışları ve mobil menü kayması',
     svgPath: 'M 10 90 C 26 10, 40 10, 110 10',
   },
 ] as const;
@@ -113,17 +113,17 @@ function getRoleSpecimenText(role: string): string {
     case 'Monolith':
       return 'MONOLİT';
     case 'Display':
-      return 'HAM BETON';
+      return 'BÜYÜK BAŞLIK';
     case 'Quote':
       return 'Işık taşı süslemez; onun kütlesini ölçer.';
     case 'Subhead':
-      return 'Açık 12 Sütunlu Teknik Çizim Sistemi';
+      return '12 sütunlu sayfa düzeni';
     case 'Body Lead':
-      return 'Her anlamsal token, yapay yükseklik olmadan dört beton yüzey adasına çözümlenir.';
+      return 'Her renk tokenı, dört zemin renginden birine otomatik uyarlanır.';
     case 'Body':
-      return 'Gövde metni, koyu ve açık beton yüzeylerde kesintisiz editoryal okuma için 58ch ile sınırlandırılmıştır.';
+      return 'Gövde metni, koyu ve açık zeminlerde rahat okuma için 58 karakter ile sınırlıdır.';
     case 'UI Label':
-      return 'DİZİN // ÖLÇÜM LEVHASI 01';
+      return 'DİZİN // LEVHA 01';
     case 'Colophon':
       return 'ENL 48.4478 K · BOY 1.4878 D · MS 1194';
     default:
@@ -154,21 +154,20 @@ export function FoundationsSection({
           <div className={styles.subTitleGroup}>
             <span className={`type-colophon ${styles.subIndex}`}>
               <span className="signal-dot" aria-hidden="true" />
-              01.1 // RENK SİSTEMİ
+              01.1 // RENKLER
             </span>
             <h3 id="f-color-heading" className={`type-display ${styles.subTitle}`}>
-              TEMEL TONLAR VE YÜZEY ADALARI
+              RENKLER VE YÜZEYLER
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Dört mimari yüzey adasına eşlenmiş, ölçülü Sinyal Kırmızısı ile birleştirilen beş
-            değişmez beton tonu.
+            Sitede kullanılan 5 gri ton, 1 kırmızı vurgu rengi ve 4 zemin yüzeyi.
           </p>
         </div>
 
         {/* Primitive Palette */}
         <div className={styles.blockHeading}>
-          <span className="type-colophon">KATMAN 1 // TEMEL PALET ({tokens.primitives.length} TOKEN)</span>
+          <span className="type-colophon">TEMEL RENKLER ({tokens.primitives.length} TOKEN)</span>
           <span className="type-colophon">HEX VE CSS TOKEN</span>
         </div>
 
@@ -199,8 +198,8 @@ export function FoundationsSection({
 
         {/* 4 Surface Islands Side-by-Side */}
         <div className={styles.blockHeading}>
-          <span className="type-colophon">KATMAN 2 // ANLAMSAL YÜZEY ADALARI</span>
-          <span className="type-colophon">--surface-canvas İLE CANLI WCAG KONTRASTI</span>
+          <span className="type-colophon">YÜZEYLER // 4 ZEMİN RENGİ</span>
+          <span className="type-colophon">ZEMİN İLE YAZI KONTRAST ORANI</span>
         </div>
 
         <div className={styles.surfaceMatrix}>
@@ -260,8 +259,8 @@ export function FoundationsSection({
 
         {/* <= 2% Signal Vermilion Rule */}
         <div className={styles.blockHeading}>
-          <span className="type-colophon">ORAN // &lt;= %2 SİNYAL KIRMIZISI KURALI</span>
-          <span className="type-colophon">YALNIZCA CERRAHİ VURGU</span>
+          <span className="type-colophon">KIRMIZI VURGU KURALI (EN FAZLA %2)</span>
+          <span className="type-colophon">YALNIZCA KÜÇÜK İŞARETLERDE</span>
         </div>
 
         <div className={styles.signalRuleGrid}>
@@ -269,7 +268,7 @@ export function FoundationsSection({
             <div
               className={styles.signalProportionBar}
               role="img"
-              aria-label="Yüzde 2 sinyal kırmızısına karşılık yüzde 98 nötr beton yüzey oranı"
+              aria-label="Yüzde 2 kırmızı vurguya karşılık yüzde 98 gri zemin oranı"
             >
               <span className={styles.signalBarActive} />
               <span className={styles.signalBarNeutral} />
@@ -277,7 +276,7 @@ export function FoundationsSection({
             <div className={styles.signalDemoRow}>
               <span className="type-colophon" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
                 <span className="signal-dot" aria-hidden="true" />
-                DİSİPLİNLİ ÖRNEK // 6PX NOKTA + 3PX AKTİF KENARLIK
+                ÖRNEK // 6PX NOKTA + 3PX KENARLIK
               </span>
               <span className="type-colophon tabular-nums" style={{ color: 'var(--signal-ink)' }}>
                 &lt;= %2.0 ALAN
@@ -287,12 +286,11 @@ export function FoundationsSection({
 
           <div className={styles.signalRuleNotes}>
             <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-              DAĞILIM YÖNETİŞİMİ
+              NEREDE KULLANILIR
             </span>
             <p className="type-body" style={{ color: 'var(--ink-secondary)' }}>
-              Sinyal Kırmızısı; canlı durum noktaları, 2px–3px aktif gösterge kenarlıkları ve hata
-              durumlarıyla sınırlandırılmıştır. Tam ekran kırmızı arka planlar ve dekoratif
-              gradyanlar yasaktır.
+              Kırmızı renk yalnızca durum noktalarında, 2px–3px kenarlıklarda ve hata mesajlarında
+              kullanılır. Büyük kırmızı arka planlar kullanılmaz.
             </p>
           </div>
         </div>
@@ -304,14 +302,13 @@ export function FoundationsSection({
       <section aria-labelledby="f-typo-heading" className={styles.subSection}>
         <div className={styles.subHeader}>
           <div className={styles.subTitleGroup}>
-            <span className={`type-colophon ${styles.subIndex}`}>01.2 // TİPOGRAFİ</span>
+            <span className={`type-colophon ${styles.subIndex}`}>01.2 // YAZI TİPLERİ</span>
             <h3 id="f-typo-heading" className={`type-display ${styles.subTitle}`}>
-              YAZI ÖLÇEĞİ VE FONT ROLLERİ
+              YAZI TİPLERİ VE BOYUTLARI
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Sekiz editoryal role bağlı üç Google font ailesi, katı hizalı rakamlar ve kontrollü
-            satır uzunluğu ölçüleri.
+            Sitede 3 yazı tipi ve 8 metin boyutu kullanılır.
           </p>
         </div>
 
@@ -334,8 +331,8 @@ export function FoundationsSection({
 
         {/* All 8 Live .type-* Roles */}
         <div className={styles.blockHeading}>
-          <span className="type-colophon">8 CANLI TİPOGRAFİK ROL (globals.css KAYNAKLI)</span>
-          <span className="type-colophon">%85 KÖK ORAN</span>
+          <span className="type-colophon">8 METİN BOYUTU (globals.css)</span>
+          <span className="type-colophon">KÖK YAZI BOYUTU %85 (13.6PX TABAN)</span>
         </div>
 
         <div className={styles.roleList}>
@@ -367,7 +364,7 @@ export function FoundationsSection({
         <div className={styles.typoUtilityGrid}>
           <div className={styles.utilityCard}>
             <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-              İZİN VERİLEN GLİF SETİ
+              KULLANILAN İŞARETLER
             </span>
             <div className={styles.glyphStrip}>
               {ALLOWED_GLYPHS.map((glyph) => (
@@ -377,13 +374,13 @@ export function FoundationsSection({
               ))}
             </div>
             <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-              EMOJİ YOK // YALNIZCA TEKNİK ÇİZİM GLİFLERİ
+              EMOJİ YOK // YALNIZCA BU İŞARETLER
             </span>
           </div>
 
           <div className={styles.utilityCard}>
             <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-              TABULAR-NUMS HİZALAMA (001–027)
+              TABLO RAKAMLARI HİZALAMA (001–027)
             </span>
             <div className={styles.tabularTable}>
               {TABULAR_SAMPLES.map((row) => (
@@ -398,7 +395,7 @@ export function FoundationsSection({
 
           <div className={styles.utilityCard}>
             <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-              SATIR UZUNLUĞU ÖLÇÜ KURALLARI
+              EN FAZLA SATIR GENİŞLİĞİ
             </span>
             <div className={styles.measureList}>
               {LINE_LENGTH_RULES.map((rule) => (
@@ -425,14 +422,14 @@ export function FoundationsSection({
       <section aria-labelledby="f-layout-heading" className={styles.subSection}>
         <div className={styles.subHeader}>
           <div className={styles.subTitleGroup}>
-            <span className={`type-colophon ${styles.subIndex}`}>01.3 // BOŞLUK VE IZGARA</span>
+            <span className={`type-colophon ${styles.subIndex}`}>01.3 // IZGARA VE KENARLIKLAR</span>
             <h3 id="f-layout-heading" className={`type-display ${styles.subTitle}`}>
-              IZGARA, KENARLIKLAR VE YÜKSEKLİK
+              IZGARA VE KENARLIKLAR
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Sıfır köşe yuvarlama (border-radius), sıfır gölge (box-shadow) ve tonal yüzey
-            kademelendirmeli açık 4 / 8 / 12 sütunlu ızgara.
+            Köşeler yuvarlanmaz, gölge kullanılmaz; ekran boyutuna göre 4, 8 veya 12 sütun
+            kullanılır.
           </p>
         </div>
 
@@ -446,7 +443,7 @@ export function FoundationsSection({
             <SteppedFrame style={{ color: 'var(--border-hairline)' }} />
 
             <div className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-              CANLI ÇİZİM SAHNESİ // YÜZEY: {previewSurface.toUpperCase()}
+              ÖRNEK IZGARA // YÜZEY: {previewSurface.toUpperCase()}
             </div>
 
             <div className={styles.gridGuideDemo} aria-label="12 sütunlu ızgara kılavuzu">
@@ -459,24 +456,24 @@ export function FoundationsSection({
 
             <div className={styles.elevationTiers}>
               <div className={styles.elevationBox} style={{ backgroundColor: 'var(--surface-sunken)' }}>
-                <span className="type-colophon">GÖMÜLÜ (SUNKEN)</span>
+                <span className="type-colophon">GÖMÜLÜ ZEMİN</span>
                 <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                  1PX İNCE ÇİZGİ
+                  1PX KENARLIK
                 </span>
               </div>
               <div className={styles.elevationBox} style={{ backgroundColor: 'var(--surface-canvas)' }}>
-                <span className="type-colophon">TUVAL (CANVAS)</span>
+                <span className="type-colophon">ANA ZEMİN</span>
                 <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                  0PX YUVARLAMA
+                  0PX KÖŞE
                 </span>
               </div>
               <div
                 className={styles.elevationBox}
                 style={{ backgroundColor: 'var(--surface-elevated)', border: '2px solid var(--border-structural)' }}
               >
-                <span className="type-colophon">YÜKSELTİLMİŞ (ELEVATED)</span>
+                <span className="type-colophon">ÜST ZEMİN</span>
                 <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                  2PX YAPISAL
+                  2PX KENARLIK
                 </span>
               </div>
             </div>
@@ -511,15 +508,13 @@ export function FoundationsSection({
       <section aria-labelledby="f-imagery-heading" className={styles.subSection}>
         <div className={styles.subHeader}>
           <div className={styles.subTitleGroup}>
-            <span className={`type-colophon ${styles.subIndex}`}>01.4 // FOTOĞRAFİK LEVHALAR</span>
+            <span className={`type-colophon ${styles.subIndex}`}>01.4 // FOTOĞRAFLAR</span>
             <h3 id="f-imagery-heading" className={`type-display ${styles.subTitle}`}>
-              MONOKROM, YARIM TON VE SİVRİ KEMER
+              SİYAH-BEYAZ FİLTRELER VE ORANLAR
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Arşiv levhaları yüksek kontrastlı gri tonlama, mikro ızgara greni, 1-bit yarım ton
-            matrisleri ve Gotik sivri kemer kırpma yolları kullanır. Görseller Wikimedia Commons
-            (CC-BY-SA) kaynaklıdır.
+            Fotoğraflar siyah-beyaz filtrelerle ve beş sabit en-boy oranıyla gösterilir.
           </p>
         </div>
 
@@ -536,7 +531,7 @@ export function FoundationsSection({
               />
             </div>
             <figcaption className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-              .plate-img // GRİ TONLAMA + KONTRAST
+              .plate-img // TÜM YAPI KARTLARI VE DETAY SAYFALARINDA KULLANILAN VARSAYILAN FOTOĞRAF FİLTRESİ
             </figcaption>
           </figure>
 
@@ -544,14 +539,14 @@ export function FoundationsSection({
             <div className={`plate-frame plate-grain ${styles.plateBox3x4}`}>
               <img
                 src="/images/buildings/chartres-cathedral.jpg"
-                alt="Chartres Katedrali — mimari mikro ızgara gren katmanı"
+                alt="Chartres Katedrali — 4px mikro ızgara gren katmanı"
                 className="plate-img"
                 loading="lazy"
                 decoding="async"
               />
             </div>
             <figcaption className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-              .plate-grain // 4PX MİKRO IZGARA KATMANI
+              .plate-grain // KAPAK VE TAM SAYFA ARKA PLANLARINDA KULLANILAN 4PX GREN KATMANI
             </figcaption>
           </figure>
 
@@ -566,14 +561,14 @@ export function FoundationsSection({
               />
             </div>
             <figcaption className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-              .plate-halftone // 1-BİT NOKTA MATRİSİ
+              .plate-halftone // SEÇİLİ YÜKSEK KONTRASTLI TRAM ÖRNEKLERİNDE KULLANILAN NOKTA MATRİSİ
             </figcaption>
           </figure>
         </div>
 
         {/* Sanctioned Aspect Ratios */}
         <div className={styles.blockHeading}>
-          <span className="type-colophon">ONAYLI EN-BOY ORANLARI (3/4, 4/5, 16/10, 2/3, 1/1)</span>
+          <span className="type-colophon">KULLANILAN EN-BOY ORANLARI (3/4, 4/5, 16/10, 2/3, 1/1)</span>
           <span className="type-colophon">WIKIMEDIA COMMONS CC-BY-SA</span>
         </div>
 
@@ -615,9 +610,8 @@ export function FoundationsSection({
               GOTİK SİVRİ KEMER {'//'} clip-path: url(#monolith-lancet-3x4) (.plate-arch-lancet)
             </span>
             <p className="type-body" style={{ color: 'var(--ink-secondary)' }}>
-              Kesinlikle 3:4 (`#monolith-lancet-3x4`) veya 2:3 (`#monolith-lancet-2x3`) dikey
-              levhalara kilitlidir. Klavye odak çerçevelerinin kesilmemesi için odak halkaları
-              kırpılmamış dış sarmalayıcıda kalır.
+              Yalnızca 3:4 ve 2:3 dikey fotoğraflarda kullanılır. Klavye odak çizgisi kırpılmasın
+              diye dış kutuya verilir.
             </p>
             <div className={styles.prohibitedThumbRow}>
               <div className={`plate-frame ${styles.compactThumb}`}>
@@ -631,11 +625,10 @@ export function FoundationsSection({
               </div>
               <div style={{ display: 'grid', gap: '0.25rem' }}>
                 <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                  KURAL // &lt; 180PX KÜÇÜK GÖRSELLERDE YASAK
+                  KURAL // 180PX ALTINDA KULLANILMAZ
                 </span>
                 <span className="type-body" style={{ color: 'var(--ink-secondary)' }}>
-                  Kompakt dizin küçük görselleri (&lt; 180px genişlik), sivri kemer tepe noktasının
-                  üst veriyi sıkıştırmaması için kesinlikle dikdörtgen kalır.
+                  180px altındaki küçük resimlerde fotoğrafı kesmemek için dikdörtgen kullanılır.
                 </span>
               </div>
             </div>
@@ -649,15 +642,14 @@ export function FoundationsSection({
       <section aria-labelledby="f-motion-heading" className={styles.subSection}>
         <div className={styles.subHeader}>
           <div className={styles.subTitleGroup}>
-            <span className={`type-colophon ${styles.subIndex}`}>01.5 // HAREKET VE ZAMANLAMA</span>
+            <span className={`type-colophon ${styles.subIndex}`}>01.5 // ANİMASYON</span>
             <h3 id="f-motion-heading" className={`type-display ${styles.subTitle}`}>
-              EĞRİLER, PERDELER VE AZALTILMIŞ HAREKET
+              HAREKET HIZLARI VE ERİŞİLEBİLİRLİK
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Sıfır yay sıçramalı deterministik yavaşlama eğrileri. Tüm hareketli levhalar ve ince
-            çizgi kuralları, <code>prefers-reduced-motion: reduce</code> altında anında görünür
-            duruma geçer.
+            Animasyonlar 150ms–420ms sürer ve <code>prefers-reduced-motion: reduce</code> açıkken
+            kapanır.
           </p>
         </div>
 
@@ -703,7 +695,7 @@ export function FoundationsSection({
           <div className={styles.motionStageWrap}>
             <div className={styles.motionControls}>
               <span className="type-colophon">
-                CANLI PLATECURTAIN + HAIRLINEDRAW + SİVRİ KEMER AÇILIMI
+                ANİMASYON ÖNİZLEMESİ
               </span>
               <button
                 type="button"

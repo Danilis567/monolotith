@@ -186,3 +186,38 @@ Following the `(site)` / `(bare)` route group architecture, the hidden `/design-
 | **Ajan 8** | UX, Accessibility & Privacy Auditor | Usability `9.5`, Accessibility `10.0`, Brand Alignment `9.5`, Privacy Accuracy `9.5` | **9.63 / 10** | **PASS** |
 | **Ajan 9** | General & Regression Auditor | Accuracy & Coverage `9.5`, Brand Alignment `9.5`, Usability `9.0`, Accessibility `8.5` *(prior to final `axe=0` fix)*, Live Sync `9.0`, Privacy `9.5` | **9.17 / 10** | **PASS** |
 | **ROUND 5 PANEL MEAN** | — | **All §6 Gates Verified (`>= 7.0`, zero criteria `< 6.0`)** | **9.37 / 10** | **UNCONDITIONAL PASS** |
+
+---
+
+## Tur — /design-system Metin Sadeleştirme (17 / 11 / 2026)
+
+`/design-system` sayfasındaki arayüz, teknik referans ve rehber metinleri; bileşen düzeni, CSS kuralları, renk token'ları ve bileşen davranışları korunarak sade ve anlaşılır Türkçeye dönüştürüldü. Tüm değişiklik dökümü [TEXT_CHANGES.md](file:///c:/Users/Danil/.gemini/antigravity-ide/scratch/neo-brutal/TEXT_CHANGES.md) dosyasında kayıtlıdır.
+
+### 1. Akış Özeti (`A1 → A2 → A3 → A4 → A5`)
+- **A1 (Metin Sadeleştirme):** `BrandSection.tsx`, `ComponentsSection.tsx`, `DesignSystemClient.tsx`, `FoundationsSection.tsx`, `PatternsSection.tsx` ve `src/design-system/registry.ts` dosyalarındaki metin dizeleri sadeleştirildi; düzen/renk/CSS/bileşen davranışına dokunulmadı (`FoundationsSection.tsx` içinde `ALLOWED_GLYPHS` dizisine `'▪'` eklenmesi A3 tutarlılık düzeltmesi olarak kaydedildi).
+- **A2 Tur 2 (Dil & Üslup Denetimi):** **`0 bulgu (TEMİZ)`**.
+- **A3 (Doğruluk & Tutarlılık Denetimi):** Tüm doğruluk ve tutarlılık bulguları giderildi — Basalt `#282828`, Limestone `#B9B5AA`, `limestone` haritası, `SiteFooter`, `Gloss`, `MotionPrimitives`, `DraftingMarks` 4 bileşen ve `ALLOWED_GLYPHS` 9 işaret (`['+', '×', '→', '←', '↗', '↙', '•', '✦', '▪']`).
+- **A4 Tur 2 (Anlaşılabilirlik Testi):** `ANLADIM: 38`, `BELİRSİZ: 1 -> 0 (ScaleRuler notu netleştirildi)`, `ANLAMADIM: 0`.
+- **A5 (Genel Denetçi):** `git diff` kapsam kontrolü, `ds:check` / `tsc` / `lint` / `build` doğrulamaları, 4 viewport Playwright taşma/hidratasyon/gizlilik kontrolü ve `REVIEW_LOG.md` güncellemesi tamamlandı.
+
+### 2. 5 Kriter Puanlaması (`0–10`)
+
+| Kriter | Puan |
+| :--- | :---: |
+| Sadelik | **9.0** |
+| Somutluk | **9.0** |
+| Doğruluk | **9.0** |
+| Tutarlılık | **8.5** |
+| Havada Durmama | **9.0** |
+| **Ortalama** | **8.9 / 10** (Eşik `>= 7.0` — **GEÇTİ**) |
+
+### 3. Teknik Doğrulama & 4 Viewport Playwright Çıktıları
+- **`npm run ds:check`:** **PASS (`100%`)** — `13/13` bileşen `COMPONENT_REGISTRY` ile eşleşti, `35/35` CSS token'ı ayrıştırıldı, `src/` ve `public/` içinde `/design-system` bağlantısı `0`.
+- **`npx tsc --noEmit`:** **PASS (`0` hata)**.
+- **`npm run lint` (`eslint`):** **PASS (`0` hata**, `2` kullanılmayan değişken uyarısı: `PatternsSection.tsx` satır `209–210` `ratio500OnVoid`, `ratio500OnBasalt`).
+- **`npm run build` (`next build`):** **PASS** — `34/34` statik ve SSG rota hatasız üretildi.
+- **Playwright 4 Viewport Kontrolü (`http://localhost:3000/design-system`):**
+  - `390×844` (Mobil): `scrollWidth = 390`, `innerWidth = 390` (**0 px taşma**), konsol/sayfa hatası `0`, public `a[href]` `0` (yalnızca `#archive`, `#brutalist`, `#specimen-link`).
+  - `768×1024` (Tablet): `scrollWidth = 768`, `innerWidth = 768` (**0 px taşma**), konsol/sayfa hatası `0`, public `a[href]` `0`.
+  - `1024×900` (Küçük Masaüstü): `scrollWidth = 1024`, `innerWidth = 1024` (**0 px taşma**), konsol/sayfa hatası `0`, public `a[href]` `0`.
+  - `1440×900` (Geniş Masaüstü): `scrollWidth = 1440`, `innerWidth = 1440` (**0 px taşma**), konsol/sayfa hatası `0`, public `a[href]` `0`.

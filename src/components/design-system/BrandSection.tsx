@@ -26,7 +26,7 @@ interface LogoGroup {
 const LOGO_GROUPS: LogoGroup[] = [
   {
     id: 'wordmark',
-    title: 'ANA KELİME İŞARETİ (WORDMARK)',
+    title: 'ANA LOGO (WORDMARK)',
     columns: 3,
     items: [
       {
@@ -34,8 +34,8 @@ const LOGO_GROUPS: LogoGroup[] = [
         name: 'KELİME İŞARETİ // KOYU ZEMİN',
         src: '/brand/monolith-wordmark-dark.svg',
         dimensions: '264 × 64 PX',
-        surfaceRule: 'BOŞLUK / BAZALT (#131313–#201F1E)',
-        role: 'Koyu yüzeyler için birincil yatay başlık plakası.',
+        surfaceRule: 'BOŞLUK / BAZALT (#131313–#282828)',
+        role: 'Koyu zeminli üst çubuk ve kapaklarda kullanılır.',
         backing: 'dark',
       },
       {
@@ -43,8 +43,8 @@ const LOGO_GROUPS: LogoGroup[] = [
         name: 'KELİME İŞARETİ // AÇIK ZEMİN',
         src: '/brand/monolith-wordmark-light.svg',
         dimensions: '264 × 64 PX',
-        surfaceRule: 'SIVA / KİREÇTAŞI (#E9E5DF–#D9D4CC)',
-        role: 'Açık yüzeyler için birincil yatay başlık plakası.',
+        surfaceRule: 'SIVA / KİREÇTAŞI (#E9E5DF–#B9B5AA)',
+        role: 'Açık zeminli sayfalarda kullanılır.',
         backing: 'light',
       },
       {
@@ -53,33 +53,33 @@ const LOGO_GROUPS: LogoGroup[] = [
         src: '/brand/monolith-wordmark-mono.svg',
         dimensions: '264 × 64 PX',
         surfaceRule: 'CURRENTCOLOR (MÜREKKEP RENGİNİ DEVRALIR)',
-        role: 'Tek mürekkepli baskı, şablon ve CSS maskeli plakalar.',
+        role: 'Metin rengini alan tek renkli logo.',
         backing: 'light',
       },
     ],
   },
   {
     id: 'stacked',
-    title: 'YAYILI / DİKEY KELİME İŞARETİ',
+    title: 'DİKEY LOGO',
     columns: 2,
     wideStage: true,
     items: [
       {
         id: 'stacked-dark',
-        name: 'YAYILI ARŞİV // KOYU ZEMİN',
+        name: 'DİKEY LOGO // KOYU ZEMİN',
         src: '/brand/monolith-stacked-dark.svg',
         dimensions: '320 × 268 PX',
-        surfaceRule: 'BOŞLUK / BAZALT (#131313–#201F1E)',
-        role: 'Dikey kapak plakası ve monografi sırt kilidi.',
+        surfaceRule: 'BOŞLUK / BAZALT (#131313–#282828)',
+        role: 'Dikey poster ve kapaklarda kullanılır.',
         backing: 'dark',
       },
       {
         id: 'stacked-light',
-        name: 'YAYILI ARŞİV // AÇIK ZEMİN',
+        name: 'DİKEY LOGO // AÇIK ZEMİN',
         src: '/brand/monolith-stacked-light.svg',
         dimensions: '320 × 268 PX',
-        surfaceRule: 'SIVA / KİREÇTAŞI (#E9E5DF–#D9D4CC)',
-        role: 'Mineral kağıt zeminler üzerinde dikey kapak plakası.',
+        surfaceRule: 'SIVA / KİREÇTAŞI (#E9E5DF–#B9B5AA)',
+        role: 'Açık zeminli dikey alanlarda kullanılır.',
         backing: 'light',
       },
     ],
@@ -94,8 +94,8 @@ const LOGO_GROUPS: LogoGroup[] = [
         name: 'MONOGRAM // KOYU ZEMİN',
         src: '/brand/monolith-monogram-dark.svg',
         dimensions: '64 × 64 PX',
-        surfaceRule: 'BOŞLUK / BAZALT (#131313–#201F1E)',
-        role: 'Kompakt üst bilgiler için kare mimari mühür.',
+        surfaceRule: 'BOŞLUK / BAZALT (#131313–#282828)',
+        role: 'Dar alanlarda kullanılan kare M logosu.',
         backing: 'dark',
       },
       {
@@ -103,8 +103,8 @@ const LOGO_GROUPS: LogoGroup[] = [
         name: 'MONOGRAM // AÇIK ZEMİN',
         src: '/brand/monolith-monogram-light.svg',
         dimensions: '64 × 64 PX',
-        surfaceRule: 'SIVA / KİREÇTAŞI (#E9E5DF–#D9D4CC)',
-        role: 'Açık yüzeyler üzerinde kare mimari mühür.',
+        surfaceRule: 'SIVA / KİREÇTAŞI (#E9E5DF–#B9B5AA)',
+        role: 'Açık zeminli dar alanlarda kullanılır.',
         backing: 'light',
       },
       {
@@ -113,75 +113,75 @@ const LOGO_GROUPS: LogoGroup[] = [
         src: '/brand/monolith-monogram-mono.svg',
         dimensions: '64 × 64 PX',
         surfaceRule: 'CURRENTCOLOR (MÜREKKEP RENGİNİ DEVRALIR)',
-        role: 'Tek mürekkepli damga ve satır içi vektör amblemi.',
+        role: 'Metin rengini alan kare M logosu.',
         backing: 'light',
       },
     ],
   },
   {
     id: 'lockups',
-    title: 'ÜST GEZİNTİ VE ALT BİLGİ KİLİTLERİ',
+    title: 'ÜST ÇUBUK VE ALT BİLGİ LOGOLARI',
     columns: 3,
     items: [
       {
         id: 'nav-dark',
-        name: 'ÜST GEZİNTİ KİLİDİ // KOYU ZEMİN',
+        name: 'ÜST ÇUBUK LOGOSU // KOYU ZEMİN',
         src: '/brand/nav-lockup.svg',
         dimensions: '145 × 28 PX (332:64)',
         surfaceRule: 'BOŞLUK / BAZALT ÜST ÇUBUĞU',
-        role: 'Dikey ayırıcı çizgili üst gezinme çubuğu işareti.',
+        role: 'Koyu zeminli üst menü çubuğunda kullanılır.',
         backing: 'dark',
       },
       {
         id: 'nav-light',
-        name: 'ÜST GEZİNTİ KİLİDİ // AÇIK ZEMİN',
+        name: 'ÜST ÇUBUK LOGOSU // AÇIK ZEMİN',
         src: '/brand/nav-lockup-light.svg',
         dimensions: '145 × 28 PX (332:64)',
         surfaceRule: 'SIVA / KİREÇTAŞI ÜST ÇUBUĞU',
-        role: 'Açık yüzeyler için üst gezinme çubuğu işareti.',
+        role: 'Açık zeminli üst menü çubuğunda kullanılır.',
         backing: 'light',
       },
       {
         id: 'nav-mono',
-        name: 'ÜST GEZİNTİ KİLİDİ // TEK RENK',
+        name: 'ÜST ÇUBUK LOGOSU // TEK RENK',
         src: '/brand/nav-lockup-mono.svg',
         dimensions: '145 × 28 PX (332:64)',
         surfaceRule: 'CURRENTCOLOR (MÜREKKEP RENGİNİ DEVRALIR)',
-        role: 'Özel temalar için uyarlanabilir gezinme kilidi.',
+        role: 'Tema rengine uyan üst menü logosu.',
         backing: 'light',
       },
       {
         id: 'footer-dark',
-        name: 'ALT BİLGİ KİLİDİ // KOYU ZEMİN',
+        name: 'ALT BİLGİ LOGOSU // KOYU ZEMİN',
         src: '/brand/footer-lockup.svg',
         dimensions: '1240 × 316 PX',
         surfaceRule: 'BOŞLUK / BAZALT ALT BİLGİ PLAKASI',
-        role: 'Tam genişlikte anıtsal arşiv alt bilgi başlığı.',
+        role: 'Koyu zeminli sayfa alt bilgisinde kullanılır.',
         backing: 'dark',
       },
       {
         id: 'footer-light',
-        name: 'ALT BİLGİ KİLİDİ // AÇIK ZEMİN',
+        name: 'ALT BİLGİ LOGOSU // AÇIK ZEMİN',
         src: '/brand/footer-lockup-light.svg',
         dimensions: '1240 × 316 PX',
         surfaceRule: 'SIVA / KİREÇTAŞI ALT BİLGİ',
-        role: 'Açık zemin üzerinde anıtsal alt bilgi başlığı.',
+        role: 'Açık zeminli sayfa alt bilgisinde kullanılır.',
         backing: 'light',
       },
       {
         id: 'footer-mono',
-        name: 'ALT BİLGİ KİLİDİ // TEK RENK',
+        name: 'ALT BİLGİ LOGOSU // TEK RENK',
         src: '/brand/footer-lockup-mono.svg',
         dimensions: '1240 × 316 PX',
         surfaceRule: 'CURRENTCOLOR (MÜREKKEP RENGİNİ DEVRALIR)',
-        role: 'Tek mürekkepli anıtsal alt bilgi başlığı.',
+        role: 'Tek renkli sayfa alt bilgisi logosu.',
         backing: 'light',
       },
     ],
   },
   {
     id: 'loader-favicons',
-    title: 'YÜKLEME İŞARETİ VE FAVICON PLAKALARI',
+    title: 'YÜKLEME İŞARETİ VE TARAYICI SİMGELERİ',
     columns: 3,
     items: [
       {
@@ -190,7 +190,7 @@ const LOGO_GROUPS: LogoGroup[] = [
         src: '/brand/loader-mark.svg',
         dimensions: '120 × 140 PX',
         surfaceRule: 'BOŞLUK / BAZALT PERDE',
-        role: 'Geometrik şakul hattı ve sivri kemer açılış işareti.',
+        role: 'Koyu zeminde sayfa yüklenirken gösterilir.',
         backing: 'dark',
       },
       {
@@ -199,7 +199,7 @@ const LOGO_GROUPS: LogoGroup[] = [
         src: '/brand/loader-mark-light.svg',
         dimensions: '120 × 140 PX',
         surfaceRule: 'SIVA / KİREÇTAŞI PERDE',
-        role: 'Açık zemin için geometrik açılış işareti.',
+        role: 'Açık zeminde sayfa yüklenirken gösterilir.',
         backing: 'light',
       },
       {
@@ -208,7 +208,7 @@ const LOGO_GROUPS: LogoGroup[] = [
         src: '/brand/loader-mark-mono.svg',
         dimensions: '120 × 140 PX',
         surfaceRule: 'CURRENTCOLOR (MÜREKKEP RENGİNİ DEVRALIR)',
-        role: 'Vektör kontur açılış işareti.',
+        role: 'Tek renkli yükleme işareti.',
         backing: 'light',
       },
       {
@@ -217,7 +217,7 @@ const LOGO_GROUPS: LogoGroup[] = [
         src: '/brand/favicon-16.svg',
         dimensions: '16 × 16 PX',
         surfaceRule: 'KENDİ İÇİNDE KAPALI (#131313 PLAKA)',
-        role: 'Tarayıcı sekmesi için asgari boyutta net raster/SVG simgesi.',
+        role: 'Tarayıcı sekmesi simgesi (16px).',
         backing: 'plate',
         exactPx: 16,
       },
@@ -227,7 +227,7 @@ const LOGO_GROUPS: LogoGroup[] = [
         src: '/brand/favicon-32.svg',
         dimensions: '32 × 32 PX',
         surfaceRule: 'KENDİ İÇİNDE KAPALI (#131313 PLAKA)',
-        role: 'Standart masaüstü yer imi ve sekme simgesi.',
+        role: 'Masaüstü yer imi ve sekme simgesi (32px).',
         backing: 'plate',
         exactPx: 32,
       },
@@ -237,7 +237,7 @@ const LOGO_GROUPS: LogoGroup[] = [
         src: '/brand/favicon-48.svg',
         dimensions: '48 × 48 PX',
         surfaceRule: 'KENDİ İÇİNDE KAPALI (#131313 PLAKA)',
-        role: 'Yüksek DPI kısayol ve görev değiştirici simgesi.',
+        role: 'Yüksek çözünürlüklü kısayol simgesi (48px).',
         backing: 'plate',
         exactPx: 48,
       },
@@ -247,7 +247,7 @@ const LOGO_GROUPS: LogoGroup[] = [
         src: '/brand/apple-touch-icon.svg',
         dimensions: '180 × 180 PX',
         surfaceRule: 'KENDİ İÇİNDE KAPALI (#131313 PLAKA)',
-        role: 'iOS / iPadOS ana ekran yer imi plakası.',
+        role: 'iPhone ve iPad ana ekran simgesi.',
         backing: 'plate',
       },
       {
@@ -256,7 +256,7 @@ const LOGO_GROUPS: LogoGroup[] = [
         src: '/brand/maskable-icon.svg',
         dimensions: '512 × 512 PX',
         surfaceRule: 'KENDİ İÇİNDE KAPALI (GÜVENLİ ALAN)',
-        role: 'Android / PWA uyarlanabilir maskelenebilir uygulama simgesi.',
+        role: 'Android ve PWA uygulama simgesi.',
         backing: 'plate',
       },
     ],
@@ -277,7 +277,7 @@ const VOICE_COMPARISONS: VoicePair[] = [
     id: 'collection-summary',
     context: 'ARŞİV GENEL BAKIŞI',
     write: 'Brüt beton ve yontma taştan yirmi yedi taşıyıcı yapı.',
-    writeNote: 'Kesin sayı, yapısal rol, tam malzeme tanımı. Sıfır sıfat.',
+    writeNote: 'Sayı ve malzeme bilgisi verir; sıfat kullanmaz.',
     avoid: 'Nefes kesici, ikonik koleksiyonumuzu keşfedin! ✨',
     avoidNote: 'Ünlem işareti, emoji, öznel abartı ("nefes kesici", "ikonik").',
   },
@@ -285,17 +285,17 @@ const VOICE_COMPARISONS: VoicePair[] = [
     id: 'specimen-note',
     context: 'ÖRNEK KAYIT // CAT. 004',
     write: 'Yerinde dökülmüş konsol döşeme; sıvasız bırakılmış ahşap kalıp izli alt yüzey.',
-    writeNote: 'Bildirimsel yapım tekniği ve gözlemlenebilir yüzey bitişi.',
+    writeNote: 'Yapım tekniğini ve malzemeyi doğrudan söyler.',
     avoid: 'Brütalist mimari ustalığın kusursuz ve hayranlık uyandıran bir nişanesi.',
-    avoidNote: 'Yapay zeka dolgu isimleri ("nişanesi") ve yasaklı övgü sıfatları ("kusursuz", "hayranlık uyandıran").',
+    avoidNote: 'Övgü sıfatları ("kusursuz", "hayranlık uyandıran") ve boş ifadeler içerir.',
   },
   {
     id: 'survey-status',
-    context: 'SİSTEM VE ENVANTER DURUMU',
+    context: 'ENVANTER DURUMU',
     write: 'ENVANTER FOLYOSU IV — 27 KAYIT DİZİNLENDİ.',
-    writeNote: 'Kuru arşiv sicili dili. Nokta ile biten beyan.',
+    writeNote: 'Kayıt sayısını verir ve nokta ile biter.',
     avoid: 'Mimari hikaye anlatıcılığının geleceğine hoş geldiniz!',
-    avoidNote: 'Tanıtım odaklı SaaS çerçevesi ve ünlem noktalama işareti.',
+    avoidNote: 'Tanıtım cümlesi ve ünlem işareti içerir.',
   },
 ];
 
@@ -333,9 +333,9 @@ const ARCHIVAL_FORMATS: FormatSpec[] = [
   },
   {
     id: 'two-tier-label',
-    label: 'İKİ KADEMELİ SADE ETİKET',
+    label: 'İKİ KADEMELİ ETİKET',
     sample: 'COORDINATES: GPS (WGS84)',
-    rule: 'Önce sade dilde kategori adı, ardından parantez içinde teknik veri.',
+    rule: 'Önce kategori adı, ardından parantez içinde teknik bilgi.',
   },
 ];
 
@@ -371,14 +371,13 @@ export function BrandSection({
       <section aria-labelledby="brand-logo-heading" className={styles.subSection}>
         <div className={styles.subHeader}>
           <div className={styles.subTitleBlock}>
-            <span className={`type-colophon ${styles.subIndex}`}>02.1 // LOGO VE MARKA İŞARETLERİ</span>
+            <span className={`type-colophon ${styles.subIndex}`}>02.1 // LOGOLAR VE SİMGELER</span>
             <h3 id="brand-logo-heading" className={`type-subhead ${styles.subTitle}`}>
-              İŞARETLER, KİLİTLER VE FAVICON PLAKALARI
+              LOGOLAR VE TARAYICI SİMGELERİ
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            <code>/brand/</code> dizininden sunulan yirmi iki kanonik vektör varlığının tamamı. Her
-            örnek, çizgi okunaklılığını korumak için zorunlu kontrast zemini üzerine yerleştirilmiştir.
+            <code>/brand/</code> klasöründen bu sayfada listelenen 22 SVG logo ve simge varlığı.
           </p>
         </div>
 
@@ -536,8 +535,7 @@ export function BrandSection({
                 <div className={styles.dontBody}>
                   <span className={`type-ui-label ${styles.dontTitle}`}>✕ ESNETİLMİŞ ORAN</span>
                   <p className={`type-body ${styles.dontDesc}`}>
-                    Yatay veya dikey oranları asla bozmayın. Tüm kapsayıcılarda en-boy oranını
-                    kilitleyin.
+                    Logoyu yatay veya dikey uzatmayın; en-boy oranını koruyun.
                   </p>
                 </div>
               </article>
@@ -569,8 +567,7 @@ export function BrandSection({
                 <div className={styles.dontBody}>
                   <span className={`type-ui-label ${styles.dontTitle}`}>✕ NEON / MAVİ RENKLENDİRME</span>
                   <p className={`type-body ${styles.dontDesc}`}>
-                    İşaretleri asla beton mürekkep sicili (#E9E5DF, #131313 veya currentColor)
-                    dışında renklendirmeyin.
+                    Logoda yalnızca #E9E5DF, #131313 veya currentColor kullanın.
                   </p>
                 </div>
               </article>
@@ -608,8 +605,7 @@ export function BrandSection({
                 <div className={styles.dontBody}>
                   <span className={`type-ui-label ${styles.dontTitle}`}>✕ YUMUŞAK ALT GÖLGE</span>
                   <p className={`type-body ${styles.dontDesc}`}>
-                    Yükseklik bulanıklığı, parlama veya alt gölge kesinlikle yasaktır. Derinlik
-                    atmosferik değil, yapısaldır.
+                    Logo üzerinde gölge veya parlama kullanmayın.
                   </p>
                 </div>
               </article>
@@ -619,19 +615,18 @@ export function BrandSection({
       </section>
 
       {/* =====================================================================
-          02.2 MARKA SESİ VE TON ("Özlü Arşivci")
+          02.2 YAZIM KURALLARI
           ===================================================================== */}
       <section aria-labelledby="brand-voice-heading" className={styles.subSection}>
         <div className={styles.subHeader}>
           <div className={styles.subTitleBlock}>
-            <span className={`type-colophon ${styles.subIndex}`}>02.2 // MARKA SESİ VE TON</span>
+            <span className={`type-colophon ${styles.subIndex}`}>02.2 // YAZIM KURALLARI</span>
             <h3 id="brand-voice-heading" className={`type-subhead ${styles.subTitle}`}>
-              ÖZLÜ ARŞİVCİ / THE LACONIC ARCHIVIST
+              YAZIM KURALLARI
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Editoryal metinler bir mimari envanter sicili gibi okunur: olgusal, kuru ve bildirimsel.
-            İkna çabası olmadan yapıyı, malzemeyi ve veriyi tanımlayın.
+            Metinler kısa ve olgusaldır; övgü sıfatları ve ünlem kullanılmaz.
           </p>
         </div>
 
@@ -640,7 +635,7 @@ export function BrandSection({
             <div key={pair.id} className={styles.voicePair}>
               <div className={styles.voiceWrite}>
                 <span className={`type-colophon ${styles.voiceTagWrite}`}>
-                  YAZ (ÖZLÜ ARŞİVCİ) — {pair.context}
+                  DOĞRU — {pair.context}
                 </span>
                 <p className={`type-body-lead ${styles.voiceQuote}`}>{pair.write}</p>
                 <p className={`type-colophon ${styles.voiceNote}`}>{pair.writeNote}</p>
@@ -648,7 +643,7 @@ export function BrandSection({
 
               <div className={styles.voiceAvoid}>
                 <span className={`type-colophon ${styles.voiceTagAvoid}`}>
-                  YAZMA (SAAS / YAPAY ZEKA DOLGUSU)
+                  YANLIŞ
                 </span>
                 <p className={`type-body-lead ${styles.voiceQuoteStrike}`}>{pair.avoid}</p>
                 <p className={`type-colophon ${styles.voiceNote}`}>{pair.avoidNote}</p>
@@ -685,14 +680,13 @@ export function BrandSection({
       <section aria-labelledby="brand-formats-heading" className={styles.subSection}>
         <div className={styles.subHeader}>
           <div className={styles.subTitleBlock}>
-            <span className={`type-colophon ${styles.subIndex}`}>02.3 // ARŞİV FORMATLARI</span>
+            <span className={`type-colophon ${styles.subIndex}`}>02.3 // VERİ BİÇİMLERİ</span>
             <h3 id="brand-formats-heading" className={`type-subhead ${styles.subTitle}`}>
-              KANONİK GÖSTERİM VE BİRİMLER
+              VERİ BİÇİMLERİ VE BİRİMLER
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Kanonik arşiv dize şablonları. Tüm sayısal okumalar tablo hizalı rakamları (tabular
-            lining numerals) zorunlu kılar.
+            Katalog numarası, tarih, yükseklik ve koordinat yazım biçimleri.
           </p>
         </div>
 
@@ -715,14 +709,15 @@ export function BrandSection({
       <section aria-labelledby="brand-iconography-heading" className={styles.subSection}>
         <div className={styles.subHeader}>
           <div className={styles.subTitleBlock}>
-            <span className={`type-colophon ${styles.subIndex}`}>02.4 // İKONOGRAFİ VE ÇİZİM İŞARETLERİ</span>
+            <span className={`type-colophon ${styles.subIndex}`}>02.4 // ÇİZİM İŞARETLERİ VE SEMBOLLER</span>
             <h3 id="brand-iconography-heading" className={`type-subhead ${styles.subTitle}`}>
-              TİPOGRAFİK GLİFLER VE TEKNİK ÇİZİM İŞARETLERİ
+              İŞARETLER VE SVG ÇİZİMLER
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            MONOLITH sıfır üçüncü taraf simge kütüphanesi ve sıfır emoji kullanır. Arayüzde yalnızca
-            izin verilen dokuz tipografik glif ve üç geometrik teknik çizim SVG&apos;si yer alabilir.
+            Sitede harici simge paketi ve emoji kullanılmaz; yalnızca bu 9 işaret ve 4 SVG çizim bileşeni (
+            <code>CornerCrosshair</code>, <code>AlignmentStar</code>, <code>SteppedFrame</code> ve
+            Bileşenler bölümündeki <code>ScaleRuler</code>) kullanılır.
           </p>
         </div>
 
@@ -754,7 +749,7 @@ export function BrandSection({
                   13 × 13 PX // 1PX KONTUR
                 </span>
                 <span className="type-body">
-                  Çerçeve köşelerine sabitlenen çevre hizalama nişangahı.
+                  Çerçeve köşelerine yerleştirilen artı işareti.
                 </span>
               </div>
             </div>
@@ -769,7 +764,7 @@ export function BrandSection({
                   15 × 15 PX // 1PX KONTUR
                 </span>
                 <span className="type-body">
-                  Künye ayırıcıları için içbükey 4 uçlu haritacı hizalama yıldızı.
+                  Künye satırlarında ayırıcı olarak kullanılan 4 uçlu yıldız.
                 </span>
               </div>
             </div>
@@ -784,7 +779,7 @@ export function BrandSection({
                   AKIŞKAN // ÖLÇEKLENMEYEN KONTUR
                 </span>
                 <span className="type-body">
-                  Örnek plakaların içine yerleştirilen gönyeli L-biçimli teknik çizim köşebentleri.
+                  Fotoğraf çerçevelerinin iç köşelerine yerleştirilen L biçimli çizgiler.
                 </span>
               </div>
             </div>

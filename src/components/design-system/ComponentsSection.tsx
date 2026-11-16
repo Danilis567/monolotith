@@ -50,19 +50,19 @@ const CATEGORY_ORDER: ReadonlyArray<ComponentCategory> = [
 ];
 
 const CATEGORY_LABELS_TR: Record<ComponentCategory, string> = {
-  'Navigation & Chrome': 'GEZİNTİ VE ÇERÇEVE',
-  'Drafting & Marks': 'TEKNİK ÇİZİM İŞARETLERİ',
-  'Editorial & Typography': 'EDİTORYAL VE TİPOGRAFİ',
-  'Interactive Plates & Stage': 'ETKİLEŞİMLİ PLAKALAR VE SAHNE',
-  'Motion & Utilities': 'HAREKET VE YARDIMCILAR',
-  'Page Views': 'SAYFA KOMPOZİSYONLARI',
+  'Navigation & Chrome': 'ÜST VE ALT BÖLÜMLER',
+  'Drafting & Marks': 'ÇİZİM İŞARETLERİ',
+  'Editorial & Typography': 'METİN YARDIMCILARI',
+  'Interactive Plates & Stage': 'FOTOĞRAF VE PLAN SAHNESİ',
+  'Motion & Utilities': 'ANİMASYON VE YARDIMCILAR',
+  'Page Views': 'SAYFA ŞABLONLARI',
 };
 
 const SURFACE_LABELS_TR: Record<string, string> = {
   void: 'VOID (KOYU)',
   plaster: 'PLASTER (AÇIK)',
   basalt: 'BASALT (BAZALT)',
-  'warm-stone': 'WARM STONE (SICAK TAŞ)',
+  limestone: 'LIMESTONE (KİREÇTAŞI)',
 };
 
 function formatSurfaceLabel(surface: string): string {
@@ -280,7 +280,7 @@ export function ComponentsSection({
       case 'gloss':
         return (
           <p className="type-body" style={{ margin: 0 }}>
-            Monolitik{' '}
+            Brüt{' '}
             <Gloss term="BÉTON BRUT">
               <span>béton brut</span>
             </Gloss>{' '}
@@ -541,7 +541,7 @@ export function ComponentsSection({
       <section aria-labelledby="primitives-heading" className={styles.primitivesSection}>
         <div className={styles.primitivesHeader}>
           <h3 id="primitives-heading" className="type-subhead">
-            ARAYÜZ PRİMİTİFLERİ VE ETKİLEŞİM DURUMLARI
+            TEMEL ARAYÜZ ÖĞELERİ VE DURUMLARI
           </h3>
           <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
             TÜM DURUMLAR YAN YANA
@@ -648,11 +648,11 @@ export function ComponentsSection({
               </ol>
             </nav>
             <p className="type-body" style={{ margin: 0 }}>
-              Satır içi editoryal{' '}
+              Metin içi{' '}
               <a href="#specimen-link" onClick={(e) => e.preventDefault()}>
-                yapısal monografi bağlantısı
+                bağlantı örneği
               </a>{' '}
-              ve etkin rota işaretçisi.
+              ve aktif sayfa yolu.
             </p>
           </div>
 
@@ -720,7 +720,7 @@ export function ComponentsSection({
 
           {/* 4. [ PLATE ] / [ INDEX ] View Toggle & Anatomy Tabs + Layer Toggles */}
           <div className={styles.primitiveCard}>
-            <h4 className="type-colophon">04 // GÖRÜNÜM GEÇİŞİ VE ANATOMİ SEKMELERİ</h4>
+            <h4 className="type-colophon">04 // GÖRÜNÜM GEÇİŞİ VE SEKMELER</h4>
             <div className={styles.viewToggle} role="group" aria-label="Arşiv görünüm modu">
               <button
                 type="button"
@@ -821,7 +821,7 @@ export function ComponentsSection({
 
           {/* 6. 3 Plate Crops (3/4, Lancet, Halftone) */}
           <div className={styles.primitiveCard}>
-            <h4 className="type-colophon">06 // PLAKA KESİTLERİ (3/4 · SİVRİ KEMER · TRAM)</h4>
+            <h4 className="type-colophon">06 // FOTOĞRAF KESİMLERİ (3/4 · SİVRİ KEMER · TRAM)</h4>
             <div className={styles.cropGrid}>
               <div className={styles.cropCard}>
                 <div className={styles.cropFrame}>
@@ -900,15 +900,15 @@ export function ComponentsSection({
 
           {/* 8. Inert Drawer Specimen */}
           <div className={styles.primitiveCard}>
-            <h4 className="type-colophon">08 // MOBİL ÇEKMECE MENÜ ÖRNEĞİ</h4>
+            <h4 className="type-colophon">08 // MOBİL MENÜ ÖRNEĞİ</h4>
             <div className={styles.drawerSpecimen} inert aria-hidden="true">
               <div className={styles.drawerSpecimenHeader}>
                 <span className="type-colophon">MONOLITH // GEZİNTİ</span>
                 <span className="type-colophon">[ KAPAT ]</span>
               </div>
-              <span className="type-subhead">01 ANA SAYFA — AFİŞ SERGİSİ</span>
-              <span className="type-subhead">02 ARŞİV — 27 KATALOGLANMIŞ YAPI</span>
-              <span className="type-subhead">03 ANATOMİ — ÖLÇÜLÜ KESİTLER</span>
+              <span className="type-subhead">01 ANA SAYFA</span>
+              <span className="type-subhead">02 ARŞİV — 27 YAPI</span>
+              <span className="type-subhead">03 ANATOMİ — PLANLAR</span>
             </div>
           </div>
 

@@ -27,28 +27,28 @@ interface PageTemplateSpec {
 const PAGE_TEMPLATES: ReadonlyArray<PageTemplateSpec> = [
   {
     id: 'home',
-    name: 'Ana Sayfa Posteri',
+    name: 'Ana Sayfa',
     route: '/',
     screenshotSrc: '/design-system/templates/home.png',
     wide: true,
-    gridSpans: 'Sütun 1–7 Ana Monolit Posteri / Sütun 8–12 Dizin Defteri; 3+4+5 plaka ritmi',
-    surfaceAlternation: 'void → plaster → basalt → dark',
-    asymmetricRhythm: 'Sivri kemer odak plakası ve 0px gönye çerçevelerle 1.6fr / 0.95fr editoryal bölünme',
+    gridSpans: 'Sütun 1–7 ana fotoğraf, Sütun 8–12 dizin listesi; altta 3+4+5 sütunlu bant.',
+    surfaceAlternation: 'void → plaster → basalt → void',
+    asymmetricRhythm: '1.6fr / 0.95fr oranında bölünmüş ızgara ve 0px köşeli fotoğraf çerçeveleri.',
     wireframeBands: [
-      { colSpan: 'span 7', surface: 'void', label: '01 ANA PLAKA' },
-      { colSpan: 'span 5', surface: 'basalt', label: '02 DİZİN DEFTERİ' },
-      { colSpan: 'span 4', surface: 'plaster', label: '03 ALÇI YÜZEY' },
+      { colSpan: 'span 7', surface: 'void', label: '01 ANA FOTOĞRAF' },
+      { colSpan: 'span 5', surface: 'basalt', label: '02 DİZİN LİSTESİ' },
+      { colSpan: 'span 4', surface: 'plaster', label: '03 SIVA (PLASTER)' },
       { colSpan: 'span 8', surface: 'limestone', label: '04 ARŞİV ÖNİZLEMESİ' },
     ],
   },
   {
     id: 'archive',
-    name: 'Arşiv Matrisi (PLAKA / DİZİN)',
+    name: 'Arşiv Sayfası (PLAKA / DİZİN)',
     route: '/archive',
     screenshotSrc: '/design-system/templates/archive.png',
-    gridSpans: '12 sütunlu yapışkan filtre çubuğu; Plaka modunda 1.6fr / 0.95fr / 1.15fr; 3 sütunlu Dizin defteri',
+    gridSpans: 'Üstte 12 sütunlu filtre çubuğu; Plaka modunda 1.6fr / 0.95fr / 1.15fr; Dizin modunda 3 sütunlu tablo.',
     surfaceAlternation: 'void → basalt → void',
-    asymmetricRhythm: 'Düzensiz yığma aralıkları ve tablosal koordinatlarla ikili PLAKA / DİZİN görünüm geçişi',
+    asymmetricRhythm: 'PLAKA ve DİZİN görünüm geçişi ile farklı genişlikte fotoğraf sütunları.',
     wireframeBands: [
       { colSpan: 'span 12', surface: 'basalt', label: 'FİLTRE ÇUBUĞU + GÖRÜNÜM GEÇİŞİ' },
       { colSpan: 'span 5', surface: 'void', label: 'PLAKA A (SİVRİ KEMER)' },
@@ -58,30 +58,30 @@ const PAGE_TEMPLATES: ReadonlyArray<PageTemplateSpec> = [
   },
   {
     id: 'detail',
-    name: 'Yapı Detay Dosyası',
+    name: 'Yapı Detay Sayfası',
     route: '/structures/[slug]',
     screenshotSrc: '/design-system/templates/detail.png',
-    gridSpans: 'Sütun 1–5 Yapışkan Örnek Plakası / Sütun 6–12 Mimari Dosya ve Teknik Özellikler',
+    gridSpans: 'Sütun 1–5 sabit fotoğraf, Sütun 6–12 yapı bilgileri ve teknik veriler.',
     surfaceAlternation: 'void → plaster → basalt',
-    asymmetricRhythm: 'Yüksek kemer/gönye plakayı kademeli açılan cephe notlarıyla eşleştiren 5/7 bölünme',
+    asymmetricRhythm: '5/7 oranında bölünmüş düzen: solda büyük fotoğraf, sağda metin ve tablolar.',
     wireframeBands: [
-      { colSpan: 'span 5', surface: 'basalt', label: 'ÖRNEK PLAKA' },
-      { colSpan: 'span 7', surface: 'plaster', label: 'DOSYA + TEKNİK ÖZELLİKLER' },
+      { colSpan: 'span 5', surface: 'basalt', label: 'YAPI FOTOĞRAFI' },
+      { colSpan: 'span 7', surface: 'plaster', label: 'BİLGİ + TEKNİK VERİLER' },
       { colSpan: 'span 12', surface: 'void', label: 'İLİŞKİLİ YAPILAR' },
     ],
   },
   {
     id: 'anatomy',
-    name: 'Anatomi Çalışma Tezgahı',
+    name: 'Anatomi Sayfası',
     route: '/anatomy',
     screenshotSrc: '/design-system/templates/anatomy.png',
     wide: true,
-    gridSpans: 'Sütun 1–8 Etkileşimli Plan Sahnesi / Sütun 9–12 Canlı Telemetri ve Katman Denetçisi',
-    surfaceAlternation: 'void → basalt → dark',
-    asymmetricRhythm: '6 özellikli inceleme kontrolleri ve artı imleç açıklamalarıyla 8/4 teknik çalışma tezgahı',
+    gridSpans: 'Sütun 1–8 etkileşimli plan çizimi, Sütun 9–12 katman ve ölçü paneli.',
+    surfaceAlternation: 'void → basalt → void',
+    asymmetricRhythm: '8/4 oranında bölünmüş düzen: solda yakınlaştırılabilir çizim, sağda katman düğmeleri.',
     wireframeBands: [
       { colSpan: 'span 8', surface: 'void', label: 'ETKİLEŞİMLİ PLAN SAHNESİ' },
-      { colSpan: 'span 4', surface: 'basalt', label: 'KATMAN DENETÇİSİ' },
+      { colSpan: 'span 4', surface: 'basalt', label: 'KATMAN PANELİ' },
     ],
   },
 ];
@@ -100,12 +100,12 @@ interface InkRowSpec {
 }
 
 const MATRIX_INK_ROWS: ReadonlyArray<InkRowSpec> = [
-  { cssVar: '--ink-primary', role: 'Birincil Başlık ve Gövde Metni', minWcag: '4.5' },
-  { cssVar: '--ink-secondary', role: 'İkincil Üstveri ve Alt Yazılar', minWcag: '4.5' },
-  { cssVar: '--ink-muted', role: 'Soluk Arayüz Etiketleri (AA Normal Güvenli)', minWcag: '4.5' },
-  { cssVar: '--signal-ink', role: 'Kısıtlı Sinyal Vermilyon Vurgusu', minWcag: '4.5' },
-  { cssVar: '--border-hairline', role: 'İnce Çizgiler ve Metin Dışı Arayüz', minWcag: '3.0' },
-  { cssVar: '--border-structural', role: 'Yapısal 1–2px Brütalist Çerçeveler', minWcag: '3.0' },
+  { cssVar: '--ink-primary', role: 'Ana başlık ve paragraf metni', minWcag: '4.5' },
+  { cssVar: '--ink-secondary', role: 'Alt başlık ve yardımcı yazılar', minWcag: '4.5' },
+  { cssVar: '--ink-muted', role: 'Etiket ve tarih yazıları (AA güvenli)', minWcag: '4.5' },
+  { cssVar: '--signal-ink', role: 'Kırmızı vurgu ve hata metni', minWcag: '4.5' },
+  { cssVar: '--border-hairline', role: 'İnce ayırıcı çizgiler', minWcag: '3.0' },
+  { cssVar: '--border-structural', role: '1–2px kutu kenarlıkları', minWcag: '3.0' },
 ];
 
 interface ChangelogEntry {
@@ -117,39 +117,39 @@ interface ChangelogEntry {
 const CHANGELOG_ENTRIES: ReadonlyArray<ChangelogEntry> = [
   {
     round: 'TUR 01',
-    title: 'Marka ve 4 Rotalı Temel Yapı',
+    title: 'Temel Renkler ve 4 Ana Sayfa',
     summary:
-      'Değişmez beton primitifleri (#131313–#E9E5DF), kısıtlı Sinyal Vermilyon, sıfır yarıçaplı geometri ve 4 çekirdek arşiv rotası (/, /archive, /structures/[slug], /anatomy) oluşturuldu.',
+      '5 gri ton (#131313–#E9E5DF), kırmızı vurgu rengi, 0px köşeler ve 4 rota (/, /archive, /structures/[slug], /anatomy) oluşturuldu.',
   },
   {
     round: 'TUR 02',
-    title: 'Yüzey Adaları ve Duyarlı Kenar Boşlukları',
+    title: '4 Yüzey ve Ekran Boyutları',
     summary:
-      'Otomatik anlamsal mürekkep/kenarlık tersine çevirme ve duyarlı 4/8/12 sütunlu kenar boşluğu ölçekleriyle kapsamlı [data-surface] adaları (void, basalt, plaster, limestone) eklendi.',
+      '4 zemin yüzeyi (void, basalt, plaster, limestone) ve ekran genişliğine göre 4/8/12 sütunlu ızgara eklendi.',
   },
   {
     round: 'TUR 03',
-    title: 'Kanıta Dayalı 43 Adımlı Düzeltme ve Asimetri',
+    title: 'Eşit Olmayan Sütunlar ve Kontrast Kontrolü',
     summary:
-      'Simetrik kart ızgaraları asimetrik editoryal defterlerle (3+4+5, 1.6fr / 0.95fr) değiştirildi, tüm gölgeler ve yuvarlatılmış köşeler kaldırıldı ve tüm adalarda AA kontrastı zorunlu kılındı.',
+      'Eşit kart ızgaraları 3+4+5 ve 1.6fr / 0.95fr sütunlara çevrildi; tüm gölgeler kaldırıldı ve WCAG AA kontrastı sağlandı.',
   },
   {
     round: 'TUR 04',
-    title: 'Jüri Geri Bildirimi ve Kademeli Gösterim',
+    title: 'PLAKA / DİZİN Görünümü ve Kırmızı Sınırı',
     summary:
-      'Yoğun mimari üstveriler için kademeli gösterim çekmeceleri eklendi, PLAKA ve DİZİN arşiv modları netleştirildi ve Sinyal Vermilyon alan bütçesi <= %2 görüntü alanı ile sınırlandırıldı.',
+      'Arşiv sayfasında PLAKA ve DİZİN modları ayrıldı; kırmızı vurgu alanı ekranın %2’si ile sınırlandı.',
   },
   {
     round: 'TUR 05',
-    title: 'Anatomi 6 Özellikli Yükseltme ve Hız Optimizasyonu',
+    title: 'Anatomi Katmanları ve Hız İyileştirmesi',
     summary:
-      '/anatomy rotası 6 etkileşimli yapısal inceleme katmanı, dış sarmalayıcı odak halkaları (.plate-interactive-outer) ve azaltılmış hareket/görsel çözümleme optimizasyonlarıyla yükseltildi.',
+      '/anatomy sayfasına katman açma/kapama kontrolleri, dış odak çizgileri (.plate-interactive-outer) ve azaltılmış hareket desteği eklendi.',
   },
   {
     round: 'TUR 06',
-    title: '/design-system Tek Doğruluk Kaynağı',
+    title: '/design-system Sayfası',
     summary:
-      'Çalışma zamanında brand/tokens-color.css ve globals.css dosyalarını ayrıştıran, canlı WCAG kontrast hesaplaması ve bileşen kayıt defteri sunan token tabanlı /design-system dokümantasyonu oluşturuldu.',
+      'Renk ve yazı tokenlarını tokens-color.css ve globals.css dosyalarından okuyan canlı kontrast ve bileşen kataloğu oluşturuldu.',
   },
 ];
 
@@ -234,7 +234,7 @@ export function PatternsSection({
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Dört arşiv rotası kompozisyonu. Izgara aralıklarını ve asimetrik yüzey değişimlerini incelemek için herhangi bir plakadaki yerel 12 sütunlu katmanı açıp kapatın.
+            Sitedeki 4 ana sayfa düzeni. Sütunları görmek için sağ üstteki düğmeye basın.
           </p>
         </header>
 
@@ -274,7 +274,7 @@ export function PatternsSection({
                         onError={() => markImageBroken(tpl.id)}
                       />
                     ) : (
-                      <div className={styles.templateFallback} role="img" aria-label={`${tpl.name} mimari tel kafes`}>
+                      <div className={styles.templateFallback} role="img" aria-label={`${tpl.name} sayfa düzeni tel kafesi`}>
                         <div className={styles.fallbackMetaRow}>
                           <span>MONOLITH // {tpl.route}</span>
                           <span>{tpl.surfaceAlternation}</span>
@@ -309,7 +309,7 @@ export function PatternsSection({
                           })}
                         </div>
                         <div className={styles.fallbackMetaRow}>
-                          <span>12 SÜTUNLU MİMARİ ÇERÇEVE</span>
+                          <span>12 SÜTUNLU SAYFA ÇERÇEVESİ</span>
                           <span>0PX YARIÇAP</span>
                         </div>
                       </div>
@@ -358,11 +358,11 @@ export function PatternsSection({
           <div className={styles.subHeaderTitleGroup}>
             <span className={`type-ui-label ${styles.subIndex}`}>04.2</span>
             <h3 id="ds-patterns-rules" className="type-subhead">
-              DEĞİŞMEZLER VE GÖRSEL KURALLAR
+              TASARIM KURALLARI
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Yan yana örneklerle sunulan yedi tavizsiz mimari değişmez.
+            Sayfalarda uyulması gereken 7 görsel kural.
           </p>
         </header>
 
@@ -372,10 +372,10 @@ export function PatternsSection({
             <div className={styles.ruleMeta}>
               <div>
                 <span className={`type-ui-label ${styles.ruleNumber}`}>KURAL 01</span>
-                <h4 className={`type-subhead ${styles.ruleTitle}`}>Sıfır Yarıçap (0px Gönye)</h4>
+                <h4 className={`type-subhead ${styles.ruleTitle}`}>Köşeleri Yuvarlama (0px)</h4>
               </div>
               <p className={styles.ruleRationale}>
-                Her kapsayıcı, düğme, girdi alanı ve plaka 0px keskin gönyeli köşeler kullanır. Yuvarlatılmış köşeler brütalist yapısal gerilimi zayıflatır.
+                Tüm kutu, düğme, giriş alanı ve fotoğrafların köşesi 0px olarak bırakılır.
               </p>
             </div>
             <div className={`${styles.specimenCol} ${styles.specimenDo}`}>
@@ -385,7 +385,7 @@ export function PatternsSection({
                   <span className="type-ui-label">border-radius: 0px</span>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Tüm yüzeylerde ve kontrollerde keskin 90 derecelik mimari gönye.</p>
+              <p className={styles.specimenCaption}>Tüm kutularda ve düğmelerde 90 derecelik düz köşe.</p>
             </div>
             <div className={styles.specimenCol}>
               <span className={styles.specimenBadgeDont}>YAPMA ✕</span>
@@ -394,7 +394,7 @@ export function PatternsSection({
                   <span className="type-ui-label">rounded-lg (12px)</span>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Asla rounded-lg, hap yarıçapları veya yumuşak kart köşeleri uygulamayın.</p>
+              <p className={styles.specimenCaption}>Kartlarda veya düğmelerde yuvarlak köşe kullanma.</p>
             </div>
           </article>
 
@@ -403,10 +403,10 @@ export function PatternsSection({
             <div className={styles.ruleMeta}>
               <div>
                 <span className={`type-ui-label ${styles.ruleNumber}`}>KURAL 02</span>
-                <h4 className={`type-subhead ${styles.ruleTitle}`}>Gölgesiz Tonal Yükselti</h4>
+                <h4 className={`type-subhead ${styles.ruleTitle}`}>Gölge Kullanma</h4>
               </div>
               <p className={styles.ruleRationale}>
-                Derinlik yalnızca yüzey adası tonal geçişleri ve 1px yapısal kenarlıklarla ifade edilir; asla alt gölge veya bulanıklık kullanılmaz.
+                Yüzeyler arası geçişte gölge kullanma; ton farkı ve 1px kenarlık kullan.
               </p>
             </div>
             <div className={`${styles.specimenCol} ${styles.specimenDo}`}>
@@ -416,7 +416,7 @@ export function PatternsSection({
                   <span className="type-ui-label">1px solid + yüzey basamağı</span>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>box-shadow: none ile belirgin 1px kenarlık ve basalt/void tonal basamağı.</p>
+              <p className={styles.specimenCaption}>Gölge yerine 1px kenarlık ve zemin rengi farkı kullan.</p>
             </div>
             <div className={styles.specimenCol}>
               <span className={styles.specimenBadgeDont}>YAPMA ✕</span>
@@ -425,7 +425,7 @@ export function PatternsSection({
                   <span className="type-ui-label">box-shadow yükseltisi</span>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Asla ortam gölgesi (box-shadow) veya backdrop-filter cam efekti kullanmayın.</p>
+              <p className={styles.specimenCaption}>Kutu gölgesi (box-shadow) veya arka plan bulanıklığı kullanma.</p>
             </div>
           </article>
 
@@ -434,10 +434,10 @@ export function PatternsSection({
             <div className={styles.ruleMeta}>
               <div>
                 <span className={`type-ui-label ${styles.ruleNumber}`}>KURAL 03</span>
-                <h4 className={`type-subhead ${styles.ruleTitle}`}>Sinyal Vermilyon &lt;= %2</h4>
+                <h4 className={`type-subhead ${styles.ruleTitle}`}>Kırmızı Vurgu En Fazla %2</h4>
               </div>
               <p className={styles.ruleRationale}>
-                Sinyal Vermilyon cerrahi vurgular için kısıtlıdır: aktif göstergeler, ince çizgiler ve kritik hata durumları (&lt;= %2 görüntü alanı).
+                Kırmızı renk yalnızca durum noktalarında, ince çizgilerde ve hata mesajlarında kullanılır.
               </p>
             </div>
             <div className={`${styles.specimenCol} ${styles.specimenDo}`}>
@@ -448,7 +448,7 @@ export function PatternsSection({
                   <span className={styles.doSignalDot} aria-hidden="true" />
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Beton tuval üzerinde 8px sinyal noktası + 2px ince çizgi vurgusu.</p>
+              <p className={styles.specimenCaption}>Zemin üzerinde 8px kırmızı nokta ve 2px ince çizgi.</p>
             </div>
             <div className={styles.specimenCol}>
               <span className={styles.specimenBadgeDont}>YAPMA ✕</span>
@@ -459,10 +459,10 @@ export function PatternsSection({
                   aria-label="Anti-desen: tam vermilyon afiş dolgusu"
                   style={{ color: '#FFFFFF' }}
                 >
-                  <span className="type-ui-label">TAM VERMİLYON AFİŞ</span>
+                  <span className="type-ui-label">TAM KIRMIZI AFİŞ</span>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Büyük afişleri, arka planları veya kartları asla vermilyon dolguyla kaplamayın.</p>
+              <p className={styles.specimenCaption}>Büyük alanları veya kartları kırmızı arka planla boyama.</p>
             </div>
           </article>
 
@@ -471,10 +471,10 @@ export function PatternsSection({
             <div className={styles.ruleMeta}>
               <div>
                 <span className={`type-ui-label ${styles.ruleNumber}`}>KURAL 04</span>
-                <h4 className={`type-subhead ${styles.ruleTitle}`}>{concrete500} Küçük Metin / Kireçtaşı Üzerinde Yasak</h4>
+                <h4 className={`type-subhead ${styles.ruleTitle}`}>{concrete500} Küçük Metin / LIMESTONE (KİREÇTAŞI) Üzerinde Yasak</h4>
               </div>
               <p className={styles.ruleRationale}>
-                Yıpranmış Gri ({concrete500}), yalnızca Void ({ratio500OnVoid.toFixed(2)}:1) ve Basalt ({ratio500OnBasalt.toFixed(2)}:1) üzerinde büyük/arayüz kontrastını karşılar; Limestone ({ratio500OnLimestone.toFixed(2)}:1) üzerinde tamamen başarısız olur.
+                {concrete500} rengi koyu zeminlerde okunur; LIMESTONE (KİREÇTAŞI) ({concrete300}) üzerinde kontrastı yetersizdir ({ratio500OnLimestone.toFixed(2)}:1).
               </p>
             </div>
             <div className={`${styles.specimenCol} ${styles.specimenDo}`}>
@@ -497,7 +497,7 @@ export function PatternsSection({
                   </div>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>AA/AAA okunabilirlik için Kireçtaşı (#B9B5AA) üzerinde #131313 veya #282828 mürekkep kullanın.</p>
+              <p className={styles.specimenCaption}>LIMESTONE (KİREÇTAŞI) (#B9B5AA) üzerinde yazı için #131313 veya #282828 kullan.</p>
             </div>
             <div className={styles.specimenCol}>
               <span className={styles.specimenBadgeDont}>YAPMA ✕</span>
@@ -533,7 +533,7 @@ export function PatternsSection({
                   </svg>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>{concrete500} rengini asla küçük metinlerle (&lt; 24px) veya {concrete300} Kireçtaşı ile eşleştirmeyin.</p>
+              <p className={styles.specimenCaption}>{concrete500} rengini küçük yazılarda (&lt; 24px) veya {concrete300} üzerinde kullanma.</p>
             </div>
           </article>
 
@@ -542,10 +542,10 @@ export function PatternsSection({
             <div className={styles.ruleMeta}>
               <div>
                 <span className={`type-ui-label ${styles.ruleNumber}`}>KURAL 05</span>
-                <h4 className={`type-subhead ${styles.ruleTitle}`}>Üzerine Gelmede Tonal ve Kenarlık Geçişi</h4>
+                <h4 className={`type-subhead ${styles.ruleTitle}`}>Hover Durumunda Büyütme Yapma</h4>
               </div>
               <p className={styles.ruleRationale}>
-                Etkileşimli plakalar ve kontroller, ızgara hizalamasını bozan zıplayan ölçek dönüşümleri yerine kenarlık rengi ve tonal yüzey geçişleriyle tepki verir.
+                Üzerine gelindiğinde kartları büyütme; yalnızca kenarlık veya zemin rengini değiştir.
               </p>
             </div>
             <div className={`${styles.specimenCol} ${styles.specimenDo}`}>
@@ -555,7 +555,7 @@ export function PatternsSection({
                   <span className="type-ui-label">kenarlık + yüzey geçişi</span>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Üzerine gelme, kenarlık rengini ve yüzey tonunu ızgara izi içinde temizce değiştirir.</p>
+              <p className={styles.specimenCaption}>Üzerine gelince kutu boyutunu koruyarak kenarlık ve zemin rengini değiştir.</p>
             </div>
             <div className={styles.specimenCol}>
               <span className={styles.specimenBadgeDont}>YAPMA ✕</span>
@@ -564,7 +564,7 @@ export function PatternsSection({
                   <span className="type-ui-label">transform: scale(1.04)</span>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Kart veya plaka kapsayıcılarına asla transform: scale(1.04) uygulamayın.</p>
+              <p className={styles.specimenCaption}>Kartlarda transform: scale(1.04) ile büyütme yapma.</p>
             </div>
           </article>
 
@@ -573,10 +573,10 @@ export function PatternsSection({
             <div className={styles.ruleMeta}>
               <div>
                 <span className={`type-ui-label ${styles.ruleNumber}`}>KURAL 06</span>
-                <h4 className={`type-subhead ${styles.ruleTitle}`}>Sivri Kemer Maskesi Disiplini</h4>
+                <h4 className={`type-subhead ${styles.ruleTitle}`}>Sivri Kemer Kesimini Küçük Resimde Kullanma</h4>
               </div>
               <p className={styles.ruleRationale}>
-                Sivri kemer kırpma yolu (url(#monolith-lancet-3x4)), Gotik tepenin nefes alabileceği uzun dikey özellik plakaları için ayrılmıştır.
+                Sivri kemer kesimi (url(#monolith-lancet-3x4)) yalnızca 260px ve üzeri uzun dikey fotoğraflarda kullanılır.
               </p>
             </div>
             <div className={`${styles.specimenCol} ${styles.specimenDo}`}>
@@ -584,14 +584,14 @@ export function PatternsSection({
               <div className={styles.specimenStage}>
                 <div className={styles.archSpecimenTall} role="img" aria-label="Uzun sivri kemer özellik plakası" />
               </div>
-              <p className={styles.specimenCaption}>Dengeli dikey oranlara sahip uzun özellik plakaları (&gt;= 260px yükseklik).</p>
+              <p className={styles.specimenCaption}>260px ve üzeri büyük dikey fotoğraflarda kullan.</p>
             </div>
             <div className={styles.specimenCol}>
               <span className={styles.specimenBadgeDont}>YAPMA ✕</span>
               <div className={styles.specimenStage}>
                 <div className={styles.archSpecimenCompact} role="img" aria-label="Sıkışmış kompakt kemer küçük görseli" />
               </div>
-              <p className={styles.specimenCaption}>Sivri kemer kırpmasını asla &lt; 180px kompakt küçük görsellere uygulamayın.</p>
+              <p className={styles.specimenCaption}>180px altındaki küçük resimlerde sivri kemer kesimi kullanma.</p>
             </div>
           </article>
 
@@ -600,10 +600,10 @@ export function PatternsSection({
             <div className={styles.ruleMeta}>
               <div>
                 <span className={`type-ui-label ${styles.ruleNumber}`}>KURAL 07</span>
-                <h4 className={`type-subhead ${styles.ruleTitle}`}>Asimetrik Editoryal Defter</h4>
+                <h4 className={`type-subhead ${styles.ruleTitle}`}>Eşit Olmayan Sütunlar Kullan</h4>
               </div>
               <p className={styles.ruleRationale}>
-                Yerleşimler, jenerik SaaS ızgaraları yerine mimari hiyerarşi oluşturmak için kasıtlı olarak eşit olmayan sütun oranları (3+4+5, 1.6fr 0.95fr 1.15fr) kullanır.
+                Bölümler eşit 3 sütun yerine 3+4+5 veya 1.6fr / 0.95fr gibi farklı genişlikte sütunlara ayrılır.
               </p>
             </div>
             <div className={`${styles.specimenCol} ${styles.specimenDo}`}>
@@ -615,7 +615,7 @@ export function PatternsSection({
                   <div className={styles.miniCell}>5fr</div>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>12 sütunlu ızgaraya sabitlenmiş orantılı 3+4+5 / 1.6fr + 0.95fr izler.</p>
+              <p className={styles.specimenCaption}>12 sütun içinde 3+4+5 veya 1.6fr + 0.95fr sütun genişlikleri.</p>
             </div>
             <div className={styles.specimenCol}>
               <span className={styles.specimenBadgeDont}>YAPMA ✕</span>
@@ -626,25 +626,25 @@ export function PatternsSection({
                   <div className={styles.miniCell}>1fr</div>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Editoryal bölümlerde tekdüze 1fr / 1fr / 1fr SaaS kart ızgaralarından kaçının.</p>
+              <p className={styles.specimenCaption}>Sayfa bölümlerinde eşit 1fr / 1fr / 1fr kart ızgarası kullanma.</p>
             </div>
           </article>
         </div>
       </section>
 
       {/* =====================================================================
-          04.3 CANLI ERİŞİLEBİLİRLİK VE KONTRAST MATRİSİ
+          04.3 KONTRAST VE ERİŞİLEBİLİRLİK TABLOSU
           ===================================================================== */}
       <section className={styles.subSection} aria-labelledby="ds-patterns-a11y">
         <header className={styles.subHeader}>
           <div className={styles.subHeaderTitleGroup}>
             <span className={`type-ui-label ${styles.subIndex}`}>04.3</span>
             <h3 id="ds-patterns-a11y" className="type-subhead">
-              CANLI ERİŞİLEBİLİRLİK VE KONTRAST MATRİSİ (WCAG AA)
+              KONTRAST VE ERİŞİLEBİLİRLİK TABLOSU (WCAG AA)
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Aşağıdaki her oran, ayrıştırılmış yüzey ve mürekkep tokenlarından WCAG 2.1 bağıl parlaklık yöntemiyle canlı olarak hesaplanır.
+            Her zemin ve yazı rengi çifti için WCAG 2.1 kontrast oranları.
           </p>
         </header>
 
@@ -743,10 +743,10 @@ export function PatternsSection({
                   <div className={styles.tokenCell}>
                     <span className={styles.tokenVarName}>
                       --concrete-500 ({concrete500})
-                      <span className={styles.prohibitedTag}>KİREÇTAŞI ÜZERİNDE YASAK</span>
+                      <span className={styles.prohibitedTag}>LIMESTONE (KİREÇTAŞI) ÜZERİNDE YASAK</span>
                     </span>
                     <span className={styles.tokenRoleDesc}>
-                      Kireçtaşı ({concrete300}) üzerinde Yıpranmış Gri — AA normal ve 3.0:1 arayüz kontrastında başarısız
+                      LIMESTONE (KİREÇTAŞI) ({concrete300}) üzerinde Yıpranmış Gri — AA normal ve 3.0:1 arayüz kontrastında başarısız
                     </span>
                   </div>
                 </td>
@@ -825,9 +825,9 @@ export function PatternsSection({
         {/* Odak Halkası, Dokunma Hedefi ve Azaltılmış Hareket Kuralları */}
         <div className={styles.a11yRulesGrid}>
           <article className={styles.a11yRuleCard}>
-            <span className="type-ui-label">ODAK HALKASI KURALI (KIRPILMIŞ PLAKALAR)</span>
+            <span className="type-ui-label">ODAK HALKASI KURALI (KIRPILMIŞ FOTOĞRAFLAR)</span>
             <p className={styles.ruleRationale}>
-              CSS clip-path, sivri kemer plakalarındaki yerel dış çizgileri kırptığı için 2px düz odak halkasını kırpılmamış dış sarmalayıcı (.plate-interactive-outer) taşır.
+              Sivri kemer kesimi odak çizgisini kesmesin diye 2px odak halkası dış kutuya (.plate-interactive-outer) verilir.
             </p>
             <pre className={styles.a11yCode}>
 {`.plate-interactive-outer:focus-visible {
@@ -839,9 +839,9 @@ export function PatternsSection({
           </article>
 
           <article className={styles.a11yRuleCard}>
-            <span className="type-ui-label">MİNİMUM DOKUNMA HEDEFİ</span>
+            <span className="type-ui-label">EN KÜÇÜK DOKUNMA ALANI</span>
             <p className={styles.ruleRationale}>
-              Tüm etkileşimli düğmeler, görünüm anahtarları, katman düğmeleri ve filtre çipleri en az 44×44 px tıklama alanı zorunlu kılar (WCAG 2.5.5 / 2.5.8).
+              Tüm düğmeler, sekmeler ve filtreler en az 44×44 px tıklama alanına sahiptir (WCAG 2.5.5 / 2.5.8).
             </p>
             <pre className={styles.a11yCode}>
 {`min-block-size: 44px;
@@ -852,7 +852,7 @@ min-inline-size: 44px;`}
           <article className={styles.a11yRuleCard}>
             <span className="type-ui-label">PREFERS-REDUCED-MOTION</span>
             <p className={styles.ruleRationale}>
-              Tüm tonal geçişler, plaka açılışları ve kaydırmaya bağlı efektler, azaltılmış hareket tercihleri altında anlık durum değişikliklerine indirgenir.
+              Kullanıcı azaltılmış hareket seçtiğinde tüm animasyonlar ve geçişler kapanır.
             </p>
             <pre className={styles.a11yCode}>
 {`@media (prefers-reduced-motion: reduce) {
@@ -872,11 +872,11 @@ min-inline-size: 44px;`}
           <div className={styles.subHeaderTitleGroup}>
             <span className={`type-ui-label ${styles.subIndex}`}>04.4</span>
             <h3 id="ds-patterns-changelog" className="type-subhead">
-              MİMARİ DEĞİŞİKLİK GÜNLÜĞÜ
+              DEĞİŞİKLİK GÜNLÜĞÜ
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            MONOLITH tasarım sistemi iterasyonlarının temelden tek doğruluk kaynağına kadar kronolojik defteri.
+            Tasarım güncellemelerinin tur bazlı özeti.
           </p>
         </header>
 
