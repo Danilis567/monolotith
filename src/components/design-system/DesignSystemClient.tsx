@@ -88,7 +88,7 @@ export function DesignSystemClient({ tokens, components }: DesignSystemClientPro
               </div>
               <div className={styles.ledgerCell}>
                 <dt className={`type-colophon ${styles.ledgerKey}`}>TASARIM</dt>
-                <dd className={`type-subhead ${styles.ledgerVal}`}>DANİL</dd>
+                <dd className={`type-subhead ${styles.ledgerVal}`}>HALİL ANIK</dd>
               </div>
             </dl>
 
