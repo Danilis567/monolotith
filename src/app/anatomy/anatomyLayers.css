@@ -1,0 +1,74 @@
+/* MONOLITH /anatomy — Inline SVG Layer Separation & Drafting Palette */
+
+/* Base layer transitions */
+#layer-structure,
+#layer-axis,
+#layer-dimensions {
+  transition: opacity 150ms linear;
+}
+
+/* Layer 1: Structure — Crisp Chalk-Stone (#E9E5DF) & Stone-Beige (#B9B5AA) */
+#layer-structure .str-cut {
+  stroke: #e9e5df;
+  stroke-width: 2.25;
+}
+
+#layer-structure .str-line {
+  stroke: #e9e5df;
+  stroke-width: 1.25;
+}
+
+#layer-structure .str-thin {
+  stroke: #b9b5aa;
+  stroke-width: 0.75;
+  opacity: 0.6;
+}
+
+#layer-structure .str-dash {
+  stroke: #b9b5aa;
+  stroke-dasharray: 4 3;
+}
+
+/* Layer 2: Structural Axis & Load Paths — Signal Vermilion (#F45D4D) */
+#layer-axis .sig {
+  stroke: #f45d4d;
+}
+
+#layer-axis .sig-fill {
+  fill: #f45d4d;
+}
+
+#layer-axis .sig-text {
+  fill: #f45d4d;
+}
+
+/* Layer 3: Dimensions & Callouts — Warm Stone-Beige (#B9B5AA) & Chalk-Stone (#E9E5DF) */
+#layer-dimensions .dim-line {
+  stroke: #b9b5aa;
+  stroke-width: 0.95;
+  opacity: 0.9;
+}
+
+#layer-dimensions text {
+  fill: #e9e5df;
+}
+
+/* Hidden Layer States */
+[data-show-structure='false'] #layer-structure,
+[data-show-axis='false'] #layer-axis,
+[data-show-dimensions='false'] #layer-dimensions {
+  opacity: 0.06;
+  pointer-events: none;
+  transition: opacity 150ms linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #layer-structure,
+  #layer-axis,
+  #layer-dimensions,
+  [data-show-structure='false'] #layer-structure,
+  [data-show-axis='false'] #layer-axis,
+  [data-show-dimensions='false'] #layer-dimensions {
+    transition: none;
+  }
+}
