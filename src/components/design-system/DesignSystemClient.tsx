@@ -54,43 +54,47 @@ export function DesignSystemClient({ tokens, components }: DesignSystemClientPro
             <div className={styles.frameHeader}>
               <span className={`type-colophon ${styles.frameLabel}`}>
                 <span className="signal-dot" aria-hidden="true" />
-                FRAME 00 // COVER
+                PAFTA 00 // KAPAK
               </span>
               <span className={`type-colophon ${styles.frameSurfaceTag}`}>
-                DESIGN SPECIFICATION // VOL. IV
+                TASARIM SPESİFİKASYONU // EDİSYON IV
               </span>
             </div>
 
             <h1 id="ds-cover-title" className={`type-monolith ${styles.coverTitle}`}>
-              MONOLITH DESIGN SYSTEM
+              MONOLITH TASARIM SİSTEMİ
             </h1>
 
             <dl className={styles.coverLedger}>
               <div className={styles.ledgerCell}>
-                <dt className={`type-colophon ${styles.ledgerKey}`}>EDITION</dt>
-                <dd className={`type-subhead ${styles.ledgerVal}`}>VOLUME IV</dd>
+                <dt className={`type-colophon ${styles.ledgerKey}`}>EDİSYON</dt>
+                <dd className={`type-subhead ${styles.ledgerVal}`}>EDİSYON 04</dd>
               </div>
               <div className={styles.ledgerCell}>
-                <dt className={`type-colophon ${styles.ledgerKey}`}>SURVEY DATE</dt>
-                <dd className={`type-subhead tabular-nums ${styles.ledgerVal}`}>16 / 11 / 2026</dd>
+                <dt className={`type-colophon ${styles.ledgerKey}`}>TARİH</dt>
+                <dd className={`type-subhead tabular-nums ${styles.ledgerVal}`}>17 / 11 / 2026</dd>
               </div>
               <div className={styles.ledgerCell}>
-                <dt className={`type-colophon ${styles.ledgerKey}`}>PALETTE</dt>
+                <dt className={`type-colophon ${styles.ledgerKey}`}>PALET</dt>
                 <dd className={`type-subhead tabular-nums ${styles.ledgerVal}`}>
-                  {tokens.primitives.length} PRIMITIVES · 4 SURFACES
+                  {tokens.primitives.length} TEMEL TON · 4 YÜZEY
                 </dd>
               </div>
               <div className={styles.ledgerCell}>
-                <dt className={`type-colophon ${styles.ledgerKey}`}>COMPONENTS</dt>
+                <dt className={`type-colophon ${styles.ledgerKey}`}>BİLEŞENLER</dt>
                 <dd className={`type-subhead tabular-nums ${styles.ledgerVal}`}>
-                  {components.length} MODULES
+                  {components.length} MODÜL
                 </dd>
+              </div>
+              <div className={styles.ledgerCell}>
+                <dt className={`type-colophon ${styles.ledgerKey}`}>TASARIM</dt>
+                <dd className={`type-subhead ${styles.ledgerVal}`}>DANİL</dd>
               </div>
             </dl>
 
             <p className={`type-body-lead ${styles.coverNote}`}>
-              Visual language, typographic hierarchy, surface architecture, and UI component
-              specifications for the MONOLITH editorial archive.
+              MONOLITH editoryal arşivi için görsel dil, tipografik hiyerarşi, yüzey mimarisi ve
+              arayüz bileşen standartları.
             </p>
           </section>
 
@@ -98,10 +102,10 @@ export function DesignSystemClient({ tokens, components }: DesignSystemClientPro
             <FrameCorners />
             <div className={styles.frameHeader}>
               <h2 id="frame-foundations" className={`type-colophon ${styles.frameLabel}`}>
-                FRAME 01 / FOUNDATIONS
+                PAFTA 01 / TEMELLER
               </h2>
               <span className={`type-colophon ${styles.frameSurfaceTag}`}>
-                COLOR · TYPOGRAPHY · SPACING · MOTION
+                RENK · TİPOGRAFİ · BOŞLUK · HAREKET
               </span>
             </div>
             <FoundationsSection tokens={tokens} previewSurface={previewSurface} onCopy={handleCopy} />
@@ -111,10 +115,10 @@ export function DesignSystemClient({ tokens, components }: DesignSystemClientPro
             <FrameCorners />
             <div className={styles.frameHeader}>
               <h2 id="frame-brand" className={`type-colophon ${styles.frameLabel}`}>
-                FRAME 02 / BRAND
+                PAFTA 02 / MARKA
               </h2>
               <span className={`type-colophon ${styles.frameSurfaceTag}`}>
-                IDENTITY // WORDMARK &amp; VOICE
+                KİMLİK // LOGO &amp; ANLATIM DİLİ
               </span>
             </div>
             <BrandSection previewSurface={previewSurface} onCopy={handleCopy} />
@@ -124,10 +128,10 @@ export function DesignSystemClient({ tokens, components }: DesignSystemClientPro
             <FrameCorners />
             <div className={styles.frameHeader}>
               <h2 id="frame-components" className={`type-colophon ${styles.frameLabel}`}>
-                FRAME 03 / COMPONENTS
+                PAFTA 03 / BİLEŞENLER
               </h2>
               <span className={`type-colophon ${styles.frameSurfaceTag}`}>
-                UI ARCHITECTURE // {components.length} MODULES
+                ARAYÜZ MİMARİSİ // {components.length} MODÜL
               </span>
             </div>
             <ComponentsSection
@@ -141,10 +145,10 @@ export function DesignSystemClient({ tokens, components }: DesignSystemClientPro
             <FrameCorners />
             <div className={styles.frameHeader}>
               <h2 id="frame-patterns" className={`type-colophon ${styles.frameLabel}`}>
-                FRAME 04 / PATTERNS &amp; RULES
+                PAFTA 04 / DESENLER &amp; KURALLAR
               </h2>
               <span className={`type-colophon ${styles.frameSurfaceTag}`}>
-                GOVERNANCE // WCAG AA &amp; GRID
+                YÖNETİŞİM // WCAG AA &amp; IZGARA
               </span>
             </div>
             <PatternsSection tokens={tokens} previewSurface={previewSurface} />

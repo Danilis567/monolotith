@@ -596,8 +596,7 @@
 /* Anatomy Tabs */
 .tabList {
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  flex-wrap: wrap;
   border-block-end: 1px solid var(--border-hairline);
 }
 

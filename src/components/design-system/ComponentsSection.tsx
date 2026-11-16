@@ -49,6 +49,26 @@ const CATEGORY_ORDER: ReadonlyArray<ComponentCategory> = [
   'Page Views',
 ];
 
+const CATEGORY_LABELS_TR: Record<ComponentCategory, string> = {
+  'Navigation & Chrome': 'GEZİNTİ VE ÇERÇEVE',
+  'Drafting & Marks': 'TEKNİK ÇİZİM İŞARETLERİ',
+  'Editorial & Typography': 'EDİTORYAL VE TİPOGRAFİ',
+  'Interactive Plates & Stage': 'ETKİLEŞİMLİ PLAKALAR VE SAHNE',
+  'Motion & Utilities': 'HAREKET VE YARDIMCILAR',
+  'Page Views': 'SAYFA KOMPOZİSYONLARI',
+};
+
+const SURFACE_LABELS_TR: Record<string, string> = {
+  void: 'VOID (KOYU)',
+  plaster: 'PLASTER (AÇIK)',
+  basalt: 'BASALT (BAZALT)',
+  'warm-stone': 'WARM STONE (SICAK TAŞ)',
+};
+
+function formatSurfaceLabel(surface: string): string {
+  return SURFACE_LABELS_TR[surface] ?? surface.toUpperCase();
+}
+
 const SAMPLE_ORTHO_SVG = `<svg viewBox="0 0 800 460" width="800" height="460" role="img" aria-label="Trellick Tower orthographic elevation specimen">
   <g id="layer-structure" fill="none">
     <rect x="260" y="48" width="220" height="360" class="str-cut" />
@@ -252,7 +272,7 @@ export function ComponentsSection({
               </div>
             </div>
             <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-              APERTURES: RECTILINEAR 3:4 &amp; #monolith-lancet-3x4
+              AÇIKLIKLAR: DİKDÖRTGEN 3:4 &amp; #monolith-lancet-3x4
             </span>
           </div>
         );
@@ -260,15 +280,15 @@ export function ComponentsSection({
       case 'gloss':
         return (
           <p className="type-body" style={{ margin: 0 }}>
-            Monolithic{' '}
+            Monolitik{' '}
             <Gloss term="BÉTON BRUT">
               <span>béton brut</span>
             </Gloss>{' '}
-            with{' '}
+            ve{' '}
             <Gloss term="FLYING BUTTRESS">
-              <span data-state-preview="hover">flying buttress</span>
+              <span data-state-preview="hover">uçan payanda</span>
             </Gloss>{' '}
-            load paths.
+            yük aktarım yolları.
           </p>
         );
 
@@ -287,7 +307,9 @@ export function ComponentsSection({
                   backgroundColor: 'var(--surface-elevated)',
                 }}
               >
-                <span className="type-colophon">PLATE CURTAIN // {surface.toUpperCase()}</span>
+                <span className="type-colophon">
+                  PLAKA PERDESİ // {formatSurfaceLabel(surface)}
+                </span>
               </div>
             </PlateCurtain>
             <HairlineDraw thick />
@@ -300,7 +322,7 @@ export function ComponentsSection({
             <Suspense fallback={null}>
               <UrlParamSync paramKey="ds_preview" onRead={() => undefined} />
             </Suspense>
-            <span className="type-colophon">URL PARAM SYNC // HEADLESS</span>
+            <span className="type-colophon">URL PARAMETRE EŞİTLEME // GÖRSEL OLMAYAN</span>
             <code className={styles.codeMono}>
               {'<UrlParamSync paramKey="movement" onRead={syncMovement} />'}
             </code>
@@ -331,7 +353,7 @@ export function ComponentsSection({
                 aria-pressed={stageStructure}
                 onClick={() => setStageStructure((v) => !v)}
               >
-                STRUCTURE: {stageStructure ? 'ON' : 'OFF'}
+                STRÜKTÜR: {stageStructure ? 'AÇIK' : 'KAPALI'}
               </button>
               <button
                 type="button"
@@ -339,7 +361,7 @@ export function ComponentsSection({
                 aria-pressed={stageAxis}
                 onClick={() => setStageAxis((v) => !v)}
               >
-                AXIS: {stageAxis ? 'ON' : 'OFF'}
+                EKSEN: {stageAxis ? 'AÇIK' : 'KAPALI'}
               </button>
               <button
                 type="button"
@@ -347,7 +369,7 @@ export function ComponentsSection({
                 aria-pressed={stageDimensions}
                 onClick={() => setStageDimensions((v) => !v)}
               >
-                DIMENSIONS: {stageDimensions ? 'ON' : 'OFF'}
+                ÖLÇÜLER: {stageDimensions ? 'AÇIK' : 'KAPALI'}
               </button>
             </div>
             <AnatomyStage
@@ -386,8 +408,8 @@ export function ComponentsSection({
               totalCount={BUILDINGS.length}
             />
             <div className={styles.inertFrameOverlay}>
-              <span className="type-colophon">INERT FRAMED PREVIEW // HOME MONOGRAPH</span>
-              <span className="type-colophon">LINKS DISABLED</span>
+              <span className="type-colophon">STATİK SAYFA ÖNİZLEMESİ // ANA SAYFA MONOGRAFİSİ</span>
+              <span className="type-colophon">BAĞLANTILAR PASİF</span>
             </div>
           </IsolatedSpecimen>
         );
@@ -402,8 +424,8 @@ export function ComponentsSection({
           >
             <ArchiveClient totalCount={BUILDINGS.length} />
             <div className={styles.inertFrameOverlay}>
-              <span className="type-colophon">INERT FRAMED PREVIEW // ARCHIVE INDEX</span>
-              <span className="type-colophon">LINKS DISABLED</span>
+              <span className="type-colophon">STATİK SAYFA ÖNİZLEMESİ // ARŞİV DİZİNİ</span>
+              <span className="type-colophon">BAĞLANTILAR PASİF</span>
             </div>
           </IsolatedSpecimen>
         );
@@ -418,8 +440,8 @@ export function ComponentsSection({
           >
             <AnatomyClient plates={PLATES_WITH_META} svgMarkupById={SVG_MARKUP_BY_ID} />
             <div className={styles.inertFrameOverlay}>
-              <span className="type-colophon">INERT FRAMED PREVIEW // ANATOMY WORKSPACE</span>
-              <span className="type-colophon">LINKS DISABLED</span>
+              <span className="type-colophon">STATİK SAYFA ÖNİZLEMESİ // ANATOMİ ÇALIŞMA ALANI</span>
+              <span className="type-colophon">BAĞLANTILAR PASİF</span>
             </div>
           </IsolatedSpecimen>
         );
@@ -443,10 +465,10 @@ export function ComponentsSection({
           >
             <header className={styles.categoryHeader}>
               <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                {`0${groupIndex + 1} // SECTION`}
+                {`0${groupIndex + 1} // BÖLÜM`}
               </span>
               <h3 id={`cat-${groupIndex}`} className="type-subhead">
-                {group.category.toUpperCase()}
+                {CATEGORY_LABELS_TR[group.category]}
               </h3>
             </header>
 
@@ -465,7 +487,7 @@ export function ComponentsSection({
                       <div className={styles.cardTitleBlock}>
                         <span className={`type-colophon ${styles.cardCategory}`}>
                           <span className="signal-dot" aria-hidden="true" />
-                          {entry.category}
+                          {CATEGORY_LABELS_TR[entry.category]}
                         </span>
                         <h4 id={`comp-${entry.id}`} className={`type-subhead ${styles.cardTitle}`}>
                           {entry.name}
@@ -481,7 +503,7 @@ export function ComponentsSection({
                         <div className={styles.surfacePane} data-surface={previewSurface}>
                           <div className={styles.surfacePaneBar}>
                             <span className="type-colophon">
-                              SPECIMEN // SURFACE: {previewSurface.toUpperCase()}
+                              ÖRNEK // YÜZEY: {formatSurfaceLabel(previewSurface)}
                             </span>
                           </div>
                           <div className={styles.surfacePaneBody}>
@@ -494,7 +516,9 @@ export function ComponentsSection({
                         {(['void', 'plaster'] as const).map((surface) => (
                           <div key={surface} className={styles.surfacePane} data-surface={surface}>
                             <div className={styles.surfacePaneBar}>
-                              <span className="type-colophon">SURFACE: {surface.toUpperCase()}</span>
+                              <span className="type-colophon">
+                                YÜZEY: {formatSurfaceLabel(surface)}
+                              </span>
                             </div>
                             <div className={styles.surfacePaneBody}>
                               {renderDualSurfaceSpecimen(entry, surface)}
@@ -517,10 +541,10 @@ export function ComponentsSection({
       <section aria-labelledby="primitives-heading" className={styles.primitivesSection}>
         <div className={styles.primitivesHeader}>
           <h3 id="primitives-heading" className="type-subhead">
-            UI PRIMITIVES &amp; INTERACTION STATES
+            ARAYÜZ PRİMİTİFLERİ VE ETKİLEŞİM DURUMLARI
           </h3>
           <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-            ALL STATES SHOWN SIDE-BY-SIDE
+            TÜM DURUMLAR YAN YANA
           </span>
         </div>
 
@@ -528,28 +552,30 @@ export function ComponentsSection({
           {/* 1. Buttons (Primary / Secondary across all states) */}
           <div className={`${styles.primitiveCard} ${styles.primitiveCardWide}`}>
             <div className={styles.cardHeader}>
-              <h4 className="type-colophon">01 // BUTTONS — PRIMARY &amp; SECONDARY STATES</h4>
+              <h4 className="type-colophon">01 // DÜĞMELER — BİRİNCİL VE İKİNCİL DURUMLAR</h4>
             </div>
             <div className={styles.dualSurface}>
               {(['void', 'plaster'] as const).map((surface) => (
                 <div key={surface} className={styles.surfacePane} data-surface={surface}>
                   <div className={styles.surfacePaneBar}>
-                    <span className="type-colophon">SURFACE: {surface.toUpperCase()}</span>
+                    <span className="type-colophon">
+                      YÜZEY: {formatSurfaceLabel(surface)}
+                    </span>
                   </div>
                   <div className={styles.surfacePaneBody}>
                     <div className={styles.stateMatrixGrid}>
                       {(
                         [
-                          { label: 'DEFAULT', attr: undefined, pressed: undefined, disabled: false },
-                          { label: 'HOVER', attr: 'hover', pressed: undefined, disabled: false },
+                          { label: 'VARSAYILAN', attr: undefined, pressed: undefined, disabled: false },
+                          { label: 'ÜZERİNDE', attr: 'hover', pressed: undefined, disabled: false },
                           {
-                            label: 'FOCUS',
+                            label: 'ODAK',
                             attr: 'focus-visible',
                             pressed: undefined,
                             disabled: false,
                           },
-                          { label: 'PRESSED', attr: undefined, pressed: true, disabled: false },
-                          { label: 'DISABLED', attr: undefined, pressed: undefined, disabled: true },
+                          { label: 'BASILI', attr: undefined, pressed: true, disabled: false },
+                          { label: 'DEVRE DIŞI', attr: undefined, pressed: undefined, disabled: true },
                         ] as const
                       ).map((st) => (
                         <div key={st.label} className={styles.stateMatrixCell}>
@@ -564,7 +590,7 @@ export function ComponentsSection({
                               aria-pressed={st.pressed}
                               disabled={st.disabled}
                             >
-                              PRIMARY
+                              BİRİNCİL
                             </button>
                             <button
                               type="button"
@@ -573,7 +599,7 @@ export function ComponentsSection({
                               aria-pressed={st.pressed}
                               disabled={st.disabled}
                             >
-                              SECONDARY
+                              İKİNCİL
                             </button>
                           </div>
                         </div>
@@ -587,8 +613,8 @@ export function ComponentsSection({
 
           {/* 2. Links & Breadcrumb */}
           <div className={styles.primitiveCard}>
-            <h4 className="type-colophon">02 // LINKS &amp; BREADCRUMB</h4>
-            <nav aria-label="Breadcrumb specimen">
+            <h4 className="type-colophon">02 // BAĞLANTILAR VE KONUM İZİ</h4>
+            <nav aria-label="Konum izi örneği">
               <ol className={styles.breadcrumbList}>
                 <li>
                   <a
@@ -596,7 +622,7 @@ export function ComponentsSection({
                     className="type-colophon"
                     onClick={(e) => e.preventDefault()}
                   >
-                    ARCHIVE
+                    ARŞİV
                   </a>
                 </li>
                 <li aria-hidden="true" className={styles.breadcrumbSep}>
@@ -608,7 +634,7 @@ export function ComponentsSection({
                     className="type-colophon"
                     onClick={(e) => e.preventDefault()}
                   >
-                    BRUTALIST
+                    BRÜTALİST
                   </a>
                 </li>
                 <li aria-hidden="true" className={styles.breadcrumbSep}>
@@ -622,22 +648,22 @@ export function ComponentsSection({
               </ol>
             </nav>
             <p className="type-body" style={{ margin: 0 }}>
-              Inline editorial{' '}
+              Satır içi editoryal{' '}
               <a href="#specimen-link" onClick={(e) => e.preventDefault()}>
-                structural monograph link
+                yapısal monografi bağlantısı
               </a>{' '}
-              and active route marker.
+              ve etkin rota işaretçisi.
             </p>
           </div>
 
           {/* 3. Filter Selects & Search Input (All States) */}
           <div className={styles.primitiveCard}>
             <div className={styles.cardHeader}>
-              <h4 className="type-colophon">03 // FILTER SELECTS &amp; SEARCH INPUT STATES</h4>
+              <h4 className="type-colophon">03 // ARAMA VE FİLTRE ALANLARI</h4>
             </div>
             <div className={styles.fieldStack}>
               <label htmlFor="ds-search-default" className={`type-colophon ${styles.fieldLabel}`}>
-                SEARCH CATALOG — DEFAULT
+                KATALOGDA ARA — VARSAYILAN
               </label>
               <input
                 id="ds-search-default"
@@ -645,12 +671,12 @@ export function ComponentsSection({
                 readOnly
                 className={styles.inputControl}
                 value="TRELLICK"
-                placeholder="TRELLICK, CHARTRES, CONCRETE..."
+                placeholder="TRELLICK, CHARTRES, BETON..."
               />
             </div>
             <div className={styles.fieldStack}>
               <label htmlFor="ds-search-focus" className={`type-colophon ${styles.fieldLabel}`}>
-                SEARCH CATALOG — FOCUS
+                KATALOGDA ARA — ODAK
               </label>
               <input
                 id="ds-search-focus"
@@ -663,46 +689,46 @@ export function ComponentsSection({
             </div>
             <div className={styles.fieldStack}>
               <label htmlFor="ds-search-error" className={`type-colophon ${styles.fieldLabel}`}>
-                SEARCH CATALOG — ERROR &amp; DISABLED
+                KATALOGDA ARA — HATA VE DEVRE DIŞI
               </label>
               <input
                 id="ds-search-error"
                 type="search"
                 readOnly
                 className={styles.inputControl}
-                value="UNKNOWN_QUERY"
+                value="BILINMEYEN_SORGU"
                 aria-invalid="true"
               />
-              <span className={styles.fieldError}>ERR // QUERY SYNTAX UNRECOGNIZED</span>
+              <span className={styles.fieldError}>HATA // SORGU SÖZDİZİMİ TANINMADI</span>
             </div>
             <div className={styles.fieldStack}>
               <label htmlFor="ds-select-sample" className={`type-colophon ${styles.fieldLabel}`}>
-                MOVEMENT FILTER
+                AKIM FİLTRESİ
               </label>
               <select
                 id="ds-select-sample"
                 className={styles.selectControl}
                 defaultValue="ALL"
               >
-                <option value="ALL">ALL MOVEMENTS (27)</option>
-                <option value="Brutalist">BRUTALIST</option>
-                <option value="Gothic">GOTHIC</option>
-                <option value="Monumental">MONUMENTAL</option>
+                <option value="ALL">TÜM AKIMLAR (27)</option>
+                <option value="Brutalist">BRÜTALİST</option>
+                <option value="Gothic">GOTİK</option>
+                <option value="Monumental">ANITSAL</option>
               </select>
             </div>
           </div>
 
           {/* 4. [ PLATE ] / [ INDEX ] View Toggle & Anatomy Tabs + Layer Toggles */}
           <div className={styles.primitiveCard}>
-            <h4 className="type-colophon">04 // VIEW TOGGLE &amp; ANATOMY TABS</h4>
-            <div className={styles.viewToggle} role="group" aria-label="Archive view mode">
+            <h4 className="type-colophon">04 // GÖRÜNÜM GEÇİŞİ VE ANATOMİ SEKMELERİ</h4>
+            <div className={styles.viewToggle} role="group" aria-label="Arşiv görünüm modu">
               <button
                 type="button"
                 className={styles.viewToggleBtn}
                 aria-pressed={viewMode === 'plate'}
                 onClick={() => setViewMode('plate')}
               >
-                [ PLATE ]
+                [ PLAKA ]
               </button>
               <button
                 type="button"
@@ -710,11 +736,11 @@ export function ComponentsSection({
                 aria-pressed={viewMode === 'index'}
                 onClick={() => setViewMode('index')}
               >
-                [ INDEX ]
+                [ DİZİN ]
               </button>
             </div>
 
-            <div className={styles.tabList} role="tablist" aria-label="Anatomy movement tabs">
+            <div className={styles.tabList} role="tablist" aria-label="Anatomi akım sekmeleri">
               {(['ALL', 'Brutalist', 'Gothic', 'Monumental'] as const).map((tab) => (
                 <button
                   key={tab}
@@ -724,23 +750,35 @@ export function ComponentsSection({
                   aria-selected={anatomyTab === tab}
                   onClick={() => setAnatomyTab(tab)}
                 >
-                  {tab === 'ALL' ? 'ALL PLATES' : tab}
+                  {tab === 'ALL'
+                    ? 'TÜM PLAKALAR'
+                    : tab === 'Brutalist'
+                      ? 'BRÜTALİST'
+                      : tab === 'Gothic'
+                        ? 'GOTİK'
+                        : 'ANITSAL'}
                 </button>
               ))}
             </div>
 
             <div className={styles.specimenRow}>
-              {(['structure', 'axis', 'dimensions'] as const).map((layer) => (
+              {(
+                [
+                  { key: 'structure', label: 'STRÜKTÜR' },
+                  { key: 'axis', label: 'EKSEN' },
+                  { key: 'dimensions', label: 'ÖLÇÜLER' },
+                ] as const
+              ).map((layer) => (
                 <button
-                  key={layer}
+                  key={layer.key}
                   type="button"
                   className="btn-monolith"
-                  aria-pressed={layerToggles[layer]}
+                  aria-pressed={layerToggles[layer.key]}
                   onClick={() =>
-                    setLayerToggles((prev) => ({ ...prev, [layer]: !prev[layer] }))
+                    setLayerToggles((prev) => ({ ...prev, [layer.key]: !prev[layer.key] }))
                   }
                 >
-                  {layer.toUpperCase()}: {layerToggles[layer] ? 'ON' : 'OFF'}
+                  {layer.label}: {layerToggles[layer.key] ? 'AÇIK' : 'KAPALI'}
                 </button>
               ))}
             </div>
@@ -748,15 +786,15 @@ export function ComponentsSection({
 
           {/* 5. Archive Table Row & Mobile Slip */}
           <div className={styles.primitiveCard}>
-            <h4 className="type-colophon">05 // ARCHIVE TABLE ROW &amp; MOBILE SLIP</h4>
+            <h4 className="type-colophon">05 // ARŞİV TABLO SATIRI VE MOBİL KART</h4>
             <div className={styles.tableWrap}>
               <table className={styles.propsTable}>
                 <thead>
                   <tr>
-                    <th scope="col">CAT.</th>
-                    <th scope="col">STRUCTURE</th>
-                    <th scope="col">ELEV.</th>
-                    <th scope="col">YEAR</th>
+                    <th scope="col">KAT.</th>
+                    <th scope="col">YAPI</th>
+                    <th scope="col">YÜK.</th>
+                    <th scope="col">YIL</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -783,7 +821,7 @@ export function ComponentsSection({
 
           {/* 6. 3 Plate Crops (3/4, Lancet, Halftone) */}
           <div className={styles.primitiveCard}>
-            <h4 className="type-colophon">06 // PLATE CROPS (3/4 · LANCET · HALFTONE)</h4>
+            <h4 className="type-colophon">06 // PLAKA KESİTLERİ (3/4 · SİVRİ KEMER · TRAM)</h4>
             <div className={styles.cropGrid}>
               <div className={styles.cropCard}>
                 <div className={styles.cropFrame}>
@@ -793,7 +831,7 @@ export function ComponentsSection({
                     alt={sampleBuilding.imageAlt}
                   />
                 </div>
-                <span className="type-colophon">3/4 RECTILINEAR</span>
+                <span className="type-colophon">3/4 DİKDÖRTGEN</span>
               </div>
               <div className={styles.cropCard}>
                 <div className={`${styles.cropFrame} plate-arch-lancet`}>
@@ -803,7 +841,7 @@ export function ComponentsSection({
                     alt={gothicBuilding.imageAlt}
                   />
                 </div>
-                <span className="type-colophon">LANCET ARCH</span>
+                <span className="type-colophon">SİVRİ KEMER</span>
               </div>
               <div className={styles.cropCard}>
                 <div className={`${styles.cropFrame} plate-halftone`}>
@@ -813,29 +851,29 @@ export function ComponentsSection({
                     alt={sampleBuilding.imageAlt}
                   />
                 </div>
-                <span className="type-colophon">1-BIT HALFTONE</span>
+                <span className="type-colophon">1-BİT TRAM</span>
               </div>
             </div>
           </div>
 
           {/* 7. Colophon <dl> Ledger, Observation Row & calloutMetricBox */}
           <div className={styles.primitiveCard}>
-            <h4 className="type-colophon">07 // COLOPHON LEDGER, OBSERVATION &amp; CALLOUT METRIC</h4>
+            <h4 className="type-colophon">07 // KÜNYE CETVELİ, GÖZLEM VE ÖLÇÜ KUTUSU</h4>
             <dl className={styles.ledgerList}>
               <div className={styles.ledgerItem}>
-                <dt className={`type-colophon ${styles.ledgerDt}`}>CAT. NO.</dt>
+                <dt className={`type-colophon ${styles.ledgerDt}`}>KAT. NO.</dt>
                 <dd className={`type-subhead tabular-nums ${styles.ledgerDd}`}>
                   {sampleBuilding.catalogNumber}
                 </dd>
               </div>
               <div className={styles.ledgerItem}>
-                <dt className={`type-colophon ${styles.ledgerDt}`}>ELEVATION</dt>
+                <dt className={`type-colophon ${styles.ledgerDt}`}>YÜKSEKLİK</dt>
                 <dd className={`type-subhead tabular-nums ${styles.ledgerDd}`}>
                   {sampleBuilding.dimensions.heightLabel}
                 </dd>
               </div>
               <div className={styles.ledgerItem}>
-                <dt className={`type-colophon ${styles.ledgerDt}`}>COORDINATES</dt>
+                <dt className={`type-colophon ${styles.ledgerDt}`}>KOORDİNATLAR</dt>
                 <dd className={`type-colophon tabular-nums ${styles.ledgerDd}`}>
                   {sampleBuilding.coordinates.dmsFormatted}
                 </dd>
@@ -843,60 +881,60 @@ export function ComponentsSection({
             </dl>
 
             <div className={styles.observationRow}>
-              <span className="type-colophon">01 // DETACHED SERVICE CORE</span>
+              <span className="type-colophon">01 // AYRIK SERVİS ÇEKİRDEĞİ</span>
               <span className="type-body" style={{ color: 'var(--ink-secondary)' }}>
-                Linked at every third floor via concrete skybridges.
+                Her üç katta bir betonarme gökyüzü köprüleriyle ana kütleye bağlanır.
               </span>
             </div>
 
             <div className={styles.calloutMetricBox}>
               <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                PRIMARY DATUM
+                BİRİNCİL VERİ
               </span>
               <span className="type-display tabular-nums">98.0 M</span>
               <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                VERTICAL SERVICE TOWER ELEVATION
+                DİKEY SERVİS KULESİ YÜKSEKLİĞİ
               </span>
             </div>
           </div>
 
           {/* 8. Inert Drawer Specimen */}
           <div className={styles.primitiveCard}>
-            <h4 className="type-colophon">08 // INERT MOBILE DRAWER SPECIMEN</h4>
+            <h4 className="type-colophon">08 // MOBİL ÇEKMECE MENÜ ÖRNEĞİ</h4>
             <div className={styles.drawerSpecimen} inert aria-hidden="true">
               <div className={styles.drawerSpecimenHeader}>
-                <span className="type-colophon">MONOLITH // NAVIGATION</span>
-                <span className="type-colophon">[ CLOSE ]</span>
+                <span className="type-colophon">MONOLITH // GEZİNTİ</span>
+                <span className="type-colophon">[ KAPAT ]</span>
               </div>
-              <span className="type-subhead">01 HOME — POSTER EXHIBITION</span>
-              <span className="type-subhead">02 ARCHIVE — 27 CATALOGED STRUCTURES</span>
-              <span className="type-subhead">03 ANATOMY — MEASURED SECTIONS</span>
+              <span className="type-subhead">01 ANA SAYFA — AFİŞ SERGİSİ</span>
+              <span className="type-subhead">02 ARŞİV — 27 KATALOGLANMIŞ YAPI</span>
+              <span className="type-subhead">03 ANATOMİ — ÖLÇÜLÜ KESİTLER</span>
             </div>
           </div>
 
           {/* 9. Empty / Error States */}
           <div className={`${styles.primitiveCard} ${styles.primitiveCardWide}`}>
-            <h4 className="type-colophon">09 // EMPTY &amp; ERROR STATES</h4>
+            <h4 className="type-colophon">09 // BOŞ VE HATA DURUMLARI</h4>
             <div className={styles.errorGrid}>
               <div className={styles.errorCard}>
-                <span className={`type-colophon ${styles.errorCode}`}>ERR 404</span>
-                <strong className="type-subhead">PLATE NOT FOUND</strong>
+                <span className={`type-colophon ${styles.errorCode}`}>HATA 404</span>
+                <strong className="type-subhead">PLAKA BULUNAMADI</strong>
                 <span className={styles.metaText} style={{ color: 'var(--ink-secondary)' }}>
-                  Requested catalog slug does not exist in the MONOLITH index.
+                  İstenen katalog kısa adı MONOLITH dizininde yer almıyor.
                 </span>
               </div>
               <div className={styles.errorCard}>
-                <span className={`type-colophon ${styles.errorCode}`}>ZERO RESULTS</span>
-                <strong className="type-subhead">NO STRUCTURES MATCH</strong>
+                <span className={`type-colophon ${styles.errorCode}`}>SIFIR SONUÇ</span>
+                <strong className="type-subhead">EŞLEŞEN YAPI YOK</strong>
                 <span className={styles.metaText} style={{ color: 'var(--ink-secondary)' }}>
-                  Clear active movement, material, or era filters to restore all 27 plates.
+                  27 plakanın tamamını geri yüklemek için etkin akım, malzeme veya dönem filtrelerini temizleyin.
                 </span>
               </div>
               <div className={styles.errorCard}>
-                <span className={`type-colophon ${styles.errorCode}`}>PLATE UNRENDERED</span>
-                <strong className="type-subhead">ORTHOGRAPHIC FALLBACK</strong>
+                <span className={`type-colophon ${styles.errorCode}`}>PLAKA YÜKLENEMEDİ</span>
+                <strong className="type-subhead">ORTOGRAFİK YEDEK</strong>
                 <span className={styles.metaText} style={{ color: 'var(--ink-secondary)' }}>
-                  Vector plate markup unavailable; verify SVG asset path in public/plates.
+                  Vektör plaka kodu kullanılamıyor; public/plates içindeki SVG dosya yolunu doğrulayın.
                 </span>
               </div>
             </div>

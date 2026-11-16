@@ -4,7 +4,7 @@ import { COMPONENT_REGISTRY } from '@/design-system/registry';
 import { loadDesignSystemTokens } from '@/design-system/tokens';
 
 export const metadata: Metadata = {
-  title: 'MONOLITH — Design System',
+  title: 'MONOLITH — Tasarım Sistemi',
   robots: { index: false, follow: false },
 };
 

@@ -27,61 +27,61 @@ interface PageTemplateSpec {
 const PAGE_TEMPLATES: ReadonlyArray<PageTemplateSpec> = [
   {
     id: 'home',
-    name: 'Home Poster',
+    name: 'Ana Sayfa Posteri',
     route: '/',
     screenshotSrc: '/design-system/templates/home.png',
     wide: true,
-    gridSpans: 'Cols 1–7 Hero Monolith Poster / Cols 8–12 Index Ledger; 3+4+5 plate cadence',
+    gridSpans: 'Sütun 1–7 Ana Monolit Posteri / Sütun 8–12 Dizin Defteri; 3+4+5 plaka ritmi',
     surfaceAlternation: 'void → plaster → basalt → dark',
-    asymmetricRhythm: '1.6fr / 0.95fr editorial split with lancet-arch focal plate and 0px miter frames',
+    asymmetricRhythm: 'Sivri kemer odak plakası ve 0px gönye çerçevelerle 1.6fr / 0.95fr editoryal bölünme',
     wireframeBands: [
-      { colSpan: 'span 7', surface: 'void', label: '01 HERO PLATE' },
-      { colSpan: 'span 5', surface: 'basalt', label: '02 LEDGER' },
-      { colSpan: 'span 4', surface: 'plaster', label: '03 PLASTER' },
-      { colSpan: 'span 8', surface: 'limestone', label: '04 ARCHIVE TEASER' },
+      { colSpan: 'span 7', surface: 'void', label: '01 ANA PLAKA' },
+      { colSpan: 'span 5', surface: 'basalt', label: '02 DİZİN DEFTERİ' },
+      { colSpan: 'span 4', surface: 'plaster', label: '03 ALÇI YÜZEY' },
+      { colSpan: 'span 8', surface: 'limestone', label: '04 ARŞİV ÖNİZLEMESİ' },
     ],
   },
   {
     id: 'archive',
-    name: 'Archive Matrix (PLATE / INDEX)',
+    name: 'Arşiv Matrisi (PLAKA / DİZİN)',
     route: '/archive',
     screenshotSrc: '/design-system/templates/archive.png',
-    gridSpans: '12-col sticky filter bar; 1.6fr / 0.95fr / 1.15fr Plate mode; 3-col Index ledger',
+    gridSpans: '12 sütunlu yapışkan filtre çubuğu; Plaka modunda 1.6fr / 0.95fr / 1.15fr; 3 sütunlu Dizin defteri',
     surfaceAlternation: 'void → basalt → void',
-    asymmetricRhythm: 'Dual PLATE / INDEX view switch with non-uniform masonry spans and tabular coordinates',
+    asymmetricRhythm: 'Düzensiz yığma aralıkları ve tablosal koordinatlarla ikili PLAKA / DİZİN görünüm geçişi',
     wireframeBands: [
-      { colSpan: 'span 12', surface: 'basalt', label: 'FILTER BAR + VIEW SWITCH' },
-      { colSpan: 'span 5', surface: 'void', label: 'PLATE A (LANCET)' },
-      { colSpan: 'span 3', surface: 'basalt', label: 'PLATE B' },
-      { colSpan: 'span 4', surface: 'void', label: 'PLATE C' },
+      { colSpan: 'span 12', surface: 'basalt', label: 'FİLTRE ÇUBUĞU + GÖRÜNÜM GEÇİŞİ' },
+      { colSpan: 'span 5', surface: 'void', label: 'PLAKA A (SİVRİ KEMER)' },
+      { colSpan: 'span 3', surface: 'basalt', label: 'PLAKA B' },
+      { colSpan: 'span 4', surface: 'void', label: 'PLAKA C' },
     ],
   },
   {
     id: 'detail',
-    name: 'Structure Detail Dossier',
+    name: 'Yapı Detay Dosyası',
     route: '/structures/[slug]',
     screenshotSrc: '/design-system/templates/detail.png',
-    gridSpans: 'Cols 1–5 Sticky Specimen Plate / Cols 6–12 Architectural Dossier & Specs',
+    gridSpans: 'Sütun 1–5 Yapışkan Örnek Plakası / Sütun 6–12 Mimari Dosya ve Teknik Özellikler',
     surfaceAlternation: 'void → plaster → basalt',
-    asymmetricRhythm: '5/7 split pairing tall arch/miter plate with progressive disclosure elevation notes',
+    asymmetricRhythm: 'Yüksek kemer/gönye plakayı kademeli açılan cephe notlarıyla eşleştiren 5/7 bölünme',
     wireframeBands: [
-      { colSpan: 'span 5', surface: 'basalt', label: 'SPECIMEN PLATE' },
-      { colSpan: 'span 7', surface: 'plaster', label: 'DOSSIER + SPECS' },
-      { colSpan: 'span 12', surface: 'void', label: 'RELATED STRUCTURES' },
+      { colSpan: 'span 5', surface: 'basalt', label: 'ÖRNEK PLAKA' },
+      { colSpan: 'span 7', surface: 'plaster', label: 'DOSYA + TEKNİK ÖZELLİKLER' },
+      { colSpan: 'span 12', surface: 'void', label: 'İLİŞKİLİ YAPILAR' },
     ],
   },
   {
     id: 'anatomy',
-    name: 'Anatomy Workbench',
+    name: 'Anatomi Çalışma Tezgahı',
     route: '/anatomy',
     screenshotSrc: '/design-system/templates/anatomy.png',
     wide: true,
-    gridSpans: 'Cols 1–8 Interactive Blueprint Stage / Cols 9–12 Live Telemetry & Layer Inspector',
+    gridSpans: 'Sütun 1–8 Etkileşimli Plan Sahnesi / Sütun 9–12 Canlı Telemetri ve Katman Denetçisi',
     surfaceAlternation: 'void → basalt → dark',
-    asymmetricRhythm: '8/4 technical workbench with 6-feature inspection controls and crosshair callouts',
+    asymmetricRhythm: '6 özellikli inceleme kontrolleri ve artı imleç açıklamalarıyla 8/4 teknik çalışma tezgahı',
     wireframeBands: [
-      { colSpan: 'span 8', surface: 'void', label: 'INTERACTIVE BLUEPRINT STAGE' },
-      { colSpan: 'span 4', surface: 'basalt', label: 'LAYER INSPECTOR' },
+      { colSpan: 'span 8', surface: 'void', label: 'ETKİLEŞİMLİ PLAN SAHNESİ' },
+      { colSpan: 'span 4', surface: 'basalt', label: 'KATMAN DENETÇİSİ' },
     ],
   },
 ];
@@ -100,12 +100,12 @@ interface InkRowSpec {
 }
 
 const MATRIX_INK_ROWS: ReadonlyArray<InkRowSpec> = [
-  { cssVar: '--ink-primary', role: 'Primary Display & Body Copy', minWcag: '4.5' },
-  { cssVar: '--ink-secondary', role: 'Secondary Metadata & Captions', minWcag: '4.5' },
-  { cssVar: '--ink-muted', role: 'Muted UI Labels (AA Normal Safe)', minWcag: '4.5' },
-  { cssVar: '--signal-ink', role: 'Rationed Signal Vermilion Cue', minWcag: '4.5' },
-  { cssVar: '--border-hairline', role: 'Hairline Rules & Non-Text UI', minWcag: '3.0' },
-  { cssVar: '--border-structural', role: 'Structural 1–2px Brutalist Frames', minWcag: '3.0' },
+  { cssVar: '--ink-primary', role: 'Birincil Başlık ve Gövde Metni', minWcag: '4.5' },
+  { cssVar: '--ink-secondary', role: 'İkincil Üstveri ve Alt Yazılar', minWcag: '4.5' },
+  { cssVar: '--ink-muted', role: 'Soluk Arayüz Etiketleri (AA Normal Güvenli)', minWcag: '4.5' },
+  { cssVar: '--signal-ink', role: 'Kısıtlı Sinyal Vermilyon Vurgusu', minWcag: '4.5' },
+  { cssVar: '--border-hairline', role: 'İnce Çizgiler ve Metin Dışı Arayüz', minWcag: '3.0' },
+  { cssVar: '--border-structural', role: 'Yapısal 1–2px Brütalist Çerçeveler', minWcag: '3.0' },
 ];
 
 interface ChangelogEntry {
@@ -116,40 +116,40 @@ interface ChangelogEntry {
 
 const CHANGELOG_ENTRIES: ReadonlyArray<ChangelogEntry> = [
   {
-    round: 'ROUND 01',
-    title: 'Brand & 4-Route Foundation',
+    round: 'TUR 01',
+    title: 'Marka ve 4 Rotalı Temel Yapı',
     summary:
-      'Established immutable concrete primitives (#131313–#E9E5DF), rationed Signal Vermilion, zero-radius geometry, and the 4 core archival routes (/, /archive, /structures/[slug], /anatomy).',
+      'Değişmez beton primitifleri (#131313–#E9E5DF), kısıtlı Sinyal Vermilyon, sıfır yarıçaplı geometri ve 4 çekirdek arşiv rotası (/, /archive, /structures/[slug], /anatomy) oluşturuldu.',
   },
   {
-    round: 'ROUND 02',
-    title: 'Surface Islands & Responsive Margins',
+    round: 'TUR 02',
+    title: 'Yüzey Adaları ve Duyarlı Kenar Boşlukları',
     summary:
-      'Introduced scoped [data-surface] islands (void, basalt, plaster, limestone) with automatic semantic ink/border inversion and responsive 4/8/12-column margin scales.',
+      'Otomatik anlamsal mürekkep/kenarlık tersine çevirme ve duyarlı 4/8/12 sütunlu kenar boşluğu ölçekleriyle kapsamlı [data-surface] adaları (void, basalt, plaster, limestone) eklendi.',
   },
   {
-    round: 'ROUND 03',
-    title: 'Evidence-Based 43-Step Fix & Asymmetry',
+    round: 'TUR 03',
+    title: 'Kanıta Dayalı 43 Adımlı Düzeltme ve Asimetri',
     summary:
-      'Replaced symmetric card grids with asymmetric editorial ledgers (3+4+5, 1.6fr / 0.95fr), removed all drop shadows and rounded corners, and enforced AA contrast across all islands.',
+      'Simetrik kart ızgaraları asimetrik editoryal defterlerle (3+4+5, 1.6fr / 0.95fr) değiştirildi, tüm gölgeler ve yuvarlatılmış köşeler kaldırıldı ve tüm adalarda AA kontrastı zorunlu kılındı.',
   },
   {
-    round: 'ROUND 04',
-    title: 'Jury Feedback Progressive Disclosure',
+    round: 'TUR 04',
+    title: 'Jüri Geri Bildirimi ve Kademeli Gösterim',
     summary:
-      'Added progressive disclosure drawers for dense architectural metadata, clarified PLATE vs INDEX archive modes, and tightened Signal Vermilion area budget to <= 2% viewport.',
+      'Yoğun mimari üstveriler için kademeli gösterim çekmeceleri eklendi, PLAKA ve DİZİN arşiv modları netleştirildi ve Sinyal Vermilyon alan bütçesi <= %2 görüntü alanı ile sınırlandırıldı.',
   },
   {
-    round: 'ROUND 05',
-    title: 'Anatomy 6-Feature Upgrade & Speed Optimization',
+    round: 'TUR 05',
+    title: 'Anatomi 6 Özellikli Yükseltme ve Hız Optimizasyonu',
     summary:
-      'Upgraded /anatomy with 6 interactive structural inspection layers, outer-wrapper focus rings (.plate-interactive-outer), and reduced-motion/image decoding optimizations.',
+      '/anatomy rotası 6 etkileşimli yapısal inceleme katmanı, dış sarmalayıcı odak halkaları (.plate-interactive-outer) ve azaltılmış hareket/görsel çözümleme optimizasyonlarıyla yükseltildi.',
   },
   {
-    round: 'ROUND 06',
-    title: '/design-system Single Source of Truth',
+    round: 'TUR 06',
+    title: '/design-system Tek Doğruluk Kaynağı',
     summary:
-      'Built live token-driven /design-system documentation parsing brand/tokens-color.css and globals.css at runtime with live WCAG contrast computation and component registry.',
+      'Çalışma zamanında brand/tokens-color.css ve globals.css dosyalarını ayrıştıran, canlı WCAG kontrast hesaplaması ve bileşen kayıt defteri sunan token tabanlı /design-system dokümantasyonu oluşturuldu.',
   },
 ];
 
@@ -174,9 +174,9 @@ function getWcagBadges(ratio: number): Array<{ label: string; tier: 'pass' | 'la
   if (ratio >= 4.5) {
     badges.push({ label: 'AA (4.5:1)', tier: 'pass' });
   } else if (ratio >= 3.0) {
-    badges.push({ label: 'AA Large & UI (3.0:1)', tier: 'large' });
+    badges.push({ label: 'AA Büyük & Arayüz (3.0:1)', tier: 'large' });
   } else {
-    badges.push({ label: 'FAIL (<3.0:1)', tier: 'fail' });
+    badges.push({ label: 'BAŞARISIZ (<3.0:1)', tier: 'fail' });
   }
   return badges;
 }
@@ -223,18 +223,18 @@ export function PatternsSection({
       </svg>
 
       {/* =====================================================================
-          04.1 PAGE TEMPLATES
+          04.1 SAYFA ŞABLONLARI
           ===================================================================== */}
       <section className={styles.subSection} aria-labelledby="ds-patterns-templates">
         <header className={styles.subHeader}>
           <div className={styles.subHeaderTitleGroup}>
             <span className={`type-ui-label ${styles.subIndex}`}>04.1</span>
             <h3 id="ds-patterns-templates" className="type-subhead">
-              PAGE TEMPLATES
+              SAYFA ŞABLONLARI VE 12 SÜTUN IZGARASI
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Four archival route compositions. Toggle the local 12-column overlay on any plate to inspect grid spans and asymmetric surface alternation.
+            Dört arşiv rotası kompozisyonu. Izgara aralıklarını ve asimetrik yüzey değişimlerini incelemek için herhangi bir plakadaki yerel 12 sütunlu katmanı açıp kapatın.
           </p>
         </header>
 
@@ -261,7 +261,7 @@ export function PatternsSection({
                       onClick={() => toggleTemplateOverlay(tpl.id)}
                     >
                       <span className={styles.overlayDot} aria-hidden="true" />
-                      {isOverlayOn ? 'HIDE 12-COL OVERLAY' : 'SHOW 12-COL OVERLAY'}
+                      {isOverlayOn ? '12 SÜTUN KATMANINI GİZLE' : '12 SÜTUN KATMANINI GÖSTER'}
                     </button>
                   </div>
 
@@ -269,12 +269,12 @@ export function PatternsSection({
                     {!isBroken ? (
                       <img
                         src={tpl.screenshotSrc}
-                        alt={`${tpl.name} (${tpl.route}) archival template preview`}
+                        alt={`${tpl.name} (${tpl.route}) arşiv şablonu önizlemesi`}
                         className={styles.templateImage}
                         onError={() => markImageBroken(tpl.id)}
                       />
                     ) : (
-                      <div className={styles.templateFallback} role="img" aria-label={`${tpl.name} architectural wireframe`}>
+                      <div className={styles.templateFallback} role="img" aria-label={`${tpl.name} mimari tel kafes`}>
                         <div className={styles.fallbackMetaRow}>
                           <span>MONOLITH // {tpl.route}</span>
                           <span>{tpl.surfaceAlternation}</span>
@@ -309,8 +309,8 @@ export function PatternsSection({
                           })}
                         </div>
                         <div className={styles.fallbackMetaRow}>
-                          <span>12-COL ARCHITECTURAL FRAME</span>
-                          <span>0PX RADIUS</span>
+                          <span>12 SÜTUNLU MİMARİ ÇERÇEVE</span>
+                          <span>0PX YARIÇAP</span>
                         </div>
                       </div>
                     )}
@@ -328,18 +328,18 @@ export function PatternsSection({
                 </div>
 
                 <div className={styles.templateNotes}>
-                  <span className="type-ui-label">COMPOSITION NOTES</span>
+                  <span className="type-ui-label">KOMPOZİSYON NOTLARI</span>
                   <ul className={styles.notesList}>
                     <li className={styles.noteItem}>
-                      <span className={`type-ui-label ${styles.noteKey}`}>GRID SPANS</span>
+                      <span className={`type-ui-label ${styles.noteKey}`}>IZGARA ARALIKLARI</span>
                       <span className={styles.noteVal}>{tpl.gridSpans}</span>
                     </li>
                     <li className={styles.noteItem}>
-                      <span className={`type-ui-label ${styles.noteKey}`}>SURFACES</span>
+                      <span className={`type-ui-label ${styles.noteKey}`}>YÜZEYLER</span>
                       <span className={styles.noteVal}>{tpl.surfaceAlternation}</span>
                     </li>
                     <li className={styles.noteItem}>
-                      <span className={`type-ui-label ${styles.noteKey}`}>RHYTHM</span>
+                      <span className={`type-ui-label ${styles.noteKey}`}>RİTİM</span>
                       <span className={styles.noteVal}>{tpl.asymmetricRhythm}</span>
                     </li>
                   </ul>
@@ -351,162 +351,162 @@ export function PatternsSection({
       </section>
 
       {/* =====================================================================
-          04.2 VISUAL DO / DON'T RULES
+          04.2 GÖRSEL YAPILACAKLAR / YAPILMAYACAKLAR
           ===================================================================== */}
       <section className={styles.subSection} aria-labelledby="ds-patterns-rules">
         <header className={styles.subHeader}>
           <div className={styles.subHeaderTitleGroup}>
             <span className={`type-ui-label ${styles.subIndex}`}>04.2</span>
             <h3 id="ds-patterns-rules" className="type-subhead">
-              VISUAL DO / DON&apos;T RULES
+              DEĞİŞMEZLER VE GÖRSEL KURALLAR
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Seven non-negotiable architectural invariants rendered as side-by-side specimens.
+            Yan yana örneklerle sunulan yedi tavizsiz mimari değişmez.
           </p>
         </header>
 
         <div className={styles.rulesStack}>
-          {/* Rule 1: Zero Radius */}
+          {/* Kural 1: Sıfır Yarıçap */}
           <article className={styles.ruleRow}>
             <div className={styles.ruleMeta}>
               <div>
-                <span className={`type-ui-label ${styles.ruleNumber}`}>RULE 01</span>
-                <h4 className={`type-subhead ${styles.ruleTitle}`}>Zero Radius (0px Miter)</h4>
+                <span className={`type-ui-label ${styles.ruleNumber}`}>KURAL 01</span>
+                <h4 className={`type-subhead ${styles.ruleTitle}`}>Sıfır Yarıçap (0px Gönye)</h4>
               </div>
               <p className={styles.ruleRationale}>
-                Every container, button, input, and plate uses 0px sharp mitered corners. Rounded corners dilute brutalist structural tension.
+                Her kapsayıcı, düğme, girdi alanı ve plaka 0px keskin gönyeli köşeler kullanır. Yuvarlatılmış köşeler brütalist yapısal gerilimi zayıflatır.
               </p>
             </div>
             <div className={`${styles.specimenCol} ${styles.specimenDo}`}>
-              <span className={styles.specimenBadgeDo}>DO ✓</span>
+              <span className={styles.specimenBadgeDo}>YAP ✓</span>
               <div className={styles.specimenStage}>
                 <div className={styles.doMiterBox}>
                   <span className="type-ui-label">border-radius: 0px</span>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Crisp 90-degree architectural miter on all surfaces and controls.</p>
+              <p className={styles.specimenCaption}>Tüm yüzeylerde ve kontrollerde keskin 90 derecelik mimari gönye.</p>
             </div>
             <div className={styles.specimenCol}>
-              <span className={styles.specimenBadgeDont}>DON&apos;T ✕</span>
+              <span className={styles.specimenBadgeDont}>YAPMA ✕</span>
               <div className={styles.specimenStage}>
                 <div className={styles.dontRoundedBox}>
                   <span className="type-ui-label">rounded-lg (12px)</span>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Never apply rounded-lg, pill radii, or soft card corners.</p>
+              <p className={styles.specimenCaption}>Asla rounded-lg, hap yarıçapları veya yumuşak kart köşeleri uygulamayın.</p>
             </div>
           </article>
 
-          {/* Rule 2: Shadowless Tonal Elevation */}
+          {/* Kural 2: Gölgesiz Tonal Yükselti */}
           <article className={styles.ruleRow}>
             <div className={styles.ruleMeta}>
               <div>
-                <span className={`type-ui-label ${styles.ruleNumber}`}>RULE 02</span>
-                <h4 className={`type-subhead ${styles.ruleTitle}`}>Shadowless Tonal Elevation</h4>
+                <span className={`type-ui-label ${styles.ruleNumber}`}>KURAL 02</span>
+                <h4 className={`type-subhead ${styles.ruleTitle}`}>Gölgesiz Tonal Yükselti</h4>
               </div>
               <p className={styles.ruleRationale}>
-                Depth is expressed strictly through surface-island tonal shifts and 1px structural borders—never drop shadows or blur.
+                Derinlik yalnızca yüzey adası tonal geçişleri ve 1px yapısal kenarlıklarla ifade edilir; asla alt gölge veya bulanıklık kullanılmaz.
               </p>
             </div>
             <div className={`${styles.specimenCol} ${styles.specimenDo}`}>
-              <span className={styles.specimenBadgeDo}>DO ✓</span>
+              <span className={styles.specimenBadgeDo}>YAP ✓</span>
               <div className={styles.specimenStage}>
                 <div className={styles.doElevationBox}>
-                  <span className="type-ui-label">1px solid + surface step</span>
+                  <span className="type-ui-label">1px solid + yüzey basamağı</span>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Explicit 1px border and basalt/void tonal step with box-shadow: none.</p>
+              <p className={styles.specimenCaption}>box-shadow: none ile belirgin 1px kenarlık ve basalt/void tonal basamağı.</p>
             </div>
             <div className={styles.specimenCol}>
-              <span className={styles.specimenBadgeDont}>DON&apos;T ✕</span>
+              <span className={styles.specimenBadgeDont}>YAPMA ✕</span>
               <div className={styles.specimenStage}>
                 <div className={styles.dontShadowBox}>
-                  <span className="type-ui-label">box-shadow elevation</span>
+                  <span className="type-ui-label">box-shadow yükseltisi</span>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Never use ambient box-shadow or backdrop-filter glassmorphism.</p>
+              <p className={styles.specimenCaption}>Asla ortam gölgesi (box-shadow) veya backdrop-filter cam efekti kullanmayın.</p>
             </div>
           </article>
 
-          {/* Rule 3: Signal Vermilion <= 2% */}
+          {/* Kural 3: Sinyal Vermilyon <= %2 */}
           <article className={styles.ruleRow}>
             <div className={styles.ruleMeta}>
               <div>
-                <span className={`type-ui-label ${styles.ruleNumber}`}>RULE 03</span>
-                <h4 className={`type-subhead ${styles.ruleTitle}`}>Signal Vermilion &lt;= 2%</h4>
+                <span className={`type-ui-label ${styles.ruleNumber}`}>KURAL 03</span>
+                <h4 className={`type-subhead ${styles.ruleTitle}`}>Sinyal Vermilyon &lt;= %2</h4>
               </div>
               <p className={styles.ruleRationale}>
-                Signal Vermilion is rationed for surgical cues: active indicators, hairlines, and critical error states (&lt;= 2% viewport area).
+                Sinyal Vermilyon cerrahi vurgular için kısıtlıdır: aktif göstergeler, ince çizgiler ve kritik hata durumları (&lt;= %2 görüntü alanı).
               </p>
             </div>
             <div className={`${styles.specimenCol} ${styles.specimenDo}`}>
-              <span className={styles.specimenBadgeDo}>DO ✓</span>
+              <span className={styles.specimenBadgeDo}>YAP ✓</span>
               <div className={styles.specimenStage}>
                 <div className={styles.doSignalBar}>
-                  <span className="type-ui-label">ACTIVE PLATE 04</span>
+                  <span className="type-ui-label">AKTİF PLAKA 04</span>
                   <span className={styles.doSignalDot} aria-hidden="true" />
                 </div>
               </div>
-              <p className={styles.specimenCaption}>8px signal dot + 2px hairline cue against concrete canvas.</p>
+              <p className={styles.specimenCaption}>Beton tuval üzerinde 8px sinyal noktası + 2px ince çizgi vurgusu.</p>
             </div>
             <div className={styles.specimenCol}>
-              <span className={styles.specimenBadgeDont}>DON&apos;T ✕</span>
+              <span className={styles.specimenBadgeDont}>YAPMA ✕</span>
               <div className={styles.specimenStage}>
                 <div
                   className={styles.dontSignalBanner}
                   role="img"
-                  aria-label="Anti-pattern: full vermilion banner fill"
+                  aria-label="Anti-desen: tam vermilyon afiş dolgusu"
                   style={{ color: '#FFFFFF' }}
                 >
-                  <span className="type-ui-label">FULL VERMILION BANNER</span>
+                  <span className="type-ui-label">TAM VERMİLYON AFİŞ</span>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Never flood large banners, backgrounds, or cards with vermilion fill.</p>
+              <p className={styles.specimenCaption}>Büyük afişleri, arka planları veya kartları asla vermilyon dolguyla kaplamayın.</p>
             </div>
           </article>
 
-          {/* Rule 4: #77746C Never on Small Text or Limestone */}
+          {/* Kural 4: #77746C Küçük Metin / Kireçtaşı Üzerinde Yasak */}
           <article className={styles.ruleRow}>
             <div className={styles.ruleMeta}>
               <div>
-                <span className={`type-ui-label ${styles.ruleNumber}`}>RULE 04</span>
-                <h4 className={`type-subhead ${styles.ruleTitle}`}>{concrete500} Never on Small Text / Limestone</h4>
+                <span className={`type-ui-label ${styles.ruleNumber}`}>KURAL 04</span>
+                <h4 className={`type-subhead ${styles.ruleTitle}`}>{concrete500} Küçük Metin / Kireçtaşı Üzerinde Yasak</h4>
               </div>
               <p className={styles.ruleRationale}>
-                Weathered Grey ({concrete500}) only meets large/UI contrast on Void ({ratio500OnVoid.toFixed(2)}:1) and Basalt ({ratio500OnBasalt.toFixed(2)}:1), and fails completely on Limestone ({ratio500OnLimestone.toFixed(2)}:1).
+                Yıpranmış Gri ({concrete500}), yalnızca Void ({ratio500OnVoid.toFixed(2)}:1) ve Basalt ({ratio500OnBasalt.toFixed(2)}:1) üzerinde büyük/arayüz kontrastını karşılar; Limestone ({ratio500OnLimestone.toFixed(2)}:1) üzerinde tamamen başarısız olur.
               </p>
             </div>
             <div className={`${styles.specimenCol} ${styles.specimenDo}`}>
-              <span className={styles.specimenBadgeDo}>DO ✓</span>
+              <span className={styles.specimenBadgeDo}>YAP ✓</span>
               <div className={styles.specimenStage}>
                 <div className={styles.contrastSwatches}>
                   <div
                     className={styles.contrastSwatchRow}
                     style={{ backgroundColor: concrete300, color: concrete950 }}
                   >
-                    <span>{concrete950} on {concrete300}</span>
-                    <strong>{ratio950OnLimestone.toFixed(2)}:1 PASS ✓</strong>
+                    <span>{concrete950} / {concrete300}</span>
+                    <strong>{ratio950OnLimestone.toFixed(2)}:1 GEÇTİ ✓</strong>
                   </div>
                   <div
                     className={styles.contrastSwatchRow}
                     style={{ backgroundColor: concrete300, color: concrete800 }}
                   >
-                    <span>{concrete800} on {concrete300}</span>
-                    <strong>{ratio800OnLimestone.toFixed(2)}:1 PASS ✓</strong>
+                    <span>{concrete800} / {concrete300}</span>
+                    <strong>{ratio800OnLimestone.toFixed(2)}:1 GEÇTİ ✓</strong>
                   </div>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Use #131313 or #282828 ink on Limestone (#B9B5AA) for AA/AAA legibility.</p>
+              <p className={styles.specimenCaption}>AA/AAA okunabilirlik için Kireçtaşı (#B9B5AA) üzerinde #131313 veya #282828 mürekkep kullanın.</p>
             </div>
             <div className={styles.specimenCol}>
-              <span className={styles.specimenBadgeDont}>DON&apos;T ✕</span>
+              <span className={styles.specimenBadgeDont}>YAPMA ✕</span>
               <div className={styles.specimenStage}>
                 <div className={styles.contrastSwatches}>
                   <svg
                     viewBox="0 0 320 34"
                     role="img"
-                    aria-label={`Prohibited pairing: ${concrete500} on ${concrete300} (${ratio500OnLimestone.toFixed(2)}:1 FAIL)`}
+                    aria-label={`Yasaklı eşleşme: ${concrete300} üzerinde ${concrete500} (${ratio500OnLimestone.toFixed(2)}:1 BAŞARISIZ)`}
                     style={{ inlineSize: '100%', blockSize: 'auto', display: 'block' }}
                   >
                     <rect width="320" height="34" fill={concrete300} stroke="#131313" strokeWidth="1" />
@@ -517,7 +517,7 @@ export function PatternsSection({
                       fontFamily="monospace"
                       fontSize="11"
                     >
-                      {concrete500} on {concrete300}
+                      {concrete500} / {concrete300}
                     </text>
                     <text
                       x="310"
@@ -528,86 +528,86 @@ export function PatternsSection({
                       fontSize="11"
                       fontWeight="700"
                     >
-                      {ratio500OnLimestone.toFixed(2)}:1 FAIL
+                      {ratio500OnLimestone.toFixed(2)}:1 BAŞARISIZ
                     </text>
                   </svg>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Never pair {concrete500} with small text (&lt; 24px) or {concrete300} Limestone.</p>
+              <p className={styles.specimenCaption}>{concrete500} rengini asla küçük metinlerle (&lt; 24px) veya {concrete300} Kireçtaşı ile eşleştirmeyin.</p>
             </div>
           </article>
 
-          {/* Rule 5: Hover Tonal/Border Shift vs Scale */}
+          {/* Kural 5: Üzerine Gelmede Tonal ve Kenarlık Geçişi */}
           <article className={styles.ruleRow}>
             <div className={styles.ruleMeta}>
               <div>
-                <span className={`type-ui-label ${styles.ruleNumber}`}>RULE 05</span>
-                <h4 className={`type-subhead ${styles.ruleTitle}`}>Hover Tonal &amp; Border Shift</h4>
+                <span className={`type-ui-label ${styles.ruleNumber}`}>KURAL 05</span>
+                <h4 className={`type-subhead ${styles.ruleTitle}`}>Üzerine Gelmede Tonal ve Kenarlık Geçişi</h4>
               </div>
               <p className={styles.ruleRationale}>
-                Interactive plates and controls respond via border-color and tonal surface shifts—never bouncy scale transforms that break grid alignment.
+                Etkileşimli plakalar ve kontroller, ızgara hizalamasını bozan zıplayan ölçek dönüşümleri yerine kenarlık rengi ve tonal yüzey geçişleriyle tepki verir.
               </p>
             </div>
             <div className={`${styles.specimenCol} ${styles.specimenDo}`}>
-              <span className={styles.specimenBadgeDo}>DO ✓</span>
+              <span className={styles.specimenBadgeDo}>YAP ✓</span>
               <div className={styles.specimenStage}>
                 <div className={styles.hoverDoCard}>
-                  <span className="type-ui-label">border + surface shift</span>
+                  <span className="type-ui-label">kenarlık + yüzey geçişi</span>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Hover shifts border-color and surface tone cleanly within its grid track.</p>
+              <p className={styles.specimenCaption}>Üzerine gelme, kenarlık rengini ve yüzey tonunu ızgara izi içinde temizce değiştirir.</p>
             </div>
             <div className={styles.specimenCol}>
-              <span className={styles.specimenBadgeDont}>DON&apos;T ✕</span>
+              <span className={styles.specimenBadgeDont}>YAPMA ✕</span>
               <div className={styles.specimenStage}>
                 <div className={styles.hoverDontCard}>
                   <span className="type-ui-label">transform: scale(1.04)</span>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Never apply transform: scale(1.04) on card or plate containers.</p>
+              <p className={styles.specimenCaption}>Kart veya plaka kapsayıcılarına asla transform: scale(1.04) uygulamayın.</p>
             </div>
           </article>
 
-          {/* Rule 6: Lancet Arch Mask */}
+          {/* Kural 6: Sivri Kemer Maskesi Disiplini */}
           <article className={styles.ruleRow}>
             <div className={styles.ruleMeta}>
               <div>
-                <span className={`type-ui-label ${styles.ruleNumber}`}>RULE 06</span>
-                <h4 className={`type-subhead ${styles.ruleTitle}`}>Lancet Arch Mask Discipline</h4>
+                <span className={`type-ui-label ${styles.ruleNumber}`}>KURAL 06</span>
+                <h4 className={`type-subhead ${styles.ruleTitle}`}>Sivri Kemer Maskesi Disiplini</h4>
               </div>
               <p className={styles.ruleRationale}>
-                The lancet arch clip-path (url(#monolith-lancet-3x4)) is reserved for tall vertical feature plates where the Gothic apex has room to breathe.
+                Sivri kemer kırpma yolu (url(#monolith-lancet-3x4)), Gotik tepenin nefes alabileceği uzun dikey özellik plakaları için ayrılmıştır.
               </p>
             </div>
             <div className={`${styles.specimenCol} ${styles.specimenDo}`}>
-              <span className={styles.specimenBadgeDo}>DO ✓</span>
+              <span className={styles.specimenBadgeDo}>YAP ✓</span>
               <div className={styles.specimenStage}>
-                <div className={styles.archSpecimenTall} role="img" aria-label="Tall lancet arch feature plate" />
+                <div className={styles.archSpecimenTall} role="img" aria-label="Uzun sivri kemer özellik plakası" />
               </div>
-              <p className={styles.specimenCaption}>Tall feature plates (&gt;= 260px height) with balanced vertical proportions.</p>
+              <p className={styles.specimenCaption}>Dengeli dikey oranlara sahip uzun özellik plakaları (&gt;= 260px yükseklik).</p>
             </div>
             <div className={styles.specimenCol}>
-              <span className={styles.specimenBadgeDont}>DON&apos;T ✕</span>
+              <span className={styles.specimenBadgeDont}>YAPMA ✕</span>
               <div className={styles.specimenStage}>
-                <div className={styles.archSpecimenCompact} role="img" aria-label="Squashed compact arch thumbnail" />
+                <div className={styles.archSpecimenCompact} role="img" aria-label="Sıkışmış kompakt kemer küçük görseli" />
               </div>
-              <p className={styles.specimenCaption}>Never apply lancet arch crop to compact &lt; 180px thumbnails.</p>
+              <p className={styles.specimenCaption}>Sivri kemer kırpmasını asla &lt; 180px kompakt küçük görsellere uygulamayın.</p>
             </div>
           </article>
 
-          {/* Rule 7: Asymmetric Editorial Ledger */}
+          {/* Kural 7: Asimetrik Editoryal Defter */}
           <article className={styles.ruleRow}>
             <div className={styles.ruleMeta}>
               <div>
-                <span className={`type-ui-label ${styles.ruleNumber}`}>RULE 07</span>
-                <h4 className={`type-subhead ${styles.ruleTitle}`}>Asymmetric Editorial Ledger</h4>
+                <span className={`type-ui-label ${styles.ruleNumber}`}>KURAL 07</span>
+                <h4 className={`type-subhead ${styles.ruleTitle}`}>Asimetrik Editoryal Defter</h4>
               </div>
               <p className={styles.ruleRationale}>
-                Layouts use deliberate uneven column ratios (3+4+5, 1.6fr 0.95fr 1.15fr) to create architectural hierarchy rather than generic SaaS grids.
+                Yerleşimler, jenerik SaaS ızgaraları yerine mimari hiyerarşi oluşturmak için kasıtlı olarak eşit olmayan sütun oranları (3+4+5, 1.6fr 0.95fr 1.15fr) kullanır.
               </p>
             </div>
             <div className={`${styles.specimenCol} ${styles.specimenDo}`}>
-              <span className={styles.specimenBadgeDo}>DO ✓</span>
+              <span className={styles.specimenBadgeDo}>YAP ✓</span>
               <div className={styles.specimenStage}>
                 <div className={styles.asymmetricMiniGrid}>
                   <div className={styles.miniCell}>3fr</div>
@@ -615,10 +615,10 @@ export function PatternsSection({
                   <div className={styles.miniCell}>5fr</div>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Proportional 3+4+5 / 1.6fr + 0.95fr tracks anchored to the 12-col grid.</p>
+              <p className={styles.specimenCaption}>12 sütunlu ızgaraya sabitlenmiş orantılı 3+4+5 / 1.6fr + 0.95fr izler.</p>
             </div>
             <div className={styles.specimenCol}>
-              <span className={styles.specimenBadgeDont}>DON&apos;T ✕</span>
+              <span className={styles.specimenBadgeDont}>YAPMA ✕</span>
               <div className={styles.specimenStage}>
                 <div className={styles.equalMiniGrid}>
                   <div className={styles.miniCell}>1fr</div>
@@ -626,25 +626,25 @@ export function PatternsSection({
                   <div className={styles.miniCell}>1fr</div>
                 </div>
               </div>
-              <p className={styles.specimenCaption}>Avoid uniform 1fr / 1fr / 1fr SaaS card grids across editorial sections.</p>
+              <p className={styles.specimenCaption}>Editoryal bölümlerde tekdüze 1fr / 1fr / 1fr SaaS kart ızgaralarından kaçının.</p>
             </div>
           </article>
         </div>
       </section>
 
       {/* =====================================================================
-          04.3 LIVE ACCESSIBILITY & CONTRAST MATRIX
+          04.3 CANLI ERİŞİLEBİLİRLİK VE KONTRAST MATRİSİ
           ===================================================================== */}
       <section className={styles.subSection} aria-labelledby="ds-patterns-a11y">
         <header className={styles.subHeader}>
           <div className={styles.subHeaderTitleGroup}>
             <span className={`type-ui-label ${styles.subIndex}`}>04.3</span>
             <h3 id="ds-patterns-a11y" className="type-subhead">
-              LIVE ACCESSIBILITY &amp; CONTRAST MATRIX
+              CANLI ERİŞİLEBİLİRLİK VE KONTRAST MATRİSİ (WCAG AA)
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Every ratio below is computed live from parsed surface and ink tokens via WCAG 2.1 relative luminance.
+            Aşağıdaki her oran, ayrıştırılmış yüzey ve mürekkep tokenlarından WCAG 2.1 bağıl parlaklık yöntemiyle canlı olarak hesaplanır.
           </p>
         </header>
 
@@ -653,7 +653,7 @@ export function PatternsSection({
             <thead>
               <tr>
                 <th scope="col" className={`type-ui-label ${styles.matrixTh}`}>
-                  INK / BORDER TOKEN
+                  MÜREKKEP / KENARLIK TOKENI
                 </th>
                 {MATRIX_SURFACE_ORDER.map((surfaceId) => {
                   const surface = tokens.surfaces[surfaceId];
@@ -737,16 +737,16 @@ export function PatternsSection({
                 </tr>
               ))}
 
-              {/* Explicit Prohibited Pairing Row */}
+              {/* Açık Yasaklı Eşleşme Satırı */}
               <tr className={styles.prohibitedRow}>
                 <td>
                   <div className={styles.tokenCell}>
                     <span className={styles.tokenVarName}>
                       --concrete-500 ({concrete500})
-                      <span className={styles.prohibitedTag}>PROHIBITED ON LIMESTONE</span>
+                      <span className={styles.prohibitedTag}>KİREÇTAŞI ÜZERİNDE YASAK</span>
                     </span>
                     <span className={styles.tokenRoleDesc}>
-                      Weathered Grey on Limestone ({concrete300}) — fails AA normal and UI 3.0:1
+                      Kireçtaşı ({concrete300}) üzerinde Yıpranmış Gri — AA normal ve 3.0:1 arayüz kontrastında başarısız
                     </span>
                   </div>
                 </td>
@@ -790,12 +790,12 @@ export function PatternsSection({
                                 display: 'inline-block',
                               }}
                             />
-                            {isLimestone ? 'PROHIBITED' : concrete500}
+                            {isLimestone ? 'YASAK' : concrete500}
                           </span>
                         </div>
                         <div className={styles.badgesRow}>
                           {isLimestone ? (
-                            <span className={styles.badgeFail}>PROHIBITED ({ratio.toFixed(2)}:1)</span>
+                            <span className={styles.badgeFail}>YASAK ({ratio.toFixed(2)}:1)</span>
                           ) : (
                             badges.map((b) => (
                               <span
@@ -822,12 +822,12 @@ export function PatternsSection({
           </table>
         </div>
 
-        {/* Focus Ring, Touch Target, and Reduced Motion Rules */}
+        {/* Odak Halkası, Dokunma Hedefi ve Azaltılmış Hareket Kuralları */}
         <div className={styles.a11yRulesGrid}>
           <article className={styles.a11yRuleCard}>
-            <span className="type-ui-label">FOCUS RING RULE (CLIPPED PLATES)</span>
+            <span className="type-ui-label">ODAK HALKASI KURALI (KIRPILMIŞ PLAKALAR)</span>
             <p className={styles.ruleRationale}>
-              Because CSS clip-path clips native outlines on lancet-arch plates, the unclipped outer wrapper (.plate-interactive-outer) carries the 2px solid focus ring.
+              CSS clip-path, sivri kemer plakalarındaki yerel dış çizgileri kırptığı için 2px düz odak halkasını kırpılmamış dış sarmalayıcı (.plate-interactive-outer) taşır.
             </p>
             <pre className={styles.a11yCode}>
 {`.plate-interactive-outer:focus-visible {
@@ -839,9 +839,9 @@ export function PatternsSection({
           </article>
 
           <article className={styles.a11yRuleCard}>
-            <span className="type-ui-label">TOUCH TARGET MINIMUM</span>
+            <span className="type-ui-label">MİNİMUM DOKUNMA HEDEFİ</span>
             <p className={styles.ruleRationale}>
-              All interactive buttons, view switches, overlay toggles, and filter chips enforce a minimum 44×44 px hit area (WCAG 2.5.5 / 2.5.8).
+              Tüm etkileşimli düğmeler, görünüm anahtarları, katman düğmeleri ve filtre çipleri en az 44×44 px tıklama alanı zorunlu kılar (WCAG 2.5.5 / 2.5.8).
             </p>
             <pre className={styles.a11yCode}>
 {`min-block-size: 44px;
@@ -852,7 +852,7 @@ min-inline-size: 44px;`}
           <article className={styles.a11yRuleCard}>
             <span className="type-ui-label">PREFERS-REDUCED-MOTION</span>
             <p className={styles.ruleRationale}>
-              All tonal transitions, plate reveals, and scroll-linked effects degrade to instant state changes under reduced motion preferences.
+              Tüm tonal geçişler, plaka açılışları ve kaydırmaya bağlı efektler, azaltılmış hareket tercihleri altında anlık durum değişikliklerine indirgenir.
             </p>
             <pre className={styles.a11yCode}>
 {`@media (prefers-reduced-motion: reduce) {
@@ -865,18 +865,18 @@ min-inline-size: 44px;`}
       </section>
 
       {/* =====================================================================
-          04.4 CHANGELOG
+          04.4 DEĞİŞİKLİK GÜNLÜĞÜ
           ===================================================================== */}
       <section className={styles.subSection} aria-labelledby="ds-patterns-changelog">
         <header className={styles.subHeader}>
           <div className={styles.subHeaderTitleGroup}>
             <span className={`type-ui-label ${styles.subIndex}`}>04.4</span>
             <h3 id="ds-patterns-changelog" className="type-subhead">
-              ARCHITECTURAL CHANGELOG
+              MİMARİ DEĞİŞİKLİK GÜNLÜĞÜ
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Chronological ledger of MONOLITH design-system iterations from foundation to single source of truth.
+            MONOLITH tasarım sistemi iterasyonlarının temelden tek doğruluk kaynağına kadar kronolojik defteri.
           </p>
         </header>
 

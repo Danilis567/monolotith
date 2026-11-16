@@ -26,60 +26,60 @@ interface LogoGroup {
 const LOGO_GROUPS: LogoGroup[] = [
   {
     id: 'wordmark',
-    title: 'PRIMARY WORDMARK',
+    title: 'ANA KELİME İŞARETİ (WORDMARK)',
     columns: 3,
     items: [
       {
         id: 'wordmark-dark',
-        name: 'WORDMARK // DARK GROUND',
+        name: 'KELİME İŞARETİ // KOYU ZEMİN',
         src: '/brand/monolith-wordmark-dark.svg',
         dimensions: '264 × 64 PX',
-        surfaceRule: 'VOID / BASALT (#131313–#201F1E)',
-        role: 'Primary horizontal titleplate on dark surfaces.',
+        surfaceRule: 'BOŞLUK / BAZALT (#131313–#201F1E)',
+        role: 'Koyu yüzeyler için birincil yatay başlık plakası.',
         backing: 'dark',
       },
       {
         id: 'wordmark-light',
-        name: 'WORDMARK // LIGHT GROUND',
+        name: 'KELİME İŞARETİ // AÇIK ZEMİN',
         src: '/brand/monolith-wordmark-light.svg',
         dimensions: '264 × 64 PX',
-        surfaceRule: 'PLASTER / LIMESTONE (#E9E5DF–#D9D4CC)',
-        role: 'Primary horizontal titleplate on light surfaces.',
+        surfaceRule: 'SIVA / KİREÇTAŞI (#E9E5DF–#D9D4CC)',
+        role: 'Açık yüzeyler için birincil yatay başlık plakası.',
         backing: 'light',
       },
       {
         id: 'wordmark-mono',
-        name: 'WORDMARK // MONOCHROME',
+        name: 'KELİME İŞARETİ // TEK RENK',
         src: '/brand/monolith-wordmark-mono.svg',
         dimensions: '264 × 64 PX',
-        surfaceRule: 'CURRENTCOLOR (INHERITS INK)',
-        role: 'Single-ink print, stencil, and CSS-masked plates.',
+        surfaceRule: 'CURRENTCOLOR (MÜREKKEP RENGİNİ DEVRALIR)',
+        role: 'Tek mürekkepli baskı, şablon ve CSS maskeli plakalar.',
         backing: 'light',
       },
     ],
   },
   {
     id: 'stacked',
-    title: 'STACKED WORDMARK',
+    title: 'YAYILI / DİKEY KELİME İŞARETİ',
     columns: 2,
     wideStage: true,
     items: [
       {
         id: 'stacked-dark',
-        name: 'STACKED ARCHIVE // DARK GROUND',
+        name: 'YAYILI ARŞİV // KOYU ZEMİN',
         src: '/brand/monolith-stacked-dark.svg',
         dimensions: '320 × 268 PX',
-        surfaceRule: 'VOID / BASALT (#131313–#201F1E)',
-        role: 'Vertical cover plate and monograph spine lockup.',
+        surfaceRule: 'BOŞLUK / BAZALT (#131313–#201F1E)',
+        role: 'Dikey kapak plakası ve monografi sırt kilidi.',
         backing: 'dark',
       },
       {
         id: 'stacked-light',
-        name: 'STACKED ARCHIVE // LIGHT GROUND',
+        name: 'YAYILI ARŞİV // AÇIK ZEMİN',
         src: '/brand/monolith-stacked-light.svg',
         dimensions: '320 × 268 PX',
-        surfaceRule: 'PLASTER / LIMESTONE (#E9E5DF–#D9D4CC)',
-        role: 'Vertical cover plate on mineral paper grounds.',
+        surfaceRule: 'SIVA / KİREÇTAŞI (#E9E5DF–#D9D4CC)',
+        role: 'Mineral kağıt zeminler üzerinde dikey kapak plakası.',
         backing: 'light',
       },
     ],
@@ -91,124 +91,124 @@ const LOGO_GROUPS: LogoGroup[] = [
     items: [
       {
         id: 'monogram-dark',
-        name: 'MONOGRAM // DARK GROUND',
+        name: 'MONOGRAM // KOYU ZEMİN',
         src: '/brand/monolith-monogram-dark.svg',
         dimensions: '64 × 64 PX',
-        surfaceRule: 'VOID / BASALT (#131313–#201F1E)',
-        role: 'Square architectural seal for compact headers.',
+        surfaceRule: 'BOŞLUK / BAZALT (#131313–#201F1E)',
+        role: 'Kompakt üst bilgiler için kare mimari mühür.',
         backing: 'dark',
       },
       {
         id: 'monogram-light',
-        name: 'MONOGRAM // LIGHT GROUND',
+        name: 'MONOGRAM // AÇIK ZEMİN',
         src: '/brand/monolith-monogram-light.svg',
         dimensions: '64 × 64 PX',
-        surfaceRule: 'PLASTER / LIMESTONE (#E9E5DF–#D9D4CC)',
-        role: 'Square architectural seal on light surfaces.',
+        surfaceRule: 'SIVA / KİREÇTAŞI (#E9E5DF–#D9D4CC)',
+        role: 'Açık yüzeyler üzerinde kare mimari mühür.',
         backing: 'light',
       },
       {
         id: 'monogram-mono',
-        name: 'MONOGRAM // MONOCHROME',
+        name: 'MONOGRAM // TEK RENK',
         src: '/brand/monolith-monogram-mono.svg',
         dimensions: '64 × 64 PX',
-        surfaceRule: 'CURRENTCOLOR (INHERITS INK)',
-        role: 'Single-ink stamp and inline vector emblem.',
+        surfaceRule: 'CURRENTCOLOR (MÜREKKEP RENGİNİ DEVRALIR)',
+        role: 'Tek mürekkepli damga ve satır içi vektör amblemi.',
         backing: 'light',
       },
     ],
   },
   {
     id: 'lockups',
-    title: 'NAV & FOOTER LOCKUPS',
+    title: 'ÜST GEZİNTİ VE ALT BİLGİ KİLİTLERİ',
     columns: 3,
     items: [
       {
         id: 'nav-dark',
-        name: 'NAV LOCKUP // DARK GROUND',
+        name: 'ÜST GEZİNTİ KİLİDİ // KOYU ZEMİN',
         src: '/brand/nav-lockup.svg',
         dimensions: '145 × 28 PX (332:64)',
-        surfaceRule: 'VOID / BASALT HEADER BAR',
-        role: 'Top navigation bar mark with vertical rule.',
+        surfaceRule: 'BOŞLUK / BAZALT ÜST ÇUBUĞU',
+        role: 'Dikey ayırıcı çizgili üst gezinme çubuğu işareti.',
         backing: 'dark',
       },
       {
         id: 'nav-light',
-        name: 'NAV LOCKUP // LIGHT GROUND',
+        name: 'ÜST GEZİNTİ KİLİDİ // AÇIK ZEMİN',
         src: '/brand/nav-lockup-light.svg',
         dimensions: '145 × 28 PX (332:64)',
-        surfaceRule: 'PLASTER / LIMESTONE HEADER BAR',
-        role: 'Top navigation bar mark on light surfaces.',
+        surfaceRule: 'SIVA / KİREÇTAŞI ÜST ÇUBUĞU',
+        role: 'Açık yüzeyler için üst gezinme çubuğu işareti.',
         backing: 'light',
       },
       {
         id: 'nav-mono',
-        name: 'NAV LOCKUP // MONOCHROME',
+        name: 'ÜST GEZİNTİ KİLİDİ // TEK RENK',
         src: '/brand/nav-lockup-mono.svg',
         dimensions: '145 × 28 PX (332:64)',
-        surfaceRule: 'CURRENTCOLOR (INHERITS INK)',
-        role: 'Adaptive navigation lockup for custom themes.',
+        surfaceRule: 'CURRENTCOLOR (MÜREKKEP RENGİNİ DEVRALIR)',
+        role: 'Özel temalar için uyarlanabilir gezinme kilidi.',
         backing: 'light',
       },
       {
         id: 'footer-dark',
-        name: 'FOOTER LOCKUP // DARK GROUND',
+        name: 'ALT BİLGİ KİLİDİ // KOYU ZEMİN',
         src: '/brand/footer-lockup.svg',
         dimensions: '1240 × 316 PX',
-        surfaceRule: 'VOID / BASALT FOOTER PLATE',
-        role: 'Monumental full-width archive footer masthead.',
+        surfaceRule: 'BOŞLUK / BAZALT ALT BİLGİ PLAKASI',
+        role: 'Tam genişlikte anıtsal arşiv alt bilgi başlığı.',
         backing: 'dark',
       },
       {
         id: 'footer-light',
-        name: 'FOOTER LOCKUP // LIGHT GROUND',
+        name: 'ALT BİLGİ KİLİDİ // AÇIK ZEMİN',
         src: '/brand/footer-lockup-light.svg',
         dimensions: '1240 × 316 PX',
-        surfaceRule: 'PLASTER / LIMESTONE FOOTER',
-        role: 'Monumental footer masthead on light ground.',
+        surfaceRule: 'SIVA / KİREÇTAŞI ALT BİLGİ',
+        role: 'Açık zemin üzerinde anıtsal alt bilgi başlığı.',
         backing: 'light',
       },
       {
         id: 'footer-mono',
-        name: 'FOOTER LOCKUP // MONOCHROME',
+        name: 'ALT BİLGİ KİLİDİ // TEK RENK',
         src: '/brand/footer-lockup-mono.svg',
         dimensions: '1240 × 316 PX',
-        surfaceRule: 'CURRENTCOLOR (INHERITS INK)',
-        role: 'Single-ink monumental masthead.',
+        surfaceRule: 'CURRENTCOLOR (MÜREKKEP RENGİNİ DEVRALIR)',
+        role: 'Tek mürekkepli anıtsal alt bilgi başlığı.',
         backing: 'light',
       },
     ],
   },
   {
     id: 'loader-favicons',
-    title: 'LOADER MARK & FAVICONS',
+    title: 'YÜKLEME İŞARETİ VE FAVICON PLAKALARI',
     columns: 3,
     items: [
       {
         id: 'loader-dark',
-        name: 'LOADER MARK // DARK GROUND',
+        name: 'YÜKLEME İŞARETİ // KOYU ZEMİN',
         src: '/brand/loader-mark.svg',
         dimensions: '120 × 140 PX',
-        surfaceRule: 'VOID / BASALT CURTAIN',
-        role: 'Geometric plumb-line and lancet reveal mark.',
+        surfaceRule: 'BOŞLUK / BAZALT PERDE',
+        role: 'Geometrik şakul hattı ve sivri kemer açılış işareti.',
         backing: 'dark',
       },
       {
         id: 'loader-light',
-        name: 'LOADER MARK // LIGHT GROUND',
+        name: 'YÜKLEME İŞARETİ // AÇIK ZEMİN',
         src: '/brand/loader-mark-light.svg',
         dimensions: '120 × 140 PX',
-        surfaceRule: 'PLASTER / LIMESTONE CURTAIN',
-        role: 'Light-ground geometric reveal mark.',
+        surfaceRule: 'SIVA / KİREÇTAŞI PERDE',
+        role: 'Açık zemin için geometrik açılış işareti.',
         backing: 'light',
       },
       {
         id: 'loader-mono',
-        name: 'LOADER MARK // MONOCHROME',
+        name: 'YÜKLEME İŞARETİ // TEK RENK',
         src: '/brand/loader-mark-mono.svg',
         dimensions: '120 × 140 PX',
-        surfaceRule: 'CURRENTCOLOR (INHERITS INK)',
-        role: 'Vector stroke reveal mark.',
+        surfaceRule: 'CURRENTCOLOR (MÜREKKEP RENGİNİ DEVRALIR)',
+        role: 'Vektör kontur açılış işareti.',
         backing: 'light',
       },
       {
@@ -216,8 +216,8 @@ const LOGO_GROUPS: LogoGroup[] = [
         name: 'FAVICON // 16 PX',
         src: '/brand/favicon-16.svg',
         dimensions: '16 × 16 PX',
-        surfaceRule: 'SELF-CONTAINED (#131313 PLATE)',
-        role: 'Browser tab minimum-size crisp raster/SVG icon.',
+        surfaceRule: 'KENDİ İÇİNDE KAPALI (#131313 PLAKA)',
+        role: 'Tarayıcı sekmesi için asgari boyutta net raster/SVG simgesi.',
         backing: 'plate',
         exactPx: 16,
       },
@@ -226,8 +226,8 @@ const LOGO_GROUPS: LogoGroup[] = [
         name: 'FAVICON // 32 PX',
         src: '/brand/favicon-32.svg',
         dimensions: '32 × 32 PX',
-        surfaceRule: 'SELF-CONTAINED (#131313 PLATE)',
-        role: 'Standard desktop bookmark & tab icon.',
+        surfaceRule: 'KENDİ İÇİNDE KAPALI (#131313 PLAKA)',
+        role: 'Standart masaüstü yer imi ve sekme simgesi.',
         backing: 'plate',
         exactPx: 32,
       },
@@ -236,27 +236,27 @@ const LOGO_GROUPS: LogoGroup[] = [
         name: 'FAVICON // 48 PX',
         src: '/brand/favicon-48.svg',
         dimensions: '48 × 48 PX',
-        surfaceRule: 'SELF-CONTAINED (#131313 PLATE)',
-        role: 'High-DPI shortcut and task-switcher icon.',
+        surfaceRule: 'KENDİ İÇİNDE KAPALI (#131313 PLAKA)',
+        role: 'Yüksek DPI kısayol ve görev değiştirici simgesi.',
         backing: 'plate',
         exactPx: 48,
       },
       {
         id: 'apple-touch',
-        name: 'APPLE TOUCH ICON',
+        name: 'APPLE TOUCH SİMGESİ',
         src: '/brand/apple-touch-icon.svg',
         dimensions: '180 × 180 PX',
-        surfaceRule: 'SELF-CONTAINED (#131313 PLATE)',
-        role: 'iOS / iPadOS home screen bookmark plate.',
+        surfaceRule: 'KENDİ İÇİNDE KAPALI (#131313 PLAKA)',
+        role: 'iOS / iPadOS ana ekran yer imi plakası.',
         backing: 'plate',
       },
       {
         id: 'maskable-icon',
-        name: 'MASKABLE PWA ICON',
+        name: 'MASKELENEBİLİR PWA SİMGESİ',
         src: '/brand/maskable-icon.svg',
         dimensions: '512 × 512 PX',
-        surfaceRule: 'SELF-CONTAINED (SAFE-ZONE)',
-        role: 'Android / PWA adaptive maskable app icon.',
+        surfaceRule: 'KENDİ İÇİNDE KAPALI (GÜVENLİ ALAN)',
+        role: 'Android / PWA uyarlanabilir maskelenebilir uygulama simgesi.',
         backing: 'plate',
       },
     ],
@@ -275,27 +275,27 @@ interface VoicePair {
 const VOICE_COMPARISONS: VoicePair[] = [
   {
     id: 'collection-summary',
-    context: 'ARCHIVE OVERVIEW',
-    write: 'Twenty-seven load-bearing works in raw concrete and dressed stone.',
-    writeNote: 'Factual count, structural role, exact materiality. Zero adjectives.',
-    avoid: 'Discover our breathtaking, iconic collection! ✨',
-    avoidNote: 'Exclamation mark, emoji, subjective hype ("breathtaking", "iconic").',
+    context: 'ARŞİV GENEL BAKIŞI',
+    write: 'Brüt beton ve yontma taştan yirmi yedi taşıyıcı yapı.',
+    writeNote: 'Kesin sayı, yapısal rol, tam malzeme tanımı. Sıfır sıfat.',
+    avoid: 'Nefes kesici, ikonik koleksiyonumuzu keşfedin! ✨',
+    avoidNote: 'Ünlem işareti, emoji, öznel abartı ("nefes kesici", "ikonik").',
   },
   {
     id: 'specimen-note',
-    context: 'SPECIMEN ENTRY // CAT. 004',
-    write: 'Cantilevered slab cast in situ; board-marked soffit retained without plaster.',
-    writeNote: 'Declarative construction method and observable surface finish.',
-    avoid: 'A seamless, awe-inspiring testament to brutalist architectural mastery.',
-    avoidNote: 'AI filler nouns ("testament") and banned puffery ("seamless", "awe-inspiring").',
+    context: 'ÖRNEK KAYIT // CAT. 004',
+    write: 'Yerinde dökülmüş konsol döşeme; sıvasız bırakılmış ahşap kalıp izli alt yüzey.',
+    writeNote: 'Bildirimsel yapım tekniği ve gözlemlenebilir yüzey bitişi.',
+    avoid: 'Brütalist mimari ustalığın kusursuz ve hayranlık uyandıran bir nişanesi.',
+    avoidNote: 'Yapay zeka dolgu isimleri ("nişanesi") ve yasaklı övgü sıfatları ("kusursuz", "hayranlık uyandıran").',
   },
   {
     id: 'survey-status',
-    context: 'SYSTEM & SURVEY STATUS',
-    write: 'SURVEY FOLIO IV — 27 RECORDS INDEXED.',
-    writeNote: 'Dry archival register. Period-terminated statement.',
-    avoid: 'Welcome to the future of architectural storytelling!',
-    avoidNote: 'Promotional SaaS framing and exclamation punctuation.',
+    context: 'SİSTEM VE ENVANTER DURUMU',
+    write: 'ENVANTER FOLYOSU IV — 27 KAYIT DİZİNLENDİ.',
+    writeNote: 'Kuru arşiv sicili dili. Nokta ile biten beyan.',
+    avoid: 'Mimari hikaye anlatıcılığının geleceğine hoş geldiniz!',
+    avoidNote: 'Tanıtım odaklı SaaS çerçevesi ve ünlem noktalama işareti.',
   },
 ];
 
@@ -309,33 +309,33 @@ interface FormatSpec {
 const ARCHIVAL_FORMATS: FormatSpec[] = [
   {
     id: 'catalog-id',
-    label: 'CATALOG ID',
+    label: 'KATALOG KİMLİĞİ',
     sample: 'CAT. 001',
-    rule: 'Zero-padded 3-digit index from CAT. 001 to CAT. 027. Always uppercase with period and single space.',
+    rule: 'CAT. 001 ile CAT. 027 arasında sıfır dolgulu 3 haneli dizin. Her zaman büyük harf, nokta ve tek boşluk ile.',
   },
   {
     id: 'date',
-    label: 'SURVEY DATE',
+    label: 'ENVANTER TARİHİ',
     sample: '16 / 11 / 2026',
-    rule: 'DD / MM / YYYY separated by spaced solidus. Tabular numerals enforced.',
+    rule: 'Boşluklu eğik çizgi ile ayrılmış GG / AA / YYYY biçimi. Tablo rakamları (tabular numerals) zorunludur.',
   },
   {
     id: 'metric-height',
-    label: 'METRIC UNITS',
+    label: 'METRİK BİRİMLER',
     sample: '98.0 M',
-    rule: 'One decimal place with uppercase M unit (e.g., 98.0 M, 55.6 M). Never lowercase m.',
+    rule: 'Büyük M birimiyle tek ondalık basamak (ör. 98.0 M, 55.6 M). Asla küçük m kullanılmaz.',
   },
   {
     id: 'coordinates',
-    label: 'COORDINATES',
+    label: 'KOORDİNATLAR',
     sample: '51°31′25″N × 0°12′20″W',
-    rule: 'Degrees, prime (′), double-prime (″) separated by multiplication sign (×).',
+    rule: 'Çarpma işareti (×) ile ayrılmış derece, dakika (′) ve saniye (″) gösterimi.',
   },
   {
     id: 'two-tier-label',
-    label: 'TWO-TIER PLAIN-FIRST LABEL',
+    label: 'İKİ KADEMELİ SADE ETİKET',
     sample: 'COORDINATES: GPS (WGS84)',
-    rule: 'Plain-language category first, technical datum in parentheses.',
+    rule: 'Önce sade dilde kategori adı, ardından parantez içinde teknik veri.',
   },
 ];
 
@@ -346,15 +346,15 @@ interface GlyphSpec {
 }
 
 const PERMITTED_GLYPHS: GlyphSpec[] = [
-  { glyph: '+', code: 'U+002B', role: 'Expand / Datum Cross' },
-  { glyph: '×', code: 'U+00D7', role: 'Coordinate Separator / Close' },
-  { glyph: '→', code: 'U+2192', role: 'Forward Navigation' },
-  { glyph: '←', code: 'U+2190', role: 'Return / Previous Record' },
-  { glyph: '↗', code: 'U+2197', role: 'External Reference' },
-  { glyph: '↙', code: 'U+2199', role: 'Inbound / Anchor Drop' },
-  { glyph: '•', code: 'U+2022', role: 'Inline Ledger Separator' },
-  { glyph: '✦', code: 'U+2726', role: 'Edition / Colophon Star' },
-  { glyph: '▪', code: 'U+25AA', role: 'Signal / Active Index' },
+  { glyph: '+', code: 'U+002B', role: 'Genişlet / Veri Artısı' },
+  { glyph: '×', code: 'U+00D7', role: 'Koordinat Ayırıcı / Kapat' },
+  { glyph: '→', code: 'U+2192', role: 'İleri Gezinme' },
+  { glyph: '←', code: 'U+2190', role: 'Geri Dön / Önceki Kayıt' },
+  { glyph: '↗', code: 'U+2197', role: 'Dış Referans' },
+  { glyph: '↙', code: 'U+2199', role: 'İçe Aktarım / Çapa Düşüşü' },
+  { glyph: '•', code: 'U+2022', role: 'Satır İçi Sicil Ayırıcı' },
+  { glyph: '✦', code: 'U+2726', role: 'Edisyon / Künye Yıldızı' },
+  { glyph: '▪', code: 'U+25AA', role: 'Sinyal / Etkin Dizin' },
 ];
 
 export function BrandSection({
@@ -366,19 +366,19 @@ export function BrandSection({
   return (
     <div data-surface={previewSurface} className={styles.root}>
       {/* =====================================================================
-          02.1 LOGO SYSTEM
+          02.1 LOGO VE MARKA İŞARETLERİ
           ===================================================================== */}
       <section aria-labelledby="brand-logo-heading" className={styles.subSection}>
         <div className={styles.subHeader}>
           <div className={styles.subTitleBlock}>
-            <span className={`type-colophon ${styles.subIndex}`}>02.1 // LOGO SYSTEM</span>
+            <span className={`type-colophon ${styles.subIndex}`}>02.1 // LOGO VE MARKA İŞARETLERİ</span>
             <h3 id="brand-logo-heading" className={`type-subhead ${styles.subTitle}`}>
-              MARKS, LOCKUPS &amp; FAVICON PLATES
+              İŞARETLER, KİLİTLER VE FAVICON PLAKALARI
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            All twenty-two canonical vector assets served from <code>/brand/</code>. Each specimen is
-            mounted on its mandated contrast ground to preserve stroke legibility.
+            <code>/brand/</code> dizininden sunulan yirmi iki kanonik vektör varlığının tamamı. Her
+            örnek, çizgi okunaklılığını korumak için zorunlu kontrast zemini üzerine yerleştirilmiştir.
           </p>
         </div>
 
@@ -387,7 +387,7 @@ export function BrandSection({
             <div className={styles.groupHeader}>
               <span className={`type-ui-label ${styles.groupTitle}`}>{group.title}</span>
               <span className={`type-colophon ${styles.groupCount}`}>
-                {group.items.length} ASSETS
+                {group.items.length} VARLIK
               </span>
             </div>
 
@@ -431,13 +431,13 @@ export function BrandSection({
                       </div>
                       <dl className={styles.logoSpecList}>
                         <div className={styles.logoSpecRow}>
-                          <dt className={`type-colophon ${styles.logoSpecKey}`}>SURFACE:</dt>
+                          <dt className={`type-colophon ${styles.logoSpecKey}`}>YÜZEY:</dt>
                           <dd className={`type-colophon ${styles.logoSpecVal}`}>
                             {asset.surfaceRule}
                           </dd>
                         </div>
                         <div className={styles.logoSpecRow}>
-                          <dt className={`type-colophon ${styles.logoSpecKey}`}>ROLE:</dt>
+                          <dt className={`type-colophon ${styles.logoSpecKey}`}>ROL:</dt>
                           <dd className={`type-body ${styles.logoSpecVal}`}>{asset.role}</dd>
                         </div>
                       </dl>
@@ -449,26 +449,26 @@ export function BrandSection({
           </div>
         ))}
 
-        {/* Clearspace, Minimum Size & Visual Anti-Examples */}
+        {/* Güvenli Alan, Asgari Boyut ve Görsel Kötüye Kullanım Örnekleri */}
         <div className={styles.rulesSplit}>
           <div className={styles.clearspacePanel}>
             <div className={styles.panelHead}>
-              <span className="type-ui-label">CLEARSPACE &amp; MINIMUM SIZE</span>
+              <span className="type-ui-label">GÜVENLİ ALAN VE ASGARİ BOYUT</span>
               <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                1× M-STEM PERIMETER
+                1× M-GÖVDE ÇEVRESİ
               </span>
             </div>
 
             <div className={styles.clearspaceDiagram}>
               <div className={styles.clearspaceBox}>
-                <span className={`type-colophon ${styles.clearspaceTagTop}`}>1× M-STEM</span>
-                <span className={`type-colophon ${styles.clearspaceTagBottom}`}>1× M-STEM</span>
+                <span className={`type-colophon ${styles.clearspaceTagTop}`}>1× M-GÖVDE</span>
+                <span className={`type-colophon ${styles.clearspaceTagBottom}`}>1× M-GÖVDE</span>
                 <span className={`type-colophon ${styles.clearspaceTagLeft}`}>1×</span>
                 <span className={`type-colophon ${styles.clearspaceTagRight}`}>1×</span>
                 <div className={styles.clearspaceInner}>
                   <img
                     src="/brand/monolith-wordmark-dark.svg"
-                    alt="MONOLITH wordmark clearspace diagram"
+                    alt="MONOLITH kelime işareti güvenli alan diyagramı"
                     width={165}
                     height={40}
                   />
@@ -479,12 +479,12 @@ export function BrandSection({
             <div className={styles.minSizeGrid}>
               <div className={styles.minSizeCard}>
                 <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                  WORDMARK MINIMUM WIDTH
+                  KELİME İŞARETİ ASGARİ GENİŞLİK
                 </span>
                 <div className={styles.minSizePreview}>
                   <img
                     src="/brand/monolith-wordmark-dark.svg"
-                    alt="Wordmark at 110px minimum width"
+                    alt="110px asgari genişlikte kelime işareti"
                     width={110}
                     height={27}
                   />
@@ -496,12 +496,12 @@ export function BrandSection({
 
               <div className={styles.minSizeCard}>
                 <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                  FAVICON MINIMUM SIZE
+                  FAVICON ASGARİ BOYUTU
                 </span>
                 <div className={styles.minSizePreview}>
                   <img
                     src="/brand/favicon-16.svg"
-                    alt="Favicon at 16px minimum size"
+                    alt="16px asgari boyutta favicon"
                     width={16}
                     height={16}
                   />
@@ -515,42 +515,42 @@ export function BrandSection({
 
           <div className={styles.dontPanel}>
             <div className={styles.panelHead}>
-              <span className="type-ui-label">PROHIBITED MARK TREATMENTS</span>
+              <span className="type-ui-label">YASAKLI İŞARET UYGULAMALARI</span>
               <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                ✕ DO NOT VIOLATE
+                ✕ İHLAL ETMEYİN
               </span>
             </div>
 
             <div className={styles.dontGrid}>
               <article className={styles.dontCard}>
                 <div className={styles.dontStage}>
-                  <span className={`type-colophon ${styles.dontBadge}`}>✕ PROHIBITED</span>
+                  <span className={`type-colophon ${styles.dontBadge}`}>✕ YASAKLI</span>
                   <img
                     src="/brand/monolith-wordmark-dark.svg"
-                    alt="Prohibited stretched aspect ratio"
+                    alt="Yasaklı esnetilmiş en-boy oranı"
                     width={132}
                     height={32}
                     className={styles.dontStretch}
                   />
                 </div>
                 <div className={styles.dontBody}>
-                  <span className={`type-ui-label ${styles.dontTitle}`}>✕ STRETCHED RATIO</span>
+                  <span className={`type-ui-label ${styles.dontTitle}`}>✕ ESNETİLMİŞ ORAN</span>
                   <p className={`type-body ${styles.dontDesc}`}>
-                    Never distort horizontal or vertical proportions. Lock aspect ratio on all
-                    containers.
+                    Yatay veya dikey oranları asla bozmayın. Tüm kapsayıcılarda en-boy oranını
+                    kilitleyin.
                   </p>
                 </div>
               </article>
 
               <article className={styles.dontCard}>
                 <div className={styles.dontStage}>
-                  <span className={`type-colophon ${styles.dontBadge}`}>✕ PROHIBITED</span>
+                  <span className={`type-colophon ${styles.dontBadge}`}>✕ YASAKLI</span>
                   <svg
                     viewBox="0 0 180 44"
                     width="160"
                     height="40"
                     role="img"
-                    aria-label="Prohibited unauthorized neon blue recolor"
+                    aria-label="Yasaklı yetkisiz neon mavi yeniden renklendirme"
                   >
                     <text
                       x="90"
@@ -567,23 +567,23 @@ export function BrandSection({
                   </svg>
                 </div>
                 <div className={styles.dontBody}>
-                  <span className={`type-ui-label ${styles.dontTitle}`}>✕ NEON / BLUE RECOLOR</span>
+                  <span className={`type-ui-label ${styles.dontTitle}`}>✕ NEON / MAVİ RENKLENDİRME</span>
                   <p className={`type-body ${styles.dontDesc}`}>
-                    Never recolor marks outside the concrete ink register (#E9E5DF, #131313, or
-                    currentColor).
+                    İşaretleri asla beton mürekkep sicili (#E9E5DF, #131313 veya currentColor)
+                    dışında renklendirmeyin.
                   </p>
                 </div>
               </article>
 
               <article className={styles.dontCard}>
                 <div className={styles.dontStage}>
-                  <span className={`type-colophon ${styles.dontBadge}`}>✕ PROHIBITED</span>
+                  <span className={`type-colophon ${styles.dontBadge}`}>✕ YASAKLI</span>
                   <svg
                     viewBox="0 0 180 48"
                     width="160"
                     height="44"
                     role="img"
-                    aria-label="Prohibited soft drop shadow"
+                    aria-label="Yasaklı yumuşak alt gölge"
                   >
                     <defs>
                       <filter id="brand-prohibited-shadow" x="-20%" y="-20%" width="140%" height="140%">
@@ -606,10 +606,10 @@ export function BrandSection({
                   </svg>
                 </div>
                 <div className={styles.dontBody}>
-                  <span className={`type-ui-label ${styles.dontTitle}`}>✕ SOFT DROP-SHADOW</span>
+                  <span className={`type-ui-label ${styles.dontTitle}`}>✕ YUMUŞAK ALT GÖLGE</span>
                   <p className={`type-body ${styles.dontDesc}`}>
-                    Zero elevation blurs, glows, or drop-shadows. Depth is structural, never
-                    atmospheric.
+                    Yükseklik bulanıklığı, parlama veya alt gölge kesinlikle yasaktır. Derinlik
+                    atmosferik değil, yapısaldır.
                   </p>
                 </div>
               </article>
@@ -619,19 +619,19 @@ export function BrandSection({
       </section>
 
       {/* =====================================================================
-          02.2 BRAND VOICE ("The Laconic Archivist")
+          02.2 MARKA SESİ VE TON ("Özlü Arşivci")
           ===================================================================== */}
       <section aria-labelledby="brand-voice-heading" className={styles.subSection}>
         <div className={styles.subHeader}>
           <div className={styles.subTitleBlock}>
-            <span className={`type-colophon ${styles.subIndex}`}>02.2 // BRAND VOICE</span>
+            <span className={`type-colophon ${styles.subIndex}`}>02.2 // MARKA SESİ VE TON</span>
             <h3 id="brand-voice-heading" className={`type-subhead ${styles.subTitle}`}>
-              THE LACONIC ARCHIVIST
+              ÖZLÜ ARŞİVCİ / THE LACONIC ARCHIVIST
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Editorial copy reads as an architectural survey ledger: factual, dry, and declarative.
-            Describe structure, material, and datum without persuasion.
+            Editoryal metinler bir mimari envanter sicili gibi okunur: olgusal, kuru ve bildirimsel.
+            İkna çabası olmadan yapıyı, malzemeyi ve veriyi tanımlayın.
           </p>
         </div>
 
@@ -640,7 +640,7 @@ export function BrandSection({
             <div key={pair.id} className={styles.voicePair}>
               <div className={styles.voiceWrite}>
                 <span className={`type-colophon ${styles.voiceTagWrite}`}>
-                  WRITE (LACONIC ARCHIVIST) — {pair.context}
+                  YAZ (ÖZLÜ ARŞİVCİ) — {pair.context}
                 </span>
                 <p className={`type-body-lead ${styles.voiceQuote}`}>{pair.write}</p>
                 <p className={`type-colophon ${styles.voiceNote}`}>{pair.writeNote}</p>
@@ -648,7 +648,7 @@ export function BrandSection({
 
               <div className={styles.voiceAvoid}>
                 <span className={`type-colophon ${styles.voiceTagAvoid}`}>
-                  DO NOT WRITE (SAAS / AI FILLER)
+                  YAZMA (SAAS / YAPAY ZEKA DOLGUSU)
                 </span>
                 <p className={`type-body-lead ${styles.voiceQuoteStrike}`}>{pair.avoid}</p>
                 <p className={`type-colophon ${styles.voiceNote}`}>{pair.avoidNote}</p>
@@ -659,40 +659,40 @@ export function BrandSection({
 
         <div className={styles.voiceRulesBar}>
           <div className={styles.voiceRuleCell}>
-            <span className="type-ui-label">NO EXCLAMATION MARKS</span>
+            <span className="type-ui-label">ÜNLEM İŞARETİ YOK</span>
             <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-              Terminate statements with periods only.
+              Cümleleri yalnızca nokta ile sonlandırın.
             </span>
           </div>
           <div className={styles.voiceRuleCell}>
-            <span className="type-ui-label">NO EMOJIS OR DECORATION</span>
+            <span className="type-ui-label">EMOJİ VEYA SÜSLEME YOK</span>
             <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-              Zero pictographs in headings, buttons, or prose.
+              Başlıklarda, düğmelerde veya düz metinde sıfır piktograf.
             </span>
           </div>
           <div className={styles.voiceRuleCell}>
-            <span className="type-ui-label">NO FILLER ADJECTIVES</span>
+            <span className="type-ui-label">DOLGU SIFATLAR YOK</span>
             <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-              Banned: tapestry, testament, awe-inspiring, seamless.
+              Yasaklılar: tapestry, testament, awe-inspiring, seamless (ve Türkçe karşılıkları).
             </span>
           </div>
         </div>
       </section>
 
       {/* =====================================================================
-          02.3 DATA & ARCHIVAL FORMATS
+          02.3 ARŞİV FORMATLARI
           ===================================================================== */}
       <section aria-labelledby="brand-formats-heading" className={styles.subSection}>
         <div className={styles.subHeader}>
           <div className={styles.subTitleBlock}>
-            <span className={`type-colophon ${styles.subIndex}`}>02.3 // DATA &amp; ARCHIVAL FORMATS</span>
+            <span className={`type-colophon ${styles.subIndex}`}>02.3 // ARŞİV FORMATLARI</span>
             <h3 id="brand-formats-heading" className={`type-subhead ${styles.subTitle}`}>
-              CANONICAL NOTATION &amp; UNITS
+              KANONİK GÖSTERİM VE BİRİMLER
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Canonical archival string templates. All numeric readouts enforce tabular lining
-            numerals.
+            Kanonik arşiv dize şablonları. Tüm sayısal okumalar tablo hizalı rakamları (tabular
+            lining numerals) zorunlu kılar.
           </p>
         </div>
 
@@ -710,19 +710,19 @@ export function BrandSection({
       </section>
 
       {/* =====================================================================
-          02.4 ICONOGRAPHY
+          02.4 İKONOGRAFİ VE ÇİZİM İŞARETLERİ
           ===================================================================== */}
       <section aria-labelledby="brand-iconography-heading" className={styles.subSection}>
         <div className={styles.subHeader}>
           <div className={styles.subTitleBlock}>
-            <span className={`type-colophon ${styles.subIndex}`}>02.4 // ICONOGRAPHY</span>
+            <span className={`type-colophon ${styles.subIndex}`}>02.4 // İKONOGRAFİ VE ÇİZİM İŞARETLERİ</span>
             <h3 id="brand-iconography-heading" className={`type-subhead ${styles.subTitle}`}>
-              TYPOGRAPHIC GLYPHS &amp; DRAFTING MARKS
+              TİPOGRAFİK GLİFLER VE TEKNİK ÇİZİM İŞARETLERİ
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            MONOLITH uses zero third-party icon libraries and zero emojis. Only the nine permitted
-            typographic glyphs and three geometric drafting SVGs may appear in the interface.
+            MONOLITH sıfır üçüncü taraf simge kütüphanesi ve sıfır emoji kullanır. Arayüzde yalnızca
+            izin verilen dokuz tipografik glif ve üç geometrik teknik çizim SVG&apos;si yer alabilir.
           </p>
         </div>
 
@@ -751,10 +751,10 @@ export function BrandSection({
               <div className={styles.draftingInfo}>
                 <span className="type-ui-label">CornerCrosshair</span>
                 <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                  13 × 13 PX // 1PX STROKE
+                  13 × 13 PX // 1PX KONTUR
                 </span>
                 <span className="type-body">
-                  Perimeter registration crosshair anchored at frame corners.
+                  Çerçeve köşelerine sabitlenen çevre hizalama nişangahı.
                 </span>
               </div>
             </div>
@@ -766,10 +766,10 @@ export function BrandSection({
               <div className={styles.draftingInfo}>
                 <span className="type-ui-label">AlignmentStar</span>
                 <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                  15 × 15 PX // 1PX STROKE
+                  15 × 15 PX // 1PX KONTUR
                 </span>
                 <span className="type-body">
-                  Concave 4-point surveyor alignment mark for colophon dividers.
+                  Künye ayırıcıları için içbükey 4 uçlu haritacı hizalama yıldızı.
                 </span>
               </div>
             </div>
@@ -781,17 +781,17 @@ export function BrandSection({
               <div className={styles.draftingInfo}>
                 <span className="type-ui-label">SteppedFrame</span>
                 <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                  FLUID // NON-SCALING STROKE
+                  AKIŞKAN // ÖLÇEKLENMEYEN KONTUR
                 </span>
                 <span className="type-body">
-                  Mitered L-shaped drafting brackets inset inside specimen plates.
+                  Örnek plakaların içine yerleştirilen gönyeli L-biçimli teknik çizim köşebentleri.
                 </span>
               </div>
             </div>
 
             <div className={styles.iconBanBanner}>
               <span className="type-ui-label">
-                STRICT RULE: ZERO THIRD-PARTY ICON LIBRARIES &amp; ZERO EMOJIS
+                KESİN KURAL: SIFIR ÜÇÜNCÜ TARAF SİMGE KÜTÜPHANESİ VE SIFIR EMOJİ
               </span>
             </div>
           </div>
