@@ -1,6 +1,15 @@
 'use client';
 
-import { Suspense, useMemo, useState, type MouseEvent } from 'react';
+import {
+  Suspense,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type MouseEvent,
+  type ReactNode,
+  type RefObject,
+} from 'react';
 import { AnatomyClient } from '@/components/AnatomyClient';
 import { AnatomyStage } from '@/components/AnatomyStage';
 import { ArchClipDefs } from '@/components/ArchClipDefs';
@@ -115,6 +124,55 @@ function sanitizeSpecimenDom(node: HTMLElement | null) {
   });
 }
 
+function SpecimenSanitizeEffect({ targetRef }: { targetRef: RefObject<HTMLDivElement | null> }) {
+  useEffect(() => {
+    const node = targetRef.current;
+    if (!node) return;
+    sanitizeSpecimenDom(node);
+    const observer = new MutationObserver(() => sanitizeSpecimenDom(node));
+    observer.observe(node, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [targetRef]);
+  return null;
+}
+
+function IsolatedSpecimen({
+  className,
+  inertFrame = false,
+  suspended = false,
+  onClickCapture,
+  children,
+}: {
+  className?: string;
+  inertFrame?: boolean;
+  suspended?: boolean;
+  onClickCapture: (e: MouseEvent<HTMLDivElement>) => void;
+  children: ReactNode;
+}) {
+  const frameRef = useRef<HTMLDivElement>(null);
+  return (
+    <div
+      ref={frameRef}
+      data-specimen-isolate="true"
+      className={className}
+      {...(inertFrame ? { inert: true, 'aria-hidden': true as const } : {})}
+      onClickCapture={onClickCapture}
+    >
+      {suspended ? (
+        <Suspense fallback={null}>
+          {children}
+          <SpecimenSanitizeEffect targetRef={frameRef} />
+        </Suspense>
+      ) : (
+        <>
+          {children}
+          <SpecimenSanitizeEffect targetRef={frameRef} />
+        </>
+      )}
+    </div>
+  );
+}
+
 function resolveTokenSwatch(
   tokenName: string,
   tokens: DesignSystemTokensPayload,
@@ -200,28 +258,24 @@ export function ComponentsSection({
     switch (entry.id) {
       case 'site-header':
         return (
-          <div
-            ref={sanitizeSpecimenDom}
+          <IsolatedSpecimen
             className={styles.inertFrame}
-            inert
-            aria-hidden="true"
+            inertFrame
             onClickCapture={(e) => e.preventDefault()}
           >
             <SiteHeader plateCount={BUILDINGS.length} />
-          </div>
+          </IsolatedSpecimen>
         );
 
       case 'site-footer':
         return (
-          <div
-            ref={sanitizeSpecimenDom}
+          <IsolatedSpecimen
             className={styles.inertFrame}
-            inert
-            aria-hidden="true"
+            inertFrame
             onClickCapture={(e) => e.preventDefault()}
           >
             <SiteFooter />
-          </div>
+          </IsolatedSpecimen>
         );
 
       case 'drafting-marks':
@@ -322,9 +376,9 @@ export function ComponentsSection({
     switch (entry.id) {
       case 'specimen-stream':
         return (
-          <div ref={sanitizeSpecimenDom} onClickCapture={preventLinkNavigation}>
+          <IsolatedSpecimen onClickCapture={preventLinkNavigation}>
             <SpecimenStream buildings={BUILDINGS.slice(0, 3)} />
-          </div>
+          </IsolatedSpecimen>
         );
 
       case 'anatomy-stage':
@@ -377,11 +431,9 @@ export function ComponentsSection({
 
       case 'home-client':
         return (
-          <div
-            ref={sanitizeSpecimenDom}
+          <IsolatedSpecimen
             className={styles.inertFramePage}
-            inert
-            aria-hidden="true"
+            inertFrame
             onClickCapture={(e) => e.preventDefault()}
           >
             <HomeClient
@@ -397,45 +449,39 @@ export function ComponentsSection({
               <span className="type-colophon">INERT FRAMED PREVIEW // HOME MONOGRAPH</span>
               <span className="type-colophon">LINKS DISABLED</span>
             </div>
-          </div>
+          </IsolatedSpecimen>
         );
 
       case 'archive-client':
         return (
-          <div
-            ref={sanitizeSpecimenDom}
+          <IsolatedSpecimen
             className={styles.inertFramePage}
-            inert
-            aria-hidden="true"
+            inertFrame
+            suspended
             onClickCapture={(e) => e.preventDefault()}
           >
-            <Suspense fallback={null}>
-              <ArchiveClient totalCount={BUILDINGS.length} />
-            </Suspense>
+            <ArchiveClient totalCount={BUILDINGS.length} />
             <div className={styles.inertFrameOverlay}>
               <span className="type-colophon">INERT FRAMED PREVIEW // ARCHIVE INDEX</span>
               <span className="type-colophon">LINKS DISABLED</span>
             </div>
-          </div>
+          </IsolatedSpecimen>
         );
 
       case 'anatomy-client':
         return (
-          <div
-            ref={sanitizeSpecimenDom}
+          <IsolatedSpecimen
             className={styles.inertFramePage}
-            inert
-            aria-hidden="true"
+            inertFrame
+            suspended
             onClickCapture={(e) => e.preventDefault()}
           >
-            <Suspense fallback={null}>
-              <AnatomyClient plates={PLATES_WITH_META} svgMarkupById={SVG_MARKUP_BY_ID} />
-            </Suspense>
+            <AnatomyClient plates={PLATES_WITH_META} svgMarkupById={SVG_MARKUP_BY_ID} />
             <div className={styles.inertFrameOverlay}>
               <span className="type-colophon">INERT FRAMED PREVIEW // ANATOMY WORKSPACE</span>
               <span className="type-colophon">LINKS DISABLED</span>
             </div>
-          </div>
+          </IsolatedSpecimen>
         );
 
       default:
