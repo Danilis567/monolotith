@@ -388,9 +388,10 @@ export function ArchiveClient({ totalCount }: { totalCount: number }) {
                               src={building.imagePath}
                               alt={building.imageAlt}
                               fill
-                              priority={index < 9}
+                              priority={index < 2}
                               fetchPriority={index < 2 ? 'high' : undefined}
-                              loading="eager"
+                              loading={index < 6 ? 'eager' : 'lazy'}
+                              decoding="async"
                               sizes={
                                 cadence === 'lead'
                                   ? '(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 35vw'

@@ -1,8 +1,10 @@
 'use client';
 
 import {
+  LazyMotion,
   MotionConfig,
-  motion,
+  domAnimation,
+  m,
   useReducedMotion,
   useScroll,
   useTransform,
@@ -10,7 +12,11 @@ import {
 import type { ReactNode } from 'react';
 
 export function MotionProvider({ children }: { children: ReactNode }) {
-  return <MotionConfig reducedMotion="user">{children}</MotionConfig>;
+  return (
+    <LazyMotion features={domAnimation} strict>
+      <MotionConfig reducedMotion="user">{children}</MotionConfig>
+    </LazyMotion>
+  );
 }
 
 /**
@@ -77,12 +83,12 @@ export function HeroEchoParallax({
   }
 
   return (
-    <motion.div
+    <m.div
       aria-hidden="true"
       className={className}
       style={{ y, willChange: 'transform' }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

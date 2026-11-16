@@ -242,6 +242,8 @@
   flex-direction: column;
   justify-content: space-between;
   min-inline-size: 0;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
 }
 
 @media (width >= 768px) {

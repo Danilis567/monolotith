@@ -124,6 +124,7 @@
   .track {
     animation: monolithStreamScroll 88s linear infinite;
     animation-play-state: running;
+    will-change: transform;
   }
 
   .viewport[data-streaming="false"] .track,

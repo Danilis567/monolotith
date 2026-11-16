@@ -368,6 +368,8 @@
 .thesisBand {
   padding-block: 4.5rem;
   border-bottom: 2px solid var(--border-structural);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 620px;
 }
 
 .thesisBand > :global(.monolith-grid) {
@@ -487,6 +489,8 @@
    ========================================================================== */
 .ledgerBand {
   padding-block: 4.5rem 5rem;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 680px;
 }
 
 .ledgerHeader {

@@ -3,6 +3,8 @@
   color: var(--ink-primary);
   border-top: 2px solid var(--border-structural);
   padding-block: 3rem 2rem;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 420px;
 }
 
 .container {
