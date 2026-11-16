@@ -163,3 +163,26 @@ Following the 4-person studio critique ([STUDIO_CRITIQUE.md](file:///c:/Users/Da
 | **Jüri Ortalaması** | **8.71** | **9.07** | **9.07** | **9.21** | **9.02 / 10** |
 
 **Round 4 Verdict:** **UNCONDITIONAL PASS** (`9.02 / 10 >= 7.0`, minimum criterion mean `8.75 >= 6.0`).
+
+---
+
+## Round 5 — `/design-system` Hidden Single Source of Truth (9 Agents)
+
+Following the `(site)` / `(bare)` route group architecture, the hidden `/design-system` living specification page was built (`Ajan 1`–`Ajan 6`) and audited independently (`Ajan 7`–`Ajan 9`):
+
+### 1. Measurable Gate Checks
+- **`npm run ds:check`:** **PASS (`100%`)** — `13/13` component files under `src/components/*.tsx` registered in `COMPONENT_REGISTRY` (`src/design-system/registry.ts`), `35/35` CSS custom properties in `brand/tokens-color.css` parsed by `src/design-system/tokens.ts`, and `0` links/hrefs to `/design-system` across `src/` and `public/`.
+- **`npm run ds:shots`:** **PASS** — generated 4 page template thumbnails (`home.png`, `archive.png`, `detail.png`, `anatomy.png`) in `public/design-system/templates/`.
+- **`npx tsc --noEmit`, `npm run lint`, `npm run build` (`34/34` static/SSG routes):** **PASS (`0` errors)**.
+- **Privacy Isolation (`/design-system`):** HTTP `X-Robots-Tag: noindex, nofollow`, `<meta name="robots" content="noindex, nofollow">`, `0` `og:*` tags, `0` `twitter:*` tags, `0` clickable public `<a href>` links (`/`, `/archive`, `/anatomy`, `/structures/*`), and `(bare)` layout isolation from `SiteHeader`/`SiteFooter`.
+- **Accessibility & Responsive (`@axe-core/playwright` `wcag2a`, `wcag2aa`, `wcag21aa`):** **`0` violations (`37` rules passed)**, `0` horizontal overflow across `375, 768, 1280, 1920 px`.
+- **Regression Check (`/` , `/archive`, `/anatomy`, `/structures/trellick-tower`):** HTTP `200`, `0` console/page errors, `0` horizontal overflow.
+
+### 2. Independent Auditor Panel Scores (`0–10`)
+
+| Auditor | Role | Key Scores | Mean (`0–10`) | Status |
+| :--- | :--- | :--- | :---: | :---: |
+| **Ajan 7** | Accuracy & Coverage Auditor | Token/Contrast Pipeline `9.0`, Registry Sync (fixed post-audit), Real Components `10.0`, Zero `ref/`/`C:\Users` `10.0`, Zero Public Links `10.0` | **9.30 / 10** | **PASS** |
+| **Ajan 8** | UX, Accessibility & Privacy Auditor | Usability `9.5`, Accessibility `10.0`, Brand Alignment `9.5`, Privacy Accuracy `9.5` | **9.63 / 10** | **PASS** |
+| **Ajan 9** | General & Regression Auditor | Accuracy & Coverage `9.5`, Brand Alignment `9.5`, Usability `9.0`, Accessibility `8.5` *(prior to final `axe=0` fix)*, Live Sync `9.0`, Privacy `9.5` | **9.17 / 10** | **PASS** |
+| **ROUND 5 PANEL MEAN** | — | **All §6 Gates Verified (`>= 7.0`, zero criteria `< 6.0`)** | **9.37 / 10** | **UNCONDITIONAL PASS** |

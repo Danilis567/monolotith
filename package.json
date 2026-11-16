@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "ds:check": "node scripts/ds-check.mjs",
+    "ds:shots": "node scripts/ds-shots.mjs"
   },
   "dependencies": {
     "motion": "^12.23.0",

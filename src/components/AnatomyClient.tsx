@@ -9,7 +9,7 @@ import { AnatomyStage } from './AnatomyStage';
 import { Gloss } from './Gloss';
 import { ReadingGuide } from './ReadingGuide';
 import { UrlParamSync } from './UrlParamSync';
-import styles from '@/app/anatomy/anatomy.module.css';
+import styles from '@/app/(site)/anatomy/anatomy.module.css';
 
 interface PlateMetaItem extends AnatomyPlateRecord {
   movement: Movement;

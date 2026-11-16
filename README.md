@@ -59,3 +59,25 @@ All 27 photographic specimen plates originate from Wikimedia Commons under open 
 ## Private Working Folder Note
 
 The `ref/` inspiration board directory is excluded from version control via `.gitignore` and is not pushed to GitHub.
+
+## Design System
+
+MONOLITH maintains a living, single-source-of-truth Design System at `/design-system` (isolated in the `(bare)` route group without site header/footer chrome, marked `noindex, nofollow` via both page metadata and `X-Robots-Tag` HTTP headers, and unlinked from public navigation).
+
+### How It Stays Up-to-Date
+- **Tokens (`src/design-system/tokens.ts`):** Reads `brand/tokens-color.css` and `src/app/globals.css` directly from disk at build/request time, extracting all primitive tones, 4 surface-island semantic maps (`void`, `basalt`, `plaster`, `limestone`), typography roles, and layout metrics.
+- **Registry (`src/design-system/registry.ts`):** Typed inventory (`COMPONENT_REGISTRY`) mapping every component under `src/components/` (`sourcePath`, `states`, `tokens`, `props`, `usageNote`, `a11yNote`, `doExample`, `dontExample`).
+- **Live Components:** Section 03 imports and renders the real React components from `src/components/` rather than static duplicates.
+
+### Adding a New Component & Running Checks
+1. Add your component under `src/components/`.
+2. Register an entry in `src/design-system/registry.ts` inside `COMPONENT_REGISTRY` with its relative `sourcePath`, TypeScript `props`, consumed CSS `tokens`, and usage/a11y notes, then wire its live specimen in `src/components/design-system/ComponentsSection.tsx`.
+3. Run the verification scripts:
+
+```bash
+# Verify 100% component & CSS token coverage and zero public links to /design-system
+npm run ds:check
+
+# Refresh page template preview thumbnails in public/design-system/templates/
+npm run ds:shots
+```

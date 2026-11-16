@@ -1,0 +1,749 @@
+/* ==========================================================================
+   MONOLITH — Section 01: Foundations
+   Zero border-radius, zero box-shadow, zero backdrop-filter.
+   All colors bound strictly to Tier-2 semantic tokens for live surface-island
+   switching via data-surface={previewSurface}.
+   ========================================================================== */
+
+.root {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 3rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  min-inline-size: 0;
+}
+
+@media (width >= 768px) {
+  .root {
+    padding: 1.75rem;
+    gap: 3.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Sub-Section Chrome
+   -------------------------------------------------------------------------- */
+.subSection {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  padding-block-start: 2rem;
+  border-block-start: 2px solid var(--border-structural);
+  min-inline-size: 0;
+}
+
+.subSection:first-child {
+  padding-block-start: 0;
+  border-block-start: 0;
+}
+
+.subHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: end;
+}
+
+@media (width >= 768px) {
+  .subHeader {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 1.5rem;
+  }
+}
+
+.subTitleGroup {
+  display: grid;
+  gap: 0.35rem;
+  min-inline-size: 0;
+}
+
+.subIndex {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink-secondary);
+}
+
+.subTitle {
+  color: var(--ink-primary);
+}
+
+.subLead {
+  color: var(--ink-secondary);
+  max-inline-size: 58ch;
+}
+
+.blockHeading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding-block-end: 0.5rem;
+  border-block-end: 1px solid var(--border-hairline);
+  color: var(--ink-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   01.1 COLOR — Primitives, 4-Surface Matrix & <=2% Signal Rule
+   -------------------------------------------------------------------------- */
+.swatchGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  border-block-start: 1px solid var(--border-hairline);
+  border-inline-start: 1px solid var(--border-hairline);
+}
+
+.swatchBtn {
+  display: grid;
+  grid-template-rows: 72px auto;
+  text-align: start;
+  padding: 0;
+  border: 0;
+  border-inline-end: 1px solid var(--border-hairline);
+  border-block-end: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  cursor: pointer;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  transition: background-color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.swatchBtn:hover,
+.swatchBtn:focus-visible {
+  background-color: var(--surface-elevated);
+}
+
+.swatchChip {
+  inline-size: 100%;
+  block-size: 100%;
+  border-block-end: 1px solid var(--border-hairline);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0.4rem 0.5rem;
+}
+
+.swatchGroupTag {
+  padding: 0.15rem 0.35rem;
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  border: 1px solid var(--border-hairline);
+}
+
+.swatchMeta {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  min-inline-size: 0;
+}
+
+.swatchName {
+  color: var(--ink-primary);
+  overflow-wrap: anywhere;
+}
+
+.swatchDetail {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--ink-secondary);
+}
+
+/* 4-Surface Semantic Matrix */
+.surfaceMatrix {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+@media (width >= 768px) {
+  .surfaceMatrix {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 1440px) {
+  .surfaceMatrix {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.islandCard {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  min-inline-size: 0;
+}
+
+.islandHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-block-end: 1px solid var(--border-structural);
+  background-color: var(--surface-elevated);
+}
+
+.islandTokenList {
+  display: grid;
+}
+
+.islandTokenRow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.625rem;
+  min-block-size: 44px;
+  padding: 0.45rem 0.75rem;
+  border: 0;
+  border-block-end: 1px solid var(--border-hairline);
+  background-color: transparent;
+  color: var(--ink-primary);
+  text-align: start;
+  cursor: pointer;
+  transition: background-color 140ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.islandTokenRow:last-child {
+  border-block-end: 0;
+}
+
+.islandTokenRow:hover,
+.islandTokenRow:focus-visible {
+  background-color: var(--surface-elevated);
+}
+
+.tokenDot {
+  inline-size: 16px;
+  block-size: 16px;
+  border: 1px solid var(--border-structural);
+  flex-shrink: 0;
+}
+
+.tokenNames {
+  display: grid;
+  gap: 0.1rem;
+  min-inline-size: 0;
+}
+
+.tokenVar {
+  color: var(--ink-primary);
+  overflow-wrap: anywhere;
+}
+
+.tokenResolved {
+  color: var(--ink-secondary);
+}
+
+.tokenContrast {
+  color: var(--ink-secondary);
+  white-space: nowrap;
+}
+
+/* <= 2% Signal Vermilion Rule */
+.signalRuleGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+@media (width >= 768px) {
+  .signalRuleGrid {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  }
+}
+
+.signalSpecimen {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-elevated);
+}
+
+.signalProportionBar {
+  display: grid;
+  grid-template-columns: 2fr 98fr;
+  block-size: 20px;
+  border: 1px solid var(--border-structural);
+}
+
+.signalBarActive {
+  background-color: var(--signal-fill);
+}
+
+.signalBarNeutral {
+  background-color: var(--surface-canvas);
+}
+
+.signalDemoRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border-hairline);
+  border-inline-start: 3px solid var(--signal-border);
+  background-color: var(--surface-canvas);
+}
+
+.signalRuleNotes {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  align-content: start;
+}
+
+/* --------------------------------------------------------------------------
+   01.2 TYPOGRAPHY — Families, 8 Roles, Glyphs, Tabular & Measure
+   -------------------------------------------------------------------------- */
+.familyGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  border-block-start: 1px solid var(--border-hairline);
+  border-inline-start: 1px solid var(--border-hairline);
+}
+
+@media (width >= 768px) {
+  .familyGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.familyCard {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.125rem;
+  border-inline-end: 1px solid var(--border-hairline);
+  border-block-end: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  align-content: space-between;
+}
+
+.familySpecimen {
+  font-size: 2.25rem;
+  line-height: 1.05;
+  color: var(--ink-primary);
+}
+
+.roleList {
+  display: grid;
+  border-block-start: 1px solid var(--border-hairline);
+}
+
+.roleRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-block-end: 1px solid var(--border-hairline);
+  align-items: baseline;
+}
+
+@media (width >= 1024px) {
+  .roleRow {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 2rem;
+  }
+}
+
+.roleMeta {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--ink-secondary);
+}
+
+.roleSpecs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  color: var(--ink-secondary);
+}
+
+.roleSpecimen {
+  min-inline-size: 0;
+  color: var(--ink-primary);
+  overflow-wrap: break-word;
+}
+
+.typoUtilityGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+@media (width >= 1024px) {
+  .typoUtilityGrid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 0.8fr) minmax(0, 1.3fr);
+  }
+}
+
+.utilityCard {
+  display: grid;
+  gap: 0.875rem;
+  padding: 1.125rem;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  align-content: start;
+}
+
+.glyphStrip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-block-start: 1px solid var(--border-hairline);
+  border-inline-start: 1px solid var(--border-hairline);
+}
+
+.glyphCell {
+  display: grid;
+  place-items: center;
+  min-block-size: 52px;
+  font-family: var(--font-mono), monospace;
+  font-size: 1.25rem;
+  border-inline-end: 1px solid var(--border-hairline);
+  border-block-end: 1px solid var(--border-hairline);
+  color: var(--ink-primary);
+}
+
+.tabularTable {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.tabularRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.3rem;
+  border-block-end: 1px solid var(--border-hairline);
+}
+
+.tabularRow:last-child {
+  border-block-end: 0;
+}
+
+.measureList {
+  display: grid;
+  gap: 0.875rem;
+}
+
+.measureItem {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.measureBar {
+  border-block-end: 2px solid var(--border-structural);
+  padding-block-end: 0.25rem;
+  color: var(--ink-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   01.3 LAYOUT — Grid, Breakpoints, Borders, Tonal Elevation & Drafting Marks
+   -------------------------------------------------------------------------- */
+.layoutSplit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+@media (width >= 1024px) {
+  .layoutSplit {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  }
+}
+
+.draftingStage {
+  position: relative;
+  padding: 2rem 1.5rem;
+  border: 2px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+  display: grid;
+  gap: 1.25rem;
+  min-inline-size: 0;
+}
+
+.stageCrosshairTL,
+.stageCrosshairTR,
+.stageCrosshairBL,
+.stageCrosshairBR {
+  position: absolute;
+  color: var(--border-structural);
+  pointer-events: none;
+}
+
+.stageCrosshairTL {
+  inset-block-start: -6.5px;
+  inset-inline-start: -6.5px;
+}
+
+.stageCrosshairTR {
+  inset-block-start: -6.5px;
+  inset-inline-end: -6.5px;
+}
+
+.stageCrosshairBL {
+  inset-block-end: -6.5px;
+  inset-inline-start: -6.5px;
+}
+
+.stageCrosshairBR {
+  inset-block-end: -6.5px;
+  inset-inline-end: -6.5px;
+}
+
+.gridGuideDemo {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0.35rem;
+  block-size: 72px;
+}
+
+.gridGuideCol {
+  border-inline: 1px solid var(--border-hairline);
+  background-color: var(--surface-elevated);
+  display: grid;
+  place-items: end center;
+  padding-block-end: 0.25rem;
+  color: var(--ink-secondary);
+}
+
+.elevationTiers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.elevationBox {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.875rem;
+  border: 1px solid var(--border-hairline);
+}
+
+.tokenLedger {
+  display: grid;
+  border-block-start: 1px solid var(--border-hairline);
+  border-inline: 1px solid var(--border-hairline);
+  align-content: start;
+}
+
+.ledgerRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.625rem 0.875rem;
+  border-block-end: 1px solid var(--border-hairline);
+}
+
+/* --------------------------------------------------------------------------
+   01.4 IMAGERY — Plate Treatments, Aspect Ratios & Gothic Lancet Arch
+   -------------------------------------------------------------------------- */
+.plateCompareGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+@media (width >= 768px) {
+  .plateCompareGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.plateCard {
+  display: grid;
+  gap: 0.625rem;
+  border: 1px solid var(--border-hairline);
+  padding: 0.75rem;
+  background-color: var(--surface-canvas);
+}
+
+.plateBox3x4 {
+  aspect-ratio: 3 / 4;
+  inline-size: 100%;
+}
+
+.aspectStrip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+
+.aspectCard {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.lancetGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-elevated);
+}
+
+@media (width >= 768px) {
+  .lancetGrid {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: center;
+  }
+}
+
+.lancetPlateWrap {
+  max-inline-size: 280px;
+  inline-size: 100%;
+  margin-inline: auto;
+}
+
+.lancetRules {
+  display: grid;
+  gap: 0.875rem;
+}
+
+.prohibitedThumbRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border-hairline);
+  border-inline-start: 3px solid var(--signal-border);
+  background-color: var(--surface-canvas);
+}
+
+.compactThumb {
+  inline-size: 96px;
+  aspect-ratio: 3 / 4;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   01.5 MOTION — Curves, Live Curtain/Hairline/Arch Replay & Reduced Motion
+   -------------------------------------------------------------------------- */
+.motionGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+@media (width >= 1024px) {
+  .motionGrid {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+}
+
+.curvePanel {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  align-content: start;
+}
+
+.curveSvg {
+  inline-size: 100%;
+  max-inline-size: 280px;
+  block-size: auto;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-elevated);
+}
+
+.motionStageWrap {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+}
+
+.motionControls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.replayCompare {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+@media (width >= 768px) {
+  .replayCompare {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.replayPane {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-elevated);
+}
+
+@keyframes monolithCurtainReveal {
+  from {
+    clip-path: inset(100% 0 0 0);
+    opacity: 0.25;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+@keyframes monolithHairlineSweep {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animatedCurtain {
+  animation: monolithCurtainReveal 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animatedHairline {
+  transform-origin: left center;
+  animation: monolithHairlineSweep 320ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+.instantCurtain {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swatchBtn,
+  .islandTokenRow {
+    transition: none;
+  }
+
+  .animatedCurtain,
+  .animatedHairline {
+    animation: none;
+  }
+}

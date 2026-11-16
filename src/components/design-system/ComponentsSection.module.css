@@ -1,0 +1,737 @@
+/* ==========================================================================
+   SECTION 03 — COMPONENTS & INTERACTIVE STATES
+   Zero border-radius, zero box-shadow, zero backdrop-filter.
+   ========================================================================== */
+
+.root {
+  display: grid;
+  gap: 2rem;
+  min-inline-size: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Category Filter Bar & Summary
+   -------------------------------------------------------------------------- */
+.filterHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block-end: 1.25rem;
+  border-block-end: 1px solid var(--border-hairline);
+}
+
+.filterGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  min-inline-size: 0;
+}
+
+.filterBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--border-hairline);
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--ink-secondary);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 140ms cubic-bezier(0.2, 0, 0, 1),
+    color 140ms cubic-bezier(0.2, 0, 0, 1),
+    border-color 140ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.filterBtn:hover:not([aria-pressed='true']) {
+  border-color: var(--ink-primary);
+  color: var(--ink-primary);
+}
+
+.filterBtn[aria-pressed='true'] {
+  background-color: var(--ink-primary);
+  color: var(--surface-canvas);
+  border-color: var(--ink-primary);
+  border-block-end: 3px solid var(--signal-ink);
+}
+
+.filterCount {
+  color: inherit;
+  opacity: 0.75;
+}
+
+.summaryMeta {
+  color: var(--ink-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Registry Specimen Cards
+   -------------------------------------------------------------------------- */
+.registryList {
+  display: grid;
+  gap: 2.25rem;
+  min-inline-size: 0;
+}
+
+.card {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+  min-inline-size: 0;
+}
+
+@media (width >= 768px) {
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  padding-block-end: 1rem;
+  border-block-end: 1px solid var(--border-hairline);
+}
+
+.cardTitleBlock {
+  display: grid;
+  gap: 0.35rem;
+  min-inline-size: 0;
+}
+
+.cardCategory {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--signal-ink);
+}
+
+.cardTitle {
+  margin: 0;
+  color: var(--ink-primary);
+  overflow-wrap: anywhere;
+}
+
+.cardDesc {
+  margin: 0;
+  max-inline-size: 68ch;
+  color: var(--ink-secondary);
+}
+
+.sourcePath {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-elevated);
+  color: var(--ink-primary);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+/* --------------------------------------------------------------------------
+   State Matrix Toolbar
+   -------------------------------------------------------------------------- */
+.stateBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-elevated);
+}
+
+.stateLabel {
+  color: var(--ink-secondary);
+}
+
+.stateGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.stateBtn {
+  min-block-size: 36px;
+  min-inline-size: 44px;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--border-hairline);
+  border-radius: 0;
+  background-color: var(--surface-canvas);
+  color: var(--ink-secondary);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.stateBtn:hover:not([aria-pressed='true']) {
+  border-color: var(--ink-primary);
+  color: var(--ink-primary);
+}
+
+.stateBtn[aria-pressed='true'] {
+  background-color: var(--ink-primary);
+  color: var(--surface-canvas);
+  border-color: var(--ink-primary);
+  border-inline-start: 3px solid var(--signal-ink);
+}
+
+/* --------------------------------------------------------------------------
+   Dual-Surface Live Preview (Void + Plaster)
+   -------------------------------------------------------------------------- */
+.dualSurface {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  min-inline-size: 0;
+}
+
+@media (width >= 960px) {
+  .dualSurface {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.dualSurfaceSingle {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  min-inline-size: 0;
+}
+
+.surfacePane {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  min-inline-size: 0;
+}
+
+.surfacePaneBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border-block-end: 1px solid var(--border-hairline);
+  background-color: var(--surface-elevated);
+  color: var(--ink-secondary);
+}
+
+.surfacePaneBody {
+  padding: 1.25rem;
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  min-inline-size: 0;
+  overflow-x: clip;
+}
+
+/* Inert framed preview container for Header, Footer, and Page Views */
+.inertFrame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  pointer-events: none;
+  user-select: none;
+}
+
+.inertFramePage {
+  position: relative;
+  max-block-size: 460px;
+  overflow: hidden;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  pointer-events: none;
+  user-select: none;
+}
+
+.inertFrameOverlay {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.75rem;
+  border-block-start: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  color: var(--ink-secondary);
+  z-index: 10;
+}
+
+/* --------------------------------------------------------------------------
+   Metadata, Tokens, Props Table, Do/Don't
+   -------------------------------------------------------------------------- */
+.metaGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  min-inline-size: 0;
+}
+
+@media (width >= 900px) {
+  .metaGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.metaBox {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-elevated);
+  min-inline-size: 0;
+}
+
+.metaHeading {
+  margin: 0;
+  color: var(--ink-secondary);
+}
+
+.metaText {
+  margin: 0;
+  color: var(--ink-primary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.tokenRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tokenChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+}
+
+.tokenSwatch {
+  display: inline-block;
+  inline-size: 10px;
+  block-size: 10px;
+  border: 1px solid var(--border-structural);
+  flex-shrink: 0;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-hairline);
+  min-inline-size: 0;
+}
+
+.propsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  text-align: left;
+}
+
+.propsTable th,
+.propsTable td {
+  padding: 0.55rem 0.75rem;
+  border-block-end: 1px solid var(--border-hairline);
+  vertical-align: top;
+}
+
+.propsTable th {
+  background-color: var(--surface-elevated);
+  color: var(--ink-secondary);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.propsTable tr:last-child td {
+  border-block-end: 0;
+}
+
+.codeMono {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  color: var(--ink-primary);
+}
+
+.doDontGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+@media (width >= 768px) {
+  .doDontGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.doBox {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid var(--border-hairline);
+  border-inline-start: 3px solid var(--ink-primary);
+  background-color: var(--surface-canvas);
+}
+
+.dontBox {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid var(--border-hairline);
+  border-inline-start: 3px solid var(--signal-ink);
+  background-color: var(--surface-canvas);
+}
+
+/* --------------------------------------------------------------------------
+   UI Primitives & Architectural Specimens Matrix (§4)
+   -------------------------------------------------------------------------- */
+.primitivesSection {
+  display: grid;
+  gap: 1.5rem;
+  padding-block-start: 1.5rem;
+  border-block-start: 2px solid var(--border-structural);
+  min-inline-size: 0;
+}
+
+.primitivesHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.primitivesGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  min-inline-size: 0;
+}
+
+@media (width >= 900px) {
+  .primitivesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.primitiveCard {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+  padding: 1.25rem;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-canvas);
+  min-inline-size: 0;
+}
+
+.primitiveCardWide {
+  grid-column: 1 / -1;
+}
+
+.specimenRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Form Controls */
+.fieldStack {
+  display: grid;
+  gap: 0.4rem;
+  min-inline-size: 0;
+}
+
+.fieldLabel {
+  color: var(--ink-secondary);
+}
+
+.inputControl,
+.selectControl {
+  min-block-size: 44px;
+  inline-size: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-structural);
+  border-radius: 0;
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8125rem;
+}
+
+.inputControl[data-state-preview='focus-visible'],
+.selectControl[data-state-preview='focus-visible'] {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.inputControl[aria-invalid='true'],
+.selectControl[aria-invalid='true'] {
+  border-color: var(--signal-ink);
+  border-inline-start-width: 3px;
+}
+
+.inputControl:disabled,
+.selectControl:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.fieldError {
+  color: var(--signal-ink);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+}
+
+/* Segmented View Toggle [ PLATE ] / [ INDEX ] */
+.viewToggle {
+  display: inline-flex;
+  border: 1px solid var(--border-structural);
+}
+
+.viewToggleBtn {
+  min-block-size: 44px;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-inline-end: 1px solid var(--border-hairline);
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--ink-secondary);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.viewToggleBtn:last-child {
+  border-inline-end: 0;
+}
+
+.viewToggleBtn[aria-pressed='true'] {
+  background-color: var(--ink-primary);
+  color: var(--surface-canvas);
+  border-block-end: 3px solid var(--signal-ink);
+}
+
+/* Anatomy Tabs */
+.tabList {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  border-block-end: 1px solid var(--border-hairline);
+}
+
+.tabBtn {
+  position: relative;
+  flex: none;
+  min-block-size: 44px;
+  padding: 0.5rem 0.9rem;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--ink-secondary);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.tabBtn[aria-selected='true'] {
+  color: var(--ink-primary);
+}
+
+.tabBtn[aria-selected='true']::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  border-block-end: 3px solid var(--signal-ink);
+}
+
+/* Plate Crops */
+.cropGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.cropCard {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.cropFrame {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background-color: var(--surface-basalt);
+  overflow: hidden;
+  border: 1px solid var(--border-hairline);
+}
+
+.cropFrame img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Breadcrumb */
+.breadcrumbList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbSep {
+  color: var(--ink-muted);
+}
+
+/* Colophon <dl> Ledger */
+.ledgerList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0;
+  margin: 0;
+  border: 1px solid var(--border-hairline);
+}
+
+.ledgerItem {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  border-block-end: 1px solid var(--border-hairline);
+  border-inline-end: 1px solid var(--border-hairline);
+}
+
+.ledgerDt {
+  color: var(--ink-secondary);
+}
+
+.ledgerDd {
+  margin: 0;
+  color: var(--ink-primary);
+}
+
+/* Observation Row & calloutMetricBox */
+.observationRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 0;
+  border-block: 1px solid var(--border-hairline);
+}
+
+.calloutMetricBox {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem;
+  border: 1px solid var(--border-structural);
+  border-inline-start: 3px solid var(--signal-ink);
+  background-color: var(--surface-elevated);
+}
+
+/* Mobile Slip */
+.mobileSlip {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+}
+
+.mobileSlipTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--ink-secondary);
+}
+
+/* Empty / Error State Cards */
+.errorGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.errorCard {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--border-structural);
+  border-inline-start: 3px solid var(--signal-ink);
+  background-color: var(--surface-elevated);
+}
+
+.errorCode {
+  color: var(--signal-ink);
+}
+
+/* Inert Drawer Specimen */
+.drawerSpecimen {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+  pointer-events: none;
+}
+
+.drawerSpecimenHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block-end: 0.5rem;
+  border-block-end: 1px solid var(--border-hairline);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filterBtn {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .filterBtn[aria-pressed='true'],
+  .stateBtn[aria-pressed='true'],
+  .viewToggleBtn[aria-pressed='true'] {
+    outline: 2px solid Highlight;
+  }
+}

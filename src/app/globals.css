@@ -500,9 +500,14 @@ ol {
     border-color 150ms cubic-bezier(0.2, 0, 0, 1);
 }
 
-.btn-monolith:hover:not(:disabled),
-.btn-monolith:focus-visible:not(:disabled) {
+.btn-monolith:where(:hover, [data-state-preview="hover"]):not(:disabled),
+.btn-monolith:where(:focus-visible, [data-state-preview="focus-visible"]):not(:disabled) {
   border-color: var(--ink-primary);
+}
+
+.btn-monolith[data-state-preview="focus-visible"]:not(:disabled) {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 .btn-monolith--primary {
@@ -513,8 +518,8 @@ ol {
   font-weight: 600;
 }
 
-.btn-monolith--primary:hover:not(:disabled),
-.btn-monolith--primary:focus-visible:not(:disabled) {
+.btn-monolith--primary:where(:hover, [data-state-preview="hover"]):not(:disabled),
+.btn-monolith--primary:where(:focus-visible, [data-state-preview="focus-visible"]):not(:disabled) {
   background-color: var(--surface-elevated);
   color: var(--ink-primary);
   border-color: var(--ink-primary);

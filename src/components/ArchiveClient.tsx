@@ -23,7 +23,7 @@ import {
   type SortOption,
 } from '@/lib/archiveFilters';
 import { getApertureClassName, getPlateAperture } from '@/lib/plateGeometry';
-import styles from '@/app/archive/archive.module.css';
+import styles from '@/app/(site)/archive/archive.module.css';
 
 type ViewMode = 'plate' | 'index';
 

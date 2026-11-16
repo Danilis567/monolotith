@@ -2,9 +2,6 @@ import type { Metadata, Viewport } from 'next';
 import { Bodoni_Moda, IBM_Plex_Mono, Inter } from 'next/font/google';
 import { ArchClipDefs } from '@/components/ArchClipDefs';
 import { MotionProvider } from '@/components/MotionPrimitives';
-import { SiteFooter } from '@/components/SiteFooter';
-import { SiteHeader } from '@/components/SiteHeader';
-import { BUILDINGS } from '@/data/buildings';
 import './globals.css';
 
 const bodoniModa = Bodoni_Moda({
@@ -45,13 +42,6 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: '/brand/apple-touch-icon.svg', sizes: '180x180', type: 'image/svg+xml' }],
   },
-  openGraph: {
-    title: 'MONOLITH — Monumental Architecture Archive',
-    description:
-      'Editorial archive of 27 Brutalist, Gothic, and Monumental works surveyed across 126 CE–PRESENT.',
-    type: 'website',
-    images: [{ url: '/brand/og-image.svg', width: 1200, height: 630, alt: 'MONOLITH Archive' }],
-  },
 };
 
 export const viewport: Viewport = {
@@ -72,16 +62,7 @@ export default function RootLayout({
     >
       <body>
         <ArchClipDefs />
-        <a href="#main-content" className="skip-link">
-          SKIP TO ARCHIVAL CONTENT
-        </a>
-        <MotionProvider>
-          <SiteHeader plateCount={BUILDINGS.length} />
-          <main id="main-content" tabIndex={-1}>
-            {children}
-          </main>
-          <SiteFooter />
-        </MotionProvider>
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

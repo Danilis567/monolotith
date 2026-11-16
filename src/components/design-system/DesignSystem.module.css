@@ -1,0 +1,442 @@
+/* ==========================================================================
+   MONOLITH — Figma-Canvas Design System Shell (Void-First Editorial)
+   Zero border-radius, zero box-shadow, zero backdrop-filter.
+   ========================================================================== */
+
+.canvasRoot {
+  position: relative;
+  min-block-size: 100dvh;
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  overflow-x: clip;
+}
+
+/* --------------------------------------------------------------------------
+   12-Column Translucent Hairline Grid Overlay
+   -------------------------------------------------------------------------- */
+.gridOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  padding-inline: 1.25rem;
+}
+
+.gridOverlayInner {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 1rem;
+  block-size: 100%;
+  max-inline-size: 1680px;
+  margin-inline: auto;
+}
+
+.gridOverlayCol {
+  block-size: 100%;
+  border-inline: 1px solid rgba(244, 93, 77, 0.22);
+  background-color: rgba(244, 93, 77, 0.04);
+}
+
+.gridOverlayColTablet,
+.gridOverlayColDesktop {
+  display: none;
+}
+
+@media (width >= 768px) {
+  .gridOverlayInner {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    column-gap: 1.25rem;
+  }
+
+  .gridOverlayColTablet {
+    display: block;
+  }
+}
+
+@media (width >= 1024px) {
+  .gridOverlay {
+    padding-inline: 2rem;
+  }
+
+  .gridOverlayInner {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 1.5rem;
+  }
+
+  .gridOverlayColDesktop {
+    display: block;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Top Sticky Canvas Bar
+   -------------------------------------------------------------------------- */
+.canvasBar {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  padding: 0.625rem 1.25rem;
+  background-color: var(--surface-canvas);
+  border-block-end: 1px solid var(--border-structural);
+}
+
+@media (width >= 1024px) {
+  .canvasBar {
+    padding-inline: 2rem;
+  }
+}
+
+.barBrand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  min-block-size: 44px;
+}
+
+.barTitle {
+  color: var(--ink-primary);
+}
+
+.volBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.625rem;
+  border: 1px solid var(--border-hairline);
+  color: var(--ink-secondary);
+}
+
+.barControls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  min-inline-size: 0;
+}
+
+.surfaceGroup {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 1px solid var(--border-hairline);
+}
+
+.surfaceBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  padding: 0 0.75rem;
+  border: 0;
+  border-inline-end: 1px solid var(--border-hairline);
+  background-color: transparent;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition:
+    background-color 140ms cubic-bezier(0.2, 0, 0, 1),
+    color 140ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.surfaceBtn:last-child {
+  border-inline-end: 0;
+}
+
+.surfaceBtn:hover:not([aria-pressed='true']) {
+  background-color: var(--surface-elevated);
+  color: var(--ink-primary);
+}
+
+.surfaceBtn[aria-pressed='true'] {
+  background-color: var(--ink-primary);
+  color: var(--surface-canvas);
+  border-block-end: 3px solid var(--signal-ink);
+}
+
+.gridToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  padding: 0 0.875rem;
+  border: 1px solid var(--border-hairline);
+  background-color: transparent;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition:
+    background-color 140ms cubic-bezier(0.2, 0, 0, 1),
+    color 140ms cubic-bezier(0.2, 0, 0, 1),
+    border-color 140ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.gridToggle:hover {
+  border-color: var(--ink-primary);
+  color: var(--ink-primary);
+}
+
+.gridToggle[aria-pressed='true'] {
+  border-color: var(--signal-ink);
+  color: var(--ink-primary);
+  background-color: var(--surface-elevated);
+}
+
+.copyStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-block-size: 44px;
+  padding: 0 0.75rem;
+  border: 1px solid var(--border-hairline);
+  color: var(--ink-secondary);
+  max-inline-size: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.copyStatusActive {
+  border-color: var(--signal-ink);
+  color: var(--ink-primary);
+  background-color: var(--surface-elevated);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surfaceBtn,
+  .gridToggle {
+    transition: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Workspace Layout (Left Sticky ToC Rail + Canvas Frames)
+   -------------------------------------------------------------------------- */
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 1.25rem;
+  max-inline-size: 1680px;
+  margin-inline: auto;
+}
+
+@media (width >= 1024px) {
+  .workspace {
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    align-items: start;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Table of Contents Rail (Local Anchor Navigation Only)
+   -------------------------------------------------------------------------- */
+.tocRail {
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+  min-inline-size: 0;
+}
+
+@media (width >= 1024px) {
+  .tocRail {
+    position: sticky;
+    inset-block-start: 5.5rem;
+  }
+}
+
+.tocHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.875rem;
+  border-block-end: 1px solid var(--border-structural);
+  color: var(--ink-secondary);
+}
+
+.tocList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (width >= 1024px) {
+  .tocList {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+}
+
+.tocItem {
+  flex: 1 1 140px;
+  border-inline-end: 1px solid var(--border-hairline);
+  border-block-end: 1px solid var(--border-hairline);
+}
+
+@media (width >= 1024px) {
+  .tocItem {
+    flex: none;
+    border-inline-end: 0;
+  }
+
+  .tocItem:last-child {
+    border-block-end: 0;
+  }
+}
+
+.tocLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-block-size: 44px;
+  padding: 0.625rem 0.875rem;
+  color: var(--ink-secondary);
+  transition:
+    background-color 140ms cubic-bezier(0.2, 0, 0, 1),
+    color 140ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.tocLink:hover {
+  background-color: var(--surface-elevated);
+  color: var(--ink-primary);
+}
+
+.tocLink[aria-current='location'] {
+  background-color: var(--surface-elevated);
+  color: var(--ink-primary);
+  border-inline-start: 3px solid var(--signal-ink);
+}
+
+.tocMeta {
+  padding: 0.75rem 0.875rem;
+  border-block-start: 1px solid var(--border-hairline);
+  color: var(--ink-secondary);
+  display: none;
+}
+
+@media (width >= 1024px) {
+  .tocMeta {
+    display: block;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Canvas Frames (Cover + 4 Section Frames)
+   -------------------------------------------------------------------------- */
+.canvasColumn {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.25rem;
+  min-inline-size: 0;
+}
+
+.canvasFrame {
+  position: relative;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+  padding: 1.5rem 1.25rem;
+  scroll-margin-top: 6rem;
+  min-inline-size: 0;
+}
+
+@media (width >= 768px) {
+  .canvasFrame {
+    padding: 2.25rem;
+  }
+}
+
+.crosshairTL,
+.crosshairTR,
+.crosshairBL,
+.crosshairBR {
+  position: absolute;
+  color: var(--border-structural);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.crosshairTL {
+  inset-block-start: -6.5px;
+  inset-inline-start: -6.5px;
+}
+
+.crosshairTR {
+  inset-block-start: -6.5px;
+  inset-inline-end: -6.5px;
+}
+
+.crosshairBL {
+  inset-block-end: -6.5px;
+  inset-inline-start: -6.5px;
+}
+
+.crosshairBR {
+  inset-block-end: -6.5px;
+  inset-inline-end: -6.5px;
+}
+
+.frameHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding-block-end: 1rem;
+  margin-block-end: 1.75rem;
+  border-block-end: 1px solid var(--border-hairline);
+}
+
+.frameLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink-primary);
+}
+
+.frameSurfaceTag {
+  color: var(--ink-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Cover Frame (FRAME 00 // COVER)
+   -------------------------------------------------------------------------- */
+.coverTitle {
+  margin-block: 0.5rem 1.5rem;
+  color: var(--ink-primary);
+}
+
+.coverLedger {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  border-block-start: 1px solid var(--border-hairline);
+  border-inline-start: 1px solid var(--border-hairline);
+  margin-block-end: 1.75rem;
+}
+
+.ledgerCell {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.875rem 1rem;
+  border-inline-end: 1px solid var(--border-hairline);
+  border-block-end: 1px solid var(--border-hairline);
+}
+
+.ledgerKey {
+  color: var(--ink-secondary);
+}
+
+.ledgerVal {
+  color: var(--ink-primary);
+}
+
+.coverNote {
+  color: var(--ink-secondary);
+  max-inline-size: 66ch;
+}

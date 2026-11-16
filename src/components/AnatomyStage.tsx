@@ -11,7 +11,7 @@ import {
 import type { AnatomyCallout, AnatomyDimensionRow } from '@/data/anatomyPlates';
 import { CornerCrosshair } from './DraftingMarks';
 import styles from './AnatomyStage.module.css';
-import '@/app/anatomy/anatomyLayers.css';
+import '@/app/(site)/anatomy/anatomyLayers.css';
 
 export interface AnatomyStageProps {
   svgMarkup: string;
