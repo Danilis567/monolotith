@@ -447,8 +447,10 @@ ol {
 .specimen-stream-viewport {
   overflow-x: auto;
   scrollbar-width: thin;
-  margin-inline: var(--grid-margin);
-  border: 1px solid var(--border-hairline);
+  inline-size: 100%;
+  margin-inline: 0;
+  border-block: 1px solid var(--border-hairline);
+  border-inline: 0;
 }
 
 .specimen-stream-track {

@@ -473,6 +473,7 @@
 .streamBand {
   padding-block: 4rem 4.5rem;
   border-bottom: 1px solid var(--border-hairline);
+  overflow-x: clip;
 }
 
 .streamHeader {

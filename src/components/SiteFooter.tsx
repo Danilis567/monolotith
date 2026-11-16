@@ -4,6 +4,25 @@ import Link from 'next/link';
 import { ScaleRuler } from './DraftingMarks';
 import styles from './SiteFooter.module.css';
 
+const COLOPHON_SPECS = [
+  { label: 'DATUM', value: 'WGS84 / METRIC' },
+  { label: 'COLLECTION', value: '27 CATALOGED WORKS' },
+  { label: 'PLATES', value: 'WIKIMEDIA CC0 / CC-BY-SA' },
+  { label: 'SECTIONS', value: 'ORIGINAL VECTOR (REV. IV)' },
+] as const;
+
+const SECTION_LINKS = [
+  { href: '/', label: 'HOME' },
+  { href: '/archive', label: 'ARCHIVE' },
+  { href: '/anatomy', label: 'ANATOMY' },
+] as const;
+
+const DISCIPLINE_LINKS = [
+  { href: '/archive?movement=Brutalist', label: 'BRUTALIST · 1947–1980' },
+  { href: '/archive?movement=Gothic', label: 'GOTHIC · 1163–1965' },
+  { href: '/archive?movement=Monumental', label: 'MONUMENTAL · 126 CE–PRESENT' },
+] as const;
+
 export function SiteFooter() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0 });
@@ -12,107 +31,88 @@ export function SiteFooter() {
   return (
     <footer className={styles.footer} data-surface="dark">
       <div className={styles.container}>
-        <div className={styles.wordmarkBand}>
-          <img
-            src="/brand/footer-lockup.svg"
-            alt="MONOLITH — Archive of Load-Bearing Stone and Raw Concrete"
-            width={1240}
-            height={316}
-            className={styles.desktopWordmark}
-          />
-          <img
-            src="/brand/monolith-wordmark-dark.svg"
-            alt="MONOLITH"
-            width={264}
-            height={64}
-            className={styles.mobileWordmark}
-          />
+        <div className={styles.upperBand}>
+          <div className={styles.manifestoCol}>
+            <div className={styles.brandRow}>
+              <img
+                src="/brand/monolith-wordmark-dark.svg"
+                alt="MONOLITH"
+                width={220}
+                height={53}
+                className={styles.wordmark}
+              />
+              <p className={`${styles.overline} type-colophon`}>
+                <span className="signal-dot" aria-hidden="true" />
+                <span>ARCHITECTURAL MONOGRAPH · VOL. IV</span>
+              </p>
+            </div>
+            <p className={styles.statement}>
+              ARCHIVE OF LOAD-BEARING STONE &amp; RAW CONCRETE · 126 CE–PRESENT
+            </p>
+          </div>
+
+          <aside className={styles.colophonCard} aria-label="Technical Colophon">
+            <dl className={styles.colophonGrid}>
+              {COLOPHON_SPECS.map((spec) => (
+                <div key={spec.label} className={styles.specItem}>
+                  <dt className={`${styles.specLabel} type-colophon`}>{spec.label}</dt>
+                  <dd className={`${styles.specValue} type-colophon`}>{spec.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
         </div>
 
-        <div className={styles.ledger}>
-          <div className={styles.cell}>
-            <h2 className={`${styles.cellHeading} type-colophon`}>
-              <span className="signal-dot" aria-hidden="true" />
-              <span>COLLECTION</span>
-            </h2>
-            <ul className={`${styles.cellList} type-colophon`}>
-              <li>
-                <Link href="/" className={styles.cellLink}>
-                  HOME — EDITORIAL COVER
-                </Link>
-              </li>
-              <li>
-                <Link href="/archive" className={styles.cellLink}>
-                  ARCHIVE — CATALOG MATRIX
-                </Link>
-              </li>
-              <li>
-                <Link href="/anatomy" className={styles.cellLink}>
-                  ANATOMY — SECTION WORKBENCH
-                </Link>
-              </li>
+        <nav className={styles.directoryGrid} aria-label="Footer Directory">
+          <div className={styles.directoryCol}>
+            <h2 className={`${styles.colHeading} type-ui-label`}>SECTIONS</h2>
+            <ul className={styles.linkList}>
+              {SECTION_LINKS.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className={`${styles.navLink} type-colophon`}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div className={styles.cell}>
-            <h2 className={`${styles.cellHeading} type-colophon`}>TAXONOMY</h2>
-            <ul className={`${styles.cellList} type-colophon`}>
-              <li>
-                <Link href="/archive?movement=Brutalist" className={styles.cellLink}>
-                  BRUTALIST · STRUCTURES (1947–1980)
-                </Link>
-              </li>
-              <li>
-                <Link href="/archive?movement=Gothic" className={styles.cellLink}>
-                  GOTHIC · STRUCTURES (1163–1965)
-                </Link>
-              </li>
-              <li>
-                <Link href="/archive?movement=Monumental" className={styles.cellLink}>
-                  MONUMENTAL · STRUCTURES (126–PRESENT)
-                </Link>
-              </li>
+          <div className={styles.directoryCol}>
+            <h2 className={`${styles.colHeading} type-ui-label`}>DISCIPLINES</h2>
+            <ul className={styles.linkList}>
+              {DISCIPLINE_LINKS.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className={`${styles.navLink} type-colophon`}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div className={styles.cell}>
-            <h2 className={`${styles.cellHeading} type-colophon`}>
-              CREDITS &amp; METHODOLOGY
-            </h2>
-            <div className={`${styles.cellList} type-colophon`}>
-              <p>ALL COORDINATES SURVEYED VIA WGS84.</p>
-              <p>PHOTOGRAPHIC PLATES: WIKIMEDIA COMMONS CC0 / CC-BY-SA ARCHIVE.</p>
-              <p>TECHNICAL SECTIONS: ORIGINAL VECTOR PLATES (REV. IV).</p>
+          <div className={styles.directoryCol}>
+            <h2 className={`${styles.colHeading} type-ui-label`}>SCOPE &amp; ACTION</h2>
+            <div className={styles.scopeAction}>
+              <p className={`${styles.scopeText} type-colophon`}>
+                EUROPE · ASIA · AMERICAS · MIDDLE EAST
+              </p>
+              <button
+                type="button"
+                onClick={scrollToTop}
+                className={`${styles.topButton} type-ui-label`}
+              >
+                <span>TOP OF FOLIO</span>
+                <span aria-hidden="true">↑</span>
+              </button>
             </div>
           </div>
+        </nav>
 
-          <div className={styles.cell}>
-            <h2 className={`${styles.cellHeading} type-colophon`}>
-              DOCUMENTS &amp; SCOPE
-            </h2>
-            <div className={`${styles.cellList} type-colophon`}>
-              <p>ARCHIVE VOL. IV · 27 CATALOGED SPECIMENS.</p>
-              <p>CONTINENTS: EUROPE, ASIA, AMERICAS, MIDDLE EAST.</p>
-              <p>MONOLITH EDITORIAL MONOGRAPH SERIES.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.rulerBand}>
+        <div className={styles.baselineBand}>
           <ScaleRuler unitLabel="SURVEY METRIC DATUM · 00 TO 120 METERS" />
-          <div className={`${styles.bottomMeta} type-colophon`}>
-            <span>
-              MONOLITH — ARCHIVE OF LOAD-BEARING STONE AND RAW CONCRETE · 126 CE–PRESENT
-            </span>
-            <button
-              type="button"
-              onClick={scrollToTop}
-              className={`${styles.topButton} type-ui-label`}
-            >
-              <span>TOP OF FOLIO</span>
-              <span aria-hidden="true">↑</span>
-            </button>
-          </div>
+          <p className={`${styles.legalLine} type-colophon`}>
+            MONOLITH — ARCHIVE VOL. IV · MMXXVI
+          </p>
         </div>
       </div>
     </footer>
