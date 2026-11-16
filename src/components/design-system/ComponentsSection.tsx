@@ -40,25 +40,7 @@ import type {
 } from '@/design-system/tokens';
 import styles from './ComponentsSection.module.css';
 
-type PreviewState =
-  | 'default'
-  | 'hover'
-  | 'focus-visible'
-  | 'pressed'
-  | 'disabled'
-  | 'error';
-
-const PREVIEW_STATES: ReadonlyArray<{ id: PreviewState; label: string }> = [
-  { id: 'default', label: 'DEFAULT' },
-  { id: 'hover', label: 'HOVER' },
-  { id: 'focus-visible', label: 'FOCUS' },
-  { id: 'pressed', label: 'PRESSED' },
-  { id: 'disabled', label: 'DISABLED' },
-  { id: 'error', label: 'ERROR' },
-];
-
-const CATEGORIES: ReadonlyArray<'ALL' | ComponentCategory> = [
-  'ALL',
+const CATEGORY_ORDER: ReadonlyArray<ComponentCategory> = [
   'Navigation & Chrome',
   'Drafting & Marks',
   'Editorial & Typography',
@@ -173,34 +155,14 @@ function IsolatedSpecimen({
   );
 }
 
-function resolveTokenSwatch(
-  tokenName: string,
-  tokens: DesignSystemTokensPayload,
-  surface: SurfaceIslandId
-): string | null {
-  const surfaceEntry = tokens.surfaces[surface]?.tokens[tokenName];
-  if (surfaceEntry?.resolvedValue?.startsWith('#')) {
-    return surfaceEntry.resolvedValue;
-  }
-  const defaultEntry = tokens.semanticDefaults[tokenName];
-  if (defaultEntry?.resolvedValue?.startsWith('#')) {
-    return defaultEntry.resolvedValue;
-  }
-  return null;
-}
-
 export function ComponentsSection({
   registry,
-  tokens,
   previewSurface,
 }: {
   registry: DesignSystemComponentEntry[];
   tokens: DesignSystemTokensPayload;
   previewSurface: SurfaceIslandId;
 }) {
-  const [selectedCategory, setSelectedCategory] = useState<'ALL' | ComponentCategory>('ALL');
-  const [stateByCard, setStateByCard] = useState<Record<string, PreviewState>>({});
-
   // Interactive AnatomyStage specimen state
   const [stageStructure, setStageStructure] = useState(true);
   const [stageAxis, setStageAxis] = useState(true);
@@ -210,7 +172,6 @@ export function ComponentsSection({
   const [stageFullscreen, setStageFullscreen] = useState(false);
 
   // Interactive UI Primitives state
-  const [buttonState, setButtonState] = useState<PreviewState>('default');
   const [viewMode, setViewMode] = useState<'plate' | 'index'>('plate');
   const [anatomyTab, setAnatomyTab] = useState<'ALL' | 'Brutalist' | 'Gothic' | 'Monumental'>('ALL');
   const [layerToggles, setLayerToggles] = useState({
@@ -218,43 +179,22 @@ export function ComponentsSection({
     axis: true,
     dimensions: true,
   });
-  const [searchSample, setSearchSample] = useState('');
-  const [movementSample, setMovementSample] = useState('ALL');
-  const [inputState, setInputState] = useState<'default' | 'focus-visible' | 'disabled' | 'error'>(
-    'default'
-  );
-
-  const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = { ALL: registry.length };
-    for (const entry of registry) {
-      counts[entry.category] = (counts[entry.category] ?? 0) + 1;
-    }
-    return counts;
-  }, [registry]);
-
-  const filteredRegistry = useMemo(() => {
-    if (selectedCategory === 'ALL') return registry;
-    return registry.filter((entry) => entry.category === selectedCategory);
-  }, [registry, selectedCategory]);
-
-  const getCardState = (id: string): PreviewState => stateByCard[id] ?? 'default';
-
-  const setCardState = (id: string, next: PreviewState) => {
-    setStateByCard((prev) => ({ ...prev, [id]: next }));
-  };
 
   const sampleBuilding = BUILDINGS[0];
   const gothicBuilding = BUILDINGS.find((b) => b.movement === 'Gothic') ?? BUILDINGS[0];
   const primaryPlate = ANATOMY_PLATES[0];
 
+  const groupedRegistry = useMemo(() => {
+    return CATEGORY_ORDER.map((category) => ({
+      category,
+      items: registry.filter((entry) => entry.category === category),
+    })).filter((group) => group.items.length > 0);
+  }, [registry]);
+
   const renderDualSurfaceSpecimen = (
     entry: DesignSystemComponentEntry,
-    surface: 'void' | 'plaster',
-    activeState: PreviewState
+    surface: 'void' | 'plaster'
   ) => {
-    const stateAttr =
-      activeState === 'hover' || activeState === 'focus-visible' ? activeState : undefined;
-
     switch (entry.id) {
       case 'site-header':
         return (
@@ -322,11 +262,11 @@ export function ComponentsSection({
           <p className="type-body" style={{ margin: 0 }}>
             Monolithic{' '}
             <Gloss term="BÉTON BRUT">
-              <span data-state-preview={stateAttr}>béton brut</span>
+              <span>béton brut</span>
             </Gloss>{' '}
             with{' '}
             <Gloss term="FLYING BUTTRESS">
-              <span data-state-preview={stateAttr}>flying buttress</span>
+              <span data-state-preview="hover">flying buttress</span>
             </Gloss>{' '}
             load paths.
           </p>
@@ -492,277 +432,156 @@ export function ComponentsSection({
   return (
     <div className={styles.root} data-surface={previewSurface}>
       {/* -------------------------------------------------------------------
-          Category Filter Bar & Quick Count
-         ------------------------------------------------------------------- */}
-      <div className={styles.filterHeader}>
-        <div className={styles.filterGroup} role="group" aria-label="Component category filter">
-          {CATEGORIES.map((category) => (
-            <button
-              key={category}
-              type="button"
-              className={styles.filterBtn}
-              aria-pressed={selectedCategory === category}
-              onClick={() => setSelectedCategory(category)}
-            >
-              <span>{category}</span>
-              <span className={`tabular-nums ${styles.filterCount}`}>
-                ({categoryCounts[category] ?? 0})
-              </span>
-            </button>
-          ))}
-        </div>
-
-        <span className={`type-colophon tabular-nums ${styles.summaryMeta}`}>
-          SHOWING {filteredRegistry.length} OF {registry.length} COMPONENTS // ACTIVE SURFACE:{' '}
-          {previewSurface.toUpperCase()}
-        </span>
-      </div>
-
-      {/* -------------------------------------------------------------------
-          Registered Component Specimens (registry.map)
+          Sequential Component Specifications (Designer Sheet)
          ------------------------------------------------------------------- */}
       <div className={styles.registryList}>
-        {filteredRegistry.map((entry) => {
-          const activeState = getCardState(entry.id);
-          const isWideSingle =
-            entry.id === 'specimen-stream' ||
-            entry.id === 'anatomy-stage' ||
-            entry.id === 'home-client' ||
-            entry.id === 'archive-client' ||
-            entry.id === 'anatomy-client';
+        {groupedRegistry.map((group, groupIndex) => (
+          <section
+            key={group.category}
+            aria-labelledby={`cat-${groupIndex}`}
+            className={styles.categoryGroup}
+          >
+            <header className={styles.categoryHeader}>
+              <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
+                {`0${groupIndex + 1} // SECTION`}
+              </span>
+              <h3 id={`cat-${groupIndex}`} className="type-subhead">
+                {group.category.toUpperCase()}
+              </h3>
+            </header>
 
-          return (
-            <article key={entry.id} className={styles.card} aria-labelledby={`comp-${entry.id}`}>
-              <header className={styles.cardHeader}>
-                <div className={styles.cardTitleBlock}>
-                  <span className={`type-colophon ${styles.cardCategory}`}>
-                    <span className="signal-dot" aria-hidden="true" />
-                    {entry.category}
-                  </span>
-                  <h3 id={`comp-${entry.id}`} className={`type-subhead ${styles.cardTitle}`}>
-                    {entry.name}
-                  </h3>
-                  <p className={`type-body ${styles.cardDesc}`}>{entry.description}</p>
-                </div>
-                <code className={styles.sourcePath}>{entry.sourcePath}</code>
-              </header>
+            <div className={styles.categoryItems}>
+              {group.items.map((entry) => {
+                const isWideSingle =
+                  entry.id === 'specimen-stream' ||
+                  entry.id === 'anatomy-stage' ||
+                  entry.id === 'home-client' ||
+                  entry.id === 'archive-client' ||
+                  entry.id === 'anatomy-client';
 
-              {/* State Matrix Controls */}
-              <div className={styles.stateBar}>
-                <span className={`type-colophon ${styles.stateLabel}`}>
-                  STATE MATRIX // {entry.states.join(' · ').toUpperCase()}
-                </span>
-                <div className={styles.stateGroup} role="group" aria-label={`${entry.name} state`}>
-                  {PREVIEW_STATES.map((st) => (
-                    <button
-                      key={st.id}
-                      type="button"
-                      className={styles.stateBtn}
-                      aria-pressed={activeState === st.id}
-                      onClick={() => setCardState(entry.id, st.id)}
-                    >
-                      {st.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Dual-Surface Live Preview or Framed Full-Width Specimen */}
-              {isWideSingle ? (
-                <div className={styles.dualSurfaceSingle}>
-                  <div className={styles.surfacePane} data-surface={previewSurface}>
-                    <div className={styles.surfacePaneBar}>
-                      <span className="type-colophon">
-                        LIVE SPECIMEN // SURFACE: {previewSurface.toUpperCase()}
-                      </span>
-                      <span className="type-colophon">STATE: {activeState.toUpperCase()}</span>
-                    </div>
-                    <div className={styles.surfacePaneBody}>{renderSingleWideSpecimen(entry)}</div>
-                  </div>
-                </div>
-              ) : (
-                <div className={styles.dualSurface}>
-                  {(['void', 'plaster'] as const).map((surface) => (
-                    <div key={surface} className={styles.surfacePane} data-surface={surface}>
-                      <div className={styles.surfacePaneBar}>
-                        <span className="type-colophon">SURFACE: {surface.toUpperCase()}</span>
-                        <span className="type-colophon">STATE: {activeState.toUpperCase()}</span>
+                return (
+                  <article key={entry.id} className={styles.card} aria-labelledby={`comp-${entry.id}`}>
+                    <header className={styles.cardHeader}>
+                      <div className={styles.cardTitleBlock}>
+                        <span className={`type-colophon ${styles.cardCategory}`}>
+                          <span className="signal-dot" aria-hidden="true" />
+                          {entry.category}
+                        </span>
+                        <h4 id={`comp-${entry.id}`} className={`type-subhead ${styles.cardTitle}`}>
+                          {entry.name}
+                        </h4>
+                        <p className={`type-body ${styles.cardDesc}`}>{entry.description}</p>
                       </div>
-                      <div className={styles.surfacePaneBody}>
-                        {renderDualSurfaceSpecimen(entry, surface, activeState)}
+                      <p className={styles.cardUsageNote}>{entry.usageNote}</p>
+                    </header>
+
+                    {/* Dual-Surface Live Preview or Framed Full-Width Specimen */}
+                    {isWideSingle ? (
+                      <div className={styles.dualSurfaceSingle}>
+                        <div className={styles.surfacePane} data-surface={previewSurface}>
+                          <div className={styles.surfacePaneBar}>
+                            <span className="type-colophon">
+                              SPECIMEN // SURFACE: {previewSurface.toUpperCase()}
+                            </span>
+                          </div>
+                          <div className={styles.surfacePaneBody}>
+                            {renderSingleWideSpecimen(entry)}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Metadata: Usage, Accessibility, Consumed Tokens */}
-              <div className={styles.metaGrid}>
-                <div className={styles.metaBox}>
-                  <h4 className={`type-colophon ${styles.metaHeading}`}>USAGE &amp; ACCESSIBILITY</h4>
-                  <p className={styles.metaText}>{entry.usageNote}</p>
-                  <p className={styles.metaText} style={{ color: 'var(--ink-secondary)' }}>
-                    <strong>A11Y:</strong> {entry.a11yNote}
-                  </p>
-                </div>
-
-                <div className={styles.metaBox}>
-                  <h4 className={`type-colophon ${styles.metaHeading}`}>
-                    CONSUMED CSS TOKENS ({entry.tokens.length})
-                  </h4>
-                  {entry.tokens.length > 0 ? (
-                    <div className={styles.tokenRow}>
-                      {entry.tokens.map((tok) => {
-                        const hex = resolveTokenSwatch(tok, tokens, previewSurface);
-                        return (
-                          <span key={tok} className={styles.tokenChip}>
-                            {hex && (
-                              <span
-                                className={styles.tokenSwatch}
-                                style={{ backgroundColor: hex }}
-                                aria-hidden="true"
-                              />
-                            )}
-                            <span>{tok}</span>
-                          </span>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    <p className={styles.metaText} style={{ color: 'var(--ink-secondary)' }}>
-                      Headless utility — consumes zero visual CSS tokens.
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              {/* TypeScript Props Table */}
-              {entry.props.length > 0 && (
-                <div className={styles.tableWrap}>
-                  <table className={styles.propsTable}>
-                    <thead>
-                      <tr>
-                        <th scope="col">Prop</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Required</th>
-                        <th scope="col">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {entry.props.map((prop) => (
-                        <tr key={prop.name}>
-                          <td>
-                            <code className={styles.codeMono}>{prop.name}</code>
-                          </td>
-                          <td>
-                            <code className={styles.codeMono}>{prop.type}</code>
-                          </td>
-                          <td className="type-colophon">{prop.required ? 'REQUIRED' : 'OPTIONAL'}</td>
-                          <td>{prop.description}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-
-              {/* Do / Don't Snippets */}
-              <div className={styles.doDontGrid}>
-                <div className={styles.doBox}>
-                  <span className="type-colophon">DO</span>
-                  <code className={styles.codeMono}>{entry.doExample}</code>
-                </div>
-                <div className={styles.dontBox}>
-                  <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                    DON&apos;T
-                  </span>
-                  <span className={styles.metaText}>{entry.dontExample}</span>
-                </div>
-              </div>
-            </article>
-          );
-        })}
+                    ) : (
+                      <div className={styles.dualSurface}>
+                        {(['void', 'plaster'] as const).map((surface) => (
+                          <div key={surface} className={styles.surfacePane} data-surface={surface}>
+                            <div className={styles.surfacePaneBar}>
+                              <span className="type-colophon">SURFACE: {surface.toUpperCase()}</span>
+                            </div>
+                            <div className={styles.surfacePaneBody}>
+                              {renderDualSurfaceSpecimen(entry, surface)}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+        ))}
       </div>
 
       {/* -------------------------------------------------------------------
-          §4 UI Primitives & Architectural Specimens Matrix
+          UI Primitives & Architectural Specimens (Static All-States Matrix)
          ------------------------------------------------------------------- */}
       <section aria-labelledby="primitives-heading" className={styles.primitivesSection}>
         <div className={styles.primitivesHeader}>
           <h3 id="primitives-heading" className="type-subhead">
-            UI PRIMITIVES &amp; ARCHITECTURAL SPECIMENS (§4)
+            UI PRIMITIVES &amp; INTERACTION STATES
           </h3>
           <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-            DUAL-SURFACE STATE COVERAGE
+            ALL STATES SHOWN SIDE-BY-SIDE
           </span>
         </div>
 
         <div className={styles.primitivesGrid}>
-          {/* 1. Buttons (Primary / Secondary / Inverse) */}
+          {/* 1. Buttons (Primary / Secondary across all states) */}
           <div className={`${styles.primitiveCard} ${styles.primitiveCardWide}`}>
             <div className={styles.cardHeader}>
-              <h4 className="type-colophon">01 // BUTTONS (.btn-monolith &amp; --primary)</h4>
-              <div className={styles.stateGroup} role="group" aria-label="Button state preview">
-                {PREVIEW_STATES.map((st) => (
-                  <button
-                    key={st.id}
-                    type="button"
-                    className={styles.stateBtn}
-                    aria-pressed={buttonState === st.id}
-                    onClick={() => setButtonState(st.id)}
-                  >
-                    {st.label}
-                  </button>
-                ))}
-              </div>
+              <h4 className="type-colophon">01 // BUTTONS — PRIMARY &amp; SECONDARY STATES</h4>
             </div>
             <div className={styles.dualSurface}>
-              {(['void', 'plaster'] as const).map((surface) => {
-                const stateAttr =
-                  buttonState === 'hover' || buttonState === 'focus-visible'
-                    ? buttonState
-                    : undefined;
-                return (
-                  <div key={surface} className={styles.surfacePane} data-surface={surface}>
-                    <div className={styles.surfacePaneBar}>
-                      <span className="type-colophon">SURFACE: {surface.toUpperCase()}</span>
-                      <span className="type-colophon">STATE: {buttonState.toUpperCase()}</span>
-                    </div>
-                    <div className={styles.surfacePaneBody}>
-                      <div className={styles.specimenRow}>
-                        <button
-                          type="button"
-                          className="btn-monolith btn-monolith--primary"
-                          data-state-preview={stateAttr}
-                          aria-pressed={buttonState === 'pressed' ? true : undefined}
-                          disabled={buttonState === 'disabled'}
-                          style={
-                            buttonState === 'error'
-                              ? { borderColor: 'var(--signal-ink)' }
-                              : undefined
-                          }
-                        >
-                          PRIMARY ACTION
-                        </button>
-                        <button
-                          type="button"
-                          className="btn-monolith"
-                          data-state-preview={stateAttr}
-                          aria-pressed={buttonState === 'pressed' ? true : undefined}
-                          disabled={buttonState === 'disabled'}
-                          style={
-                            buttonState === 'error'
-                              ? { borderColor: 'var(--signal-ink)', color: 'var(--signal-ink)' }
-                              : undefined
-                          }
-                        >
-                          SECONDARY
-                        </button>
-                      </div>
+              {(['void', 'plaster'] as const).map((surface) => (
+                <div key={surface} className={styles.surfacePane} data-surface={surface}>
+                  <div className={styles.surfacePaneBar}>
+                    <span className="type-colophon">SURFACE: {surface.toUpperCase()}</span>
+                  </div>
+                  <div className={styles.surfacePaneBody}>
+                    <div className={styles.stateMatrixGrid}>
+                      {(
+                        [
+                          { label: 'DEFAULT', attr: undefined, pressed: undefined, disabled: false },
+                          { label: 'HOVER', attr: 'hover', pressed: undefined, disabled: false },
+                          {
+                            label: 'FOCUS',
+                            attr: 'focus-visible',
+                            pressed: undefined,
+                            disabled: false,
+                          },
+                          { label: 'PRESSED', attr: undefined, pressed: true, disabled: false },
+                          { label: 'DISABLED', attr: undefined, pressed: undefined, disabled: true },
+                        ] as const
+                      ).map((st) => (
+                        <div key={st.label} className={styles.stateMatrixCell}>
+                          <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
+                            {st.label}
+                          </span>
+                          <div className={styles.specimenRow}>
+                            <button
+                              type="button"
+                              className="btn-monolith btn-monolith--primary"
+                              data-state-preview={st.attr}
+                              aria-pressed={st.pressed}
+                              disabled={st.disabled}
+                            >
+                              PRIMARY
+                            </button>
+                            <button
+                              type="button"
+                              className="btn-monolith"
+                              data-state-preview={st.attr}
+                              aria-pressed={st.pressed}
+                              disabled={st.disabled}
+                            >
+                              SECONDARY
+                            </button>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                );
-              })}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -811,42 +630,50 @@ export function ComponentsSection({
             </p>
           </div>
 
-          {/* 3. Filter Selects & Search Input */}
+          {/* 3. Filter Selects & Search Input (All States) */}
           <div className={styles.primitiveCard}>
             <div className={styles.cardHeader}>
-              <h4 className="type-colophon">03 // FILTER SELECTS &amp; SEARCH INPUT</h4>
-              <div className={styles.stateGroup} role="group" aria-label="Input state">
-                {(['default', 'focus-visible', 'disabled', 'error'] as const).map((st) => (
-                  <button
-                    key={st}
-                    type="button"
-                    className={styles.stateBtn}
-                    aria-pressed={inputState === st}
-                    onClick={() => setInputState(st)}
-                  >
-                    {st.toUpperCase()}
-                  </button>
-                ))}
-              </div>
+              <h4 className="type-colophon">03 // FILTER SELECTS &amp; SEARCH INPUT STATES</h4>
             </div>
             <div className={styles.fieldStack}>
-              <label htmlFor="ds-search-sample" className={`type-colophon ${styles.fieldLabel}`}>
-                SEARCH CATALOG
+              <label htmlFor="ds-search-default" className={`type-colophon ${styles.fieldLabel}`}>
+                SEARCH CATALOG — DEFAULT
               </label>
               <input
-                id="ds-search-sample"
+                id="ds-search-default"
                 type="search"
+                readOnly
                 className={styles.inputControl}
-                value={searchSample}
-                onChange={(e) => setSearchSample(e.target.value)}
+                value="TRELLICK"
                 placeholder="TRELLICK, CHARTRES, CONCRETE..."
-                data-state-preview={inputState === 'focus-visible' ? 'focus-visible' : undefined}
-                disabled={inputState === 'disabled'}
-                aria-invalid={inputState === 'error' ? true : undefined}
               />
-              {inputState === 'error' && (
-                <span className={styles.fieldError}>ERR // QUERY SYNTAX UNRECOGNIZED</span>
-              )}
+            </div>
+            <div className={styles.fieldStack}>
+              <label htmlFor="ds-search-focus" className={`type-colophon ${styles.fieldLabel}`}>
+                SEARCH CATALOG — FOCUS
+              </label>
+              <input
+                id="ds-search-focus"
+                type="search"
+                readOnly
+                className={styles.inputControl}
+                value="BRUTALIST"
+                data-state-preview="focus-visible"
+              />
+            </div>
+            <div className={styles.fieldStack}>
+              <label htmlFor="ds-search-error" className={`type-colophon ${styles.fieldLabel}`}>
+                SEARCH CATALOG — ERROR &amp; DISABLED
+              </label>
+              <input
+                id="ds-search-error"
+                type="search"
+                readOnly
+                className={styles.inputControl}
+                value="UNKNOWN_QUERY"
+                aria-invalid="true"
+              />
+              <span className={styles.fieldError}>ERR // QUERY SYNTAX UNRECOGNIZED</span>
             </div>
             <div className={styles.fieldStack}>
               <label htmlFor="ds-select-sample" className={`type-colophon ${styles.fieldLabel}`}>
@@ -855,11 +682,7 @@ export function ComponentsSection({
               <select
                 id="ds-select-sample"
                 className={styles.selectControl}
-                value={movementSample}
-                onChange={(e) => setMovementSample(e.target.value)}
-                data-state-preview={inputState === 'focus-visible' ? 'focus-visible' : undefined}
-                disabled={inputState === 'disabled'}
-                aria-invalid={inputState === 'error' ? true : undefined}
+                defaultValue="ALL"
               >
                 <option value="ALL">ALL MOVEMENTS (27)</option>
                 <option value="Brutalist">BRUTALIST</option>

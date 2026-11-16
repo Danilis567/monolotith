@@ -359,7 +359,6 @@ const PERMITTED_GLYPHS: GlyphSpec[] = [
 
 export function BrandSection({
   previewSurface,
-  onCopy,
 }: {
   previewSurface: SurfaceIslandId;
   onCopy: (value: string, label?: string) => void;
@@ -442,18 +441,6 @@ export function BrandSection({
                           <dd className={`type-body ${styles.logoSpecVal}`}>{asset.role}</dd>
                         </div>
                       </dl>
-                    </div>
-
-                    <div className={styles.logoFooter}>
-                      <code className={`type-colophon ${styles.logoPath}`}>{asset.src}</code>
-                      <button
-                        type="button"
-                        className={`type-ui-label ${styles.copyBtn}`}
-                        onClick={() => onCopy(asset.src, asset.name)}
-                        aria-label={`Copy path ${asset.src}`}
-                      >
-                        COPY PATH
-                      </button>
                     </div>
                   </article>
                 );
@@ -704,8 +691,8 @@ export function BrandSection({
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Click any canonical format to copy the exact string template. All numeric readouts
-            enforce tabular lining numerals.
+            Canonical archival string templates. All numeric readouts enforce tabular lining
+            numerals.
           </p>
         </div>
 
@@ -717,14 +704,6 @@ export function BrandSection({
               </span>
               <code className={`type-subhead ${styles.formatSample}`}>{fmt.sample}</code>
               <p className={`type-body ${styles.formatRule}`}>{fmt.rule}</p>
-              <button
-                type="button"
-                className={`type-ui-label ${styles.formatCopyBtn}`}
-                onClick={() => onCopy(fmt.sample, fmt.label)}
-                aria-label={`Copy ${fmt.label}: ${fmt.sample}`}
-              >
-                COPY
-              </button>
             </div>
           ))}
         </div>
@@ -757,15 +736,9 @@ export function BrandSection({
                   </span>
                   <span className={`type-colophon ${styles.glyphRole}`}>{item.role}</span>
                 </div>
-                <button
-                  type="button"
-                  className={`type-colophon ${styles.glyphCopyBtn}`}
-                  onClick={() => onCopy(item.glyph, item.code)}
-                  aria-label={`Copy glyph ${item.glyph} (${item.code})`}
-                >
+                <div className={`type-colophon ${styles.glyphCopyBtn}`}>
                   <span>{item.code}</span>
-                  <span>COPY</span>
-                </button>
+                </div>
               </div>
             ))}
           </div>

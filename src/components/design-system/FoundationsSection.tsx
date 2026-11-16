@@ -161,15 +161,15 @@ export function FoundationsSection({
             </h3>
           </div>
           <p className={`type-body ${styles.subLead}`}>
-            Five immutable concrete tones paired with rationed Signal Vermilion. Click any primitive
-            swatch or semantic token to copy its value.
+            Five immutable concrete tones paired with rationed Signal Vermilion, mapped across four
+            architectural surface islands.
           </p>
         </div>
 
         {/* Primitive Palette */}
         <div className={styles.blockHeading}>
           <span className="type-colophon">TIER 1 // PRIMITIVE PALETTE ({tokens.primitives.length} TOKENS)</span>
-          <span className="type-colophon">CLICK SWATCH TO COPY HEX</span>
+          <span className="type-colophon">HEX &amp; CSS TOKEN</span>
         </div>
 
         <div className={styles.swatchGrid}>

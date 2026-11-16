@@ -216,23 +216,20 @@
 }
 
 /* --------------------------------------------------------------------------
-   Workspace Layout (Left Sticky ToC Rail + Canvas Frames)
+   Workspace Layout (Single Centered Editorial Canvas for Static Export)
    -------------------------------------------------------------------------- */
 .workspace {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
   padding: 1.25rem;
-  max-inline-size: 1680px;
+  max-inline-size: 1360px;
   margin-inline: auto;
 }
 
 @media (width >= 1024px) {
   .workspace {
-    grid-template-columns: 240px minmax(0, 1fr);
-    gap: 2rem;
-    padding: 2rem;
-    align-items: start;
+    padding: 2.5rem 2rem 4rem;
   }
 }
 

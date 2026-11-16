@@ -5,8 +5,56 @@
 
 .root {
   display: grid;
+  gap: 2.5rem;
+  min-inline-size: 0;
+}
+
+.categoryGroup {
+  display: grid;
+  gap: 1.5rem;
+  min-inline-size: 0;
+}
+
+.categoryHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem 1.25rem;
+  padding-block-end: 0.75rem;
+  border-block-end: 1px solid var(--border-structural);
+}
+
+.categoryItems {
+  display: grid;
   gap: 2rem;
   min-inline-size: 0;
+}
+
+.cardUsageNote {
+  margin: 0;
+  max-inline-size: 42ch;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ink-secondary);
+}
+
+.stateMatrixGrid {
+  display: grid;
+  gap: 1rem;
+  min-inline-size: 0;
+}
+
+.stateMatrixCell {
+  display: grid;
+  gap: 0.5rem;
+  padding-block-end: 0.875rem;
+  border-block-end: 1px solid var(--border-hairline);
+}
+
+.stateMatrixCell:last-child {
+  padding-block-end: 0;
+  border-block-end: 0;
 }
 
 /* --------------------------------------------------------------------------
