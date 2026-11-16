@@ -117,14 +117,16 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .viewport[data-streaming="true"] {
+  .viewport {
     overflow-x: clip;
   }
 
-  .viewport[data-streaming="true"] .track {
+  .track {
     animation: monolithStreamScroll 88s linear infinite;
+    animation-play-state: running;
   }
 
+  .viewport[data-streaming="false"] .track,
   .viewport[data-streaming="true"]:hover .track,
   .viewport[data-streaming="true"]:focus-within .track {
     animation-play-state: paused;

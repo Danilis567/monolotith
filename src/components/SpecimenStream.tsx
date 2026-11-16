@@ -13,7 +13,7 @@ export function SpecimenStream({ buildings }: { buildings: BuildingRecord[] }) {
   const [isStreaming, setIsStreaming] = useState(true);
 
   const activeStreaming = isStreaming && !prefersReduced;
-  const repeatedStream = activeStreaming
+  const repeatedStream = !prefersReduced
     ? [...buildings, ...buildings]
     : buildings;
 
