@@ -146,9 +146,9 @@
 .plateSelectBtnActive,
 .plateSelectBtnActive:hover {
   background-color: var(--surface-elevated);
-  color: #131313;
-  border-left: 3px solid #7D150F;
-  border-bottom: 1px solid #282828;
+  color: #E9E5DF;
+  border-left: 3px solid #F45D4D;
+  border-bottom: 1px solid #B9B5AA;
 }
 
 .plateSelectBtnActive:last-child,
@@ -157,18 +157,6 @@
 }
 
 .plateSelectBtnActive .plateSelectOverline {
-  color: #7D150F;
-}
-
-:global([data-surface="void"]) .plateSelectBtnActive,
-:global([data-surface="void"]) .plateSelectBtnActive:hover {
-  background-color: var(--surface-elevated);
-  color: #E9E5DF;
-  border-left: 3px solid #F45D4D;
-  border-bottom-color: #B9B5AA;
-}
-
-:global([data-surface="void"]) .plateSelectBtnActive .plateSelectOverline {
   color: #F45D4D;
 }
 

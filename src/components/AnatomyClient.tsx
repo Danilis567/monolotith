@@ -32,7 +32,6 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
   const router = useRouter();
 
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const [surfaceMode, setSurfaceMode] = useState<'plaster' | 'void'>('plaster');
   const [activeTab, setActiveTab] = useState<MovementTab>('ALL');
   const [selectedId, setSelectedId] = useState<AnatomyPlateId>(plates[0].id);
 
@@ -113,7 +112,7 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
   };
 
   return (
-    <div className={styles.anatomyPage} data-surface={surfaceMode}>
+    <div className={styles.anatomyPage} data-surface="void">
       <UrlParamSync paramKey="plate" onRead={syncPlateFromUrl} />
       {/* Header */}
       <section className={styles.headerBand}>
@@ -133,22 +132,6 @@ export function AnatomyClient({ plates, svgMarkupById }: AnatomyClientProps) {
                 <span>STRUCTURAL ANATOMY</span>
               </p>
               <h1 className="type-display">STRUCTURAL ANATOMY</h1>
-            </div>
-
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.75rem' }}>
-              <button
-                type="button"
-                onClick={() =>
-                  setSurfaceMode((prev) => (prev === 'plaster' ? 'void' : 'plaster'))
-                }
-                aria-pressed={surfaceMode === 'void'}
-                className="btn-monolith"
-              >
-                <span>
-                  SURFACE: {surfaceMode === 'plaster' ? 'PLASTER PAPER' : 'VOID BLUEPRINT'}
-                </span>
-                <span aria-hidden="true">[ / ]</span>
-              </button>
             </div>
           </div>
         </div>
