@@ -86,7 +86,7 @@
 .coverLedger {
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   border: 1px solid var(--border-hairline);
 }
 
@@ -112,72 +112,47 @@
   color: var(--ink-secondary);
 }
 
-/* Split Layout */
-.splitSection {
+.introBlock {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.5rem;
-  align-items: start;
+  gap: 0.625rem;
 }
 
-@media (width >= 960px) {
-  .splitSection {
-    grid-template-columns: 0.85fr 1.35fr;
-    gap: 2rem;
-  }
-
-  .splitReverse {
-    grid-template-columns: 1.35fr 0.85fr;
-  }
-}
-
-.copyCol {
-  display: grid;
-  gap: 1rem;
-}
-
-.factList {
+.introBlock h3 {
   margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 0.75rem;
-  border-block-start: 1px solid var(--border-hairline);
-  padding-block-start: 1rem;
 }
 
-.factList li {
-  display: grid;
-  gap: 0.25rem;
-  font-family: var(--font-sans);
-  font-size: 0.925rem;
-  line-height: 1.5;
-  color: var(--ink-primary);
-}
-
-.specTable {
+.introLead {
   margin: 0;
-  display: grid;
-  gap: 0.75rem;
-  border: 1px solid var(--border-hairline);
-  padding: 1rem;
-  background-color: var(--surface-sunken);
-}
-
-.specTable > div {
-  display: grid;
-  gap: 0.2rem;
-}
-
-.specTable dt {
+  max-inline-size: 68ch;
   color: var(--ink-secondary);
 }
 
-.specTable dd {
-  margin: 0;
+.twoUpGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+@media (width >= 900px) {
+  .twoUpGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.mobileTrioGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+@media (width >= 768px) {
+  .mobileTrioGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .screenFrame {
+  margin: 0;
   border: 1px solid var(--border-structural);
   background-color: var(--surface-sunken);
   display: grid;
@@ -188,6 +163,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
   padding: 0.5rem 0.875rem;
   border-block-end: 1px solid var(--border-hairline);
   background-color: var(--surface-elevated);
@@ -198,160 +174,6 @@
   display: block;
   inline-size: 100%;
   block-size: auto;
-}
-
-/* Trio Photo Strip */
-.trioPhotoRow {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-@media (width < 768px) {
-  .trioPhotoRow {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-.photoCard {
-  margin: 0;
-  border: 1px solid var(--border-hairline);
-  background-color: var(--surface-sunken);
-  display: grid;
-  grid-template-rows: 260px auto;
-}
-
-.lancetWrap {
-  inline-size: 100%;
-  block-size: 100%;
-  overflow: hidden;
-}
-
-.photoImg {
-  inline-size: 100%;
-  block-size: 100%;
-  object-fit: cover;
-}
-
-.photoCap {
-  display: grid;
-  gap: 0.25rem;
-  padding: 0.875rem;
-  border-block-start: 1px solid var(--border-hairline);
-}
-
-/* Anatomy Hero + Features + Vector Row */
-.anatomyHero {
-  display: grid;
-}
-
-.featureGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-@media (width < 768px) {
-  .featureGrid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-.featureBox {
-  border: 1px solid var(--border-hairline);
-  padding: 1rem;
-  display: grid;
-  gap: 0.5rem;
-  background-color: var(--surface-sunken);
-}
-
-.featureBox p {
-  margin: 0;
-}
-
-.vectorRow {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-@media (width < 900px) {
-  .vectorRow {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-.vectorCard {
-  border: 1px solid var(--border-structural);
-  background-color: #161616;
-  display: grid;
-  grid-template-rows: 240px auto;
-}
-
-.vectorSvg {
-  display: grid;
-  place-items: center;
-  padding: 1rem;
-  overflow: hidden;
-}
-
-.vectorSvg svg {
-  inline-size: 100%;
-  block-size: 100%;
-}
-
-.vectorSvg :global(.str-cut),
-.vectorSvg :global(.str-line),
-.vectorSvg :global(.str-thin) {
-  stroke: #eae6e1;
-  fill: none;
-}
-
-.vectorSvg :global(.sig) {
-  stroke: #ff4a3d;
-  fill: none;
-}
-
-.vectorSvg :global(.dim-line) {
-  stroke: #8c8881;
-  fill: none;
-}
-
-.vectorFoot {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.625rem 0.875rem;
-  border-block-start: 1px solid var(--border-hairline);
-  background-color: var(--surface-elevated);
-}
-
-/* Closing Surface Strip */
-.surfaceStrip {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-@media (width < 900px) {
-  .surfaceStrip {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (width < 520px) {
-  .surfaceStrip {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-.surfaceSample {
-  border: 1px solid var(--border-structural);
-  background-color: var(--surface-canvas);
-  color: var(--ink-primary);
-  padding: 1.125rem;
-  display: grid;
-  gap: 0.5rem;
 }
 
 .closingFooter {

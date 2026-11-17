@@ -14,15 +14,7 @@ function FrameCorners() {
   );
 }
 
-export function WebSunumClient({
-  trellickSvg,
-  chartresSvg,
-  pantheonSvg,
-}: {
-  trellickSvg: string;
-  chartresSvg: string;
-  pantheonSvg: string;
-}) {
+export function WebSunumClient() {
   return (
     <div data-surface="void" className={styles.canvasRoot}>
       <div className={styles.workspace}>
@@ -56,14 +48,10 @@ export function WebSunumClient({
               <dd className={`type-subhead tabular-nums ${styles.ledgerVal}`}>17 / 11 / 2026</dd>
             </div>
             <div className={styles.ledgerCell}>
-              <dt className={`type-colophon ${styles.ledgerKey}`}>KAPSAM</dt>
+              <dt className={`type-colophon ${styles.ledgerKey}`}>SAYFALAR</dt>
               <dd className={`type-subhead tabular-nums ${styles.ledgerVal}`}>
-                4 ANA SAYFA · 27 YAPI
+                4 ANA SAYFA · 27 DETAY
               </dd>
-            </div>
-            <div className={styles.ledgerCell}>
-              <dt className={`type-colophon ${styles.ledgerKey}`}>ÇİZİMLER</dt>
-              <dd className={`type-subhead tabular-nums ${styles.ledgerVal}`}>9 ORTOGRAFİK KESİT</dd>
             </div>
             <div className={styles.ledgerCell}>
               <dt className={`type-colophon ${styles.ledgerKey}`}>TASARIM</dt>
@@ -72,7 +60,7 @@ export function WebSunumClient({
           </dl>
 
           <p className={`type-body-lead ${styles.coverNote}`}>
-            MONOLITH web sitesinin ana sayfaları, yapı arşivi ve etkileşimli teknik çizim ekranı.
+            MONOLITH web sitesinin sayfaları, masaüstü ve mobil ekran görüntüleri.
           </p>
         </section>
 
@@ -85,106 +73,40 @@ export function WebSunumClient({
             <h2 id="ws-home-title" className={`type-colophon ${styles.frameLabel}`}>
               PAFTA 01 / ANA SAYFA ( / )
             </h2>
-            <span className={`type-colophon ${styles.frameTag}`}>
-              KARŞILAMA · ÖNE ÇIKAN YAPI · YATAY AKIŞ
-            </span>
+            <span className={`type-colophon ${styles.frameTag}`}>KARŞILAMA VE SERGİ AKIŞI</span>
           </div>
 
-          <div className={styles.splitSection}>
-            <div className={styles.copyCol}>
-              <h3 className="type-display">SERGİ ANA SAYFASI</h3>
-              <p className="type-body" style={{ color: 'var(--ink-secondary)' }}>
-                Ziyaretçiyi ilk karşılayan sayfa. Üstte günün öne çıkan yapısı ve büyük tipografi,
-                altta yatay kayan yapı bandı (Specimen Stream) ve üç akım özeti yer alır.
-              </p>
-              <ul className={styles.factList}>
-                <li>
-                  <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                    01 // ÜST ALAN
-                  </span>
-                  <span>Büyük Bodoni Moda başlığı ve seçili yapının tam boy fotoğrafı.</span>
-                </li>
-                <li>
-                  <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                    02 // YATAY ŞERİT
-                  </span>
-                  <span>Üzerine gelindiğinde veya duraklatıldığında o anki karede duran akış.</span>
-                </li>
-                <li>
-                  <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                    03 // AKIMLAR
-                  </span>
-                  <span>Brütalist, Gotik ve Anıtsal yapı gruplarına tek tıkla geçiş.</span>
-                </li>
-              </ul>
-            </div>
+          <div className={styles.introBlock}>
+            <h3 className="type-display">SERGİ ANA SAYFASI</h3>
+            <p className={`type-body ${styles.introLead}`}>
+              Ziyaretçiyi ilk karşılayan sayfa. Üstte öne çıkan yapıyı ve büyük başlığı, altta
+              yatay kayan yapı şeridini (üzerine gelince durur) ve üç mimari akımı gösterir.
+            </p>
+          </div>
 
-            <div className={styles.screenFrame}>
+          <div className={styles.twoUpGrid}>
+            <figure className={styles.screenFrame}>
               <div className={styles.screenBar}>
+                <span className="type-colophon">01A // ÜST KARŞILAMA ALANI</span>
                 <span className="type-colophon">ROTA: /</span>
-                <span className="type-colophon">1440 × 900</span>
               </div>
               <img
                 src="/design-system/templates/home.png"
-                alt="MONOLITH Ana Sayfa ekran görüntüsü"
+                alt="MONOLITH Ana Sayfa üst ekran görüntüsü"
                 className={styles.screenImg}
               />
-            </div>
-          </div>
-
-          {/* 3 Architectural Movement Strip */}
-          <div className={styles.trioPhotoRow}>
-            <figure className={styles.photoCard}>
-              <img
-                src="/images/buildings/trellick-tower.jpg"
-                alt="Trellick Tower — Brütalist"
-                className={`plate-img ${styles.photoImg}`}
-              />
-              <figcaption className={styles.photoCap}>
-                <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                  CAT. 001 · BRÜTALİST
-                </span>
-                <span className="type-subhead">Trellick Tower</span>
-                <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                  LONDRA · 1972 · 98.0 M
-                </span>
-              </figcaption>
             </figure>
 
-            <figure className={styles.photoCard}>
-              <div className={`plate-arch-lancet ${styles.lancetWrap}`}>
-                <img
-                  src="/images/buildings/chartres-cathedral.jpg"
-                  alt="Chartres Katedrali — Gotik"
-                  className={`plate-img ${styles.photoImg}`}
-                />
+            <figure className={styles.screenFrame}>
+              <div className={styles.screenBar}>
+                <span className="type-colophon">01B // YATAY AKIŞ ŞERİDİ</span>
+                <span className="type-colophon">ROTA: / (ALT BÖLÜM)</span>
               </div>
-              <figcaption className={styles.photoCap}>
-                <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                  CAT. 010 · GOTİK
-                </span>
-                <span className="type-subhead">Chartres Cathedral</span>
-                <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                  CHARTRES · 1220 · 113.0 M
-                </span>
-              </figcaption>
-            </figure>
-
-            <figure className={styles.photoCard}>
               <img
-                src="/images/buildings/anitkabir.jpg"
-                alt="Anıtkabir — Anıtsal"
-                className={`plate-img ${styles.photoImg}`}
+                src="/design-system/templates/home-stream.png"
+                alt="MONOLITH Ana Sayfa yatay akış şeridi ekran görüntüsü"
+                className={styles.screenImg}
               />
-              <figcaption className={styles.photoCap}>
-                <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                  CAT. 023 · ANITSAL
-                </span>
-                <span className="type-subhead">Anıtkabir</span>
-                <span className="type-colophon" style={{ color: 'var(--ink-secondary)' }}>
-                  ANKARA · 1953 · 21.0 M
-                </span>
-              </figcaption>
             </figure>
           </div>
         </section>
@@ -196,109 +118,96 @@ export function WebSunumClient({
           <FrameCorners />
           <div className={styles.frameHeader}>
             <h2 id="ws-archive-title" className={`type-colophon ${styles.frameLabel}`}>
-              PAFTA 02 / ARŞİV DİZİNİ ( /archive )
+              PAFTA 02 / ARŞİV ( /archive )
             </h2>
-            <span className={`type-colophon ${styles.frameTag}`}>
-              27 YAPI · PLAKA &amp; TABLO GÖRÜNÜMÜ · FİLTRELEME
-            </span>
+            <span className={`type-colophon ${styles.frameTag}`}>27 YAPI · İKİ GÖRÜNÜM MODU</span>
           </div>
 
-          <div className={`${styles.splitSection} ${styles.splitReverse}`}>
-            <div className={styles.screenFrame}>
+          <div className={styles.introBlock}>
+            <h3 className="type-display">ARŞİV KATALOĞU</h3>
+            <p className={`type-body ${styles.introLead}`}>
+              Tüm 27 yapının aranabildiği ve akım, malzeme ile döneme göre filtrelenebildiği sayfa.
+              Ziyaretçi tek düğmeyle kartlı plaka görünümü ile tablo dizini arasında geçiş yapar.
+            </p>
+          </div>
+
+          <div className={styles.twoUpGrid}>
+            <figure className={styles.screenFrame}>
               <div className={styles.screenBar}>
+                <span className="type-colophon">02A // [ PLATE ] KART GÖRÜNÜMÜ</span>
                 <span className="type-colophon">ROTA: /archive</span>
-                <span className="type-colophon">PLAKA / DİZİN MODU</span>
               </div>
               <img
                 src="/design-system/templates/archive.png"
-                alt="MONOLITH Arşiv Sayfası ekran görüntüsü"
+                alt="MONOLITH Arşiv kart görünümü ekran görüntüsü"
                 className={styles.screenImg}
               />
-            </div>
+            </figure>
 
-            <div className={styles.copyCol}>
-              <h3 className="type-display">27 YAPILIK KATALOG</h3>
-              <p className="type-body" style={{ color: 'var(--ink-secondary)' }}>
-                Tüm yapıların tek ekranda aranabildiği ve filtrelenebildiği katalog sayfası.
-                Ziyaretçi tek düğmeyle kartlı görünüm ile yoğun veri tablosu arasında geçiş yapar.
-              </p>
-              <ul className={styles.factList}>
-                <li>
-                  <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                    01 // FİLTRELER
-                  </span>
-                  <span>Akım, ana malzeme, dönem ve anlık metin araması URL ile eşzamanlı çalışır.</span>
-                </li>
-                <li>
-                  <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                    02 // [ PLATE ] MODU
-                  </span>
-                  <span>Yüksek kontrastlı siyah-beyaz fotoğraflar ve temel künye verileri.</span>
-                </li>
-                <li>
-                  <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                    03 // [ INDEX ] MODU
-                  </span>
-                  <span>Katalog numarası, şehir, yıl ve yükseklik sütunlarıyla sıralanabilir tablo.</span>
-                </li>
-              </ul>
-            </div>
+            <figure className={styles.screenFrame}>
+              <div className={styles.screenBar}>
+                <span className="type-colophon">02B // [ INDEX ] TABLO GÖRÜNÜMÜ</span>
+                <span className="type-colophon">ROTA: /archive?view=index</span>
+              </div>
+              <img
+                src="/design-system/templates/archive-index.png"
+                alt="MONOLITH Arşiv tablo görünümü ekran görüntüsü"
+                className={styles.screenImg}
+              />
+            </figure>
           </div>
         </section>
 
         {/* =================================================================
-            PAFTA 03 // YAPI DETAY DOSYASI (/structures/[slug])
+            PAFTA 03 // YAPI DETAY SAYFASI (/structures/[slug])
             ================================================================= */}
         <section aria-labelledby="ws-detail-title" className={styles.canvasFrame}>
           <FrameCorners />
           <div className={styles.frameHeader}>
             <h2 id="ws-detail-title" className={`type-colophon ${styles.frameLabel}`}>
-              PAFTA 03 / YAPI DETAY DOSYASI ( /structures/[slug] )
+              PAFTA 03 / YAPI DETAYI ( /structures/[slug] )
             </h2>
-            <span className={`type-colophon ${styles.frameTag}`}>
-              27 STATİK MONOGRAFİ SAYFASI
-            </span>
+            <span className={`type-colophon ${styles.frameTag}`}>27 MONOGRAFİ SAYFASI</span>
           </div>
 
-          <div className={styles.splitSection}>
-            <div className={styles.copyCol}>
-              <h3 className="type-display">TEKNİK KÜNYE VE METİN</h3>
-              <p className="type-body" style={{ color: 'var(--ink-secondary)' }}>
-                Her yapı için ayrılmış özel detay sayfası. Fotoğrafın yanında mimar, yapım yılı,
-                yükseklik, GPS koordinatı ve taşıyıcı sistem notları yer alır.
-              </p>
-              <dl className={styles.specTable}>
-                <div>
-                  <dt className="type-colophon">ÖRNEK KAYIT</dt>
-                  <dd className="type-subhead">CAT. 001 — Trellick Tower</dd>
-                </div>
-                <div>
-                  <dt className="type-colophon">KONUM &amp; KOORDİNAT</dt>
-                  <dd className="type-colophon tabular-nums">51°31′25″N × 0°12′20″W</dd>
-                </div>
-                <div>
-                  <dt className="type-colophon">YÜKSEKLİK</dt>
-                  <dd className="type-colophon tabular-nums">98.0 M (31 KAT)</dd>
-                </div>
-              </dl>
-            </div>
+          <div className={styles.introBlock}>
+            <h3 className="type-display">YAPI MONOGRAFİSİ</h3>
+            <p className={`type-body ${styles.introLead}`}>
+              Her yapıya özel bilgi sayfası. Sol tarafta yüksek kontrastlı yapı fotoğrafı, sağ
+              tarafta mimar, yapım yılı, yükseklik, GPS koordinatı ve taşıyıcı sistem notları yer
+              alır.
+            </p>
+          </div>
 
-            <div className={styles.screenFrame}>
+          <div className={styles.twoUpGrid}>
+            <figure className={styles.screenFrame}>
               <div className={styles.screenBar}>
-                <span className="type-colophon">ROTA: /structures/trellick-tower</span>
-                <span className="type-colophon">STATİK SSG</span>
+                <span className="type-colophon">03A // BRÜTALİST MONOGRAFİ</span>
+                <span className="type-colophon">/structures/trellick-tower</span>
               </div>
               <img
                 src="/design-system/templates/detail.png"
-                alt="MONOLITH Yapı Detay Sayfası ekran görüntüsü"
+                alt="Trellick Tower detay sayfası ekran görüntüsü"
                 className={styles.screenImg}
               />
-            </div>
+            </figure>
+
+            <figure className={styles.screenFrame}>
+              <div className={styles.screenBar}>
+                <span className="type-colophon">03B // GOTİK MONOGRAFİ</span>
+                <span className="type-colophon">/structures/chartres-cathedral</span>
+              </div>
+              <img
+                src="/design-system/templates/detail-gothic.png"
+                alt="Chartres Katedrali detay sayfası ekran görüntüsü"
+                className={styles.screenImg}
+              />
+            </figure>
           </div>
         </section>
 
         {/* =================================================================
-            PAFTA 04 // ANATOMİ ÇALIŞMA TEZGAHI (/anatomy)
+            PAFTA 04 // ANATOMİ TEZGAHI (/anatomy)
             ================================================================= */}
         <section aria-labelledby="ws-anatomy-title" className={styles.canvasFrame}>
           <FrameCorners />
@@ -307,131 +216,88 @@ export function WebSunumClient({
               PAFTA 04 / ANATOMİ TEZGAHI ( /anatomy )
             </h2>
             <span className={`type-colophon ${styles.frameTag}`}>
-              YAKINLAŞTIRMA · KATMANLAR · ÖLÇÜ İNCELEME
+              9 VEKTÖR KESİT · YAKINLAŞTIRMA VE KATMANLAR
             </span>
           </div>
 
-          <div className={styles.anatomyHero}>
-            <div className={styles.screenFrame}>
-              <div className={styles.screenBar}>
-                <span className="type-colophon">ROTA: /anatomy</span>
-                <span className="type-colophon">9 VEKTÖR KESİT PLAKASI</span>
-              </div>
-              <img
-                src="/design-system/templates/anatomy.png"
-                alt="MONOLITH Anatomi Çalışma Tezgahı ekran görüntüsü"
-                className={styles.screenImg}
-              />
-            </div>
+          <div className={styles.introBlock}>
+            <h3 className="type-display">TEKNİK ÇİZİM İNCELEME EKRANI</h3>
+            <p className={`type-body ${styles.introLead}`}>
+              9 yapının ortografik kesit çizimlerini inceleme sayfası. Çizime yakınlaşıp
+              sürükleyerek gezilebilir; taşıyıcı kütle, yük ekseni ve ölçü çizgileri ayrı katmanlar
+              halinde açılıp kapatılabilir.
+            </p>
           </div>
 
-          <div className={styles.featureGrid}>
-            <div className={styles.featureBox}>
-              <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                01 // YAKINLAŞTIR &amp; SÜRÜKLE
-              </span>
-              <p className="type-body" style={{ color: 'var(--ink-secondary)' }}>
-                Fare tekerleği, düğmeler veya parmakla yakınlaştırma ve çizim üzerinde serbest
-                gezinme.
-              </p>
+          <figure className={styles.screenFrame}>
+            <div className={styles.screenBar}>
+              <span className="type-colophon">04 // TAM EKRAN ÇİZİM ÇALIŞMA ALANI</span>
+              <span className="type-colophon">ROTA: /anatomy</span>
             </div>
-            <div className={styles.featureBox}>
-              <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                02 // 3 AYRI KATMAN
-              </span>
-              <p className="type-body" style={{ color: 'var(--ink-secondary)' }}>
-                Taşıyıcı kütle (beyaz), yük ekseni (kırmızı kesikli) ve ölçü çizgileri (gri) ayrı
-                ayrı açılıp kapatılır.
-              </p>
-            </div>
-            <div className={styles.featureBox}>
-              <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                03 // ELEMAN AÇIKLAMALARI
-              </span>
-              <p className="type-body" style={{ color: 'var(--ink-secondary)' }}>
-                Çizim üzerindeki numaralı noktalara veya ölçülere tıklayınca ilgili yapısal not
-                açılır.
-              </p>
-            </div>
-          </div>
-
-          {/* 3 Vector Section Plates */}
-          <div className={styles.vectorRow}>
-            <div className={styles.vectorCard}>
-              <div
-                className={styles.vectorSvg}
-                dangerouslySetInnerHTML={{ __html: trellickSvg }}
-                aria-hidden="true"
-              />
-              <div className={styles.vectorFoot}>
-                <span className="type-colophon">CAT. 001 // TRELLICK TOWER</span>
-                <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                  KESİT 1:500
-                </span>
-              </div>
-            </div>
-
-            <div className={styles.vectorCard}>
-              <div
-                className={styles.vectorSvg}
-                dangerouslySetInnerHTML={{ __html: chartresSvg }}
-                aria-hidden="true"
-              />
-              <div className={styles.vectorFoot}>
-                <span className="type-colophon">CAT. 010 // CHARTRES CATHEDRAL</span>
-                <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                  KESİT 1:250
-                </span>
-              </div>
-            </div>
-
-            <div className={styles.vectorCard}>
-              <div
-                className={styles.vectorSvg}
-                dangerouslySetInnerHTML={{ __html: pantheonSvg }}
-                aria-hidden="true"
-              />
-              <div className={styles.vectorFoot}>
-                <span className="type-colophon">CAT. 019 // PANTHEON ROME</span>
-                <span className="type-colophon" style={{ color: 'var(--signal-ink)' }}>
-                  KESİT 1:400
-                </span>
-              </div>
-            </div>
-          </div>
+            <img
+              src="/design-system/templates/anatomy.png"
+              alt="MONOLITH Anatomi Çalışma Tezgahı ekran görüntüsü"
+              className={styles.screenImg}
+            />
+          </figure>
         </section>
 
         {/* =================================================================
-            PAFTA 05 // YÜZEY RİTMİ VE TEKNİK ÖZET
+            PAFTA 05 // MOBİL GÖRÜNÜM (390 PX)
             ================================================================= */}
-        <section aria-labelledby="ws-closing-title" className={styles.canvasFrame}>
+        <section aria-labelledby="ws-mobile-title" className={styles.canvasFrame}>
           <FrameCorners />
           <div className={styles.frameHeader}>
-            <h2 id="ws-closing-title" className={`type-colophon ${styles.frameLabel}`}>
-              PAFTA 05 / YÜZEY RİTMİ VE KAPANIŞ
+            <h2 id="ws-mobile-title" className={`type-colophon ${styles.frameLabel}`}>
+              PAFTA 05 / MOBİL GÖRÜNÜM ( 390 × 844 )
             </h2>
-            <span className={`type-colophon ${styles.frameTag}`}>
-              KOYU &amp; AÇIK GEÇİŞLER · HALİL ANIK
-            </span>
+            <span className={`type-colophon ${styles.frameTag}`}>TEK SÜTUN DUYARLI DÜZEN</span>
           </div>
 
-          <div className={styles.surfaceStrip}>
-            <div className={styles.surfaceSample} data-surface="void">
-              <span className="type-colophon">VOID // #131313</span>
-              <strong className="type-subhead">Ana zemin ve anatomi sahnesi</strong>
-            </div>
-            <div className={styles.surfaceSample} data-surface="basalt">
-              <span className="type-colophon">BASALT // #282828</span>
-              <strong className="type-subhead">Akış bandı ve ikincil bölmeler</strong>
-            </div>
-            <div className={styles.surfaceSample} data-surface="plaster">
-              <span className="type-colophon">PLASTER // #EAE6E1</span>
-              <strong className="type-subhead">Açık renk okuma ve detay blokları</strong>
-            </div>
-            <div className={styles.surfaceSample} data-surface="limestone">
-              <span className="type-colophon">LIMESTONE // #B9B5AA</span>
-              <strong className="type-subhead">Vurgulu alıntı ve dipnot şeritleri</strong>
-            </div>
+          <div className={styles.introBlock}>
+            <h3 className="type-display">MOBİL EKRANLAR</h3>
+            <p className={`type-body ${styles.introLead}`}>
+              Tüm sayfalar telefon ekranında yatay taşma olmadan tek sütuna iner; teknik çizimler
+              parmakla yakınlaştırma ve kaydırma desteğiyle rahatça incelenir.
+            </p>
+          </div>
+
+          <div className={styles.mobileTrioGrid}>
+            <figure className={styles.screenFrame}>
+              <div className={styles.screenBar}>
+                <span className="type-colophon">MOBİL // ANA SAYFA</span>
+                <span className="type-colophon">390 × 844</span>
+              </div>
+              <img
+                src="/design-system/templates/mobile-home.png"
+                alt="MONOLITH mobil ana sayfa ekran görüntüsü"
+                className={styles.screenImg}
+              />
+            </figure>
+
+            <figure className={styles.screenFrame}>
+              <div className={styles.screenBar}>
+                <span className="type-colophon">MOBİL // ARŞİV</span>
+                <span className="type-colophon">390 × 844</span>
+              </div>
+              <img
+                src="/design-system/templates/mobile-archive.png"
+                alt="MONOLITH mobil arşiv sayfası ekran görüntüsü"
+                className={styles.screenImg}
+              />
+            </figure>
+
+            <figure className={styles.screenFrame}>
+              <div className={styles.screenBar}>
+                <span className="type-colophon">MOBİL // ANATOMİ</span>
+                <span className="type-colophon">390 × 844</span>
+              </div>
+              <img
+                src="/design-system/templates/mobile-anatomy.png"
+                alt="MONOLITH mobil anatomi sayfası ekran görüntüsü"
+                className={styles.screenImg}
+              />
+            </figure>
           </div>
 
           <footer className={styles.closingFooter}>
