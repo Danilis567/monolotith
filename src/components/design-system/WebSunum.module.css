@@ -1,201 +1,302 @@
-.canvasRoot {
+.root {
   min-block-size: 100vh;
-  background-color: var(--surface-canvas);
+  background-color: #191919;
   color: var(--ink-primary);
+  display: grid;
+  gap: 5rem;
+  padding: 3.5rem 2rem 5rem;
 }
 
-.workspace {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 2.25rem;
+.showcaseSection {
   max-inline-size: 1360px;
+  inline-size: 100%;
   margin-inline: auto;
-  padding: 2.5rem 2rem 4rem;
-}
-
-.canvasFrame {
-  position: relative;
-  border: 1px solid var(--border-structural);
-  background-color: var(--surface-canvas);
-  padding: 1.75rem;
   display: grid;
-  gap: 1.5rem;
+  gap: 2.5rem;
   min-inline-size: 0;
 }
 
-@media (width >= 1024px) {
-  .canvasFrame {
-    padding: 2.25rem;
-  }
-}
-
-.crosshairTL,
-.crosshairTR,
-.crosshairBL,
-.crosshairBR {
-  position: absolute;
-  color: var(--ink-secondary);
-  pointer-events: none;
-}
-
-.crosshairTL {
-  inset-block-start: -8px;
-  inset-inline-start: -8px;
-}
-
-.crosshairTR {
-  inset-block-start: -8px;
-  inset-inline-end: -8px;
-}
-
-.crosshairBL {
-  inset-block-end: -8px;
-  inset-inline-start: -8px;
-}
-
-.crosshairBR {
-  inset-block-end: -8px;
-  inset-inline-end: -8px;
-}
-
-.frameHeader {
+.sectionHeader {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 1rem;
   padding-block-end: 1rem;
   border-block-end: 1px solid var(--border-hairline);
 }
 
-.frameLabel {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.625rem;
-}
-
-.frameTag {
-  color: var(--ink-secondary);
-}
-
-.coverTitle {
+.sectionTitle {
   margin: 0;
-  color: var(--ink-primary);
 }
 
-.coverLedger {
-  margin: 0;
+/* --------------------------------------------------------------------------
+   Bölüm 1: Ortada Tam Uzun Masaüstü + Yanlarda Mobil & SVG Öğeler
+   -------------------------------------------------------------------------- */
+.orbitStage {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  border: 1px solid var(--border-hairline);
+  grid-template-columns: 230px minmax(0, 680px) 230px;
+  justify-content: center;
+  align-items: start;
+  gap: 2.5rem;
 }
 
-.ledgerCell {
-  display: grid;
-  gap: 0.35rem;
-  padding: 0.875rem 1rem;
-  border-inline-end: 1px solid var(--border-hairline);
-  border-block-end: 1px solid var(--border-hairline);
-}
-
-.ledgerKey {
-  color: var(--ink-secondary);
-}
-
-.ledgerVal {
-  margin: 0;
-}
-
-.coverNote {
-  margin: 0;
-  max-inline-size: 58ch;
-  color: var(--ink-secondary);
-}
-
-.introBlock {
-  display: grid;
-  gap: 0.625rem;
-}
-
-.introBlock h3 {
-  margin: 0;
-}
-
-.introLead {
-  margin: 0;
-  max-inline-size: 68ch;
-  color: var(--ink-secondary);
-}
-
-.twoUpGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.25rem;
-}
-
-@media (width >= 900px) {
-  .twoUpGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (width < 1100px) {
+  .orbitStage {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
-.mobileTrioGrid {
+.leftWing,
+.rightWing {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.5rem;
+  gap: 4.5rem;
+  padding-block-start: 4rem;
+  justify-items: center;
 }
 
-@media (width >= 768px) {
-  .mobileTrioGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+@media (width < 1100px) {
+  .leftWing,
+  .rightWing {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    padding-block-start: 0;
+    gap: 1.5rem;
   }
 }
 
-.screenFrame {
+.centerDesktop {
   margin: 0;
   border: 1px solid var(--border-structural);
-  background-color: var(--surface-sunken);
-  display: grid;
+  background-color: var(--surface-void);
   overflow: hidden;
 }
 
-.screenBar {
+.desktopMeta {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
   padding: 0.5rem 0.875rem;
   border-block-end: 1px solid var(--border-hairline);
-  background-color: var(--surface-elevated);
+  background-color: #151515;
   color: var(--ink-secondary);
 }
 
-.screenImg {
+.mobileCard {
+  margin: 0;
+  inline-size: 100%;
+  max-inline-size: 220px;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-void);
+  overflow: hidden;
+}
+
+.shotImg {
   display: block;
   inline-size: 100%;
   block-size: auto;
 }
 
-.closingFooter {
+.floatingSvg {
+  inline-size: 180px;
+  block-size: 180px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.floatingSvg svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.floatingSvg :global(.str-cut),
+.floatingSvg :global(.str-line),
+.floatingSvg :global(.str-thin) {
+  stroke: #eae6e1;
+  fill: none;
+}
+
+.floatingSvg :global(.sig) {
+  stroke: #ff4a3d;
+  fill: none;
+}
+
+.floatingSvg :global(.dim-line) {
+  stroke: #8c8881;
+  fill: none;
+}
+
+.floatingStar {
+  inline-size: 32px;
+  block-size: 32px;
+  color: var(--signal-ink);
+}
+
+/* --------------------------------------------------------------------------
+   Bölüm 2: Tel Kafes vs Son Tasarım (Referans 2)
+   -------------------------------------------------------------------------- */
+.compareGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+  align-items: stretch;
+  max-inline-size: 1120px;
+  margin-inline: auto;
+  inline-size: 100%;
+}
+
+@media (width < 820px) {
+  .compareGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.wireframeCol {
+  border: 1px solid rgba(234, 230, 225, 0.35);
+  background-color: #161616;
+  padding: 1.5rem;
+  display: grid;
+  gap: 2.5rem;
+  align-content: space-between;
+}
+
+.wireTopBar {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-block-end: 0.75rem;
+  border-block-end: 1px solid rgba(234, 230, 225, 0.2);
+}
+
+.wireTopBar span {
+  inline-size: 72px;
+  block-size: 10px;
+  border: 1px solid rgba(234, 230, 225, 0.35);
+}
+
+.wireHero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  min-block-size: 240px;
+}
+
+.wireHeroText {
+  display: grid;
+  align-content: center;
+  gap: 0.875rem;
+}
+
+.wireLineLg {
+  block-size: 22px;
+  inline-size: 90%;
+  border: 1px solid rgba(234, 230, 225, 0.35);
+}
+
+.wireLineMd {
+  block-size: 14px;
+  inline-size: 70%;
+  border: 1px solid rgba(234, 230, 225, 0.3);
+}
+
+.wireLineSm {
+  block-size: 10px;
+  inline-size: 55%;
+  border: 1px solid rgba(234, 230, 225, 0.22);
+}
+
+.wireBtn {
+  block-size: 28px;
+  inline-size: 120px;
+  border: 1px solid var(--signal-ink);
+}
+
+.wireBox {
+  border: 1px solid rgba(234, 230, 225, 0.3);
+  min-block-size: 110px;
+}
+
+.wireBand {
+  display: grid;
+  gap: 1rem;
+  padding-block: 1.25rem;
+  border-block: 1px solid rgba(234, 230, 225, 0.2);
+}
+
+.wireCards4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.wireSplit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  min-block-size: 160px;
+}
+
+.wireCards3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.875rem;
+  min-block-size: 160px;
+}
+
+.wireFooter {
+  display: flex;
+  justify-content: space-between;
+  padding-block-start: 1.25rem;
+  border-block-start: 1px solid rgba(234, 230, 225, 0.25);
+}
+
+.compareFinal {
+  margin: 0;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-void);
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Bölüm 3: Diğer Ana Sayfalar (Tam Boy Yan Yana)
+   -------------------------------------------------------------------------- */
+.pagesTrio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+  align-items: start;
+}
+
+@media (width < 960px) {
+  .pagesTrio {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.pageColumn {
+  margin: 0;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-void);
+  overflow: hidden;
+}
+
+.pageCaption {
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  padding-block-start: 1.25rem;
-  border-block-start: 1px solid var(--border-hairline);
+  padding: 0.625rem 0.875rem;
+  border-block-end: 1px solid var(--border-hairline);
+  background-color: #151515;
+}
+
+.footerCredit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  padding-block-start: 2rem;
   color: var(--ink-secondary);
 }
 
-.closingBrand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.625rem;
-  color: var(--ink-primary);
-}
-
-.closingStar {
-  inline-size: 16px;
-  block-size: 16px;
+.footerStar {
+  inline-size: 14px;
+  block-size: 14px;
   color: var(--signal-ink);
 }
