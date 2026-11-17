@@ -1,0 +1,379 @@
+.canvasRoot {
+  min-block-size: 100vh;
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.25rem;
+  max-inline-size: 1360px;
+  margin-inline: auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+.canvasFrame {
+  position: relative;
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+  padding: 1.75rem;
+  display: grid;
+  gap: 1.5rem;
+  min-inline-size: 0;
+}
+
+@media (width >= 1024px) {
+  .canvasFrame {
+    padding: 2.25rem;
+  }
+}
+
+.crosshairTL,
+.crosshairTR,
+.crosshairBL,
+.crosshairBR {
+  position: absolute;
+  color: var(--ink-secondary);
+  pointer-events: none;
+}
+
+.crosshairTL {
+  inset-block-start: -8px;
+  inset-inline-start: -8px;
+}
+
+.crosshairTR {
+  inset-block-start: -8px;
+  inset-inline-end: -8px;
+}
+
+.crosshairBL {
+  inset-block-end: -8px;
+  inset-inline-start: -8px;
+}
+
+.crosshairBR {
+  inset-block-end: -8px;
+  inset-inline-end: -8px;
+}
+
+.frameHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-block-end: 1rem;
+  border-block-end: 1px solid var(--border-hairline);
+}
+
+.frameLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.frameTag {
+  color: var(--ink-secondary);
+}
+
+.coverTitle {
+  margin: 0;
+  color: var(--ink-primary);
+}
+
+.coverLedger {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  border: 1px solid var(--border-hairline);
+}
+
+.ledgerCell {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.875rem 1rem;
+  border-inline-end: 1px solid var(--border-hairline);
+  border-block-end: 1px solid var(--border-hairline);
+}
+
+.ledgerKey {
+  color: var(--ink-secondary);
+}
+
+.ledgerVal {
+  margin: 0;
+}
+
+.coverNote {
+  margin: 0;
+  max-inline-size: 58ch;
+  color: var(--ink-secondary);
+}
+
+/* Split Layout */
+.splitSection {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (width >= 960px) {
+  .splitSection {
+    grid-template-columns: 0.85fr 1.35fr;
+    gap: 2rem;
+  }
+
+  .splitReverse {
+    grid-template-columns: 1.35fr 0.85fr;
+  }
+}
+
+.copyCol {
+  display: grid;
+  gap: 1rem;
+}
+
+.factList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+  border-block-start: 1px solid var(--border-hairline);
+  padding-block-start: 1rem;
+}
+
+.factList li {
+  display: grid;
+  gap: 0.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.925rem;
+  line-height: 1.5;
+  color: var(--ink-primary);
+}
+
+.specTable {
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid var(--border-hairline);
+  padding: 1rem;
+  background-color: var(--surface-sunken);
+}
+
+.specTable > div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.specTable dt {
+  color: var(--ink-secondary);
+}
+
+.specTable dd {
+  margin: 0;
+}
+
+.screenFrame {
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-sunken);
+  display: grid;
+  overflow: hidden;
+}
+
+.screenBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.875rem;
+  border-block-end: 1px solid var(--border-hairline);
+  background-color: var(--surface-elevated);
+  color: var(--ink-secondary);
+}
+
+.screenImg {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}
+
+/* Trio Photo Strip */
+.trioPhotoRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (width < 768px) {
+  .trioPhotoRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.photoCard {
+  margin: 0;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-sunken);
+  display: grid;
+  grid-template-rows: 260px auto;
+}
+
+.lancetWrap {
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: hidden;
+}
+
+.photoImg {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.photoCap {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.875rem;
+  border-block-start: 1px solid var(--border-hairline);
+}
+
+/* Anatomy Hero + Features + Vector Row */
+.anatomyHero {
+  display: grid;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (width < 768px) {
+  .featureGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.featureBox {
+  border: 1px solid var(--border-hairline);
+  padding: 1rem;
+  display: grid;
+  gap: 0.5rem;
+  background-color: var(--surface-sunken);
+}
+
+.featureBox p {
+  margin: 0;
+}
+
+.vectorRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (width < 900px) {
+  .vectorRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.vectorCard {
+  border: 1px solid var(--border-structural);
+  background-color: #161616;
+  display: grid;
+  grid-template-rows: 240px auto;
+}
+
+.vectorSvg {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.vectorSvg svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.vectorSvg :global(.str-cut),
+.vectorSvg :global(.str-line),
+.vectorSvg :global(.str-thin) {
+  stroke: #eae6e1;
+  fill: none;
+}
+
+.vectorSvg :global(.sig) {
+  stroke: #ff4a3d;
+  fill: none;
+}
+
+.vectorSvg :global(.dim-line) {
+  stroke: #8c8881;
+  fill: none;
+}
+
+.vectorFoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.625rem 0.875rem;
+  border-block-start: 1px solid var(--border-hairline);
+  background-color: var(--surface-elevated);
+}
+
+/* Closing Surface Strip */
+.surfaceStrip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (width < 900px) {
+  .surfaceStrip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width < 520px) {
+  .surfaceStrip {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.surfaceSample {
+  border: 1px solid var(--border-structural);
+  background-color: var(--surface-canvas);
+  color: var(--ink-primary);
+  padding: 1.125rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.closingFooter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-block-start: 1.25rem;
+  border-block-start: 1px solid var(--border-hairline);
+  color: var(--ink-secondary);
+}
+
+.closingBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: var(--ink-primary);
+}
+
+.closingStar {
+  inline-size: 16px;
+  block-size: 16px;
+  color: var(--signal-ink);
+}

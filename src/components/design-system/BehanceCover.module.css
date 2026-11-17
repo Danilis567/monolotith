@@ -1,0 +1,337 @@
+.stage {
+  min-block-size: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: #0b0b0b;
+  padding: 0;
+}
+
+.canvas {
+  position: relative;
+  inline-size: 1600px;
+  block-size: 1200px;
+  background-color: #111111;
+  border: 1px solid var(--border-structural);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  align-items: center;
+  justify-items: center;
+  overflow: hidden;
+  padding: 48px 72px 44px;
+  gap: 20px;
+}
+
+.grainLayer {
+  position: absolute;
+  inset: 0;
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.crossTL,
+.crossTR,
+.crossBL,
+.crossBR {
+  position: absolute;
+  color: var(--ink-secondary);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.crossTL {
+  inset-block-start: 14px;
+  inset-inline-start: 14px;
+}
+
+.crossTR {
+  inset-block-start: 14px;
+  inset-inline-end: 14px;
+}
+
+.crossBL {
+  inset-block-end: 14px;
+  inset-inline-start: 14px;
+}
+
+.crossBR {
+  inset-block-end: 14px;
+  inset-inline-end: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   Top Display Title
+   -------------------------------------------------------------------------- */
+.titleBlock {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  inline-size: 100%;
+  max-inline-size: 920px;
+}
+
+.titleTopRow {
+  inline-size: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-inline: 8px;
+}
+
+.titleMetaRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.titleWordWrap {
+  position: relative;
+  display: inline-block;
+}
+
+.romanNum {
+  font-family: var(--font-display);
+  font-size: 26px;
+  line-height: 1;
+  color: var(--ink-primary);
+  letter-spacing: 0.04em;
+}
+
+.metaNote {
+  font-family: var(--font-display);
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(--ink-secondary);
+}
+
+.megaTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 158px;
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  color: var(--ink-primary);
+  text-align: center;
+}
+
+.titleStar {
+  position: absolute;
+  inset-block-start: -18px;
+  inset-inline-start: 62.6%;
+  inline-size: 22px;
+  block-size: 22px;
+  color: var(--signal-ink);
+}
+
+.centerStarLg {
+  inline-size: 36px;
+  block-size: 36px;
+  color: var(--ink-primary);
+}
+
+.centerStarSm {
+  inline-size: 24px;
+  block-size: 24px;
+  color: var(--signal-ink);
+}
+
+/* --------------------------------------------------------------------------
+   Centerpiece: Single Image Triptych + Orbital Technical Rings
+   -------------------------------------------------------------------------- */
+.centerpiece {
+  position: relative;
+  z-index: 3;
+  inline-size: 100%;
+  block-size: 100%;
+  display: grid;
+  grid-template-columns: auto minmax(0, 740px) auto;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  min-block-size: 0;
+}
+
+.sideTagLeft,
+.sideTagRight {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  padding: 12px 9px;
+  border: 1px solid var(--border-structural);
+  background-color: #151515;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: var(--ink-primary);
+}
+
+.sideSep {
+  inline-size: 10px;
+  block-size: 1px;
+  background-color: var(--signal-ink);
+  margin-block: 4px;
+}
+
+.triptych {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr) 112px;
+  gap: 18px;
+  inline-size: 100%;
+  block-size: 620px;
+}
+
+.sliceLeft,
+.sliceCenter,
+.sliceRight {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-structural);
+  background-color: #0e0e0e;
+}
+
+.triptychImgLeft,
+.triptychImgCenter,
+.triptychImgRight {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.24) brightness(0.84);
+}
+
+.triptychImgLeft {
+  object-position: 18% center;
+  filter: grayscale(100%) contrast(1.24) brightness(0.68);
+}
+
+.triptychImgCenter {
+  object-position: 50% 35%;
+}
+
+.triptychImgRight {
+  object-position: 84% center;
+  filter: grayscale(100%) contrast(1.24) brightness(0.68);
+}
+
+.xrayOverlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 38px 28px;
+  opacity: 0.44;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.xrayOverlay svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.xrayOverlay :global(.str-cut),
+.xrayOverlay :global(.str-line),
+.xrayOverlay :global(.str-thin) {
+  stroke: #eae6e1;
+  fill: none;
+}
+
+.xrayOverlay :global(.sig) {
+  stroke: #ff4a3d;
+  fill: none;
+}
+
+.xrayOverlay :global(.dim-line) {
+  stroke: #8c8881;
+  fill: none;
+}
+
+.centerTopCaption {
+  position: absolute;
+  inset-block-start: 18px;
+  inset-inline: 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: #eae6e1;
+  text-shadow: 0 1px 10px rgb(0 0 0 / 0.9);
+}
+
+.centerCrossPair {
+  position: absolute;
+  inset-block-start: 46%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.orbitalRings {
+  position: absolute;
+  inset-inline: 50%;
+  inset-block-start: 54%;
+  transform: translate(-50%, -50%);
+  inline-size: 1180px;
+  block-size: 410px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Bottom Editorial Caption & Credit
+   -------------------------------------------------------------------------- */
+.bottomBlock {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+  inline-size: 100%;
+  max-inline-size: 900px;
+}
+
+.quoteRow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 620px) auto;
+  align-items: center;
+  gap: 44px;
+}
+
+.sideStar {
+  inline-size: 26px;
+  block-size: 26px;
+  color: var(--ink-primary);
+}
+
+.editorialQuote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.48;
+  text-align: center;
+  color: var(--ink-secondary);
+}
+
+.creditRow {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  color: var(--ink-primary);
+  letter-spacing: 0.2em;
+}
+
+.diamondMark {
+  inline-size: 18px;
+  block-size: 26px;
+  border: 1px solid var(--ink-primary);
+  transform: rotate(45deg) scale(0.75);
+}
