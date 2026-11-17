@@ -261,7 +261,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.75rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 @media (width < 960px) {
@@ -275,6 +275,15 @@
   border: 1px solid var(--border-structural);
   background-color: var(--surface-void);
   overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 620px;
+}
+
+.pageColumn .shotImg {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
 
 .pageCaption {
